@@ -33,7 +33,6 @@
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
-		143585B819CA4172007F03DF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143585B719CA4172007F03DF /* FacebookSDK.framework */; };
 		143585C819CA422C007F03DF /* iconSlide.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BA19CA422C007F03DF /* iconSlide.png */; };
 		143585C919CA422C007F03DF /* iconSlide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BB19CA422C007F03DF /* iconSlide@2x.png */; };
 		143585CA19CA422C007F03DF /* iconSlideBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BC19CA422C007F03DF /* iconSlideBlack.png */; };
@@ -54,6 +53,8 @@
 		143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585EB19CA57BF007F03DF /* EADInboxViewController.m */; };
 		143585EE19CA592C007F03DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585ED19CA592C007F03DF /* map.png */; };
 		143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */; };
+		146A4DEF19D1827700C0182B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146A4DEE19D1827700C0182B /* FacebookSDK.framework */; };
+		146A4DF319D182FC00C0182B /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF219D182FC00C0182B /* UserInfo.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +104,6 @@
 		1412AAB019CADFA1008052B5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		1412AAB219CAE13F008052B5 /* URLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequest.h; sourceTree = "<group>"; };
 		1412AAB319CAE13F008052B5 /* URLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRequest.m; sourceTree = "<group>"; };
-		143585B719CA4172007F03DF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		143585BA19CA422C007F03DF /* iconSlide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSlide.png; sourceTree = "<group>"; };
 		143585BB19CA422C007F03DF /* iconSlide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSlide@2x.png"; sourceTree = "<group>"; };
 		143585BC19CA422C007F03DF /* iconSlideBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSlideBlack.png; sourceTree = "<group>"; };
@@ -133,6 +133,9 @@
 		143585EB19CA57BF007F03DF /* EADInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADInboxViewController.m; sourceTree = "<group>"; };
 		143585ED19CA592C007F03DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "App Icon Design v3.jpg"; sourceTree = "<group>"; };
+		146A4DEE19D1827700C0182B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		146A4DF119D182FC00C0182B /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		146A4DF219D182FC00C0182B /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,11 +146,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B89FFB019BE52E90077E029 /* CoreGraphics.framework in Frameworks */,
-				143585B819CA4172007F03DF /* FacebookSDK.framework in Frameworks */,
 				0B89FFB219BE52E90077E029 /* UIKit.framework in Frameworks */,
 				0B89FFE619BE547D0077E029 /* MapKit.framework in Frameworks */,
 				0B89FFAE19BE52E90077E029 /* Foundation.framework in Frameworks */,
 				4E7426FA19064789A9742C32 /* libPods.a in Frameworks */,
+				146A4DEF19D1827700C0182B /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +190,7 @@
 		0B89FFAC19BE52E90077E029 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				143585B719CA4172007F03DF /* FacebookSDK.framework */,
+				146A4DEE19D1827700C0182B /* FacebookSDK.framework */,
 				0B89FFE519BE547D0077E029 /* MapKit.framework */,
 				0B89FFAD19BE52E90077E029 /* Foundation.framework */,
 				0B89FFAF19BE52E90077E029 /* CoreGraphics.framework */,
@@ -201,6 +204,7 @@
 		0B89FFB319BE52E90077E029 /* LiveNow */ = {
 			isa = PBXGroup;
 			children = (
+				146A4DF019D182F100C0182B /* Models */,
 				143585B919CA4204007F03DF /* SlideNav */,
 				0B89FFE419BE53190077E029 /* DataServices */,
 				0B89FFE319BE530F0077E029 /* Views */,
@@ -315,6 +319,15 @@
 				143585C719CA422C007F03DF /* AMTableView.m */,
 			);
 			name = SlideNav;
+			sourceTree = "<group>";
+		};
+		146A4DF019D182F100C0182B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				146A4DF119D182FC00C0182B /* UserInfo.h */,
+				146A4DF219D182FC00C0182B /* UserInfo.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				143585CC19CA422C007F03DF /* AMSlideOutGlobals.m in Sources */,
+				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				0B89FFBA19BE52E90077E029 /* main.m in Sources */,
 				143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */,
 				1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */,

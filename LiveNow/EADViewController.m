@@ -7,6 +7,9 @@
 //
 
 #import "EADViewController.h"
+#import "UserInfo.h"
+#import "Constants.h"
+#import "Postman.h"
 
 @interface EADViewController ()
 
@@ -21,7 +24,7 @@
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     [self.view addSubview:loginView];
-       // Align the button in the center horizontally
+    // Align the button in the center horizontally
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
     //[self.view addSubview:loginView];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -30,7 +33,12 @@
     
     
 }
-- (void)segueToHome {
+- (IBAction)guestLoginTouch:(id)sender {
+    [self navigateToMainPage];
+}
+
+- (void)navigateToMainPage
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UIViewController* controller;
@@ -48,46 +56,52 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Groups" andIcon:@"Groups.png"];
     
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Profile" andIcon:@"Profile.png"];
+    NSURL *profilePicURL = [NSURL URLWithString:[userInfo profileImageURL]];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Profile" andIcon:profilePicURL];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Events Map" andIcon:@"map.png"];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
-    //[self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
+    [self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
     
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];
 }
 
-- (IBAction)guestLoginTouch:(id)sender {
-    [self segueToHome];
-}
-
-
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    //self.statusLabel.text = @"You're logged in as";
-    //[self performSegueWithIdentifier:@"Home" sender:self];
-    //self.profilePicture.profileID = user.profileID;
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
-    //[self segueToHome];
-
-    
-}
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    // here we use helper properties of FBGraphUser to dot-through to first_name and
-    // id properties of the json response from the server; alternatively we could use
-    // NSDictionary methods such as objectForKey to get values from the my json object
-    //self.labelFirstName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
-    // setting the profileID property of the FBProfilePictureView instance
-    // causes the control to fetch and display the profile picture for the user
-    self.profilePicture.profileID = user.objectID;
-    
-    //self.loggedInUser = user;
+    if (FBSession.activeSession.isOpen) {
+        
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 userInfo.firstName = user.first_name;
+                 userInfo.lastName = user.last_name;
+                 userInfo.userId = user.objectID;
+                 userInfo.email = [user objectForKey:@"email"];
+                 userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
+                 
+                 // update user information
+                 NSString *userInfoUpdate = [NSString stringWithFormat:@"{""AuthenticationToken"":""%@"",""Email"":""%@"",""FirstName"":""%@"",""LastName"":""%@""}", userInfo.userId, userInfo.email, userInfo.firstName, userInfo.lastName];
+                 
+                 Postman *postMan = [Postman alloc];
+                 [postMan UserUpdate:userInfoUpdate];
+                 
+                 [self navigateToMainPage];
+             }
+         }];
+        
+        
+        
+        
+    }
 }
 
 // Implement the loginViewShowingLoggedOutUser: delegate method to modify your app's UI for a logged-out user experience
