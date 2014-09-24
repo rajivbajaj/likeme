@@ -10,5 +10,6 @@
 
 @interface Postman : NSObject
 -(NSDictionary*) UserGet :(NSString*)userId;
--(void) UserUpdate :(NSString*)userData;
+-(void) UserUpdate :(NSDictionary*)userData;
+-(NSString*)GetValueOrEmpty :(NSString*)inputValue;
 @end

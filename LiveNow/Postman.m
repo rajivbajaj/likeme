@@ -35,21 +35,13 @@
     return userDataDictionary;
 }
 
--(void) UserUpdate :(NSString*)userData
+-(void) UserUpdate :(NSDictionary*)userData
 {
-    //NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDataDictionary options:0 error:nil];
-    //NSString* jsonString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *userInfoUpdate = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSString *urlParams = [NSString stringWithFormat:@"users/post?value=%@", userData];
+    NSString *urlParams = [NSString stringWithFormat:@"users/post?value=%@", userInfoUpdate];
     [self ServiceCall:urlParams];
-    //NSDictionary *userDataDictionary =
-    //    "{  AuthenticationToken: "jamesfbauth",
-    //        Email : "james@kmail.com",
-    //        UserStatus : "A",
-    //        AuthenticationProvider : "FB" }
-    
-    
-    
 }
 
 
@@ -58,5 +50,10 @@
     NSString *formattedServiceURLString = [BaseServiceURL  stringByAppendingString:dataParams];
     URLRequest *requestHelper = [URLRequest alloc];
     return [requestHelper GetRequest:formattedServiceURLString];
+}
+
+-(NSString*)GetValueOrEmpty :(NSString*)inputValue
+{
+    return inputValue == nil ? @"" : inputValue;
 }
 @end

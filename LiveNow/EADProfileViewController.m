@@ -7,12 +7,18 @@
 //
 
 #import "EADProfileViewController.h"
+#import "Postman.h"
+#import "UserInfo.h"
 
 @interface EADProfileViewController ()
 
 @end
 
 @implementation EADProfileViewController
+
+@synthesize emailText;
+@synthesize statusText;
+@synthesize displayNameText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +33,16 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    
+    Postman* postman = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
+    
+    emailText.text = [userDataDictionary valueForKey:@"Email"];
+    statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
+    displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
+
     // Do any additional setup after loading the view.
 }
 
@@ -35,8 +51,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)updateProfileTouch:(id)sender {
+- (IBAction)updateProfileTouch:(id)sender
+{
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+
+    // update user information
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
+                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
+                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
+                                        nil];
     
+    [postMan UserUpdate:userDataDictionary];
 }
 
 /*

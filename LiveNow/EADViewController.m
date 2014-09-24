@@ -89,18 +89,17 @@
                  userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
                  
                  // update user information
-                 NSString *userInfoUpdate = [NSString stringWithFormat:@"{""AuthenticationToken"":""%@"",""Email"":""%@"",""FirstName"":""%@"",""LastName"":""%@""}", userInfo.userId, userInfo.email, userInfo.firstName, userInfo.lastName];
-                 
                  Postman *postMan = [Postman alloc];
-                 [postMan UserUpdate:userInfoUpdate];
+                 NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                     [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                                     [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
+                                                     [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",nil];
+
+                 [postMan UserUpdate:userDataDictionary];
                  
                  [self navigateToMainPage];
              }
          }];
-        
-        
-        
-        
     }
 }
 
@@ -159,5 +158,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
