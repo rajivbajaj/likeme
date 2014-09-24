@@ -12,4 +12,5 @@
 -(NSDictionary*) UserGet :(NSString*)userId;
 -(void) UserUpdate :(NSDictionary*)userData;
 -(NSString*)GetValueOrEmpty :(NSString*)inputValue;
+-(void) UserInterestsUpdate :(NSDictionary*)interestsData;
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EADInterestsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *interestsText;
 
 @end

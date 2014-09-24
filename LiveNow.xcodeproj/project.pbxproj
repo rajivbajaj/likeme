@@ -56,6 +56,7 @@
 		146A4DEF19D1827700C0182B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146A4DEE19D1827700C0182B /* FacebookSDK.framework */; };
 		146A4DF319D182FC00C0182B /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF219D182FC00C0182B /* UserInfo.m */; };
 		146A4DF619D213E100C0182B /* EADInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF519D213E100C0182B /* EADInterestsViewController.m */; };
+		146A4DF819D2D73800C0182B /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 146A4DF719D2D73800C0182B /* favorite.png */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		146A4DF219D182FC00C0182B /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		146A4DF419D213E100C0182B /* EADInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADInterestsViewController.h; sourceTree = "<group>"; };
 		146A4DF519D213E100C0182B /* EADInterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADInterestsViewController.m; sourceTree = "<group>"; };
+		146A4DF719D2D73800C0182B /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -302,6 +304,7 @@
 		143585B919CA4204007F03DF /* SlideNav */ = {
 			isa = PBXGroup;
 			children = (
+				146A4DF719D2D73800C0182B /* favorite.png */,
 				143585ED19CA592C007F03DF /* map.png */,
 				143585D119CA4239007F03DF /* logout.png */,
 				143585D219CA4239007F03DF /* Profile.png */,
@@ -429,6 +432,7 @@
 				143585CB19CA422C007F03DF /* iconSlideBlack@2x.png in Resources */,
 				0B7C9BE819C5128500BD6772 /* App Icon Design v2.jpg in Resources */,
 				143585D819CA4239007F03DF /* Inbox.png in Resources */,
+				146A4DF819D2D73800C0182B /* favorite.png in Resources */,
 				143585D719CA4239007F03DF /* Profile.png in Resources */,
 				0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */,
 				0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */,

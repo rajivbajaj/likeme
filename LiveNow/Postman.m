@@ -44,6 +44,15 @@
     [self ServiceCall:urlParams];
 }
 
+-(void) UserInterestsUpdate :(NSDictionary*)interestsData
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:interestsData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStringToUpdate = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSString *urlParams = [NSString stringWithFormat:@"users/postinterests?value=%@", jsonStringToUpdate];
+    [self ServiceCall:urlParams];
+}
+
 
 -(NSData *) ServiceCall :(NSString*)dataParams
 {

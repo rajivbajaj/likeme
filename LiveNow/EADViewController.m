@@ -65,6 +65,9 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Events Map" andIcon:@"map.png"];
     
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"UserInterests"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Interests" andIcon:@"favorite.png"];
+    
     [self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
     
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
