@@ -54,8 +54,6 @@
     UIImage *image = [UIImage imageWithData:imageData];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-    //NSURL *profilePicURL = [NSURL URLWithString:[userInfo profileImageURL]];
-
     [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:userInfo.firstName andIcon:image];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Messages"];
@@ -74,6 +72,7 @@
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Interests" andIcon:@"favorite.png"];
     
     [self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
+    
     
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];

@@ -155,7 +155,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YdV-qg-3Sc">
-                                        <rect key="frame" x="115" y="155" width="91" height="30"/>
+                                        <rect key="frame" x="115" y="202" width="91" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,23 +167,27 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" id="VkJ-DF-p1M">
-                                        <rect key="frame" x="54" y="13" width="212" height="30"/>
+                                        <rect key="frame" x="54" y="78" width="212" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Display Name" textAlignment="center" minimumFontSize="17" id="H6q-7A-2tI">
-                                        <rect key="frame" x="54" y="55" width="212" height="30"/>
+                                        <rect key="frame" x="54" y="120" width="212" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Status" textAlignment="center" minimumFontSize="17" id="ksM-s9-LqJ">
-                                        <rect key="frame" x="54" y="93" width="212" height="30"/>
+                                        <rect key="frame" x="54" y="158" width="212" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="27b-zQ-2de">
+                                        <rect key="frame" x="129" y="0.0" width="63" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -195,6 +199,7 @@
                     <connections>
                         <outlet property="displayNameText" destination="H6q-7A-2tI" id="Q8Z-Af-2wA"/>
                         <outlet property="emailText" destination="VkJ-DF-p1M" id="PLM-2t-5Gw"/>
+                        <outlet property="profilePicImageView" destination="27b-zQ-2de" id="zCs-HX-0xP"/>
                         <outlet property="statusText" destination="ksM-s9-LqJ" id="ffC-QL-qTg"/>
                     </connections>
                 </viewController>
@@ -229,17 +234,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Wwg-Tl-fxP">
-                                <rect key="frame" x="7" y="522" width="418" height="44"/>
+                                <rect key="frame" x="0.0" y="522" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Take Picture" id="5SA-FX-soW">
+                                    <barButtonItem systemItem="action" id="28a-CE-T2P">
                                         <connections>
-                                            <action selector="useCamera:" destination="d6f-xA-AFD" id="if0-OA-XdW"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Camera Roll" id="98s-mJ-Sw8">
-                                        <connections>
-                                            <action selector="useCameraRoll:" destination="d6f-xA-AFD" id="sKI-Bf-gwo"/>
+                                            <action selector="actionInitiatorTouched:" destination="d6f-xA-AFD" id="JpS-vb-CiU"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

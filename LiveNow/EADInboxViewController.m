@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void) useCamera:(id)sender
+-(void) launchCamera
 {
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera])
@@ -40,7 +40,7 @@
         _newMedia = YES;
     }
 }
-- (void) useCameraRoll:(id)sender
+-(void) launchCameraRoll
 {
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeSavedPhotosAlbum])
@@ -79,6 +79,33 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         // Code here to support video if enabled
     }
 }
+- (IBAction)actionInitiatorTouched:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    [actionSheet addButtonWithTitle:@"Take a Picture"];
+    [actionSheet addButtonWithTitle:@"Camera Roll"];
+    [actionSheet showFromBarButtonItem:sender animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            [self launchCamera];
+            break;
+        case 1:
+            [self launchCameraRoll];
+            break;
+        default:
+            break;
+    }
+}
+
 
 -(void)image:(UIImage *)image
 finishedSavingWithError:(NSError *)error

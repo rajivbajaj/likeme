@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface EADInboxViewController : UIViewController
-<UIImagePickerControllerDelegate,
-UINavigationControllerDelegate>
+@interface EADInboxViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property BOOL newMedia;

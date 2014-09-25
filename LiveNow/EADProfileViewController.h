@@ -11,6 +11,6 @@
 @interface EADProfileViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *emailText;
 @property (weak, nonatomic) IBOutlet UITextField *displayNameText;
-
 @property (weak, nonatomic) IBOutlet UITextField *statusText;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @end
