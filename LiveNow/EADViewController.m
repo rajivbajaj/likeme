@@ -56,7 +56,7 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:userInfo.firstName andIcon:image];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Messages"];
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Inbox"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:@"Inbox" andIcon:@"Inbox.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];

@@ -58,6 +58,7 @@
 		146A4DF619D213E100C0182B /* EADInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF519D213E100C0182B /* EADInterestsViewController.m */; };
 		146A4DF819D2D73800C0182B /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 146A4DF719D2D73800C0182B /* favorite.png */; };
 		146A4DFA19D4044300C0182B /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 146A4DF919D4044300C0182B /* search.png */; };
+		146A4DFD19D40D6900C0182B /* EADImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,8 @@
 		146A4DF519D213E100C0182B /* EADInterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADInterestsViewController.m; sourceTree = "<group>"; };
 		146A4DF719D2D73800C0182B /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		146A4DF919D4044300C0182B /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		146A4DFB19D40D6900C0182B /* EADImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADImagePickerViewController.h; sourceTree = "<group>"; };
+		146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADImagePickerViewController.m; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -279,6 +282,8 @@
 				143585EB19CA57BF007F03DF /* EADInboxViewController.m */,
 				146A4DF419D213E100C0182B /* EADInterestsViewController.h */,
 				146A4DF519D213E100C0182B /* EADInterestsViewController.m */,
+				146A4DFB19D40D6900C0182B /* EADImagePickerViewController.h */,
+				146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				143585CC19CA422C007F03DF /* AMSlideOutGlobals.m in Sources */,
 				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				0B89FFBA19BE52E90077E029 /* main.m in Sources */,
+				146A4DFD19D40D6900C0182B /* EADImagePickerViewController.m in Sources */,
 				143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */,
 				1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */,
 				0B89FFC419BE52E90077E029 /* EADViewController.m in Sources */,

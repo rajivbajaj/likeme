@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iav-VR-FSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="2328"/>
+            <point key="canvasLocation" x="1087" y="358"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="dzA-Jg-E66">
@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeP-kg-wGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="1679"/>
+            <point key="canvasLocation" x="1685" y="-343"/>
         </scene>
         <!--Events View Controller - Events-->
         <scene sceneID="BZe-fI-P7A">
@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2P-AS-1Qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="-354"/>
+            <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
         <!--Profile View Controller - Profile-->
         <scene sceneID="gHo-Ia-oNb">
@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76s-aZ-e00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1349" y="1000"/>
+            <point key="canvasLocation" x="1517" y="358"/>
         </scene>
         <!--Groups View Controller - Groups-->
         <scene sceneID="IT1-G1-lqW">
@@ -219,12 +219,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6d-W4-qms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328" y="321"/>
+            <point key="canvasLocation" x="1904" y="358"/>
         </scene>
         <!--Inbox View Controller - Inbox-->
+        <scene sceneID="WNw-3U-OaC">
+            <objects>
+                <viewController storyboardIdentifier="Inbox" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7eI-bq-bJF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lXn-tL-eLf">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="D2y-vU-Xp4">
+                                        <connections>
+                                            <action selector="actionsSelectorTriggered:" destination="d7c-d5-z5c" id="iab-JV-SdD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QED-yX-q9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305" y="-1035"/>
+        </scene>
+        <!--Image Picker View Controller - Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
-                <viewController storyboardIdentifier="Messages" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADInboxViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zXb-i2-gg4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -248,12 +275,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="xTJ-Au-MFt" id="kcr-96-Xxc"/>
+                        <outlet property="imageView" destination="xTJ-Au-MFt" id="NBc-US-ay7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4J-0q-x8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="-1036"/>
+            <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
     </scenes>
     <resources>

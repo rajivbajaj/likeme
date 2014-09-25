@@ -14,10 +14,4 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property BOOL newMedia;
 
-- (IBAction)useCamera:(id)sender;
-
-
-- (IBAction)useCameraRoll:(id)sender;
-
-
 @end

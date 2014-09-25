@@ -23,71 +23,74 @@
     return self;
 }
 
--(void) launchCamera
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
-        _newMedia = YES;
-    }
-}
--(void) launchCameraRoll
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
-        _newMedia = NO;
-    }
-}
--(void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = info[UIImagePickerControllerOriginalImage];
-        
-        _imageView.image = image;
-        if (_newMedia)
-            UIImageWriteToSavedPhotosAlbum(image,
-                                           self,
-                                           @selector(image:finishedSavingWithError:contextInfo:),
-                                           nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
-    }
-}
-- (IBAction)actionInitiatorTouched:(id)sender {
+//-(void) launchCamera
+//{
+//    if ([UIImagePickerController isSourceTypeAvailable:
+//         UIImagePickerControllerSourceTypeCamera])
+//    {
+//        UIImagePickerController *imagePicker =
+//        [[UIImagePickerController alloc] init];
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType =
+//        UIImagePickerControllerSourceTypeCamera;
+//        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+//        imagePicker.allowsEditing = NO;
+//        [self presentViewController:imagePicker
+//                           animated:YES completion:nil];
+//        _newMedia = YES;
+//    }
+//}
+//-(void) launchCameraRoll
+//{
+//    if ([UIImagePickerController isSourceTypeAvailable:
+//         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+//    {
+//        UIImagePickerController *imagePicker =
+//        [[UIImagePickerController alloc] init];
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType =
+//        UIImagePickerControllerSourceTypePhotoLibrary;
+//        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+//        imagePicker.allowsEditing = NO;
+//        [self presentViewController:imagePicker
+//                           animated:YES completion:nil];
+//        _newMedia = NO;
+//    }
+//}
+//-(void)imagePickerController:(UIImagePickerController *)picker
+//didFinishPickingMediaWithInfo:(NSDictionary *)info
+//{
+//    NSString *mediaType = info[UIImagePickerControllerMediaType];
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    
+//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+//        UIImage *image = info[UIImagePickerControllerOriginalImage];
+//        
+//        _imageView.image = image;
+//        if (_newMedia)
+//            UIImageWriteToSavedPhotosAlbum(image,
+//                                           self,
+//                                           @selector(image:finishedSavingWithError:contextInfo:),
+//                                           nil);
+//    }
+//    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+//    {
+//        // Code here to support video if enabled
+//    }
+//}
+
+- (IBAction)actionsSelectorTriggered:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-    [actionSheet addButtonWithTitle:@"Take a Picture"];
-    [actionSheet addButtonWithTitle:@"Camera Roll"];
+    [actionSheet addButtonWithTitle:@"Compose"];
+    [actionSheet addButtonWithTitle:@"Refresh"];
+    [actionSheet addButtonWithTitle:@"Cancel"];
+    actionSheet.cancelButtonIndex = 2;
     [actionSheet showFromBarButtonItem:sender animated:YES];
 }
 
@@ -96,10 +99,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     switch (buttonIndex)
     {
         case 0:
-            [self launchCamera];
+            //[self launchCamera];
             break;
         case 1:
-            [self launchCameraRoll];
+            //[self launchCameraRoll];
             break;
         default:
             break;
