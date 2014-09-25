@@ -53,6 +53,37 @@
     [self ServiceCall:urlParams];
 }
 
+-(void) Post :(NSString*)actionURLWithPlaceHolder :(NSDictionary*)dicData
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSString *urlParams = [NSString stringWithFormat:actionURLWithPlaceHolder, updateJsonData];
+    [self ServiceCall:urlParams];
+}
+
+-(NSDictionary*) Get :(NSString*)urlWithParams
+{
+    NSData *data = [self ServiceCall:urlWithParams];
+    NSDictionary *dataDictionary = nil;
+    
+    if(data != nil)
+    {
+        NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if(masterDictionary != nil && masterDictionary.count > 0)
+        {
+            NSArray *dataArray = (NSArray *)masterDictionary;
+            
+            for (int i=0; i<dataArray.count; i++) {
+                dataDictionary = [dataArray objectAtIndex:i];
+            }
+        }
+    }
+    
+    return dataDictionary;
+}
+
 
 -(NSData *) ServiceCall :(NSString*)dataParams
 {

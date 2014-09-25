@@ -38,7 +38,8 @@
                                         [postMan GetValueOrEmpty:interestsText.text], @"UserInterests",
                                         nil];
     
-    [postMan UserInterestsUpdate:userDataDictionary];
+    //[postMan UserInterestsUpdate:userDataDictionary];
+    [postMan Post:@"users/postintrests?value=%@" :userDataDictionary];
 }
 
 - (void)viewDidLoad
@@ -46,6 +47,14 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
+    
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
+    
+    interestsText.text = [interestsData valueForKey:@"UserInterests"];
+    
 }
 
 - (void)didReceiveMemoryWarning

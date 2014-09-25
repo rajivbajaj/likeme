@@ -46,6 +46,17 @@
     self.slideoutController = [AMSlideOutNavigationController slideOutNavigation];
     [self.slideoutController setSlideoutOptions:[AMSlideOutGlobals defaultFlatOptions]];
     [self.slideoutController addSectionWithTitle:@""];
+
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+
+    NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+    //NSURL *profilePicURL = [NSURL URLWithString:[userInfo profileImageURL]];
+
+    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:userInfo.firstName andIcon:image];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Messages"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:@"Inbox" andIcon:@"Inbox.png"];
@@ -55,12 +66,6 @@
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Groups" andIcon:@"Groups.png"];
-    
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-    NSURL *profilePicURL = [NSURL URLWithString:[userInfo profileImageURL]];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Profile" andIcon:profilePicURL];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Events Map" andIcon:@"map.png"];
@@ -98,7 +103,8 @@
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
                                                      [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",nil];
 
-                 [postMan UserUpdate:userDataDictionary];
+                 //[postMan UserUpdate:userDataDictionary];
+                 [postMan Post:@"users/post?value=%@" :userDataDictionary];
                  
                  [self navigateToMainPage];
              }

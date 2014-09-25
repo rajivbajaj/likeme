@@ -13,4 +13,6 @@
 -(void) UserUpdate :(NSDictionary*)userData;
 -(NSString*)GetValueOrEmpty :(NSString*)inputValue;
 -(void) UserInterestsUpdate :(NSDictionary*)interestsData;
+-(void) Post :(NSString*)actionURLWithPlaceHolder :(NSDictionary*)dicData;
+-(NSDictionary*) Get :(NSString*)urlWithParams;
 @end
