@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface EADInboxViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface EADInboxViewController : UITableViewController<UINavigationControllerDelegate,UIActionSheetDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITableView *inboxTablView;
 @property BOOL newMedia;
-
+@property (nonatomic, strong) NSDictionary *dictData;
 @end

@@ -71,7 +71,8 @@
                                         [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
                                         nil];
     
-    [postMan UserUpdate:userDataDictionary];
+    //[postMan UserUpdate:userDataDictionary];
+    [postMan Post:@"users/postinterests?value=%@" :userDataDictionary];
 }
 
 /*

@@ -62,7 +62,33 @@
     [self ServiceCall:urlParams];
 }
 
--(NSDictionary*) Get :(NSString*)urlWithParams
+-(NSDictionary*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
+    NSData *data = [self ServiceCall:completeUrlWIthParams];
+    NSDictionary *dataDictionary = nil;
+    
+    if(data != nil)
+    {
+        NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if(masterDictionary != nil && masterDictionary.count > 0)
+        {
+            NSArray *dataArray = (NSArray *)masterDictionary;
+            
+            for (int i=0; i<dataArray.count; i++) {
+                dataDictionary  = [dataArray objectAtIndex:i];
+            }
+        }
+    }
+    
+    return dataDictionary;
+}
+
+-(NSDictionary*) Get :(NSString*)urlWithParams 
 {
     NSData *data = [self ServiceCall:urlWithParams];
     NSDictionary *dataDictionary = nil;

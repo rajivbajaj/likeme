@@ -7,6 +7,8 @@
 //
 
 #import "EADInboxViewController.h"
+#import "Postman.h"
+#import "UserInfo.h"
 
 @interface EADInboxViewController ()
 
@@ -14,71 +16,26 @@
 
 @implementation EADInboxViewController
 
+@synthesize inboxTablView;
+
+-(void)setDictData:(NSDictionary *)dictData
+{
+    _dictData = dictData;
+    [self.inboxTablView reloadData];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    inboxTablView.delegate = self;
+    inboxTablView.dataSource = self;
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
-
-//-(void) launchCamera
-//{
-//    if ([UIImagePickerController isSourceTypeAvailable:
-//         UIImagePickerControllerSourceTypeCamera])
-//    {
-//        UIImagePickerController *imagePicker =
-//        [[UIImagePickerController alloc] init];
-//        imagePicker.delegate = self;
-//        imagePicker.sourceType =
-//        UIImagePickerControllerSourceTypeCamera;
-//        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-//        imagePicker.allowsEditing = NO;
-//        [self presentViewController:imagePicker
-//                           animated:YES completion:nil];
-//        _newMedia = YES;
-//    }
-//}
-//-(void) launchCameraRoll
-//{
-//    if ([UIImagePickerController isSourceTypeAvailable:
-//         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-//    {
-//        UIImagePickerController *imagePicker =
-//        [[UIImagePickerController alloc] init];
-//        imagePicker.delegate = self;
-//        imagePicker.sourceType =
-//        UIImagePickerControllerSourceTypePhotoLibrary;
-//        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-//        imagePicker.allowsEditing = NO;
-//        [self presentViewController:imagePicker
-//                           animated:YES completion:nil];
-//        _newMedia = NO;
-//    }
-//}
-//-(void)imagePickerController:(UIImagePickerController *)picker
-//didFinishPickingMediaWithInfo:(NSDictionary *)info
-//{
-//    NSString *mediaType = info[UIImagePickerControllerMediaType];
-//    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-//        UIImage *image = info[UIImagePickerControllerOriginalImage];
-//        
-//        _imageView.image = image;
-//        if (_newMedia)
-//            UIImageWriteToSavedPhotosAlbum(image,
-//                                           self,
-//                                           @selector(image:finishedSavingWithError:contextInfo:),
-//                                           nil);
-//    }
-//    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-//    {
-//        // Code here to support video if enabled
-//    }
-//}
 
 - (IBAction)actionsSelectorTriggered:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -109,30 +66,14 @@
     }
 }
 
-
--(void)image:(UIImage *)image
-finishedSavingWithError:(NSError *)error
- contextInfo:(void *)contextInfo
-{
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Save failed"
-                              message: @"Failed to save image"
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //inboxTablView.delegate = self;
+    //inboxTablView.dataSource = self;
     // Do any additional setup after loading the view.
+    [self loadInbox];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,6 +81,42 @@ finishedSavingWithError:(NSError *)error
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)loadInbox
+{
+    Postman *postman = [Postman alloc];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        nil];
+    
+    self.dictData = [postman Get:@"messages/get?value=%@" :userDataDictionary];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"inboxItemCell" forIndexPath:indexPath];
+    
+    if(cell != nil)
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", @"from somebody man"];
+        cell.detailTextLabel.text = @"test body";
+    }
+    return cell;
+}
+
+
 
 /*
 #pragma mark - Navigation

@@ -51,6 +51,9 @@
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
+    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
+    
     NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
     
     interestsText.text = [interestsData valueForKey:@"UserInterests"];
