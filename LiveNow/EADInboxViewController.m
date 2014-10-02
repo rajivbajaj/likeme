@@ -18,9 +18,9 @@
 
 @synthesize inboxTablView;
 
--(void)setDictData:(NSDictionary *)dictData
+-(void)setDictData:(NSArray *)dataArray
 {
-    _dictData = dictData;
+    _dataArray = dataArray;
     [self.inboxTablView reloadData];
 }
 
@@ -71,8 +71,6 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    //inboxTablView.delegate = self;
-    //inboxTablView.dataSource = self;
     // Do any additional setup after loading the view.
     [self loadInbox];
 }
@@ -92,7 +90,7 @@
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.dictData = [postman Get:@"messages/get?value=%@" :userDataDictionary];
+    self.dataArray = [postman Get:@"messages/get?value=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -102,7 +100,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,8 +109,10 @@
     
     if(cell != nil)
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", @"from somebody man"];
-        cell.detailTextLabel.text = @"test body";
+        NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
+        //NSString *objectKey =
+        cell.textLabel.text = [currentObject valueForKey:@"Subject"];
+        cell.detailTextLabel.text = [currentObject valueForKey:@"Message"];
     }
     return cell;
 }

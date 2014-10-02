@@ -13,5 +13,5 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *inboxTablView;
 @property BOOL newMedia;
-@property (nonatomic, strong) NSDictionary *dictData;
+@property (nonatomic, strong) NSArray *dataArray;
 @end
