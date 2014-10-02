@@ -9,12 +9,14 @@
 #import "EADInboxViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADMessageDetailsViewController.h"
 
 @interface EADInboxViewController ()
 
 @end
 
 @implementation EADInboxViewController
+
 
 @synthesize inboxTablView;
 
@@ -118,8 +120,10 @@
 }
 
 
+- (IBAction)composeSelected:(id)sender {
+    
+}
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -127,7 +131,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"messageDetails"])
+    {
+        EADMessageDetailsViewController *destinationVC = [segue destinationViewController];
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        NSDictionary *selectedItem = [self.dataArray objectAtIndex:selectedRowIndex.row];
+        
+        destinationVC.subject = [selectedItem valueForKey:@"Subject"];
+        destinationVC.message = [selectedItem valueForKey:@"Message"];
+    }
+//    destinationVC
 }
-*/
+
 
 @end
