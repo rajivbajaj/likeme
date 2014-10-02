@@ -45,7 +45,7 @@
                                                     otherButtonTitles:nil];
     
     [actionSheet addButtonWithTitle:@"Compose"];
-    [actionSheet addButtonWithTitle:@"Refresh"];
+    [actionSheet addButtonWithTitle:@"Add Pic"];
     [actionSheet addButtonWithTitle:@"Cancel"];
     actionSheet.cancelButtonIndex = 2;
     [actionSheet showFromBarButtonItem:sender animated:YES];
@@ -60,6 +60,7 @@
             break;
         case 1:
             //[self launchCameraRoll];
+            
             break;
         default:
             break;

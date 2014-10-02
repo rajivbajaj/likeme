@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34794C19CF3DB400A9B3F1 /* App Icon Design v3.png */; };
 		0B34794F19CF93C700A9B3F1 /* App Icon Design v4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34794E19CF93C700A9B3F1 /* App Icon Design v4.png */; };
+		0B34796319D4DBBE00A9B3F1 /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34795E19D4DBBE00A9B3F1 /* Clock.png */; };
+		0B34796419D4DBBE00A9B3F1 /* Groups.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34795F19D4DBBE00A9B3F1 /* Groups.png */; };
+		0B34796519D4DBBE00A9B3F1 /* Inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796019D4DBBE00A9B3F1 /* Inbox.png */; };
+		0B34796619D4DBBE00A9B3F1 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796119D4DBBE00A9B3F1 /* Profile.png */; };
+		0B34796719D4DBBE00A9B3F1 /* Slide Menu button - large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */; };
 		0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BDE19C27EE800BD6772 /* Logo Design 2.psd */; };
 		0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE019C2844100BD6772 /* Logo Design 2.png */; };
 		0B7C9BE419C507E700BD6772 /* EADMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE319C507E700BD6772 /* EADMapViewController.m */; };
@@ -43,10 +48,6 @@
 		143585CF19CA422C007F03DF /* AMSlideTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585C519CA422C007F03DF /* AMSlideTableHeader.m */; };
 		143585D019CA422C007F03DF /* AMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585C719CA422C007F03DF /* AMTableView.m */; };
 		143585D619CA4239007F03DF /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D119CA4239007F03DF /* logout.png */; };
-		143585D719CA4239007F03DF /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D219CA4239007F03DF /* Profile.png */; };
-		143585D819CA4239007F03DF /* Inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D319CA4239007F03DF /* Inbox.png */; };
-		143585D919CA4239007F03DF /* icon1b.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D419CA4239007F03DF /* icon1b.png */; };
-		143585DA19CA4239007F03DF /* Groups.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D519CA4239007F03DF /* Groups.png */; };
 		143585E319CA5786007F03DF /* EADEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E219CA5786007F03DF /* EADEventsViewController.m */; };
 		143585E619CA5796007F03DF /* EADGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E519CA5796007F03DF /* EADGroupsViewController.m */; };
 		143585E919CA57AE007F03DF /* EADProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E819CA57AE007F03DF /* EADProfileViewController.m */; };
@@ -75,6 +76,11 @@
 /* Begin PBXFileReference section */
 		0B34794C19CF3DB400A9B3F1 /* App Icon Design v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App Icon Design v3.png"; sourceTree = "<group>"; };
 		0B34794E19CF93C700A9B3F1 /* App Icon Design v4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App Icon Design v4.png"; sourceTree = "<group>"; };
+		0B34795E19D4DBBE00A9B3F1 /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
+		0B34795F19D4DBBE00A9B3F1 /* Groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Groups.png; sourceTree = "<group>"; };
+		0B34796019D4DBBE00A9B3F1 /* Inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inbox.png; sourceTree = "<group>"; };
+		0B34796119D4DBBE00A9B3F1 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile.png; sourceTree = "<group>"; };
+		0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slide Menu button - large.png"; sourceTree = "<group>"; };
 		0B7C9BDE19C27EE800BD6772 /* Logo Design 2.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Logo Design 2.psd"; sourceTree = "<group>"; };
 		0B7C9BE019C2844100BD6772 /* Logo Design 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo Design 2.png"; sourceTree = "<group>"; };
 		0B7C9BE219C507E700BD6772 /* EADMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMapViewController.h; sourceTree = "<group>"; };
@@ -123,10 +129,6 @@
 		143585C619CA422C007F03DF /* AMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTableView.h; sourceTree = "<group>"; };
 		143585C719CA422C007F03DF /* AMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTableView.m; sourceTree = "<group>"; };
 		143585D119CA4239007F03DF /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
-		143585D219CA4239007F03DF /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile.png; sourceTree = "<group>"; };
-		143585D319CA4239007F03DF /* Inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inbox.png; sourceTree = "<group>"; };
-		143585D419CA4239007F03DF /* icon1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1b.png; sourceTree = "<group>"; };
-		143585D519CA4239007F03DF /* Groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Groups.png; sourceTree = "<group>"; };
 		143585E119CA5786007F03DF /* EADEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADEventsViewController.h; sourceTree = "<group>"; };
 		143585E219CA5786007F03DF /* EADEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventsViewController.m; sourceTree = "<group>"; };
 		143585E419CA5796007F03DF /* EADGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADGroupsViewController.h; sourceTree = "<group>"; };
@@ -311,14 +313,15 @@
 		143585B919CA4204007F03DF /* SlideNav */ = {
 			isa = PBXGroup;
 			children = (
+				0B34795E19D4DBBE00A9B3F1 /* Clock.png */,
+				0B34795F19D4DBBE00A9B3F1 /* Groups.png */,
+				0B34796019D4DBBE00A9B3F1 /* Inbox.png */,
+				0B34796119D4DBBE00A9B3F1 /* Profile.png */,
+				0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */,
 				146A4DF919D4044300C0182B /* search.png */,
 				146A4DF719D2D73800C0182B /* favorite.png */,
 				143585ED19CA592C007F03DF /* map.png */,
 				143585D119CA4239007F03DF /* logout.png */,
-				143585D219CA4239007F03DF /* Profile.png */,
-				143585D319CA4239007F03DF /* Inbox.png */,
-				143585D419CA4239007F03DF /* icon1b.png */,
-				143585D519CA4239007F03DF /* Groups.png */,
 				143585BA19CA422C007F03DF /* iconSlide.png */,
 				143585BB19CA422C007F03DF /* iconSlide@2x.png */,
 				143585BC19CA422C007F03DF /* iconSlideBlack.png */,
@@ -437,11 +440,10 @@
 			files = (
 				143585EE19CA592C007F03DF /* map.png in Resources */,
 				0B89FFC619BE52E90077E029 /* Images.xcassets in Resources */,
+				0B34796719D4DBBE00A9B3F1 /* Slide Menu button - large.png in Resources */,
 				143585CB19CA422C007F03DF /* iconSlideBlack@2x.png in Resources */,
 				0B7C9BE819C5128500BD6772 /* App Icon Design v2.jpg in Resources */,
-				143585D819CA4239007F03DF /* Inbox.png in Resources */,
 				146A4DF819D2D73800C0182B /* favorite.png in Resources */,
-				143585D719CA4239007F03DF /* Profile.png in Resources */,
 				0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */,
 				0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */,
 				0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */,
@@ -449,13 +451,15 @@
 				0B34794F19CF93C700A9B3F1 /* App Icon Design v4.png in Resources */,
 				143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */,
 				143585D619CA4239007F03DF /* logout.png in Resources */,
-				143585D919CA4239007F03DF /* icon1b.png in Resources */,
 				0B89FFC119BE52E90077E029 /* Main.storyboard in Resources */,
 				0B7C9BE719C5128500BD6772 /* Loading Page.jpg in Resources */,
 				143585C919CA422C007F03DF /* iconSlide@2x.png in Resources */,
+				0B34796519D4DBBE00A9B3F1 /* Inbox.png in Resources */,
+				0B34796419D4DBBE00A9B3F1 /* Groups.png in Resources */,
+				0B34796619D4DBBE00A9B3F1 /* Profile.png in Resources */,
+				0B34796319D4DBBE00A9B3F1 /* Clock.png in Resources */,
 				143585C819CA422C007F03DF /* iconSlide.png in Resources */,
 				0B7C9BEA19C7811200BD6772 /* Background.jpg in Resources */,
-				143585DA19CA4239007F03DF /* Groups.png in Resources */,
 				143585CA19CA422C007F03DF /* iconSlideBlack.png in Resources */,
 				146A4DFA19D4044300C0182B /* search.png in Resources */,
 			);

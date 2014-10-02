@@ -60,7 +60,7 @@
     [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:@"Inbox" andIcon:@"Inbox.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Events" andIcon:@"icon1b.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Events" andIcon:@"Clock.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Groups" andIcon:@"Groups.png"];
@@ -71,8 +71,9 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"UserInterests"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Interests" andIcon:@"favorite.png"];
     
-    [self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
-    
+    //[self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
     
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];

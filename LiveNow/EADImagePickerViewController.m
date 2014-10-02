@@ -2,7 +2,7 @@
 //  EADImagePickerViewController.m
 //  LiveNow
 //
-//  Created by Pravin Khabile on 9/25/14.
+//  Created by Rajiv Bajaj on 9/25/14.
 //  Copyright (c) 2014 EliteAppDesigner. All rights reserved.
 //
 
