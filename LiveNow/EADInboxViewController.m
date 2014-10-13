@@ -9,6 +9,7 @@
 #import "EADInboxViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADMessageDetailsViewController.h"
 
 @interface EADInboxViewController ()
 
@@ -16,11 +17,12 @@
 
 @implementation EADInboxViewController
 
+
 @synthesize inboxTablView;
 
--(void)setDictData:(NSDictionary *)dictData
+-(void)setDictData:(NSArray *)dataArray
 {
-    _dictData = dictData;
+    _dataArray = dataArray;
     [self.inboxTablView reloadData];
 }
 
@@ -71,8 +73,6 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    //inboxTablView.delegate = self;
-    //inboxTablView.dataSource = self;
     // Do any additional setup after loading the view.
     [self loadInbox];
 }
@@ -92,7 +92,7 @@
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.dictData = [postman Get:@"messages/get?value=%@" :userDataDictionary];
+    self.dataArray = [postman Get:@"messages/get?value=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -102,7 +102,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,15 +111,19 @@
     
     if(cell != nil)
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", @"from somebody man"];
-        cell.detailTextLabel.text = @"test body";
+        NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
+        //NSString *objectKey =
+        cell.textLabel.text = [currentObject valueForKey:@"Subject"];
+        cell.detailTextLabel.text = [currentObject valueForKey:@"Message"];
     }
     return cell;
 }
 
 
+- (IBAction)composeSelected:(id)sender {
+    
+}
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -127,7 +131,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"messageDetails"])
+    {
+        EADMessageDetailsViewController *destinationVC = [segue destinationViewController];
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        NSDictionary *selectedItem = [self.dataArray objectAtIndex:selectedRowIndex.row];
+        
+        destinationVC.subject = [selectedItem valueForKey:@"Subject"];
+        destinationVC.message = [selectedItem valueForKey:@"Message"];
+    }
+//    destinationVC
 }
-*/
+
 
 @end

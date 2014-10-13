@@ -62,14 +62,15 @@
     [self ServiceCall:urlParams];
 }
 
--(NSDictionary*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData
+-(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData
 {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
     NSData *data = [self ServiceCall:completeUrlWIthParams];
-    NSDictionary *dataDictionary = nil;
+    //NSMutableDictionary *dataDictionary = nil;
+    NSArray *dataArray;
     
     if(data != nil)
     {
@@ -77,15 +78,17 @@
         
         if(masterDictionary != nil && masterDictionary.count > 0)
         {
-            NSArray *dataArray = (NSArray *)masterDictionary;
+  //          dataDictionary = [[NSMutableDictionary alloc] init];
+             dataArray = (NSArray *)masterDictionary;
             
-            for (int i=0; i<dataArray.count; i++) {
-                dataDictionary  = [dataArray objectAtIndex:i];
-            }
+//            for (int i=0; i<dataArray.count; i++) {
+//                [dataDictionary setObject:[dataArray objectAtIndex:i] forKey:[NSString stringWithFormat:@"item%d", i]];
+////                [dataDictionary setValue:[dataArray objectAtIndex:i] forKey:[NSString stringWithFormat:@"item%d", i]]; // = [dataArray objectAtIndex:i];
+//            }
         }
     }
     
-    return dataDictionary;
+    return dataArray;
 }
 
 -(NSDictionary*) Get :(NSString*)urlWithParams 

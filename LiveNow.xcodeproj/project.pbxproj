@@ -54,6 +54,8 @@
 		143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585EB19CA57BF007F03DF /* EADInboxViewController.m */; };
 		143585EE19CA592C007F03DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585ED19CA592C007F03DF /* map.png */; };
 		143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */; };
+		144CE5BF19DCE65300C6EC03 /* EADMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */; };
+		144CE5CA19DDDB4000C6EC03 /* EADComposeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */; };
 		146A4DEF19D1827700C0182B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146A4DEE19D1827700C0182B /* FacebookSDK.framework */; };
 		146A4DF319D182FC00C0182B /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF219D182FC00C0182B /* UserInfo.m */; };
 		146A4DF619D213E100C0182B /* EADInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DF519D213E100C0182B /* EADInterestsViewController.m */; };
@@ -139,6 +141,10 @@
 		143585EB19CA57BF007F03DF /* EADInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADInboxViewController.m; sourceTree = "<group>"; };
 		143585ED19CA592C007F03DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "App Icon Design v3.jpg"; sourceTree = "<group>"; };
+		144CE5BD19DCE65300C6EC03 /* EADMessageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMessageDetailsViewController.h; sourceTree = "<group>"; };
+		144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADMessageDetailsViewController.m; sourceTree = "<group>"; };
+		144CE5C819DDDB4000C6EC03 /* EADComposeMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADComposeMessageViewController.h; sourceTree = "<group>"; };
+		144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADComposeMessageViewController.m; sourceTree = "<group>"; };
 		146A4DEE19D1827700C0182B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		146A4DF119D182FC00C0182B /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		146A4DF219D182FC00C0182B /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
@@ -286,6 +292,10 @@
 				146A4DF519D213E100C0182B /* EADInterestsViewController.m */,
 				146A4DFB19D40D6900C0182B /* EADImagePickerViewController.h */,
 				146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */,
+				144CE5BD19DCE65300C6EC03 /* EADMessageDetailsViewController.h */,
+				144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */,
+				144CE5C819DDDB4000C6EC03 /* EADComposeMessageViewController.h */,
+				144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -513,10 +523,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144CE5BF19DCE65300C6EC03 /* EADMessageDetailsViewController.m in Sources */,
 				143585CC19CA422C007F03DF /* AMSlideOutGlobals.m in Sources */,
 				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				0B89FFBA19BE52E90077E029 /* main.m in Sources */,
 				146A4DFD19D40D6900C0182B /* EADImagePickerViewController.m in Sources */,
+				144CE5CA19DDDB4000C6EC03 /* EADComposeMessageViewController.m in Sources */,
 				143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */,
 				1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */,
 				0B89FFC419BE52E90077E029 /* EADViewController.m in Sources */,
