@@ -138,7 +138,17 @@
         NSDictionary *selectedItem = [self.dataArray objectAtIndex:selectedRowIndex.row];
         
         destinationVC.senderName = [selectedItem valueForKey:@"SenderName"];
-//        destinationVC.message = [selectedItem valueForKey:@"Message"];
+        if([[selectedItem valueForKey:@"SenderType"] isEqualToString:@"User"])
+        {
+            destinationVC.authorId = [selectedItem valueForKey:@"SenderId"];
+            destinationVC.messangerType = @"User";
+        }
+        else if([[selectedItem valueForKey:@"SenderType"] isEqualToString:@"Event"])
+        {
+            destinationVC.eventId = [selectedItem valueForKey:@"SenderId"];
+            destinationVC.messangerType = @"Event";
+        }
+        
     }
 //    destinationVC
 }

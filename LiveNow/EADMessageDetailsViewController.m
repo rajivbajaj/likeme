@@ -13,6 +13,11 @@
 @end
 
 @implementation EADMessageDetailsViewController
+
+@synthesize messangerType;
+@synthesize authorId;
+@synthesize eventId;
+
 #pragma mark - View lifecycle
 
 /**
@@ -41,7 +46,12 @@
     /**
      *  Load up our fake data for the demo
      */
-    self.demoData = [[MessagesData alloc] init];
+    MessagesData *messagesData = [MessagesData alloc];
+    messagesData.messangerType = [self messangerType];
+    messagesData.authorId = [self authorId];
+    messagesData.eventId = [self eventId];
+    
+    self.demoData = [messagesData init];
     
     
     /**

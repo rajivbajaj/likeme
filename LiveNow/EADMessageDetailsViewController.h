@@ -37,4 +37,8 @@
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
 
 - (void)closePressed:(UIBarButtonItem *)sender;
+
+@property (strong, nonatomic) NSString *authorId;
+@property (strong, nonatomic) NSString *eventId;
+@property (strong, nonatomic) NSString *messangerType;
 @end
