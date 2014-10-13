@@ -7,6 +7,8 @@
 //
 
 #import "EADMessageDetailsViewController.h"
+#import "UserInfo.h"
+#import "Postman.h"
 
 @interface EADMessageDetailsViewController ()
 
@@ -257,9 +259,41 @@
      */
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
-    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:senderId
-                                                     senderDisplayName:senderDisplayName
-                                                                  date:date
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSString *recipientId = nil;
+    NSString *recipientAuthToken = nil;
+    NSString *recipientType = nil;
+    
+    if([self.messangerType isEqualToString:@"Event"])
+    {
+        recipientId = [self eventId];
+        recipientType = @"Event";
+        recipientAuthToken = @"";
+    }
+    else if([self.messangerType isEqualToString:@"User"])
+    {
+        recipientAuthToken = [self authorId];
+        recipientType = @"User";
+        recipientId = @"";
+    }
+    
+    Postman* postMan = [Postman alloc];
+    NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postMan GetValueOrEmpty:recipientId], @"RecipientId",
+                                        [postMan GetValueOrEmpty:recipientType], @"RecipientType",
+                                        [postMan GetValueOrEmpty:recipientAuthToken], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"AutherAuthToken",
+                                        @"", @"Subject",
+                                        [postMan GetValueOrEmpty:text], @"Message",
+                                        nil];
+
+    
+    [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
+    
+    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:[userInfo userId]
+                                                     senderDisplayName:[userInfo firstName]
+                                                                  date:[NSDate date]
                                                                   text:text];
     
     [self.demoData.messages addObject:message];
