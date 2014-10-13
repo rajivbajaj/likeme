@@ -118,8 +118,8 @@
 		146A4DF819D2D73800C0182B /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 146A4DF719D2D73800C0182B /* favorite.png */; };
 		146A4DFA19D4044300C0182B /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 146A4DF919D4044300C0182B /* search.png */; };
 		146A4DFD19D40D6900C0182B /* EADImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */; };
-		14A92E7F19E6C540007CE67E /* MessagesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A92E7E19E6C540007CE67E /* MessagesData.m */; };
-		14A92E8219E6C586007CE67E /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A92E8119E6C586007CE67E /* NSUserDefaults+DemoSettings.m */; };
+		146D471419EC739D009FE413 /* MessagesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D471319EC739D009FE413 /* MessagesData.m */; };
+		146D471719EC73CF009FE413 /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D471619EC73CF009FE413 /* NSUserDefaults+DemoSettings.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -308,10 +308,10 @@
 		146A4DF919D4044300C0182B /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		146A4DFB19D40D6900C0182B /* EADImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADImagePickerViewController.h; sourceTree = "<group>"; };
 		146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADImagePickerViewController.m; sourceTree = "<group>"; };
-		14A92E7D19E6C540007CE67E /* MessagesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessagesData.h; path = "../../../../../../Downloads/JSQMessagesViewController-master/JSQMessagesDemo/MessagesData.h"; sourceTree = "<group>"; };
-		14A92E7E19E6C540007CE67E /* MessagesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessagesData.m; path = "../../../../../../Downloads/JSQMessagesViewController-master/JSQMessagesDemo/MessagesData.m"; sourceTree = "<group>"; };
-		14A92E8019E6C586007CE67E /* NSUserDefaults+DemoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+DemoSettings.h"; path = "../../../../../../Downloads/JSQMessagesViewController-master/JSQMessagesDemo/NSUserDefaults+DemoSettings.h"; sourceTree = "<group>"; };
-		14A92E8119E6C586007CE67E /* NSUserDefaults+DemoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+DemoSettings.m"; path = "../../../../../../Downloads/JSQMessagesViewController-master/JSQMessagesDemo/NSUserDefaults+DemoSettings.m"; sourceTree = "<group>"; };
+		146D471219EC737E009FE413 /* MessagesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesData.h; sourceTree = "<group>"; };
+		146D471319EC739D009FE413 /* MessagesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesData.m; sourceTree = "<group>"; };
+		146D471519EC73CF009FE413 /* NSUserDefaults+DemoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DemoSettings.h"; sourceTree = "<group>"; };
+		146D471619EC73CF009FE413 /* NSUserDefaults+DemoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DemoSettings.m"; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -697,10 +697,10 @@
 		146A4DF019D182F100C0182B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				14A92E8019E6C586007CE67E /* NSUserDefaults+DemoSettings.h */,
-				14A92E8119E6C586007CE67E /* NSUserDefaults+DemoSettings.m */,
-				14A92E7D19E6C540007CE67E /* MessagesData.h */,
-				14A92E7E19E6C540007CE67E /* MessagesData.m */,
+				146D471519EC73CF009FE413 /* NSUserDefaults+DemoSettings.h */,
+				146D471619EC73CF009FE413 /* NSUserDefaults+DemoSettings.m */,
+				146D471319EC739D009FE413 /* MessagesData.m */,
+				146D471219EC737E009FE413 /* MessagesData.h */,
 				146A4DF119D182FC00C0182B /* UserInfo.h */,
 				146A4DF219D182FC00C0182B /* UserInfo.m */,
 			);
@@ -926,17 +926,17 @@
 				1412AAB119CADFA1008052B5 /* Constants.m in Sources */,
 				144CE65119E5716C00C6EC03 /* UIImage+JSQMessages.m in Sources */,
 				144CE65419E5716C00C6EC03 /* JSQMessagesViewController.m in Sources */,
-				14A92E8219E6C586007CE67E /* NSUserDefaults+DemoSettings.m in Sources */,
+				146D471719EC73CF009FE413 /* NSUserDefaults+DemoSettings.m in Sources */,
 				0B89FFBE19BE52E90077E029 /* EADAppDelegate.m in Sources */,
 				144CE65819E5716C00C6EC03 /* JSQMessagesTimestampFormatter.m in Sources */,
 				144CE67019E5716C00C6EC03 /* JSQMessagesToolbarContentView.m in Sources */,
 				144CE65219E5716C00C6EC03 /* UIView+JSQMessages.m in Sources */,
 				143585CE19CA422C007F03DF /* AMSlideTableCell.m in Sources */,
-				14A92E7F19E6C540007CE67E /* MessagesData.m in Sources */,
 				144CE66619E5716C00C6EC03 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				143585CD19CA422C007F03DF /* AMSlideOutNavigationController.m in Sources */,
 				144CE66A19E5716C00C6EC03 /* JSQMessagesComposerTextView.m in Sources */,
 				146A4DF619D213E100C0182B /* EADInterestsViewController.m in Sources */,
+				146D471419EC739D009FE413 /* MessagesData.m in Sources */,
 				144CE65D19E5716C00C6EC03 /* JSQLocationMediaItem.m in Sources */,
 				0B7C9BE419C507E700BD6772 /* EADMapViewController.m in Sources */,
 				143585CF19CA422C007F03DF /* AMSlideTableHeader.m in Sources */,
