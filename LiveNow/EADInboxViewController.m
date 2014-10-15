@@ -92,7 +92,9 @@
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.dataArray = [postman Get:@"messages/get?value=%@" :userDataDictionary];
+    self.dataArray = [postman Get:@"messages/get?jsonParams=%@" :userDataDictionary];
+    
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -113,8 +115,8 @@
     {
         NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
         //NSString *objectKey =
-        cell.textLabel.text = [currentObject valueForKey:@"Subject"];
-        cell.detailTextLabel.text = [currentObject valueForKey:@"Message"];
+        cell.textLabel.text = [currentObject valueForKey:@"SenderName"];
+        cell.detailTextLabel.text = [currentObject valueForKey:@""];
     }
     return cell;
 }
@@ -137,8 +139,18 @@
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         NSDictionary *selectedItem = [self.dataArray objectAtIndex:selectedRowIndex.row];
         
-        destinationVC.subject = [selectedItem valueForKey:@"Subject"];
-        destinationVC.message = [selectedItem valueForKey:@"Message"];
+        destinationVC.senderName = [selectedItem valueForKey:@"SenderName"];
+        if([[selectedItem valueForKey:@"SenderType"] isEqualToString:@"User"])
+        {
+            destinationVC.authorId = [selectedItem valueForKey:@"SenderId"];
+            destinationVC.messangerType = @"User";
+        }
+        else if([[selectedItem valueForKey:@"SenderType"] isEqualToString:@"Event"])
+        {
+            destinationVC.eventId = [selectedItem valueForKey:@"SenderId"];
+            destinationVC.messangerType = @"Event";
+        }
+        
     }
 //    destinationVC
 }

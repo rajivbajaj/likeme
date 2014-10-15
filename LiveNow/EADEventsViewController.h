@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EADCollectionViewCell.h"
 @interface EADEventsViewController : UIViewController
+<UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (nonatomic, strong) NSArray *eventsArray;
 @end

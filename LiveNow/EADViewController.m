@@ -101,7 +101,9 @@
                  NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                                      [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
-                                                     [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",nil];
+                                                     [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",
+                                                     [postMan GetValueOrEmpty:userInfo.profileImageURL], @"FBProfileURL",
+                                                     nil];
 
                  //[postMan UserUpdate:userDataDictionary];
                  [postMan Post:@"users/post?value=%@" :userDataDictionary];
