@@ -40,6 +40,7 @@
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
+		1433722619EFCF7C009DD572 /* EADGroupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */; };
 		143585C819CA422C007F03DF /* iconSlide.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BA19CA422C007F03DF /* iconSlide.png */; };
 		143585C919CA422C007F03DF /* iconSlide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BB19CA422C007F03DF /* iconSlide@2x.png */; };
 		143585CA19CA422C007F03DF /* iconSlideBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BC19CA422C007F03DF /* iconSlideBlack.png */; };
@@ -180,6 +181,8 @@
 		1412AAB019CADFA1008052B5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		1412AAB219CAE13F008052B5 /* URLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequest.h; sourceTree = "<group>"; };
 		1412AAB319CAE13F008052B5 /* URLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRequest.m; sourceTree = "<group>"; };
+		1433722419EFCF7C009DD572 /* EADGroupDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADGroupDetailsViewController.h; sourceTree = "<group>"; };
+		1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADGroupDetailsViewController.m; sourceTree = "<group>"; };
 		143585BA19CA422C007F03DF /* iconSlide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSlide.png; sourceTree = "<group>"; };
 		143585BB19CA422C007F03DF /* iconSlide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSlide@2x.png"; sourceTree = "<group>"; };
 		143585BC19CA422C007F03DF /* iconSlideBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSlideBlack.png; sourceTree = "<group>"; };
@@ -467,6 +470,8 @@
 				144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */,
 				144CE5C819DDDB4000C6EC03 /* EADComposeMessageViewController.h */,
 				144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */,
+				1433722419EFCF7C009DD572 /* EADGroupDetailsViewController.h */,
+				1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -919,6 +924,7 @@
 				144CE64E19E5716C00C6EC03 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				144CE65619E5716C00C6EC03 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				144CE66B19E5716C00C6EC03 /* JSQMessagesInputToolbar.m in Sources */,
+				1433722619EFCF7C009DD572 /* EADGroupDetailsViewController.m in Sources */,
 				144CE5CA19DDDB4000C6EC03 /* EADComposeMessageViewController.m in Sources */,
 				144CE65319E5716C00C6EC03 /* JSQMessagesKeyboardController.m in Sources */,
 				144CE66519E5716C00C6EC03 /* JSQMessagesCollectionViewCell.m in Sources */,

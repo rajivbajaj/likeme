@@ -7,6 +7,8 @@
 //
 
 #import "EADGroupsViewController.h"
+#import "UserInfo.h"
+#import "Postman.h"
 
 @interface EADGroupsViewController ()
 
@@ -26,8 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.groupsTableView.delegate = self;
+    self.groupsTableView.dataSource = self;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
+    
+    [self loadUserGroups];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,6 +41,44 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)loadUserGroups
+{
+    Postman *postman = [Postman alloc];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        nil];
+    
+    self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+    
+    
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupSummaryCell" forIndexPath:indexPath];
+    
+    if(cell != nil)
+    {
+        NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
+        cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
+    }
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation

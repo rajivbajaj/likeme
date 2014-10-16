@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADGroupsViewController : UIViewController
-
+@interface EADGroupsViewController : UITableViewController
+@property (nonatomic, strong) NSArray *dataArray;
+@property (strong, nonatomic) IBOutlet UITableView *groupsTableView;
 @end
