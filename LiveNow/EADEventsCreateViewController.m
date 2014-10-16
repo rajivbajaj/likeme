@@ -125,11 +125,11 @@
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
-                                        [postMan GetValueOrEmpty:_locationText.text], @"Location",
-                                        [postMan GetValueOrEmpty:_descriptionText.text], @"Description",
-                                        [postMan GetValueOrEmpty:_startDateText.text], @"StartDate",
-                                        [postMan GetValueOrEmpty:_endDateText.text], @"EndDate",
-                                        [postMan GetValueOrEmpty:_eventNameText.text], @"Category",
+                                        [postMan GetValueOrEmpty:_locationText.text], @"EventLocation",
+                                        [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
+                                        [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
+                                        [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
+                                        [postMan GetValueOrEmpty:_eventNameText.text], @"EventType",
                                         nil];
     
     

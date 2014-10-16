@@ -30,12 +30,12 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
-    // [self loadEvents];
-    _eventsArray = @[@"test1",
-                     @"test2",
-                     @"test3",
-                     @"test4",
-                     ] ;
+    [self loadEvents];
+//    _eventsArray = @[@"test1",
+//                     @"test2",
+//                     @"test3",
+//                     @"test4",
+//                     ] ;
 }
 
 - (void)didReceiveMemoryWarning
