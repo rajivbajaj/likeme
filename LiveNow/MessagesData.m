@@ -45,7 +45,7 @@
             self.messages = [NSMutableArray new];
         }
         else {
-            [self loadFakeMessages];
+            [self loadMessages];
         }
         
         
@@ -103,7 +103,7 @@
     return self;
 }
 
-- (void)loadFakeMessages
+- (void)loadMessages
 {
     
     Postman *postman = [Postman alloc];
@@ -111,98 +111,98 @@
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSArray *dataArray = nil;
     
-//    if([self.messangerType isEqualToString:@"User"])
-//    {
-//        NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthenticationToken",
-//                                            self.authorId, @"AuthorAuthToken",
-//                                            nil];
-//        
-//        dataArray = [postman Get:@"messages/getbyauthor?jsonParams=%@" :paramsDictionary];
-//    }
-//    else if([self.messangerType isEqualToString:@"Event"])
-//    {
-//        NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                          [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthenticationToken",
-//                                          self.eventId, @"EventId",
-//                                          nil];
-//        
-//        dataArray = [postman Get:@"messages/getbyevent?jsonParams=%@" :paramsDictionary];
-//    }
-//    
-//    if(dataArray != nil)
-//    {
-//        NSMutableArray *jsqMessagesArray = [[NSMutableArray alloc] init];
-//        
-//        for (int i=0; i<dataArray.count; i++)
-//        {
-//            
-//            NSDictionary *currentItem = [dataArray objectAtIndex:i];
-//            
-//          JSQTextMessage *msg =  [[JSQTextMessage alloc] initWithSenderId:@"SenderId"
-//                                   senderDisplayName:[currentItem valueForKey:@"FirstName"]
-//                                                date:[NSDate distantPast]
-//                                                text:[currentItem valueForKey:@"Message"]];
-//            
-//            [jsqMessagesArray addObject:msg];
-//        }
-//        
-//        self.messages = jsqMessagesArray;
-//    }
-//    
+    if([self.messangerType isEqualToString:@"User"])
+    {
+        NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthenticationToken",
+                                            self.authorId, @"AuthorAuthToken",
+                                            nil];
+        
+        dataArray = [postman Get:@"messages/getbyauthor?jsonParams=%@" :paramsDictionary];
+    }
+    else if([self.messangerType isEqualToString:@"Event"])
+    {
+        NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthenticationToken",
+                                          self.eventId, @"EventId",
+                                          nil];
+        
+        dataArray = [postman Get:@"messages/getbyevent?jsonParams=%@" :paramsDictionary];
+    }
+    
+    if(dataArray != nil)
+    {
+        NSMutableArray *jsqMessagesArray = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<dataArray.count; i++)
+        {
+            
+            NSDictionary *currentItem = [dataArray objectAtIndex:i];
+            
+          JSQTextMessage *msg =  [[JSQTextMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
+                                   senderDisplayName:[currentItem valueForKey:@"FirstName"]
+                                                date:[NSDate distantPast]
+                                                text:[currentItem valueForKey:@"Message"]];
+            
+            [jsqMessagesArray addObject:msg];
+        }
+        
+        self.messages = jsqMessagesArray;
+    }
+    
     /**
      *  Load some fake messages for demo.
      *
      *  You should have a mutable array or orderedSet, or something.
      */
-    self.messages = [[NSMutableArray alloc] initWithObjects:
-                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
-                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
-                                                         date:[NSDate distantPast]
-                                                         text:@"Welcome to LiveNow: A Social Connecting app."],
-                     
-                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdWoz
-                                            senderDisplayName:kJSQDemoAvatarDisplayNameWoz
-                                                         date:[NSDate distantPast]
-                                                         text:@"It is simple, elegant, and easy to use. There are super sweet default settings, but you can customize like crazy."],
-                     
-                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
-                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
-                                                         date:[NSDate distantPast]
-                                                         text:@"It has features like live connection."],
-                     
-                     
-                     
-                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
-                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
-                                                         date:[NSDate date]
-                                                         text:@"You can send media messages as well!"],
-                     nil];
-    
-    //[self addPhotoMediaMessage];
-    
-    /**
-     *  Setting to load extra messages for testing/demo
-     */
-    if ([NSUserDefaults extraMessagesSetting]) {
-        NSArray *copyOfMessages = [self.messages copy];
-        for (NSUInteger i = 0; i < 4; i++) {
-            [self.messages addObjectsFromArray:copyOfMessages];
-        }
-    }
-    
-    
-    /**
-     *  Setting to load REALLY long message for testing/demo
-     *  You should see "END" twice
-     */
-    if ([NSUserDefaults longMessageSetting]) {
-        JSQTextMessage *reallyLongMessage = [JSQTextMessage messageWithSenderId:kJSQDemoAvatarIdSquires
-                                                                    displayName:kJSQDemoAvatarDisplayNameSquires
-                                                                           text:@"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? END Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? END"];
-        
-        [self.messages addObject:reallyLongMessage];
-    }
+//    self.messages = [[NSMutableArray alloc] initWithObjects:
+//                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
+//                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
+//                                                         date:[NSDate distantPast]
+//                                                         text:@"Welcome to LiveNow: A Social Connecting app."],
+//                     
+//                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdWoz
+//                                            senderDisplayName:kJSQDemoAvatarDisplayNameWoz
+//                                                         date:[NSDate distantPast]
+//                                                         text:@"It is simple, elegant, and easy to use. There are super sweet default settings, but you can customize like crazy."],
+//                     
+//                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
+//                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
+//                                                         date:[NSDate distantPast]
+//                                                         text:@"It has features like live connection."],
+//                     
+//                     
+//                     
+//                     [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
+//                                            senderDisplayName:kJSQDemoAvatarDisplayNameSquires
+//                                                         date:[NSDate date]
+//                                                         text:@"You can send media messages as well!"],
+//                     nil];
+//    
+//    //[self addPhotoMediaMessage];
+//    
+//    /**
+//     *  Setting to load extra messages for testing/demo
+//     */
+//    if ([NSUserDefaults extraMessagesSetting]) {
+//        NSArray *copyOfMessages = [self.messages copy];
+//        for (NSUInteger i = 0; i < 4; i++) {
+//            [self.messages addObjectsFromArray:copyOfMessages];
+//        }
+//    }
+//    
+//    
+//    /**
+//     *  Setting to load REALLY long message for testing/demo
+//     *  You should see "END" twice
+//     */
+//    if ([NSUserDefaults longMessageSetting]) {
+//        JSQTextMessage *reallyLongMessage = [JSQTextMessage messageWithSenderId:kJSQDemoAvatarIdSquires
+//                                                                    displayName:kJSQDemoAvatarDisplayNameSquires
+//                                                                           text:@"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? END Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? END"];
+//        
+//        [self.messages addObject:reallyLongMessage];
+//    }
 }
 
 - (void)addPhotoMediaMessage
