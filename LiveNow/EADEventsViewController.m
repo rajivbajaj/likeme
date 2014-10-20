@@ -51,9 +51,10 @@
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
                                         nil];
     
-    self.eventsArray = [postman Get:@"events/get?value=%@" :userDataDictionary];
+    self.eventsArray = [postman Get:@"events/get?id=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -74,12 +75,16 @@
     
     NSString *cellText;
     long row = [indexPath row];
-    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *image = [UIImage imageWithData:imageData];
     //image = [UIImage imageNamed:_carImages[row]];
-    cellText=[NSString stringWithFormat:_eventsArray[row]];
-    //myCell.imageView.image = image;
-    myCell.labelView.text=cellText;
-    
+    cellText=[_eventsArray[row] valueForKey:@"EventName"];
+    myCell.imageView.image = image;
+    myCell.eventName.text=cellText;
+    myCell.labelView.text=[_eventsArray[row] valueForKey:@"EventDescription"];
+      myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"EventCreatedBy"];
     return myCell;
 }
 

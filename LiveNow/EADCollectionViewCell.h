@@ -10,4 +10,8 @@
 
 @interface EADCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *labelView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *eventName;
+@property (weak, nonatomic) IBOutlet UILabel *eventCreatedBy;
+
 @end

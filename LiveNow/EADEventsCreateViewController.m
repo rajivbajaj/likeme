@@ -123,9 +123,9 @@
     
     // update event
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
                                         [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
-                                        [postMan GetValueOrEmpty:_locationText.text], @"EventLocation",
+                                        [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
                                         [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
                                         [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
                                         [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
