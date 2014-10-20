@@ -18,6 +18,7 @@
 
 @implementation EADInterestsViewController
 
+@synthesize selectedRows;
 @synthesize interestsText;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,19 +46,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.interestsTableView.dataSource = self;
+    self.interestsTableView.delegate = self;
+    selectedRows = [[NSMutableArray alloc] init];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
     
-    Postman* postMan = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//    Postman* postMan = [Postman alloc];
+//    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
-    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
+    self.interestsData = [[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books", nil];
+
     
-    NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
+//    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
+//    
+//    NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
+//    
+//    interestsText.text = [interestsData valueForKey:@"UserInterests"];
     
-    interestsText.text = [interestsData valueForKey:@"UserInterests"];
-    
+    self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +82,81 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+}*/
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.searchResult removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    
+    self.searchResult = [NSMutableArray arrayWithArray: [self.interestsData filteredArrayUsingPredicate:resultPredicate]];
 }
-*/
+
+//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+//    
+//    return YES;
+//}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return [self.searchResult count];
+    }
+    else
+    {
+        return [self.interestsData count];
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"checkListItem" forIndexPath:indexPath];
+    
+//    if (cell == nil)
+//    {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"checkListItem"];
+//    }
+    
+    if(cell != nil)
+    {
+        
+        NSString *title = [self.interestsData objectAtIndex:indexPath.row];
+        cell.textLabel.text = title;
+        
+        
+        if (tableView == self.searchDisplayController.searchResultsTableView)
+        {
+            cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
+        }
+        else
+        {
+            cell.textLabel.text = self.interestsData[indexPath.row];
+        }
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedRows addObject:indexPath];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedRows removeObject:indexPath];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];}
+
+
 
 @end

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADInterestsViewController : UIViewController
+@interface EADInterestsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *interestsText;
-
+@property (strong, nonatomic) NSArray *interestsData;
+@property (weak, nonatomic) IBOutlet UITableView *interestsTableView;
+@property NSMutableArray *selectedRows;
+@property (nonatomic, strong) NSMutableArray *searchResult;
 @end
