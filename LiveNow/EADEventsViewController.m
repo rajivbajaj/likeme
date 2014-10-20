@@ -16,6 +16,10 @@
 
 @implementation EADEventsViewController
 
+
+//@synthesize searchBar;
+@synthesize filteredArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -86,6 +90,15 @@
     myCell.labelView.text=[_eventsArray[row] valueForKey:@"EventDescription"];
       myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"EventCreatedBy"];
     return myCell;
+}
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setText:@""];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
 }
 
 /*

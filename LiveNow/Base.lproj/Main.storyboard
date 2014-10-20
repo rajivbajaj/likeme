@@ -618,6 +618,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9Vu-a8-Af3"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="OTa-Dn-k3x" id="YOP-1U-x2q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkn-Uh-8Kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
