@@ -92,12 +92,12 @@
     self.searchResult = [NSMutableArray arrayWithArray: [self.interestsData filteredArrayUsingPredicate:resultPredicate]];
 }
 
-//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-//{
-//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-//    
-//    return YES;
-//}
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return YES;
+}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -118,29 +118,44 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"checkListItem" forIndexPath:indexPath];
-    
-//    if (cell == nil)
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"checkListItem" forIndexPath:indexPath];
+//
+//    
+//    if(cell != nil)
 //    {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"checkListItem"];
+//        
+//        NSString *title = [self.interestsData objectAtIndex:indexPath.row];
+//        cell.textLabel.text = title;
+//        
+//        
+//        if (tableView == self.searchDisplayController.searchResultsTableView)
+//        {
+//            cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
+//        }
+//        else
+//        {
+//            cell.textLabel.text = self.interestsData[indexPath.row];
+//        }
 //    }
+//    return cell;
     
-    if(cell != nil)
+    static NSString *CellIdentifier = @"checkListItem";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil)
     {
-        
-        NSString *title = [self.interestsData objectAtIndex:indexPath.row];
-        cell.textLabel.text = title;
-        
-        
-        if (tableView == self.searchDisplayController.searchResultsTableView)
-        {
-            cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
-        }
-        else
-        {
-            cell.textLabel.text = self.interestsData[indexPath.row];
-        }
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        cell.textLabel.text = self.interestsData[indexPath.row];
+    }
+    
     return cell;
 }
 
