@@ -129,7 +129,7 @@
                                         [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
                                         [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
                                         [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
-                                        [postMan GetValueOrEmpty:_eventNameText.text], @"EventType",
+                                        [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
                                         nil];
     
     

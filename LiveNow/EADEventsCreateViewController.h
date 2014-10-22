@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *endDateText;
 - (IBAction)saveEvent:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *eventTypeText;
 
 @end
