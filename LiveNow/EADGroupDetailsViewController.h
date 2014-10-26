@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EADGroupDetailsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *groupName;
+@property (weak, nonatomic) IBOutlet UITextField *groupDescription;
 
 @end

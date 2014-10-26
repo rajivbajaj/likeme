@@ -55,7 +55,7 @@
 //    Postman* postMan = [Postman alloc];
 //    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
-    self.interestsData = [[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books", nil];
+    self.interestsData = [[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books",@"Wine",@"Video Games", nil];
 
     
 //    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -118,27 +118,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"checkListItem" forIndexPath:indexPath];
-//
-//    
-//    if(cell != nil)
-//    {
-//        
-//        NSString *title = [self.interestsData objectAtIndex:indexPath.row];
-//        cell.textLabel.text = title;
-//        
-//        
-//        if (tableView == self.searchDisplayController.searchResultsTableView)
-//        {
-//            cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
-//        }
-//        else
-//        {
-//            cell.textLabel.text = self.interestsData[indexPath.row];
-//        }
-//    }
-//    return cell;
-    
     static NSString *CellIdentifier = @"checkListItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     

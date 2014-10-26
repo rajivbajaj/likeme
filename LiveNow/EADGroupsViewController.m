@@ -31,9 +31,11 @@
     self.groupsTableView.delegate = self;
     self.groupsTableView.dataSource = self;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view.
     
     [self loadUserGroups];
+    self.searchResult = [NSMutableArray arrayWithCapacity:[self.dataArray count]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +58,21 @@
     
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.searchResult removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    
+    self.searchResult = [NSMutableArray arrayWithArray: [self.dataArray filteredArrayUsingPredicate:resultPredicate]];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -63,20 +80,41 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return [self.searchResult count];
+    }
+    else
+    {
+        return [self.dataArray count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupSummaryCell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"groupSummaryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if(cell != nil)
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        NSDictionary *currentObject = [self.searchResult objectAtIndex:indexPath.row];
+        cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
+        cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
+    }
+    else
     {
         NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
         cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
         cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
     }
+    
     return cell;
+
 }
 
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADGroupsViewController : UITableViewController
+@interface EADGroupsViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *searchResult;
 @property (strong, nonatomic) IBOutlet UITableView *groupsTableView;
 @end

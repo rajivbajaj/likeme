@@ -109,129 +109,129 @@
 
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender
 {
-    /**
-     *  DEMO ONLY
-     *
-     *  The following is simply to simulate received messages for the demo.
-     *  Do not actually do this.
-     */
-    
-    
-    /**
-     *  Show the typing indicator to be shown
-     */
-    self.showTypingIndicator = !self.showTypingIndicator;
-    
-    /**
-     *  Scroll to actually view the indicator
-     */
-    [self scrollToBottomAnimated:YES];
-    
-    /**
-     *  Copy last sent message, this will be the new "received" message
-     */
-    JSQMessage *copyMessage = [[self.demoData.messages lastObject] copy];
-    
-    if (!copyMessage) {
-        copyMessage = [JSQTextMessage messageWithSenderId:kJSQDemoAvatarIdJobs
-                                              displayName:kJSQDemoAvatarDisplayNameJobs
-                                                     text:@"First received!"];
-    }
-    
-    /**
-     *  Allow typing indicator to show
-     */
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
-        [userIds removeObject:self.senderId];
-        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
-        
-        JSQMessage *newMessage = nil;
-        id<JSQMessageMediaData> newMediaData = nil;
-        id newMediaAttachmentCopy = nil;
-        
-        if ([copyMessage isKindOfClass:[JSQMediaMessage class]]) {
-            /**
-             *  Last message was a media message
-             */
-            id<JSQMessageMediaData> copyMediaData = copyMessage.media;
-            
-            if ([copyMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
-                JSQPhotoMediaItem *photoItemCopy = [((JSQPhotoMediaItem *)copyMediaData) copy];
-                newMediaAttachmentCopy = [UIImage imageWithCGImage:photoItemCopy.image.CGImage];
-                
-                /**
-                 *  Set image to nil to simulate "downloading" the image
-                 *  and show the placeholder view
-                 */
-                photoItemCopy.image = nil;
-                
-                newMediaData = photoItemCopy;
-            }
-            else if ([copyMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
-                JSQLocationMediaItem *locationItemCopy = [((JSQLocationMediaItem *)copyMediaData) copy];
-                newMediaAttachmentCopy = [locationItemCopy.location copy];
-                
-                /**
-                 *  Set location to nil to simulate "downloading" the location data
-                 */
-                locationItemCopy.location = nil;
-                
-                newMediaData = locationItemCopy;
-            }
-            
-            newMessage = [JSQMediaMessage messageWithSenderId:randomUserId
-                                                  displayName:self.demoData.users[randomUserId]
-                                                        media:newMediaData];
-        }
-        else {
-            /**
-             *  Last message was a text message
-             */
-            newMessage = [JSQTextMessage messageWithSenderId:randomUserId
-                                                 displayName:self.demoData.users[randomUserId]
-                                                        text:copyMessage.text];
-        }
-        
-        /**
-         *  Upon receiving a message, you should:
-         *
-         *  1. Play sound (optional)
-         *  2. Add new id<JSQMessageData> object to your data source
-         *  3. Call `finishReceivingMessage`
-         */
-        [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-        [self.demoData.messages addObject:newMessage];
-        [self finishReceivingMessage];
-        
-        
-        if ([newMessage isKindOfClass:[JSQMediaMessage class]]) {
-            /**
-             *  Simulate "downloading" media
-             */
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                /**
-                 *  Media is "finished downloading", re-display visible cells
-                 *
-                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
-                 *
-                 *  Reload the specific item, or simply call `reloadData`
-                 */
-                
-                if ([newMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
-                    ((JSQPhotoMediaItem *)newMediaData).image = newMediaAttachmentCopy;
-                    [self.collectionView reloadData];
-                }
-                else if ([newMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
-                    [((JSQLocationMediaItem *)newMediaData)setLocation:newMediaAttachmentCopy withCompletionHandler:^{
-                        [self.collectionView reloadData];
-                    }];
-                }
-            });
-        }
-        
-    });
+//    /**
+//     *  DEMO ONLY
+//     *
+//     *  The following is simply to simulate received messages for the demo.
+//     *  Do not actually do this.
+//     */
+//    
+//    
+//    /**
+//     *  Show the typing indicator to be shown
+//     */
+//    self.showTypingIndicator = !self.showTypingIndicator;
+//    
+//    /**
+//     *  Scroll to actually view the indicator
+//     */
+//    [self scrollToBottomAnimated:YES];
+//    
+//    /**
+//     *  Copy last sent message, this will be the new "received" message
+//     */
+//    JSQMessage *copyMessage = [[self.demoData.messages lastObject] copy];
+//    
+//    if (!copyMessage) {
+//        copyMessage = [JSQTextMessage messageWithSenderId:kJSQDemoAvatarIdJobs
+//                                              displayName:kJSQDemoAvatarDisplayNameJobs
+//                                                     text:@"First received!"];
+//    }
+//    
+//    /**
+//     *  Allow typing indicator to show
+//     */
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        NSMutableArray *userIds = [[self.demoData.users allKeys] mutableCopy];
+//        [userIds removeObject:self.senderId];
+//        NSString *randomUserId = userIds[arc4random_uniform((int)[userIds count])];
+//        
+//        JSQMessage *newMessage = nil;
+//        id<JSQMessageMediaData> newMediaData = nil;
+//        id newMediaAttachmentCopy = nil;
+//        
+//        if ([copyMessage isKindOfClass:[JSQMediaMessage class]]) {
+//            /**
+//             *  Last message was a media message
+//             */
+//            id<JSQMessageMediaData> copyMediaData = copyMessage.media;
+//            
+//            if ([copyMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
+//                JSQPhotoMediaItem *photoItemCopy = [((JSQPhotoMediaItem *)copyMediaData) copy];
+//                newMediaAttachmentCopy = [UIImage imageWithCGImage:photoItemCopy.image.CGImage];
+//                
+//                /**
+//                 *  Set image to nil to simulate "downloading" the image
+//                 *  and show the placeholder view
+//                 */
+//                photoItemCopy.image = nil;
+//                
+//                newMediaData = photoItemCopy;
+//            }
+//            else if ([copyMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
+//                JSQLocationMediaItem *locationItemCopy = [((JSQLocationMediaItem *)copyMediaData) copy];
+//                newMediaAttachmentCopy = [locationItemCopy.location copy];
+//                
+//                /**
+//                 *  Set location to nil to simulate "downloading" the location data
+//                 */
+//                locationItemCopy.location = nil;
+//                
+//                newMediaData = locationItemCopy;
+//            }
+//            
+//            newMessage = [JSQMediaMessage messageWithSenderId:randomUserId
+//                                                  displayName:self.demoData.users[randomUserId]
+//                                                        media:newMediaData];
+//        }
+//        else {
+//            /**
+//             *  Last message was a text message
+//             */
+//            newMessage = [JSQTextMessage messageWithSenderId:randomUserId
+//                                                 displayName:self.demoData.users[randomUserId]
+//                                                        text:copyMessage.text];
+//        }
+//        
+//        /**
+//         *  Upon receiving a message, you should:
+//         *
+//         *  1. Play sound (optional)
+//         *  2. Add new id<JSQMessageData> object to your data source
+//         *  3. Call `finishReceivingMessage`
+//         */
+//        [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
+//        [self.demoData.messages addObject:newMessage];
+//        [self finishReceivingMessage];
+//        
+//        
+//        if ([newMessage isKindOfClass:[JSQMediaMessage class]]) {
+//            /**
+//             *  Simulate "downloading" media
+//             */
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                /**
+//                 *  Media is "finished downloading", re-display visible cells
+//                 *
+//                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
+//                 *
+//                 *  Reload the specific item, or simply call `reloadData`
+//                 */
+//                
+//                if ([newMediaData isKindOfClass:[JSQPhotoMediaItem class]]) {
+//                    ((JSQPhotoMediaItem *)newMediaData).image = newMediaAttachmentCopy;
+//                    [self.collectionView reloadData];
+//                }
+//                else if ([newMediaData isKindOfClass:[JSQLocationMediaItem class]]) {
+//                    [((JSQLocationMediaItem *)newMediaData)setLocation:newMediaAttachmentCopy withCompletionHandler:^{
+//                        [self.collectionView reloadData];
+//                    }];
+//                }
+//            });
+//        }
+//        
+//    });
 }
 
 - (void)closePressed:(UIBarButtonItem *)sender
@@ -411,10 +411,10 @@
      *
      *  Show a timestamp for every 3rd message
      */
-    if (indexPath.item % 3 == 0) {
-        JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
-        return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
-    }
+//    if (indexPath.item % 3 == 0) {
+//        JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+//        return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+//    }
     
     return nil;
 }
@@ -480,7 +480,7 @@
     
     if ([msg isKindOfClass:[JSQTextMessage class]]) {
         
-        if ([msg.senderId isEqualToString:self.senderId]) {
+        if ([msg.senderId isEqualToString:self.authorId]) {
             cell.textView.textColor = [UIColor blackColor];
         }
         else {

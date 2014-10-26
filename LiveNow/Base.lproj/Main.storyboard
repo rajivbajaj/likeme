@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -59,6 +60,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Fc6-Kc-Wqg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Brx-Xe-Ic9" id="laG-CM-vOa"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="groupSummaryCell" textLabel="ljp-HM-Uzh" detailTextLabel="XiK-A1-PcK" style="IBUITableViewCellStyleSubtitle" id="LMs-5z-MUn">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -104,16 +113,26 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="groupsTableView" destination="vX2-Ad-JUb" id="djP-cV-nZc"/>
+                        <outlet property="searchDisplayController" destination="So3-eb-Zkd" id="Wqm-xl-DkB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kn-tA-TAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="So3-eb-Zkd">
+                    <connections>
+                        <outlet property="delegate" destination="Brx-Xe-Ic9" id="C78-19-hWS"/>
+                        <outlet property="searchBar" destination="Fc6-Kc-Wqg" id="E7w-eM-8FP"/>
+                        <outlet property="searchContentsController" destination="Brx-Xe-Ic9" id="wI3-66-3tK"/>
+                        <outlet property="searchResultsDataSource" destination="Brx-Xe-Ic9" id="FLt-T9-ev4"/>
+                        <outlet property="searchResultsDelegate" destination="Brx-Xe-Ic9" id="07i-9q-GQi"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1087" y="1136"/>
         </scene>
-        <!--View Controller-->
+        <!--Group Details View Controller-->
         <scene sceneID="I0I-B1-alP">
             <objects>
-                <viewController storyboardIdentifier="GroupDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kWC-df-Exw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kWC-df-Exw" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3nM-dU-vnh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,25 +149,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pga-Gj-hqv">
-                                <rect key="frame" x="46" y="180" width="218" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2470588386" green="0.36078432199999999" blue="0.57647061349999995" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Add Members">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="guestLoginTouch:" destination="vXZ-lx-hvc" eventType="touchDown" id="tPx-3S-iV0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="XzA-bu-hvM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aMv-Sj-ekS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aMv-Sj-ekS">
+                            <connections>
+                                <segue destination="Brx-Xe-Ic9" kind="push" identifier="saveGroupSegue" id="DSL-zP-sZc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="groupDescription" destination="weR-7w-hmr" id="Rna-wc-9I4"/>
+                        <outlet property="groupName" destination="hYe-4m-i0H" id="k5E-ai-dbl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUI-D9-JfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -303,7 +317,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="gHo-Ia-oNb">
             <objects>
                 <viewController storyboardIdentifier="Profile" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kI3-0d-g63" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -426,7 +440,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox View Controller - Inbox-->
+        <!--Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -492,7 +506,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker View Controller - Image Picker-->
+        <!--Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -527,7 +541,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events View Controller - Events-->
+        <!--Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
