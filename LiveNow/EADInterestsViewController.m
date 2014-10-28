@@ -52,10 +52,17 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
     
-//    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman alloc];
 //    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
-    self.interestsData = [[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books",@"Wine",@"Video Games", nil];
+    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Interests", @"LKGroupName",
+                                        nil];
+    
+    self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+
+//    self.interestsData = [postMan
+    //[[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books",@"Wine",@"Video Games", nil];
 
     
 //    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -87,7 +94,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"DisplayValue == %@", searchText];
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.interestsData filteredArrayUsingPredicate:resultPredicate]];
 }
@@ -132,7 +139,8 @@
     }
     else
     {
-        cell.textLabel.text = self.interestsData[indexPath.row];
+         NSDictionary *currentItem  = self.interestsData[indexPath.row];
+        cell.textLabel.text = [currentItem valueForKey:@"DisplayValue"];
     }
     
     return cell;
@@ -149,7 +157,26 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         [self.selectedRows removeObject:indexPath];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];}
+    
+//    NSString *userInterestsString = nil;
+//    for(int i =0; i<self.selectedRows.count;i++)
+//    {
+//        NSInteger currentSelectionIndex = [self.selectedRows objectAtIndex:i];
+//        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex];
+//        
+//        if(currentSelection != nil)
+//        {
+//            if(userInterestsString != nil)
+//            {
+//                userInterestsString = [userInterestsString stringByAppendingString:@";"];
+//            }
+//            userInterestsString = [userInterestsString stringByAppendingString:[currentSelection valueForKey:@"DisplayValue"]];
+//        }
+//        
+//    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 
 
