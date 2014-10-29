@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
     [self loadEvents];
 //    _eventsArray = @[@"test1",
@@ -70,6 +71,30 @@
 {
     return _eventsArray.count;
 }
+- (IBAction)filterEvents:(UITextField *)sender  {
+    
+    [self.filteredArray removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", sender.text];
+    
+    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
+}
+- (IBAction)ClosePopUp:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:Nil];
+}
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    [self.filteredArray removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    
+    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return YES;
+}
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -79,8 +104,8 @@
     
     NSString *cellText;
     long row = [indexPath row];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
+    //UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSURL *imageURL = [NSURL URLWithString:[_eventsArray[row] valueForKey:@"FBProfileURL"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
     //image = [UIImage imageNamed:_carImages[row]];
@@ -88,7 +113,7 @@
     myCell.imageView.image = image;
     myCell.eventName.text=cellText;
     myCell.labelView.text=[_eventsArray[row] valueForKey:@"EventDescription"];
-      myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"EventCreatedBy"];
+      myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"UserName"];
     return myCell;
 }
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
