@@ -29,6 +29,28 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.interestsTableView.dataSource = self;
+    self.interestsTableView.delegate = self;
+    selectedRows = [[NSMutableArray alloc] init];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    // Do any additional setup after loading the view.
+    
+    Postman* postMan = [Postman alloc];
+    
+    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Interests", @"LKGroupName",
+                                        nil];
+    
+    self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    
+    
+    
+    self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+}
+
 - (void)updateIntrests
 {
     
@@ -43,10 +65,10 @@
             NSString *currentSelectedString = @"";
             for(int j=0;j<currentSelection.allKeys.count;j++)
             {
-                
                 if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
                 {
                     currentSelectedString = currentSelection.allValues[j];
+                    break;
                 }
             }
             
@@ -73,35 +95,44 @@
                                         [postMan GetValueOrEmpty:userInterestsString], @"UserInterests",
                                         nil];
     
-    //[postMan UserInterestsUpdate:userDataDictionary];
     [postMan Post:@"users/postintrests?value=%@" :userDataDictionary];
 }
 
-- (void)viewDidLoad
+-(void)loadUserInterests
 {
-    [super viewDidLoad];
-    self.interestsTableView.dataSource = self;
-    self.interestsTableView.delegate = self;
-    selectedRows = [[NSMutableArray alloc] init];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    // Do any additional setup after loading the view.
-    
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
-    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"Interests", @"LKGroupName",
-                                        nil];
-    
-    self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
     
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
     
     NSArray *userInterestsData = [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData];
-
     
-    self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+    if(userInterestsData != nil && userInterestsData.count > 0)
+    {
+        NSDictionary *selectedValDictionary = userInterestsData[0];
+        NSString *selectedItemsString = [selectedValDictionary objectForKey:@"UserInterests"];
+        
+        if(selectedItemsString != nil && ![selectedItemsString isEqualToString:@""])
+        {
+            NSArray *selectedItemsArray = [selectedItemsString componentsSeparatedByString:@";"];
+            
+            for(int i=0; i<selectedItemsArray.count; i++)
+            {
+                [self getIndexOfItem:selectedItemsArray[i]];
+            }
+        }
+    }
+}
+
+- (int)getIndexOfItem:(NSString*)str
+{
+    for(int i=0;i<self.interestsData.count;i++)
+    {
+        NSDictionary *nsDict  = self.interestsData[i];
+    }
+    
+    return 0;
 }
 
 - (void)didReceiveMemoryWarning
