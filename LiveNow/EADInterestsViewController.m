@@ -29,14 +29,48 @@
     return self;
 }
 
-- (IBAction)updateIntrests:(id)sender {
+- (void)updateIntrests
+{
+    
+    NSString *userInterestsString = nil;
+    for(int i =0; i<self.selectedRows.count;i++)
+    {
+        NSIndexPath *currentSelectionIndex = [self.selectedRows objectAtIndex:i];
+        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex.row];
+        
+        if(currentSelection != nil)
+        {
+            NSString *currentSelectedString = @"";
+            for(int j=0;j<currentSelection.allKeys.count;j++)
+            {
+                
+                if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
+                {
+                    currentSelectedString = currentSelection.allValues[j];
+                }
+            }
+            
+            if(userInterestsString != nil)
+            {
+                userInterestsString = [userInterestsString stringByAppendingString:@";"];
+                userInterestsString = [userInterestsString stringByAppendingString:currentSelectedString];
+            }
+            else
+            {
+                userInterestsString = currentSelectedString;
+            }
+            
+        }
+        
+    }
+    
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     // update user information
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postMan GetValueOrEmpty:interestsText.text], @"UserInterests",
+                                        [postMan GetValueOrEmpty:userInterestsString], @"UserInterests",
                                         nil];
     
     //[postMan UserInterestsUpdate:userDataDictionary];
@@ -53,24 +87,19 @@
     // Do any additional setup after loading the view.
     
     Postman* postMan = [Postman alloc];
-//    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"Interests", @"LKGroupName",
                                         nil];
     
     self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
-
-//    self.interestsData = [postMan
-    //[[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books",@"Wine",@"Video Games", nil];
-
     
-//    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
-//    
-//    NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
-//    
-//    interestsText.text = [interestsData valueForKey:@"UserInterests"];
+    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
+    
+    NSArray *userInterestsData = [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData];
+
     
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
 }
@@ -158,25 +187,12 @@
         [self.selectedRows removeObject:indexPath];
     }
     
-//    NSString *userInterestsString = nil;
-//    for(int i =0; i<self.selectedRows.count;i++)
-//    {
-//        NSInteger currentSelectionIndex = [self.selectedRows objectAtIndex:i];
-//        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex];
-//        
-//        if(currentSelection != nil)
-//        {
-//            if(userInterestsString != nil)
-//            {
-//                userInterestsString = [userInterestsString stringByAppendingString:@";"];
-//            }
-//            userInterestsString = [userInterestsString stringByAppendingString:[currentSelection valueForKey:@"DisplayValue"]];
-//        }
-//        
-//    }
+    [self updateIntrests];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
 
 
 
