@@ -45,10 +45,10 @@
                                         nil];
     
     self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
-    
-    
-    
+
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+    
+    [self loadUserInterests];
 }
 
 - (void)updateIntrests
@@ -119,7 +119,19 @@
             
             for(int i=0; i<selectedItemsArray.count; i++)
             {
-                [self getIndexOfItem:selectedItemsArray[i]];
+                int selectedItem = [self getIndexOfItem:selectedItemsArray[i]];
+                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:selectedItem inSection:0];
+                
+                [self.selectedRows addObject:idxPath];
+                
+                [self.interestsTableView selectRowAtIndexPath:idxPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+                
+                UITableViewCell *cell = [self.interestsTableView cellForRowAtIndexPath:idxPath];
+                if(cell.accessoryType == UITableViewCellAccessoryNone) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+                }
+
             }
         }
     }
@@ -130,6 +142,12 @@
     for(int i=0;i<self.interestsData.count;i++)
     {
         NSDictionary *nsDict  = self.interestsData[i];
+        
+        if(nsDict != nil && [[nsDict objectForKey:@"DisplayValue"] isEqualToString:str])
+        {
+            return i;
+            break;
+        }
     }
     
     return 0;
