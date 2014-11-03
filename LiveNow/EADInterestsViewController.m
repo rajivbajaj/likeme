@@ -29,20 +29,6 @@
     return self;
 }
 
-- (IBAction)updateIntrests:(id)sender {
-    Postman* postMan = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
-    // update user information
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postMan GetValueOrEmpty:interestsText.text], @"UserInterests",
-                                        nil];
-    
-    //[postMan UserInterestsUpdate:userDataDictionary];
-    [postMan Post:@"users/postintrests?value=%@" :userDataDictionary];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,7 +39,6 @@
     // Do any additional setup after loading the view.
     
     Postman* postMan = [Postman alloc];
-//    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"Interests", @"LKGroupName",
@@ -61,18 +46,111 @@
     
     self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
 
-//    self.interestsData = [postMan
-    //[[NSArray alloc] initWithObjects:@"Football",@"Basketball",@"Tennis", @"Boardgames",@"Shop",@"Films",@"Food",@"Travel",@"Books",@"Wine",@"Video Games", nil];
-
-    
-//    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
-//    
-//    NSDictionary *interestsData = [postMan Get:[NSString stringWithFormat:@"users/getuserinterests?id=%@", userInfo.userId]];
-//    
-//    interestsText.text = [interestsData valueForKey:@"UserInterests"];
-    
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+    
+    [self loadUserInterests];
+}
+
+- (void)updateIntrests
+{
+    
+    NSString *userInterestsString = nil;
+    for(int i =0; i<self.selectedRows.count;i++)
+    {
+        NSIndexPath *currentSelectionIndex = [self.selectedRows objectAtIndex:i];
+        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex.row];
+        
+        if(currentSelection != nil)
+        {
+            NSString *currentSelectedString = @"";
+            for(int j=0;j<currentSelection.allKeys.count;j++)
+            {
+                if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
+                {
+                    currentSelectedString = currentSelection.allValues[j];
+                    break;
+                }
+            }
+            
+            if(userInterestsString != nil)
+            {
+                userInterestsString = [userInterestsString stringByAppendingString:@";"];
+                userInterestsString = [userInterestsString stringByAppendingString:currentSelectedString];
+            }
+            else
+            {
+                userInterestsString = currentSelectedString;
+            }
+            
+        }
+        
+    }
+    
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    // update user information
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:userInterestsString], @"UserInterests",
+                                        nil];
+    
+    [postMan Post:@"users/postintrests?value=%@" :userDataDictionary];
+}
+
+-(void)loadUserInterests
+{
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
+    
+    NSArray *userInterestsData = [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData];
+    
+    if(userInterestsData != nil && userInterestsData.count > 0)
+    {
+        NSDictionary *selectedValDictionary = userInterestsData[0];
+        NSString *selectedItemsString = [selectedValDictionary objectForKey:@"UserInterests"];
+        
+        if(selectedItemsString != nil && ![selectedItemsString isEqualToString:@""])
+        {
+            NSArray *selectedItemsArray = [selectedItemsString componentsSeparatedByString:@";"];
+            
+            for(int i=0; i<selectedItemsArray.count; i++)
+            {
+                int selectedItem = [self getIndexOfItem:selectedItemsArray[i]];
+                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:selectedItem inSection:0];
+                
+                [self.selectedRows addObject:idxPath];
+                
+                [self.interestsTableView selectRowAtIndexPath:idxPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+                
+                UITableViewCell *cell = [self.interestsTableView cellForRowAtIndexPath:idxPath];
+                if(cell.accessoryType == UITableViewCellAccessoryNone) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+                }
+
+            }
+        }
+    }
+}
+
+- (int)getIndexOfItem:(NSString*)str
+{
+    for(int i=0;i<self.interestsData.count;i++)
+    {
+        NSDictionary *nsDict  = self.interestsData[i];
+        
+        if(nsDict != nil && [[nsDict objectForKey:@"DisplayValue"] isEqualToString:str])
+        {
+            return i;
+            break;
+        }
+    }
+    
+    return 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -158,25 +236,12 @@
         [self.selectedRows removeObject:indexPath];
     }
     
-//    NSString *userInterestsString = nil;
-//    for(int i =0; i<self.selectedRows.count;i++)
-//    {
-//        NSInteger currentSelectionIndex = [self.selectedRows objectAtIndex:i];
-//        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex];
-//        
-//        if(currentSelection != nil)
-//        {
-//            if(userInterestsString != nil)
-//            {
-//                userInterestsString = [userInterestsString stringByAppendingString:@";"];
-//            }
-//            userInterestsString = [userInterestsString stringByAppendingString:[currentSelection valueForKey:@"DisplayValue"]];
-//        }
-//        
-//    }
+    [self updateIntrests];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
 
 
 
