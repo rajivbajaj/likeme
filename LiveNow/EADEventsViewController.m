@@ -9,6 +9,7 @@
 #import "EADEventsViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADEventDetailViewController.h"
 
 @interface EADEventsViewController ()
 
@@ -16,7 +17,7 @@
 
 @implementation EADEventsViewController
 
-
+NSInteger selectedCellIndex;
 //@synthesize searchBar;
 @synthesize filteredArray;
 
@@ -33,14 +34,10 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
     [self loadEvents];
-//    _eventsArray = @[@"test1",
-//                     @"test2",
-//                     @"test3",
-//                     @"test4",
-//                     ] ;
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +66,17 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _eventsArray.count;
+    
+    if ([self.searchBar.text  isEqual: @""])
+    {
+        return [self.eventsArray count];
+    }
+    else
+    {
+        return [self.eventsArray count];
+    }
+
+    //return _eventsArray.count;
 }
 - (IBAction)filterEvents:(UITextField *)sender  {
     
@@ -77,9 +84,6 @@
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", sender.text];
     
     self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
-}
-- (IBAction)ClosePopUp:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:Nil];
 }
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
@@ -116,6 +120,11 @@
       myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"UserName"];
     return myCell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    selectedCellIndex = indexPath.row;
+}
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:YES animated:YES];
 }
@@ -126,15 +135,28 @@
     [searchBar resignFirstResponder];
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
  // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+ if([segue.identifier isEqualToString:@"eventDetail"])
+ {
+  EADEventDetailViewController *destinationVC = [segue destinationViewController];
+ //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
+ NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
+// 
+destinationVC.eventId = [selectedItem valueForKey:@"EventId"];
+
+ 
  }
- */
+ 
+ }
+
+ // Pass the selected object to the new view controller.
+ 
+
 
 @end

@@ -11,10 +11,15 @@
 #import <MapKit/MapKit.h>
 #import "AMSlideOutNavigationController.h"
 #import "EADAppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface EADViewController : UIViewController <FBLoginViewDelegate>
+@interface EADViewController : UIViewController <FBLoginViewDelegate,CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
 @property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePicture;
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
 @property (strong, nonatomic) AMSlideOutNavigationController*  slideoutController;
+@property (nonatomic, retain) NSString* userLocation;
 @end

@@ -30,9 +30,59 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    
+    [self CurrentLocationIdentifier];
     
 }
+-(void)CurrentLocationIdentifier
+{
+    //---- For getting current gps location
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    //------
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations objectAtIndex:0];
+    [locationManager stopUpdatingLocation];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
+         {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSLog(@"\nCurrent Location Detected\n");
+             NSLog(@"placemark %@",placemark);
+             //NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             //NSString *Address = [[NSString alloc]initWithString:locatedAt];
+             self.userLocation = [[NSString alloc]initWithString:placemark.locality];
+             //NSString *Country = [[NSString alloc]initWithString:placemark.country];
+             //NSString *CountryArea = [NSString stringWithFormat:@"%@, %@", Area,Country];
+             //NSLog(@"%@",CountryArea);
+         }
+         else
+         {
+             NSLog(@"Geocode failed with error %@", error);
+             NSLog(@"\nCurrent Location Not Detected\n");
+             //return;
+             
+             
+         }
+         /*---- For more results
+          placemark.region);
+          placemark.country);
+          placemark.locality);
+          placemark.name);
+          placemark.ocean);
+          placemark.postalCode);
+          placemark.subLocality);
+          placemark.location);
+          ------*/
+     }];
+}
+
 - (IBAction)guestLoginTouch:(id)sender {
     [self navigateToMainPage];
 }
@@ -66,7 +116,7 @@
     [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Groups" andIcon:@"Groups.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Events Map" andIcon:@"map.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Live Search" andIcon:@"map.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"UserInterests"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Interests" andIcon:@"favorite.png"];
@@ -95,7 +145,7 @@
                  userInfo.userId = user.objectID;
                  userInfo.email = [user objectForKey:@"email"];
                  userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
-                 
+                 userInfo.userLocation=self.userLocation;
                  // update user information
                  Postman *postMan = [Postman alloc];
                  NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

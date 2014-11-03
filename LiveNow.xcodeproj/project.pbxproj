@@ -37,6 +37,9 @@
 		0B89FFE619BE547D0077E029 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFE519BE547D0077E029 /* MapKit.framework */; };
 		0BD6A87519EC875600AC370C /* EADEventsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */; };
 		0BD6A87619EC875600AC370C /* EADCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */; };
+		0BD6A8791A0573F800AC370C /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8771A0573F800AC370C /* Map.png */; };
+		0BD6A87A1A0573F800AC370C /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8781A0573F800AC370C /* Logout.png */; };
+		0BD6A87D1A069AA700AC370C /* EADEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */; };
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
@@ -50,12 +53,10 @@
 		143585CE19CA422C007F03DF /* AMSlideTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585C319CA422C007F03DF /* AMSlideTableCell.m */; };
 		143585CF19CA422C007F03DF /* AMSlideTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585C519CA422C007F03DF /* AMSlideTableHeader.m */; };
 		143585D019CA422C007F03DF /* AMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585C719CA422C007F03DF /* AMTableView.m */; };
-		143585D619CA4239007F03DF /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585D119CA4239007F03DF /* logout.png */; };
 		143585E319CA5786007F03DF /* EADEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E219CA5786007F03DF /* EADEventsViewController.m */; };
 		143585E619CA5796007F03DF /* EADGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E519CA5796007F03DF /* EADGroupsViewController.m */; };
 		143585E919CA57AE007F03DF /* EADProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585E819CA57AE007F03DF /* EADProfileViewController.m */; };
 		143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143585EB19CA57BF007F03DF /* EADInboxViewController.m */; };
-		143585EE19CA592C007F03DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585ED19CA592C007F03DF /* map.png */; };
 		143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */; };
 		144CE5BF19DCE65300C6EC03 /* EADMessageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */; };
 		144CE5CA19DDDB4000C6EC03 /* EADComposeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */; };
@@ -175,6 +176,10 @@
 		0BD6A87219EC875600AC370C /* EADCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADCollectionViewCell.h; sourceTree = "<group>"; };
 		0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADCollectionViewCell.m; sourceTree = "<group>"; };
 		0BD6A87419EC875600AC370C /* EADEventsCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADEventsCreateViewController.h; sourceTree = "<group>"; };
+		0BD6A8771A0573F800AC370C /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		0BD6A8781A0573F800AC370C /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
+		0BD6A87B1A069AA700AC370C /* EADEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADEventDetailViewController.h; sourceTree = "<group>"; };
+		0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventDetailViewController.m; sourceTree = "<group>"; };
 		1412AAAC19CADF6B008052B5 /* Postman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Postman.h; sourceTree = "<group>"; };
 		1412AAAD19CADF6B008052B5 /* Postman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Postman.m; sourceTree = "<group>"; };
 		1412AAAF19CADFA1008052B5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -197,7 +202,6 @@
 		143585C519CA422C007F03DF /* AMSlideTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSlideTableHeader.m; sourceTree = "<group>"; };
 		143585C619CA422C007F03DF /* AMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTableView.h; sourceTree = "<group>"; };
 		143585C719CA422C007F03DF /* AMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTableView.m; sourceTree = "<group>"; };
-		143585D119CA4239007F03DF /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		143585E119CA5786007F03DF /* EADEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADEventsViewController.h; sourceTree = "<group>"; };
 		143585E219CA5786007F03DF /* EADEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventsViewController.m; sourceTree = "<group>"; };
 		143585E419CA5796007F03DF /* EADGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADGroupsViewController.h; sourceTree = "<group>"; };
@@ -206,7 +210,6 @@
 		143585E819CA57AE007F03DF /* EADProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADProfileViewController.m; sourceTree = "<group>"; };
 		143585EA19CA57BF007F03DF /* EADInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADInboxViewController.h; sourceTree = "<group>"; };
 		143585EB19CA57BF007F03DF /* EADInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADInboxViewController.m; sourceTree = "<group>"; };
-		143585ED19CA592C007F03DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		143585EF19CA5EB8007F03DF /* App Icon Design v3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "App Icon Design v3.jpg"; sourceTree = "<group>"; };
 		144CE5BD19DCE65300C6EC03 /* EADMessageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMessageDetailsViewController.h; sourceTree = "<group>"; };
 		144CE5BE19DCE65300C6EC03 /* EADMessageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADMessageDetailsViewController.m; sourceTree = "<group>"; };
@@ -472,6 +475,8 @@
 				144CE5C919DDDB4000C6EC03 /* EADComposeMessageViewController.m */,
 				1433722419EFCF7C009DD572 /* EADGroupDetailsViewController.h */,
 				1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */,
+				0BD6A87B1A069AA700AC370C /* EADEventDetailViewController.h */,
+				0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -499,6 +504,8 @@
 		143585B919CA4204007F03DF /* SlideNav */ = {
 			isa = PBXGroup;
 			children = (
+				0BD6A8771A0573F800AC370C /* Map.png */,
+				0BD6A8781A0573F800AC370C /* Logout.png */,
 				0B34795E19D4DBBE00A9B3F1 /* Clock.png */,
 				0B34795F19D4DBBE00A9B3F1 /* Groups.png */,
 				0B34796019D4DBBE00A9B3F1 /* Inbox.png */,
@@ -506,8 +513,6 @@
 				0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */,
 				146A4DF919D4044300C0182B /* search.png */,
 				146A4DF719D2D73800C0182B /* favorite.png */,
-				143585ED19CA592C007F03DF /* map.png */,
-				143585D119CA4239007F03DF /* logout.png */,
 				143585BA19CA422C007F03DF /* iconSlide.png */,
 				143585BB19CA422C007F03DF /* iconSlide@2x.png */,
 				143585BC19CA422C007F03DF /* iconSlideBlack.png */,
@@ -815,15 +820,16 @@
 				144CE64419E5716C00C6EC03 /* bubble_tailless.png in Resources */,
 				144CE64A19E5716C00C6EC03 /* typing@2x.png in Resources */,
 				144CE64C19E5716C00C6EC03 /* message_received.aiff in Resources */,
-				143585EE19CA592C007F03DF /* map.png in Resources */,
 				0B89FFC619BE52E90077E029 /* Images.xcassets in Resources */,
 				0B34796719D4DBBE00A9B3F1 /* Slide Menu button - large.png in Resources */,
 				144CE64719E5716C00C6EC03 /* clip@2x.png in Resources */,
 				143585CB19CA422C007F03DF /* iconSlideBlack@2x.png in Resources */,
 				144CE63F19E5716C00C6EC03 /* bubble@2x.png in Resources */,
+				0BD6A87A1A0573F800AC370C /* Logout.png in Resources */,
 				0B7C9BE819C5128500BD6772 /* App Icon Design v2.jpg in Resources */,
 				146A4DF819D2D73800C0182B /* favorite.png in Resources */,
 				0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */,
+				0BD6A8791A0573F800AC370C /* Map.png in Resources */,
 				144CE67319E5716C00C6EC03 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				144CE64819E5716C00C6EC03 /* clip@3x.png in Resources */,
 				0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */,
@@ -838,7 +844,6 @@
 				144CE65519E5716C00C6EC03 /* JSQMessagesViewController.xib in Resources */,
 				143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */,
 				144CE63E19E5716C00C6EC03 /* bubble.png in Resources */,
-				143585D619CA4239007F03DF /* logout.png in Resources */,
 				0B89FFC119BE52E90077E029 /* Main.storyboard in Resources */,
 				144CE66E19E5716C00C6EC03 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				144CE64219E5716C00C6EC03 /* bubble_min_tailless.png in Resources */,
@@ -911,6 +916,7 @@
 				144CE67819E5723600C6EC03 /* JSQSystemSoundPlayer.m in Sources */,
 				144CE5BF19DCE65300C6EC03 /* EADMessageDetailsViewController.m in Sources */,
 				144CE67219E5716C00C6EC03 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
+				0BD6A87D1A069AA700AC370C /* EADEventDetailViewController.m in Sources */,
 				143585CC19CA422C007F03DF /* AMSlideOutGlobals.m in Sources */,
 				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				144CE65A19E5716C00C6EC03 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
