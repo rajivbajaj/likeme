@@ -40,6 +40,10 @@
 		0BD6A8791A0573F800AC370C /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8771A0573F800AC370C /* Map.png */; };
 		0BD6A87A1A0573F800AC370C /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8781A0573F800AC370C /* Logout.png */; };
 		0BD6A87D1A069AA700AC370C /* EADEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */; };
+		0BD6A87F1A08653000AC370C /* Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A87E1A08653000AC370C /* Close.png */; };
+		0BD6A8831A08654400AC370C /* Attendees.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8801A08654400AC370C /* Attendees.png */; };
+		0BD6A8841A08654400AC370C /* Join.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8811A08654400AC370C /* Join.png */; };
+		0BD6A8851A08654400AC370C /* Messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8821A08654400AC370C /* Messages.png */; };
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
@@ -180,6 +184,10 @@
 		0BD6A8781A0573F800AC370C /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
 		0BD6A87B1A069AA700AC370C /* EADEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADEventDetailViewController.h; sourceTree = "<group>"; };
 		0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventDetailViewController.m; sourceTree = "<group>"; };
+		0BD6A87E1A08653000AC370C /* Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close.png; sourceTree = "<group>"; };
+		0BD6A8801A08654400AC370C /* Attendees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Attendees.png; sourceTree = "<group>"; };
+		0BD6A8811A08654400AC370C /* Join.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Join.png; sourceTree = "<group>"; };
+		0BD6A8821A08654400AC370C /* Messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Messages.png; sourceTree = "<group>"; };
 		1412AAAC19CADF6B008052B5 /* Postman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Postman.h; sourceTree = "<group>"; };
 		1412AAAD19CADF6B008052B5 /* Postman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Postman.m; sourceTree = "<group>"; };
 		1412AAAF19CADFA1008052B5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -394,6 +402,10 @@
 		0B89FFB319BE52E90077E029 /* LiveNow */ = {
 			isa = PBXGroup;
 			children = (
+				0BD6A8801A08654400AC370C /* Attendees.png */,
+				0BD6A8811A08654400AC370C /* Join.png */,
+				0BD6A8821A08654400AC370C /* Messages.png */,
+				0BD6A87E1A08653000AC370C /* Close.png */,
 				144CE5D719E5716C00C6EC03 /* JSQMessagesViewController */,
 				146A4DF019D182F100C0182B /* Models */,
 				143585B919CA4204007F03DF /* SlideNav */,
@@ -823,6 +835,7 @@
 				0B89FFC619BE52E90077E029 /* Images.xcassets in Resources */,
 				0B34796719D4DBBE00A9B3F1 /* Slide Menu button - large.png in Resources */,
 				144CE64719E5716C00C6EC03 /* clip@2x.png in Resources */,
+				0BD6A8851A08654400AC370C /* Messages.png in Resources */,
 				143585CB19CA422C007F03DF /* iconSlideBlack@2x.png in Resources */,
 				144CE63F19E5716C00C6EC03 /* bubble@2x.png in Resources */,
 				0BD6A87A1A0573F800AC370C /* Logout.png in Resources */,
@@ -833,6 +846,7 @@
 				144CE67319E5716C00C6EC03 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				144CE64819E5716C00C6EC03 /* clip@3x.png in Resources */,
 				0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */,
+				0BD6A8841A08654400AC370C /* Join.png in Resources */,
 				0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */,
 				144CE64B19E5716C00C6EC03 /* typing@3x.png in Resources */,
 				144CE67119E5716C00C6EC03 /* JSQMessagesToolbarContentView.xib in Resources */,
@@ -845,6 +859,7 @@
 				143585F019CA5EB9007F03DF /* App Icon Design v3.jpg in Resources */,
 				144CE63E19E5716C00C6EC03 /* bubble.png in Resources */,
 				0B89FFC119BE52E90077E029 /* Main.storyboard in Resources */,
+				0BD6A8831A08654400AC370C /* Attendees.png in Resources */,
 				144CE66E19E5716C00C6EC03 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				144CE64219E5716C00C6EC03 /* bubble_min_tailless.png in Resources */,
 				144CE64619E5716C00C6EC03 /* clip.png in Resources */,
@@ -852,6 +867,7 @@
 				144CE66719E5716C00C6EC03 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				144CE64919E5716C00C6EC03 /* typing.png in Resources */,
 				0B7C9BE719C5128500BD6772 /* Loading Page.jpg in Resources */,
+				0BD6A87F1A08653000AC370C /* Close.png in Resources */,
 				143585C919CA422C007F03DF /* iconSlide@2x.png in Resources */,
 				0B34796519D4DBBE00A9B3F1 /* Inbox.png in Resources */,
 				0B34796419D4DBBE00A9B3F1 /* Groups.png in Resources */,
