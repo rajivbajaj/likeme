@@ -20,6 +20,7 @@
 @synthesize statusText;
 @synthesize displayNameText;
 @synthesize profilePicImageView;
+@synthesize location;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +44,7 @@
     emailText.text = [userDataDictionary valueForKey:@"Email"];
     statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
+    location.text = userInfo.userLocation;
     
     NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
