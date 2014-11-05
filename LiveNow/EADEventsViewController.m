@@ -53,10 +53,10 @@ NSInteger selectedCellIndex;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
+//                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
                                         nil];
     
-    self.eventsArray = [postman Get:@"events/get?id=%@" :userDataDictionary];
+    self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

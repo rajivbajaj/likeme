@@ -68,6 +68,19 @@
         
     }
 }
+- (IBAction)joinEventTouched:(id)sender
+{
+    Postman *postman = [Postman alloc];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postman GetValueOrEmpty:eventId], @"EventId",
+                                        @"Yes", @"AttendanceStatus",
+                                        nil];
+    
+    [postman Post:@"events/join?jsonParams=%@" :userDataDictionary];
+}
 
 
 - (IBAction)ClosePopUp:(UIButton *)sender {
