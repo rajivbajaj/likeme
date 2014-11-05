@@ -65,15 +65,14 @@ NSInteger selectedCellIndex;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    
-    if ([self.searchBar.text  isEqual: @""])
+{   
+    if ([self.searchDisplayController.searchBar.text  isEqualToString:@""])
     {
         return [self.eventsArray count];
     }
     else
     {
-        return [self.eventsArray count];
+        return [self.filteredArray count];
     }
 
     //return _eventsArray.count;

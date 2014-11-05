@@ -10,8 +10,9 @@
 #import "EADCollectionViewCell.h"
 @interface EADEventsViewController : UIViewController
 <UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *eventsCollectionView;
 
 @property (nonatomic, strong) NSArray *eventsArray;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+//@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredArray;
 @end

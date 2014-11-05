@@ -272,15 +272,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iCh-9K-m9j">
-                                        <rect key="frame" x="13" y="0.0" width="246" height="94"/>
+                                        <rect key="frame" x="13" y="0.0" width="79" height="85"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventCreator" text="Event Creater" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IKA-n1-zD9">
-                                        <rect key="frame" x="13" y="102" width="152" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4pV-Dg-tfI">
                                         <rect key="frame" x="13" y="138" width="256" height="148"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -324,6 +318,19 @@
                                         <rect key="frame" x="224" y="312" width="54" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TOp-vK-JtW">
+                                        <rect key="frame" x="13" y="102" width="265" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventCreator" text="Event Creater" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IKA-n1-zD9">
+                                        <rect key="frame" x="99" y="0.0" width="152" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -335,6 +342,7 @@
                         <outlet property="NoOfPeopleJoinedLabel" destination="ggD-Me-hES" id="4PC-7Q-hRe"/>
                         <outlet property="eventCreaterLabel" destination="IKA-n1-zD9" id="1HK-vZ-2eo"/>
                         <outlet property="eventDescriptionLabel" destination="4pV-Dg-tfI" id="geZ-6T-bo3"/>
+                        <outlet property="eventNameLabel" destination="TOp-vK-JtW" id="hNz-nl-Fpd"/>
                         <outlet property="userProfileImageView" destination="iCh-9K-m9j" id="K6Z-rL-NCO"/>
                     </connections>
                 </viewController>
@@ -731,6 +739,7 @@
                     <navigationItem key="navigationItem" id="9Vu-a8-Af3"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="Twf-JH-jS9"/>
                         <outlet property="searchDisplayController" destination="XDf-Mr-4E1" id="iLx-d2-aUu"/>
                     </connections>
                 </viewController>

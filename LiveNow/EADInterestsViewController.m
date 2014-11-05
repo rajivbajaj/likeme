@@ -172,7 +172,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"DisplayValue == %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"DisplayValue beginswith[c] %@", searchText];
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.interestsData filteredArrayUsingPredicate:resultPredicate]];
 }
@@ -210,14 +210,19 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
+    NSDictionary *currentItem = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
-        cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
+        currentItem = self.searchResult[indexPath.row];
     }
     else
     {
-         NSDictionary *currentItem  = self.interestsData[indexPath.row];
+        currentItem  = self.interestsData[indexPath.row];
+    }
+    
+    if(currentItem != nil)
+    {
         cell.textLabel.text = [currentItem valueForKey:@"DisplayValue"];
     }
     
@@ -226,19 +231,34 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if(cell.accessoryType == UITableViewCellAccessoryNone) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.selectedRows addObject:indexPath];
+    NSIndexPath *currentIdx = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        NSDictionary *selectedItem = [self.searchResult objectAtIndex:indexPath.row];
+        if(selectedItem != nil)
+        {
+            int selectedIndex = [self getIndexOfItem:[selectedItem objectForKey:@"DisplayValue"]];
+            currentIdx = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        }
     }
-    else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        [self.selectedRows removeObject:indexPath];
+    else
+    {
+        currentIdx = indexPath;
     }
     
-    [self updateIntrests];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if(cell.accessoryType == UITableViewCellAccessoryNone) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.selectedRows addObject:currentIdx];
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            [self.selectedRows removeObject:currentIdx];
+        }
+        
+        [self updateIntrests];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:currentIdx animated:YES];
 }
 
 
