@@ -44,6 +44,7 @@
 		0BD6A8831A08654400AC370C /* Attendees.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8801A08654400AC370C /* Attendees.png */; };
 		0BD6A8841A08654400AC370C /* Join.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8811A08654400AC370C /* Join.png */; };
 		0BD6A8851A08654400AC370C /* Messages.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8821A08654400AC370C /* Messages.png */; };
+		0BD6A8881A09BD6900AC370C /* EADUserListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A8871A09BD6900AC370C /* EADUserListTableViewController.m */; };
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
@@ -188,6 +189,8 @@
 		0BD6A8801A08654400AC370C /* Attendees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Attendees.png; sourceTree = "<group>"; };
 		0BD6A8811A08654400AC370C /* Join.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Join.png; sourceTree = "<group>"; };
 		0BD6A8821A08654400AC370C /* Messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Messages.png; sourceTree = "<group>"; };
+		0BD6A8861A09BD6900AC370C /* EADUserListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADUserListTableViewController.h; sourceTree = "<group>"; };
+		0BD6A8871A09BD6900AC370C /* EADUserListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADUserListTableViewController.m; sourceTree = "<group>"; };
 		1412AAAC19CADF6B008052B5 /* Postman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Postman.h; sourceTree = "<group>"; };
 		1412AAAD19CADF6B008052B5 /* Postman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Postman.m; sourceTree = "<group>"; };
 		1412AAAF19CADFA1008052B5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -489,6 +492,8 @@
 				1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */,
 				0BD6A87B1A069AA700AC370C /* EADEventDetailViewController.h */,
 				0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */,
+				0BD6A8861A09BD6900AC370C /* EADUserListTableViewController.h */,
+				0BD6A8871A09BD6900AC370C /* EADUserListTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -934,6 +939,7 @@
 				144CE67219E5716C00C6EC03 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				0BD6A87D1A069AA700AC370C /* EADEventDetailViewController.m in Sources */,
 				143585CC19CA422C007F03DF /* AMSlideOutGlobals.m in Sources */,
+				0BD6A8881A09BD6900AC370C /* EADUserListTableViewController.m in Sources */,
 				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				144CE65A19E5716C00C6EC03 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
 				144CE65F19E5716C00C6EC03 /* JSQMessage.m in Sources */,
