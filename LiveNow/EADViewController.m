@@ -124,6 +124,9 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
     
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"userList"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Search People" andIcon:@"favorite.png"];
+    
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];
 }
