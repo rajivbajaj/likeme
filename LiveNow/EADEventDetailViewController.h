@@ -11,6 +11,7 @@
 @interface EADEventDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *eventCreaterLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NoOfCommentsLabel;

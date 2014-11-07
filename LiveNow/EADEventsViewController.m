@@ -53,10 +53,10 @@ NSInteger selectedCellIndex;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
+//                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
                                         nil];
     
-    self.eventsArray = [postman Get:@"events/get?id=%@" :userDataDictionary];
+    self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -65,15 +65,14 @@ NSInteger selectedCellIndex;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    
-    if ([self.searchBar.text  isEqual: @""])
+{   
+    if ([self.searchDisplayController.searchBar.text  isEqualToString:@""])
     {
         return [self.eventsArray count];
     }
     else
     {
-        return [self.eventsArray count];
+        return [self.filteredArray count];
     }
 
     //return _eventsArray.count;
@@ -124,6 +123,8 @@ NSInteger selectedCellIndex;
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     selectedCellIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"eventDetail" sender:self];
+    
 }
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:YES animated:YES];

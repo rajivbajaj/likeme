@@ -71,10 +71,11 @@
                                         [postMan GetValueOrEmpty:emailText.text], @"Email",
                                         [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
                                         [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
+                                        [postMan GetValueOrEmpty:location.text], @"City",
                                         nil];
     
     //[postMan UserUpdate:userDataDictionary];
-    [postMan Post:@"users/postinterests?value=%@" :userDataDictionary];
+    [postMan Post:@"users/post?value=%@" :userDataDictionary];
 }
 
 /*

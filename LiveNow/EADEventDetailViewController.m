@@ -43,26 +43,43 @@
     
     self.eventArray = [postman Get:@"events/getbyeventid?id=%@" :userDataDictionary];
     
+    if (self.eventArray != nil && self.eventArray.count >0)
+    {
+        
+        NSDictionary *currentObject = [self.eventArray objectAtIndex:0];
+        
+        if(currentObject != nil)
+        {
+            NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:imageData];
+            
+            self.userProfileImageView.image=image;
+
+            self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
+            self.eventNameLabel.text = [currentObject valueForKey:@"EventName"];
+            self.eventDescriptionLabel.text=[currentObject valueForKey:@"EventDescription"];
+
+            NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
+            NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
+            self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
+            self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
+        }
+        
+    }
+}
+- (IBAction)joinEventTouched:(id)sender
+{
+    Postman *postman = [Postman alloc];
+    
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-    UIImage *image = [UIImage imageWithData:imageData];
-
-    self.userProfileImageView.image=image;
-    self.eventCreaterLabel.text=@"Rajiv Bajaj";
-    //self.eventCreaterLabel.text=[currentObject valueForKey:@"EventName"];
-    self.eventDescriptionLabel.text=@"Open soccer game need at least 10 participants";//[currentObject valueForKey:@"EventDescription"];
-    self.NoOfCommentsLabel.text=@"5";//[currentObject valueForKey:@"NumberOfMessages"];
-    self.NoOfPeopleJoinedLabel.text=@"2";//[currentObject valueForKey:@"NumberOfAttendants"];
-
-//    if (_eventArray.count >0)
-//    {
-//    NSDictionary *currentObject = [self.eventArray objectAtIndex:0];
-//    self.eventCreaterLabel.text=[currentObject valueForKey:@"EventName"];
-//    self.eventDescriptionLabel.text=[currentObject valueForKey:@"EventDescription"];
-//    self.NoOfCommentsLabel.text=[currentObject valueForKey:@"NumberOfMessages"];
-//    self.NoOfPeopleJoinedLabel.text=[currentObject valueForKey:@"NumberOfAttendants"];
-//    }
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postman GetValueOrEmpty:eventId], @"EventId",
+                                        @"Yes", @"AttendanceStatus",
+                                        nil];
+    
+    [postman Post:@"events/join?jsonParams=%@" :userDataDictionary];
 }
 
 

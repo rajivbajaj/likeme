@@ -21,6 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self CurrentLocationIdentifier];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     [self.view addSubview:loginView];
@@ -30,8 +31,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    [self CurrentLocationIdentifier];
-    
 }
 -(void)CurrentLocationIdentifier
 {
