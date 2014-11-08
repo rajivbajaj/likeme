@@ -45,7 +45,7 @@
 
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
-    self.userListData = [postMan Get:@"users/getallusers?jsonParams=%@" :paramsData];
+    self.userListData = [postMan Get:@"users/getall?jsonParams=%@" :paramsData];
     
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.userListData count]];
     
@@ -85,7 +85,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"user";
+    static NSString *CellIdentifier = @"userData";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
@@ -101,7 +101,7 @@
     else
     {
         NSDictionary *currentItem  = self.userListData[indexPath.row];
-        cell.textLabel.text = [currentItem valueForKey:@"DisplayValue"];
+        cell.textLabel.text = [currentItem valueForKey:@"Email"];
     }
     
     return cell;
@@ -116,7 +116,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"DisplayValue == %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Email == %@", searchText];
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.userListData filteredArrayUsingPredicate:resultPredicate]];
 }
