@@ -95,13 +95,22 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
-        cell.textLabel.text = [self.searchResult objectAtIndex:indexPath.row];
+        NSDictionary *currentItem  = self.searchResult[indexPath.row];
+        cell.textLabel.text = [currentItem valueForKey:@"FirstName"];
         
+        NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        cell.imageView.image=image;
     }
     else
     {
         NSDictionary *currentItem  = self.userListData[indexPath.row];
-        cell.textLabel.text = [currentItem valueForKey:@"Email"];
+        cell.textLabel.text = [currentItem valueForKey:@"FirstName"];
+        NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        cell.imageView.image=image;
     }
     
     return cell;
@@ -116,7 +125,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Email == %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"FirstName beginswith[c] %@", searchText];
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.userListData filteredArrayUsingPredicate:resultPredicate]];
 }
