@@ -87,6 +87,11 @@
     [self dismissViewControllerAnimated:YES completion:Nil];
 }
 
+- (IBAction)eventMessagesTouch:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:Nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

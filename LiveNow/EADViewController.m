@@ -103,29 +103,30 @@
     UIImage *image = [UIImage imageWithData:imageData];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:userInfo.firstName andIcon:image];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Inbox"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:@"Inbox" andIcon:@"Inbox.png"];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Events" andIcon:@"Clock.png"];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Groups" andIcon:@"Groups.png"];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Live Search" andIcon:@"map.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:userInfo.firstName andIcon:image];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"UserInterests"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Interests" andIcon:@"favorite.png"];
-    
-    //[self.slideoutController addActionToLastSection:^{} tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Logout" andIcon:@"logout.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Interests" andIcon:@"favorite.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"userList"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Search People" andIcon:@"favorite.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Search People" andIcon:@"favorite.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Live Search" andIcon:@"map.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Inbox"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Inbox" andIcon:@"Inbox.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Events" andIcon:@"Clock.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"Groups.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:8 withTitle:@"Logout" andIcon:@"logout.png"];
+    
+
     
     EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];

@@ -66,7 +66,7 @@ NSInteger selectedCellIndex;
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {   
-    if ([self.searchDisplayController.searchBar.text  isEqualToString:@""])
+    if ([self.searchBar.text isEqualToString:@""])
     {
         return [self.eventsArray count];
     }
@@ -74,29 +74,6 @@ NSInteger selectedCellIndex;
     {
         return [self.filteredArray count];
     }
-
-    //return _eventsArray.count;
-}
-- (IBAction)filterEvents:(UITextField *)sender  {
-    
-    [self.filteredArray removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", sender.text];
-    
-    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
-}
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-    [self.filteredArray removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
-    
-    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    return YES;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -106,17 +83,26 @@ NSInteger selectedCellIndex;
                                      forIndexPath:indexPath];
     
     NSString *cellText;
-    long row = [indexPath row];
-    //UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSURL *imageURL = [NSURL URLWithString:[_eventsArray[row] valueForKey:@"FBProfileURL"]];
+    NSDictionary *currentItem = nil;
+    
+    if([self.searchBar.text isEqualToString:@""])
+    {
+        currentItem = self.eventsArray[indexPath.row];
+    }
+    else
+    {
+        currentItem = self.filteredArray[indexPath.row];
+    }
+    
+    NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
-    //image = [UIImage imageNamed:_carImages[row]];
-    cellText=[_eventsArray[row] valueForKey:@"EventName"];
+    cellText=[currentItem valueForKey:@"EventName"];
     myCell.imageView.image = image;
     myCell.eventName.text=cellText;
-    myCell.labelView.text=[_eventsArray[row] valueForKey:@"EventDescription"];
-      myCell.eventCreatedBy.text=[_eventsArray[row] valueForKey:@"UserName"];
+    myCell.labelView.text=[currentItem valueForKey:@"EventDescription"];
+    myCell.eventCreatedBy.text=[currentItem valueForKey:@"UserName"];
+    
     return myCell;
 }
 
@@ -126,7 +112,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"eventDetail" sender:self];
     
 }
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
     [searchBar setShowsCancelButton:YES animated:YES];
 }
 
@@ -134,6 +121,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [searchBar setText:@""];
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
+    [self.eventsCollectionView reloadData];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self.filteredArray removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"EventName contains[c] %@", searchText];
+    
+    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
+    [self.eventsCollectionView reloadData];
 }
 
 
@@ -142,22 +139,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
- // Get the new view controller using [segue destinationViewController].
- if([segue.identifier isEqualToString:@"eventDetail"])
- {
-  EADEventDetailViewController *destinationVC = [segue destinationViewController];
- //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
- NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
-// 
-destinationVC.eventId = [selectedItem valueForKey:@"EventId"];
-
- 
- }
- 
+     // Get the new view controller using [segue destinationViewController].
+     if([segue.identifier isEqualToString:@"eventDetail"])
+     {
+              EADEventDetailViewController *destinationVC = [segue destinationViewController];
+             //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
+             NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
+            // 
+            destinationVC.eventId = [selectedItem valueForKey:@"EventId"];
+     }
  }
 
  // Pass the selected object to the new view controller.
- 
+ -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    
+}
 
 
 @end
