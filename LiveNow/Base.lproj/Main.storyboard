@@ -346,6 +346,16 @@
                                             <segue destination="oGN-A2-31E" kind="push" identifier="eventUsersSegue" id="TAK-hv-Tob"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bnk-xq-VoT">
+                                        <rect key="frame" x="126" y="390" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Leave">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="leaveEventTouched:" destination="fXq-rB-dvi" eventType="touchDown" id="myk-34-Rnr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -359,6 +369,7 @@
                         <outlet property="eventCreaterLabel" destination="IKA-n1-zD9" id="1HK-vZ-2eo"/>
                         <outlet property="eventDescriptionLabel" destination="4pV-Dg-tfI" id="geZ-6T-bo3"/>
                         <outlet property="eventNameLabel" destination="TOp-vK-JtW" id="hNz-nl-Fpd"/>
+                        <outlet property="leaveEventButton" destination="Bnk-xq-VoT" id="Wwv-Ef-Fah"/>
                         <outlet property="userProfileImageView" destination="iCh-9K-m9j" id="K6Z-rL-NCO"/>
                     </connections>
                 </viewController>

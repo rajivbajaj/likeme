@@ -18,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *NoOfPeopleJoinedLabel;
 @property (strong, nonatomic)  NSString *eventId;
 @property (nonatomic, strong) NSArray *eventArray;
+@property (weak, nonatomic) IBOutlet UIButton *leaveEventButton;
 @end

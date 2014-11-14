@@ -18,6 +18,8 @@
 @implementation EADEventDetailViewController
 @synthesize eventId;
 
+bool isAttendingThisEvent = false;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,15 +34,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadEvent];
+    self.NoOfCommentsLabel.userInteractionEnabled = NO;
+    self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
+    self.leaveEventButton.hidden = true;
 }
 - (void)loadEvent
 {
     Postman *postman = [Postman alloc];
     
-    //UserInfo *userInfo = [UserInfo sharedUserInfo];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:eventId], @"EventId",
-                                       
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
     self.eventArray = [postman Get:@"events/getbyeventid?id=%@" :userDataDictionary];
@@ -66,11 +72,38 @@
             NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
             self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
+            
+            if([[currentObject valueForKey:@"MyAttendanceStatus"] isEqualToString:@"Yes"])
+            {
+                self.NoOfCommentsLabel.userInteractionEnabled = YES;
+                self.NoOfPeopleJoinedLabel.userInteractionEnabled = YES;
+                self.leaveEventButton.hidden = false;
+                isAttendingThisEvent = true;
+            }
+            else
+            {
+                self.NoOfCommentsLabel.userInteractionEnabled = NO;
+                self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
+                self.leaveEventButton.hidden = true;
+                isAttendingThisEvent = false;
+            }
         }
         
     }
 }
+- (IBAction)leaveEventTouched:(id)sender
+{
+    [self joinOrLeaveEvent:@"No"];
+    [self loadEvent];
+}
+
 - (IBAction)joinEventTouched:(id)sender
+{
+    [self joinOrLeaveEvent:@"Yes"];
+    [self loadEvent];
+}
+
+-(void)joinOrLeaveEvent:(NSString*)attendanceStatus
 {
     Postman *postman = [Postman alloc];
     
@@ -78,12 +111,11 @@
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         [postman GetValueOrEmpty:eventId], @"EventId",
-                                        @"Yes", @"AttendanceStatus",
+                                        attendanceStatus, @"AttendanceStatus",
                                         nil];
     
-    [postman Post:@"events/join?jsonParams=%@" :userDataDictionary];
+    [postman Post:@"events/joinorleave?jsonParams=%@" :userDataDictionary];
 }
-
 
 - (IBAction)ClosePopUp:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:Nil];
@@ -116,6 +148,18 @@
      
      }
  }
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if([identifier isEqualToString:@"eventMessage"] || [identifier isEqualToString:@"eventUsersSegue"])
+    {
+        return isAttendingThisEvent;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 
 @end
