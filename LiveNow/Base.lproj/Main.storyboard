@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -303,7 +302,7 @@
                                             <action selector="joinEventTouched:" destination="fXq-rB-dvi" eventType="touchDown" id="SDK-jS-J8W"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BId-e8-Ykb">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BId-e8-Ykb">
                                         <rect key="frame" x="259" y="0.0" width="39" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Close" image="Close.png">
@@ -333,7 +332,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="d7c-d5-z5c" kind="push" id="6hq-mk-TwS"/>
+                                            <segue destination="F6R-5g-4mK" kind="push" identifier="eventMessage" id="uZl-yr-jNO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gh9-m2-gLZ">
@@ -344,6 +343,7 @@
                                         </state>
                                         <connections>
                                             <action selector="eventMessagesTouch:" destination="fXq-rB-dvi" eventType="touchDown" id="MD6-P3-hD2"/>
+                                            <segue destination="oGN-A2-31E" kind="push" identifier="eventUsersSegue" id="TAK-hv-Tob"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -352,6 +352,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Ijs-6a-Iu7"/>
                     <connections>
                         <outlet property="NoOfCommentsLabel" destination="vsL-7f-iC5" id="mv3-4G-VAX"/>
                         <outlet property="NoOfPeopleJoinedLabel" destination="ggD-Me-hES" id="4PC-7Q-hRe"/>
@@ -536,6 +537,7 @@
                             <outlet property="delegate" destination="oGN-A2-31E" id="Sxe-bC-OB6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="a2S-cZ-Yrb"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Q45-7N-5eN" id="bnQ-Lj-HVj"/>
                     </connections>
@@ -811,7 +813,7 @@
                         <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="Twf-JH-jS9"/>
                         <outlet property="searchBar" destination="YX0-s6-FxT" id="ayi-Uz-lFZ"/>
                         <outlet property="searchDisplayController" destination="XDf-Mr-4E1" id="iLx-d2-aUu"/>
-                        <segue destination="fXq-rB-dvi" kind="modal" identifier="eventDetail" id="j80-dk-2le"/>
+                        <segue destination="fXq-rB-dvi" kind="push" identifier="eventDetail" id="j80-dk-2le"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkn-Uh-8Kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1019,6 +1021,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="uZl-yr-jNO"/>
         <segue reference="WlC-XK-j1v"/>
     </inferredMetricsTieBreakers>
 </document>
