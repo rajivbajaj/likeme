@@ -7,7 +7,8 @@
 //
 
 #import "EADMapViewController.h"
-
+#import "Postman.h"
+#import "UserInfo.h"
 @interface EADMapViewController ()
 
 @end
@@ -22,6 +23,17 @@
 
 - (IBAction)searchText:(id)sender {
 }
+
+-(void)searchAll
+{
+    Postman* postMan = [Postman alloc];
+    //UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [postMan GetValueOrEmpty:_searchText.text], @"searchstring", nil];
+    self.matchingItems = [postMan Get:@"utility/search?jsonParams=%@" :paramsData];
+    
+    }
 -(void) performSearch
 {
     MKLocalSearchRequest *request =

@@ -37,7 +37,7 @@
     //---- For getting current gps location
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.distanceFilter = 100;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     //------
@@ -45,6 +45,22 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations objectAtIndex:0];
+//    CLLocation *newLocation = locations.lastObject;
+//    
+//    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+//    if (locationAge > 5.0) return;
+//    
+//    if (newLocation.horizontalAccuracy < 0) return;
+//    
+//    // Needed to filter cached and too old locations
+//    //NSLog(@"Location updated to = %@", newLocation);
+//    CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
+//    CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+//    double distance = [loc1 distanceFromLocation:loc2];
+//    currentLocation = newLocation;
+//    
+//    if(distance > 20)
+//    {
     [locationManager stopUpdatingLocation];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
@@ -80,6 +96,7 @@
           placemark.location);
           ------*/
      }];
+    //}
 }
 
 - (IBAction)guestLoginTouch:(id)sender {
@@ -137,6 +154,8 @@
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     if (FBSession.activeSession.isOpen) {
+        
+      
         
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection,

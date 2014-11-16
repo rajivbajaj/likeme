@@ -14,6 +14,7 @@
 		0B34796519D4DBBE00A9B3F1 /* Inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796019D4DBBE00A9B3F1 /* Inbox.png */; };
 		0B34796619D4DBBE00A9B3F1 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796119D4DBBE00A9B3F1 /* Profile.png */; };
 		0B34796719D4DBBE00A9B3F1 /* Slide Menu button - large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */; };
+		0B7A23471A185CC2008E11FE /* EADUserListProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A23461A185CC2008E11FE /* EADUserListProfileViewController.m */; };
 		0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BDE19C27EE800BD6772 /* Logo Design 2.psd */; };
 		0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE019C2844100BD6772 /* Logo Design 2.png */; };
 		0B7C9BE419C507E700BD6772 /* EADMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE319C507E700BD6772 /* EADMapViewController.m */; };
@@ -150,6 +151,8 @@
 		0B34796019D4DBBE00A9B3F1 /* Inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inbox.png; sourceTree = "<group>"; };
 		0B34796119D4DBBE00A9B3F1 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile.png; sourceTree = "<group>"; };
 		0B34796219D4DBBE00A9B3F1 /* Slide Menu button - large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slide Menu button - large.png"; sourceTree = "<group>"; };
+		0B7A23451A185CC2008E11FE /* EADUserListProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADUserListProfileViewController.h; sourceTree = "<group>"; };
+		0B7A23461A185CC2008E11FE /* EADUserListProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADUserListProfileViewController.m; sourceTree = "<group>"; };
 		0B7C9BDE19C27EE800BD6772 /* Logo Design 2.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Logo Design 2.psd"; sourceTree = "<group>"; };
 		0B7C9BE019C2844100BD6772 /* Logo Design 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo Design 2.png"; sourceTree = "<group>"; };
 		0B7C9BE219C507E700BD6772 /* EADMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMapViewController.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				0BD6A87C1A069AA700AC370C /* EADEventDetailViewController.m */,
 				0BD6A8861A09BD6900AC370C /* EADUserListTableViewController.h */,
 				0BD6A8871A09BD6900AC370C /* EADUserListTableViewController.m */,
+				0B7A23451A185CC2008E11FE /* EADUserListProfileViewController.h */,
+				0B7A23461A185CC2008E11FE /* EADUserListProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -972,6 +977,7 @@
 				1412AAB119CADFA1008052B5 /* Constants.m in Sources */,
 				144CE65119E5716C00C6EC03 /* UIImage+JSQMessages.m in Sources */,
 				144CE65419E5716C00C6EC03 /* JSQMessagesViewController.m in Sources */,
+				0B7A23471A185CC2008E11FE /* EADUserListProfileViewController.m in Sources */,
 				146D471719EC73CF009FE413 /* NSUserDefaults+DemoSettings.m in Sources */,
 				0B89FFBE19BE52E90077E029 /* EADAppDelegate.m in Sources */,
 				144CE65819E5716C00C6EC03 /* JSQMessagesTimestampFormatter.m in Sources */,

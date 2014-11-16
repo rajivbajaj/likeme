@@ -9,7 +9,7 @@
 #import "EADUserListTableViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
-
+#import "EADUserListProfileViewController.h"
 
 @interface EADUserListTableViewController ()
 
@@ -117,9 +117,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+           [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
@@ -175,7 +173,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -183,7 +181,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"ShowUserProfileDetail"])
+    {
+        EADUserListProfileViewController *destinationVC = [segue destinationViewController];
+        //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
+        NSIndexPath *myIndexPath = [self.tableView
+                                    indexPathForSelectedRow];
+        long row = [myIndexPath row];        //
+        destinationVC.userId = [_userListData[row] valueForKey:@"UserId"];
+    }
+
 }
-*/
+
 
 @end
