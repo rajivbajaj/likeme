@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNoOfGroupsAdmin;
 @property (weak, nonatomic) IBOutlet UILabel *userNoOfGroupsMember;
 @property (strong, nonatomic)  NSString *userId;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (nonatomic, strong) NSArray *userDetailArray;
 @end

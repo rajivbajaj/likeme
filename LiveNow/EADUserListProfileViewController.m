@@ -7,12 +7,23 @@
 //
 
 #import "EADUserListProfileViewController.h"
+#import "Postman.h"
+#import "UserInfo.h"
 
 @interface EADUserListProfileViewController ()
 
 @end
 
 @implementation EADUserListProfileViewController
+@synthesize userDisplayValue;
+@synthesize userStatus;
+@synthesize userLocation;
+@synthesize userNoOfEventsAttended;
+@synthesize userNoOfEventsCreated;
+@synthesize userNoOfGroupsMember;
+@synthesize userNoOfGroupsAdmin;
+@synthesize userProfileImage;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +38,45 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadUserProfile];
+}
+
+-(void) loadUserProfile
+{
+    Postman* postman = [Postman alloc];
+ 
+    
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:_userId], @"UserId",
+                                        nil];
+
+    
+ _userDetailArray= [postman Get:@"users/getbyid?jsonParams=%@" :userDataDictionary];
+
+    if (_userDetailArray != nil)
+    {
+    NSDictionary *currentObject = [self.userDetailArray objectAtIndex:0];
+    
+    if(currentObject != nil)
+    {
+
+    
+    self.userDisplayValue.text = [currentObject valueForKey:@"UserName"];
+    self.userStatus.text = [currentObject valueForKey:@"UserStatus"];
+    self.userLocation.text = [userDataDictionary valueForKey:@"UserLocation"];
+    self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%@",[userDataDictionary valueForKey:@"UserEventAttendanceCount"]];
+    self.userNoOfEventsCreated.text=[userDataDictionary valueForKey:@"UserEventAttendanceCount"];
+    self.userNoOfGroupsMember.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
+    self.userNoOfGroupsAdmin.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
+        
+    NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+        self.userProfileImage.image=image;
+    }
+    }
+    
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -189,6 +189,8 @@
                                     indexPathForSelectedRow];
         long row = [myIndexPath row];        //
         destinationVC.userId = [_userListData[row] valueForKey:@"UserId"];
+        destinationVC.userDisplayValue=[_userListData[row] valueForKey:@"FirstName"];
+        destinationVC.userLocation.text=@"Orlando";
     }
 
 }

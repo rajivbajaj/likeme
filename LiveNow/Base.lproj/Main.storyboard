@@ -678,6 +678,7 @@
                         <outlet property="userNoOfEventsCreated" destination="xPE-2g-Rv3" id="sQ9-wE-YNG"/>
                         <outlet property="userNoOfGroupsAdmin" destination="zKo-yN-UXI" id="EhQ-Ow-Wua"/>
                         <outlet property="userNoOfGroupsMember" destination="zcX-Eo-QrW" id="Bhb-ix-nbA"/>
+                        <outlet property="userProfileImage" destination="6e0-RV-gCp" id="H44-gX-TYa"/>
                         <outlet property="userStatus" destination="6bb-fD-E5I" id="0V0-JA-Y8b"/>
                     </connections>
                 </viewController>
