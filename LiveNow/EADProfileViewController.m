@@ -30,6 +30,23 @@
     }
     return self;
 }
+- (IBAction)updateProfile:(id)sender {
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    // update user information
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
+                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
+                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
+                                        [postMan GetValueOrEmpty:location.text], @"City",
+                                        nil];
+    
+    //[postMan UserUpdate:userDataDictionary];
+    [postMan Post:@"users/post?value=%@" :userDataDictionary];
+    
+}
 
 - (void)viewDidLoad
 {
@@ -62,20 +79,20 @@
 }
 - (IBAction)updateProfileTouch:(id)sender
 {
-    Postman* postMan = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-
-    // update user information
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
-                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
-                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
-                                        [postMan GetValueOrEmpty:location.text], @"City",
-                                        nil];
-    
-    //[postMan UserUpdate:userDataDictionary];
-    [postMan Post:@"users/post?value=%@" :userDataDictionary];
+//    Postman* postMan = [Postman alloc];
+//    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//
+//    // update user information
+//    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+//                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
+//                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
+//                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
+//                                        [postMan GetValueOrEmpty:location.text], @"City",
+//                                        nil];
+//    
+//    //[postMan UserUpdate:userDataDictionary];
+//    [postMan Post:@"users/post?value=%@" :userDataDictionary];
 }
 
 /*

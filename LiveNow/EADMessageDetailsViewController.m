@@ -74,10 +74,10 @@
      *
      *  Or, you can set a custom `leftBarButtonItem` and a custom `rightBarButtonItem`
      */
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"typing"]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(receiveMessagePressed:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"typing"]
+//                                                                              style:UIBarButtonItemStyleBordered
+//                                                                             target:self
+//                                                                             action:@selector(receiveMessagePressed:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
