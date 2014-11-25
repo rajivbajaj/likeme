@@ -22,14 +22,25 @@
 @synthesize profilePicImageView;
 @synthesize location;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
     return self;
 }
+
+//
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+
 - (IBAction)updateProfile:(id)sender {
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
@@ -61,7 +72,14 @@
     emailText.text = [userDataDictionary valueForKey:@"Email"];
     statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
-    location.text = userInfo.userLocation;
+    if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
+    {
+        location.text = userInfo.userLocation;
+    }
+    else
+    {
+        location.text = [userDataDictionary valueForKey:@"City"];
+    }
     
     NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
@@ -79,20 +97,20 @@
 }
 - (IBAction)updateProfileTouch:(id)sender
 {
-//    Postman* postMan = [Postman alloc];
-//    UserInfo *userInfo = [UserInfo sharedUserInfo];
-//
-//    // update user information
-//    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-//                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
-//                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
-//                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
-//                                        [postMan GetValueOrEmpty:location.text], @"City",
-//                                        nil];
-//    
-//    //[postMan UserUpdate:userDataDictionary];
-//    [postMan Post:@"users/post?value=%@" :userDataDictionary];
+    Postman* postMan = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+
+    // update user information
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        [postMan GetValueOrEmpty:emailText.text], @"Email",
+                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
+                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
+                                        [postMan GetValueOrEmpty:location.text], @"City",
+                                        nil];
+    
+    //[postMan UserUpdate:userDataDictionary];
+    [postMan Post:@"users/post?value=%@" :userDataDictionary];
 }
 
 /*
