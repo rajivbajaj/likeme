@@ -9,11 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface EADAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EADAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
-- (void)userLoggedIn;
-- (void)userLoggedOut;
+//- (void)userLoggedIn;
+//- (void)userLoggedOut;
+@property (nonatomic, retain) NSString* userLocation;
 @end

@@ -7,13 +7,29 @@
 //
 
 #import "EADAppDelegate.h"
-
+#import "UserInfo.h"
 @implementation EADAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self CurrentLocationIdentifier];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    if(userInfo.userLocation == nil && ![userInfo.userLocation isEqualToString:@""])
+    {
+
+    double delayInSeconds = 10.0; // number of seconds to wait
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     // Override point for customization after application launch.
     [FBLoginView class];
+    });
+    }
+    else
+    {
+        [FBLoginView class];
+
+    }
+    
     return YES;
 }
 							
@@ -38,6 +54,7 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     // Call the 'activateApp' method to log an app event for use in analytics and advertising reporting.
+    
     [FBAppEvents activateApp];
     
     
@@ -62,6 +79,66 @@
     // You can add your app-specific url handling code here if needed
     
     return wasHandled;
+}
+-(void)CurrentLocationIdentifier
+{
+    //---- For getting current gps location
+    locationManager = [CLLocationManager new];
+    if(locationManager.locationServicesEnabled == YES){
+    locationManager.delegate = self;
+    locationManager.distanceFilter = 100;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
+    }
+    //------
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations objectAtIndex:0];
+        [locationManager stopUpdatingLocation];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         
+         
+         if (!(error))
+         {
+             UserInfo *userInfo = [UserInfo sharedUserInfo];
+
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSLog(@"\nCurrent Location Detected\n");
+             NSLog(@"placemark %@",placemark);
+             //NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             //NSString *Address = [[NSString alloc]initWithString:locatedAt];
+             userInfo.userLocation = [[NSString alloc]initWithString:placemark.locality];
+             userInfo.Latitude=[NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+             userInfo.Longitude=[NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+             //NSString *Country = [[NSString alloc]initWithString:placemark.country];
+             //NSString *CountryArea = [NSString stringWithFormat:@"%@, %@", Area,Country];
+             //NSLog(@"%@",CountryArea);
+         }
+         else
+         {
+             UIAlertView *errorAlert = [[UIAlertView alloc]
+                                        initWithTitle:@"Error" message:@"Failed to Get Your Location"
+                                        delegate:nil
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles:nil];
+             [errorAlert show];
+         }
+         /*---- For more results
+          placemark.region);
+          placemark.country);
+          placemark.locality);
+          placemark.name);
+          placemark.ocean);
+          placemark.postalCode);
+          placemark.subLocality);
+          placemark.location);
+          ------*/
+     }];
+    //}
 }
 
 @end

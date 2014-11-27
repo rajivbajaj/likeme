@@ -15,5 +15,8 @@
 @property (nonatomic, retain) NSString* email;
 @property (nonatomic, retain) NSString* profileImageURL;
 @property (nonatomic, retain) NSString* userLocation;
+@property (nonatomic, retain) NSString* Latitude;
+@property (nonatomic, retain) NSString* Longitude;
+
 +(id)sharedUserInfo;
 @end

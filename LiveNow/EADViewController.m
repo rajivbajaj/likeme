@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self CurrentLocationIdentifier];
+    //[self CurrentLocationIdentifier];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
     [self.view addSubview:loginView];
@@ -32,16 +32,16 @@
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
 }
--(void)CurrentLocationIdentifier
-{
-    //---- For getting current gps location
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = 100;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-    //------
-}
+//-(void)CurrentLocationIdentifier
+//{
+//    //---- For getting current gps location
+//    locationManager = [CLLocationManager new];
+//    locationManager.delegate = self;
+//    locationManager.distanceFilter = 100;
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    [locationManager startUpdatingLocation];
+//    //------
+//}
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations objectAtIndex:0];
@@ -167,7 +167,7 @@
                  userInfo.userId = user.objectID;
                  userInfo.email = [user objectForKey:@"email"];
                  userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
-                 userInfo.userLocation=self.userLocation;
+                 //userInfo.userLocation=self.userLocation;
                  // update user information
                  Postman *postMan = [Postman alloc];
                  NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

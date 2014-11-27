@@ -18,7 +18,7 @@
 - (IBAction)textFieldReturn:(id)sender {
     [sender resignFirstResponder];
     [_mapView removeAnnotations:[_mapView annotations]];
-    [self performSearch];
+    [self searchAll];
 }
 
 - (IBAction)searchText:(id)sender {
@@ -33,7 +33,49 @@
                                 [postMan GetValueOrEmpty:_searchText.text], @"searchstring", nil];
     self.matchingItems = [postMan Get:@"utility/search?jsonParams=%@" :paramsData];
     
+   NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
+    
+    for (NSDictionary *currentObject in self.matchingItems)
+    {
+        
+        CLLocationCoordinate2D  ctrpoint;
+        ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
+        ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
+        MKPointAnnotation *annotation =
+        [[MKPointAnnotation alloc]init];
+        annotation.coordinate=ctrpoint;
+        annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityName"]];
+        
+        //annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+
+        [marketLocations addObject:annotation];
     }
+    [_mapView addAnnotations:marketLocations];
+
+    //AddressAnnotation *addAnnotation = [[AddressAnnotation alloc] initWithCoordinate:ctrpoint];
+    //[mapview addAnnotation:addAnnotation];
+    //[addAnnotation release];
+    
+//    NSString *location = @"piscataway,nj";
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder geocodeAddressString:location
+//                 completionHandler:^(NSArray* placemarks, NSError* error){
+//                     if (placemarks && placemarks.count > 0) {
+//                         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+//                         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+//                         
+//                         MKCoordinateRegion region = self.mapView.region;
+//                         region.center = placemark.region.center;
+//                         //region.span.longitudeDelta /= 8.0;
+//                         //region.span.latitudeDelta /= 8.0;
+//                        
+//                         [self.mapView setRegion:region animated:YES];
+//                         [self.mapView addAnnotation:placemark];
+//                     }
+//                 }
+//     ];
+
+}
 -(void) performSearch
 {
     MKLocalSearchRequest *request =
@@ -90,12 +132,30 @@
         pinView.pinColor=MKPinAnnotationColorPurple;
         pinView.canShowCallout=YES;
         pinView.animatesDrop=YES;
+        pinView.rightCalloutAccessoryView= [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
     }
     else
     {
         [self.mapView.userLocation setTitle:@"You are Here!"];
     }
     return pinView;
+}
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if (view.selected == YES )
+    {
+        //TODO segue to event/person
+        
+    }
+}
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    MKPointAnnotation *location = view.annotation;
+    
+    if (view.selected)
+    {
+    
+    }
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
