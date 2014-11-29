@@ -144,6 +144,8 @@
                                                 date:[NSDate distantPast]
                                                 text:[currentItem valueForKey:@"Message"]];
             
+
+            
             [jsqMessagesArray addObject:msg];
         }
         

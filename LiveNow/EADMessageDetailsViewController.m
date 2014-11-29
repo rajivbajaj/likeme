@@ -19,6 +19,7 @@
 @synthesize messangerType;
 @synthesize authorId;
 @synthesize eventId;
+@synthesize currentUserId;
 
 #pragma mark - View lifecycle
 
@@ -34,7 +35,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    if(userInfo != nil)
+    {
+        self.currentUserId = [userInfo userId];
+    }
     self.title = [self senderName];
     [NSUserDefaults saveIncomingAvatarSetting:YES];
     [NSUserDefaults saveOutgoingAvatarSetting:YES];
@@ -44,10 +49,7 @@
     self.senderId = kJSQDemoAvatarIdSquires;
     self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
     
-    
-    /**
-     *  Load up our fake data for the demo
-     */
+
     MessagesData *messagesData = [MessagesData alloc];
     messagesData.messangerType = [self messangerType];
     messagesData.authorId = [self authorId];
@@ -357,7 +359,7 @@
     
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if ([message.senderId isEqualToString:self.senderId]) {
+    if ([message.senderId isEqualToString:self.currentUserId]) {
         return self.demoData.outgoingBubbleImageData;
     }
     
@@ -480,12 +482,12 @@
     
     if ([msg isKindOfClass:[JSQTextMessage class]]) {
         
-        if ([msg.senderId isEqualToString:self.authorId]) {
-            cell.textView.textColor = [UIColor blackColor];
-        }
-        else {
-            cell.textView.textColor = [UIColor whiteColor];
-        }
+//        if ([msg.senderId isEqualToString:self.authorId]) {
+//            cell.textView.textColor = [UIColor blackColor];
+//        }
+//        else {
+//            cell.textView.textColor = [UIColor whiteColor];
+//        }
         
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };

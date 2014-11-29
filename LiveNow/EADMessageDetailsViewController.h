@@ -41,4 +41,5 @@
 @property (strong, nonatomic) NSString *authorId;
 @property (strong, nonatomic) NSString *eventId;
 @property (strong, nonatomic) NSString *messangerType;
+@property (strong, nonatomic) NSString *currentUserId;
 @end
