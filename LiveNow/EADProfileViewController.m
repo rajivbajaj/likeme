@@ -85,7 +85,14 @@
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
     
-    profilePicImageView.image = image;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
+    [image drawInRect:CGRectMake(0,0,36,36)];
+    UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    profilePicImageView.image = im2;
+    profilePicImageView.contentMode = UIViewContentModeTop;
+    
+    //profilePicImageView.image = image;
 
     // Do any additional setup after loading the view.
 }
