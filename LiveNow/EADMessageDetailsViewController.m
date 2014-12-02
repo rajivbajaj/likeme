@@ -323,7 +323,6 @@
         case 0:
             [self.demoData addPhotoMediaMessage];
             break;
-            
         case 1:
         {
             __weak UICollectionView *weakView = self.collectionView;
@@ -481,13 +480,6 @@
     JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
     
     if ([msg isKindOfClass:[JSQTextMessage class]]) {
-        
-//        if ([msg.senderId isEqualToString:self.authorId]) {
-//            cell.textView.textColor = [UIColor blackColor];
-//        }
-//        else {
-//            cell.textView.textColor = [UIColor whiteColor];
-//        }
         
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };

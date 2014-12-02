@@ -12,10 +12,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *eventNameText;
 @property (weak, nonatomic) IBOutlet UITextField *locationText;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
-@property (weak, nonatomic) IBOutlet UIDatePicker *startDate;
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *endDateText;
 - (IBAction)saveEvent:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *eventTypeText;
+@property (weak, nonatomic) IBOutlet UIDatePicker *eventsDatePicker;
 
 @end

@@ -14,6 +14,7 @@
 @end
 
 @implementation EADEventsCreateViewController
+NSString* datePickerContextText;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -108,34 +109,97 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"eventSaveSegue"])
+    {
+        Postman* postMan = [Postman alloc];
+        UserInfo *userInfo = [UserInfo sharedUserInfo];
+        
+        // update event
+        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
+                                            [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
+                                            [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
+                                            [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
+                                            [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
+                                            [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
+                                            [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
+                                            nil];
+        
+        
+        [postMan Post:@"events/post?value=%@" :userDataDictionary];
+
+    }
 }
-*/
+
+- (IBAction)datePickerValueChanged:(id)sender
+{
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:[self.eventsDatePicker date]
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterShortStyle];
+    
+    if([datePickerContextText isEqualToString:@"start"])
+    {
+        [self.startDateText setText:dateString];
+    }
+    else if([datePickerContextText isEqualToString:@"end"])
+    {
+        [self.endDateText setText:dateString];
+    }
+}
+
+- (IBAction)startDateStartEditing:(id)sender
+{
+    datePickerContextText = @"start";
+    [self datePickerContext:[self.startDateText text]];
+}
+
+- (IBAction)endDateStartEditing:(id)sender
+{
+    datePickerContextText = @"end";
+    [self datePickerContext:[self.endDateText text]];
+}
 
 - (IBAction)saveEvent:(id)sender {
-    Postman* postMan = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
-    // update event
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
-                                        [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
-                                        [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
-                                        [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
-                                        [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
-                                        [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
-                                        [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
-                                        nil];
-    
-    
-       [postMan Post:@"events/post?value=%@" :userDataDictionary];
+//    Postman* postMan = [Postman alloc];
+//    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//    
+//    // update event
+//    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
+//                                        [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
+//                                        [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
+//                                        [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
+//                                        [postMan GetValueOrEmpty:_startDateText.text], @"StartTime",
+//                                        [postMan GetValueOrEmpty:_endDateText.text], @"EndTime",
+//                                        [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
+//                                        nil];
+//    
+//    
+//       [postMan Post:@"events/post?value=%@" :userDataDictionary];
     //[self prepareForSegue: sender:<#(id)#>]
 }
+
+-(void)datePickerContext:(NSString*)selectedDate
+{
+    [self.eventsDatePicker setHidden:false];
+    
+    if(![selectedDate isEqualToString:@""])
+    {
+        // Convert string to date object
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateStyle:NSDateFormatterShortStyle];
+        [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+        NSDate *date = [dateFormat dateFromString:selectedDate];
+        
+        [self.eventsDatePicker setDate:date];
+    }
+}
+
+
 @end
