@@ -21,6 +21,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (_logout)
+    {
+        FBSession.activeSession.closeAndClearTokenInformation;
+        _logout = false;
+    }
+    else
+    {
     //[self CurrentLocationIdentifier];
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.delegate = self;
@@ -30,6 +37,7 @@
     //[self.view addSubview:loginView];
 	// Do any additional setup after loading the view, typically from a nib.
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    }
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
 }
 //-(void)CurrentLocationIdentifier
@@ -175,6 +183,8 @@
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
                                                      [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",
                                                      [postMan GetValueOrEmpty:userInfo.profileImageURL], @"FBProfileURL",
+                                                     [postMan GetValueOrEmpty:userInfo.Latitude], @"Latitude",
+                                                     [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
                                                      nil];
 
                  //[postMan UserUpdate:userDataDictionary];

@@ -9,6 +9,9 @@
 #import "EADMapViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADUserListProfileViewController.h"
+#import "EADMKPointAnnotation.h"
+
 @interface EADMapViewController ()
 
 @end
@@ -41,14 +44,19 @@
         CLLocationCoordinate2D  ctrpoint;
         ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
         ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
-        MKPointAnnotation *annotation =
-        [[MKPointAnnotation alloc]init];
-        annotation.coordinate=ctrpoint;
+       // EADMKPointAnnotation *annotation =
+       // [[EADMKPointAnnotation alloc]init];
+    EADMKPointAnnotation *annotation = [[EADMKPointAnnotation alloc] initWithName:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]] entityType:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]] coordinate:ctrpoint] ;
+        //annotation.coordinate=ctrpoint;
         annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityName"]];
         
-        //annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+        annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+        //annotation. =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
+        //annotation.entityType =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+        //annotation.entityId = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
 
         [marketLocations addObject:annotation];
+        //[_mapView addAnnotation:annotation];
     }
     [_mapView addAnnotations:marketLocations];
 
@@ -123,14 +131,24 @@
     
     
     MKPinAnnotationView*pinView=nil;
+    
     if(annotation!=self.mapView.userLocation)
     {
-        
+        EADMKPointAnnotation *annotation1 =annotation;
+      
+
         pinView=(MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:nil];
         if(pinView==nil)
             pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:nil];
-        pinView.pinColor=MKPinAnnotationColorPurple;
-        pinView.canShowCallout=YES;
+        if ([annotation1.subtitle  isEqual: @"User"])
+        {
+            pinView.pinColor=MKPinAnnotationColorPurple;
+        }
+        else
+        {
+            pinView.pinColor=MKPinAnnotationColorGreen;
+        }
+                pinView.canShowCallout=YES;
         pinView.animatesDrop=YES;
         pinView.rightCalloutAccessoryView= [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
@@ -141,6 +159,7 @@
     }
     return pinView;
 }
+
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     if (view.selected == YES )
@@ -150,11 +169,13 @@
     }
 }
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    MKPointAnnotation *location = view.annotation;
+    EADMKPointAnnotation *location = view.annotation;
     
     if (view.selected)
     {
-    
+        _annotationId = location.entityId;
+        _annotationType = location.entityType;
+    [self performSegueWithIdentifier:@"mapToProfileDetail" sender:view];
     }
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -189,7 +210,7 @@
     _mapView.centerCoordinate = userLocation.location.coordinate;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -197,7 +218,15 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"mapToProfileDetail"])
+    {
+        EADUserListProfileViewController *destinationVC = [segue destinationViewController];
+        
+        destinationVC.userId = _annotationId;
+        
+        
+    }
 }
-*/
+
 
 @end

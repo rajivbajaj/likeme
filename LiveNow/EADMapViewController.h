@@ -13,5 +13,8 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UITextField *searchText;
 @property (strong, nonatomic) NSMutableArray *matchingItems;
+@property NSString *annotationId;
+@property NSString *annotationType;
+
 -(IBAction)textFieldReturn:(id)sender;
 @end

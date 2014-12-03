@@ -22,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
 @property (strong, nonatomic) AMSlideOutNavigationController*  slideoutController;
 @property (nonatomic, retain) NSString* userLocation;
+@property  BOOL *logout;
 @end
