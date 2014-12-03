@@ -33,11 +33,18 @@ NSInteger selectedCellIndex;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationItem.hidesBackButton = YES;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
+    //[self loadEvents];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     [self loadEvents];
+    [self.eventsCollectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
