@@ -65,9 +65,9 @@
                 
                 
             }
-       
+    [self.locationsTableView reloadData];   
     }];
-    [self.locationsTableView reloadData];
+    
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,14 +77,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.matchingItems.count < 1)
-    {
-        return  1;
-    }
-    else
-    {
+   
         return [self.matchingItems count];
-    }
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,14 +92,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary *currentItem = nil;
+    MKMapItem *currentItem = nil;
     
-        currentItem  = self.matchingItems[indexPath.row];
+      currentItem  = self.matchingItems[indexPath.row];
     
     
     if(currentItem != nil)
     {
-        cell.textLabel.text = [currentItem valueForKey:@"Name"];
+        NSDictionary *itemAddressDictionary = currentItem.placemark.addressDictionary;
+        cell.textLabel.text = [itemAddressDictionary valueForKey:@"Name"];
     }
     
     return cell;

@@ -36,6 +36,8 @@
 		0B89FFD719BE52E90077E029 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B89FFD519BE52E90077E029 /* InfoPlist.strings */; };
 		0B89FFD919BE52EA0077E029 /* LiveNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89FFD819BE52E90077E029 /* LiveNowTests.m */; };
 		0B89FFE619BE547D0077E029 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFE519BE547D0077E029 /* MapKit.framework */; };
+		0BBDFE371A2FF5E30030F974 /* EADLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDFE331A2FF5E30030F974 /* EADLocationSearchViewController.m */; };
+		0BBDFE381A2FF5E30030F974 /* EADMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDFE361A2FF5E30030F974 /* EADMKPointAnnotation.m */; };
 		0BD6A87519EC875600AC370C /* EADEventsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */; };
 		0BD6A87619EC875600AC370C /* EADCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */; };
 		0BD6A8791A0573F800AC370C /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8771A0573F800AC370C /* Map.png */; };
@@ -182,6 +184,10 @@
 		0B89FFD619BE52E90077E029 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B89FFD819BE52E90077E029 /* LiveNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveNowTests.m; sourceTree = "<group>"; };
 		0B89FFE519BE547D0077E029 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0BBDFE331A2FF5E30030F974 /* EADLocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADLocationSearchViewController.m; sourceTree = "<group>"; };
+		0BBDFE341A2FF5E30030F974 /* EADLocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADLocationSearchViewController.h; sourceTree = "<group>"; };
+		0BBDFE351A2FF5E30030F974 /* EADMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMKPointAnnotation.h; sourceTree = "<group>"; };
+		0BBDFE361A2FF5E30030F974 /* EADMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADMKPointAnnotation.m; sourceTree = "<group>"; };
 		0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventsCreateViewController.m; sourceTree = "<group>"; };
 		0BD6A87219EC875600AC370C /* EADCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADCollectionViewCell.h; sourceTree = "<group>"; };
 		0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADCollectionViewCell.m; sourceTree = "<group>"; };
@@ -473,6 +479,10 @@
 		0B89FFE219BE53000077E029 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0BBDFE331A2FF5E30030F974 /* EADLocationSearchViewController.m */,
+				0BBDFE341A2FF5E30030F974 /* EADLocationSearchViewController.h */,
+				0BBDFE351A2FF5E30030F974 /* EADMKPointAnnotation.h */,
+				0BBDFE361A2FF5E30030F974 /* EADMKPointAnnotation.m */,
 				0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */,
 				0BD6A87219EC875600AC370C /* EADCollectionViewCell.h */,
 				0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */,
@@ -969,6 +979,7 @@
 				1433722619EFCF7C009DD572 /* EADGroupDetailsViewController.m in Sources */,
 				144CE5CA19DDDB4000C6EC03 /* EADComposeMessageViewController.m in Sources */,
 				144CE65319E5716C00C6EC03 /* JSQMessagesKeyboardController.m in Sources */,
+				0BBDFE381A2FF5E30030F974 /* EADMKPointAnnotation.m in Sources */,
 				144CE66519E5716C00C6EC03 /* JSQMessagesCollectionViewCell.m in Sources */,
 				143585EC19CA57BF007F03DF /* EADInboxViewController.m in Sources */,
 				144CE66F19E5716C00C6EC03 /* JSQMessagesMediaPlaceholderView.m in Sources */,
@@ -1008,6 +1019,7 @@
 				143585E619CA5796007F03DF /* EADGroupsViewController.m in Sources */,
 				144CE66D19E5716C00C6EC03 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				143585D019CA422C007F03DF /* AMTableView.m in Sources */,
+				0BBDFE371A2FF5E30030F974 /* EADLocationSearchViewController.m in Sources */,
 				144CE66419E5716C00C6EC03 /* JSQMessagesCollectionView.m in Sources */,
 				144CE65019E5716C00C6EC03 /* UIColor+JSQMessages.m in Sources */,
 				143585E919CA57AE007F03DF /* EADProfileViewController.m in Sources */,
