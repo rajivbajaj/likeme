@@ -149,6 +149,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ihk-Gx-8sd">
+                                <rect key="frame" x="5" y="529" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="rLv-GB-PI8">
+                                        <connections>
+                                            <action selector="actionInitiatorTouched:" destination="kWC-df-Exw" id="fB0-9Y-Xu8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="b83-b6-JLj">
+                                <rect key="frame" x="5" y="401" width="315" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -162,6 +177,8 @@
                     <connections>
                         <outlet property="groupDescription" destination="weR-7w-hmr" id="Rna-wc-9I4"/>
                         <outlet property="groupName" destination="hYe-4m-i0H" id="k5E-ai-dbl"/>
+                        <outlet property="imageView" destination="b83-b6-JLj" id="KW4-dz-FgL"/>
+                        <segue destination="d6f-xA-AFD" kind="push" identifier="imagePicker" id="JIy-4n-H5h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUI-D9-JfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -865,24 +882,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xTJ-Au-MFt">
-                                <rect key="frame" x="0.0" y="66" width="320" height="456"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="502"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Wwg-Tl-fxP">
-                                <rect key="frame" x="0.0" y="522" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="28a-CE-T2P">
-                                        <connections>
-                                            <action selector="actionInitiatorTouched:" destination="d6f-xA-AFD" id="JpS-vb-CiU"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NVY-kM-HBw"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="NVY-kM-HBw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="nYE-lL-lKv"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="xTJ-Au-MFt" id="NBc-US-ay7"/>
                     </connections>
@@ -1194,8 +1204,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WlC-XK-j1v"/>
-        <segue reference="uZl-yr-jNO"/>
         <segue reference="zhF-AW-XRQ"/>
+        <segue reference="uZl-yr-jNO"/>
+        <segue reference="WlC-XK-j1v"/>
+        <segue reference="JIy-4n-H5h"/>
     </inferredMetricsTieBreakers>
 </document>

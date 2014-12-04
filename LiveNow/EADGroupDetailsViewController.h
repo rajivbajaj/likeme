@@ -11,5 +11,6 @@
 @interface EADGroupDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *groupName;
 @property (weak, nonatomic) IBOutlet UITextField *groupDescription;
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property BOOL *launchCamera;
 @end

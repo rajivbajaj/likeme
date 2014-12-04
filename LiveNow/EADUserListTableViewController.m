@@ -117,7 +117,22 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-           [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSIndexPath *currentIdx = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        NSDictionary *selectedItem = [self.searchResult objectAtIndex:indexPath.row];
+        if(selectedItem != nil)
+        {
+            int selectedIndex = [self getIndexOfItem:[selectedItem objectForKey:@"FirstName"]];
+            currentIdx = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        }
+    }
+    else
+    {
+        currentIdx = indexPath;
+    }
+
+           [tableView deselectRowAtIndexPath:currentIdx animated:YES];
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
@@ -134,6 +149,22 @@
     
     return YES;
 }
+- (int)getIndexOfItem:(NSString*)str
+{
+    for(int i=0;i<self.userListData.count;i++)
+    {
+        NSDictionary *nsDict  = self.userListData[i];
+        
+        if(nsDict != nil && [[nsDict objectForKey:@"FirstName"] isEqualToString:str])
+        {
+            return i;
+            break;
+        }
+    }
+    
+    return 0;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

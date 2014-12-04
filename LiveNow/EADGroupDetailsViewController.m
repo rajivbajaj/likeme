@@ -9,6 +9,7 @@
 #import "EADGroupDetailsViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADImagePickerViewController.h"
 
 @interface EADGroupDetailsViewController ()
 
@@ -31,6 +32,34 @@
 - (IBAction)saveTouched:(id)sender {
 }
 
+- (IBAction)actionInitiatorTouched:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    [actionSheet addButtonWithTitle:@"Take a Picture"];
+    [actionSheet addButtonWithTitle:@"Camera Roll"];
+    [actionSheet showFromBarButtonItem:sender animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            _launchCamera = true;
+            [self performSegueWithIdentifier:@"imagePicker" sender:self];
+            break;
+        case 1:
+            _launchCamera = false;
+            [self performSegueWithIdentifier:@"imagePicker" sender:self];
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark - Navigation
 
@@ -60,6 +89,13 @@
         //[postMan UserUpdate:userDataDictionary];
         [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
 
+    }
+    else if([segue.identifier isEqualToString:@"imagePicker"])
+    {
+        EADImagePickerViewController *destinationVC = [segue destinationViewController];
+        
+        destinationVC.shouldLaunchCamera=true;
+        
     }
 }
 

@@ -124,12 +124,21 @@ finishedSavingWithError:(NSError *)error
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     // Do any additional setup after loading the view.
+    if (_shouldLaunchCamera)
+    {
+    [self launchCamera];
+    }
+    else
+    {
+        [self launchCameraRoll];
+    }
 }
 
 - (void)didReceiveMemoryWarning

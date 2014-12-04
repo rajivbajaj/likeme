@@ -11,6 +11,6 @@
 
 @interface EADImagePickerViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property BOOL shouldLaunchCamera;
 @property BOOL newMedia;
 @end

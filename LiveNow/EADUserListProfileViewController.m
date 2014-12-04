@@ -69,7 +69,7 @@
     self.userNoOfGroupsMember.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
     self.userNoOfGroupsAdmin.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
         
-    NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+    NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURLBig"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
         self.userProfileImage.image=image;
