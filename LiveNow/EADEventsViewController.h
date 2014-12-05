@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSArray *eventsArray;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredArray;
+@property BOOL isNewEventAdded;
 @end

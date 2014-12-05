@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADProfileViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDataSource>
+@interface EADProfileViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *statusText;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UITextField *location;
 @property (weak, nonatomic) IBOutlet UITextField *displayNameText;
 @property (weak, nonatomic) IBOutlet UITextField *ageText;
+@property (weak, nonatomic) IBOutlet UIPickerView *genderPickerView;
 
+@property NSString *selectedGender;
+@property NSArray *pickerData;
 @property NSString *locationName;
 @property double latitude;
 @property double longitude;

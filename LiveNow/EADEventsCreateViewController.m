@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADLocationSearchViewController.h"
+#import "EADEventsViewController.h"
 
 @interface EADEventsCreateViewController ()
 
@@ -35,6 +36,8 @@ NSString* endDateString;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     self.locationText.text=userInfo.userLocation;
+    
+    _pickerData = @[@"Male only", @"Female only", @"For kids", @"18 and above"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -75,8 +78,13 @@ NSString* endDateString;
     
     [postMan Post:@"events/post?value=%@" :userDataDictionary];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+    
+    eventViewController.isNewEventAdded = true;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -114,12 +122,14 @@ NSString* endDateString;
 
 - (IBAction)startDateStartEditing:(id)sender
 {
+    [sender resignFirstResponder];
     datePickerContextText = @"start";
     [self datePickerContext:[self.startDateText text]];
 }
 
 - (IBAction)endDateStartEditing:(id)sender
 {
+    [sender resignFirstResponder];
     datePickerContextText = @"end";
     [self datePickerContext:[self.endDateText text]];
 }
@@ -138,6 +148,35 @@ NSString* endDateString;
         
         [self.eventsDatePicker setDate:date];
     }
+}
+
+- (IBAction)restrictionsEditingBegin:(id)sender
+{
+    [sender resignFirstResponder];
+    [self.restrictionsPicker setHidden:false];
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    self.restrictionsText.text = _pickerData[row];
 }
 
 

@@ -38,13 +38,16 @@ NSInteger selectedCellIndex;
     
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
-    //[self loadEvents];
+    [self loadEvents];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self loadEvents];
-    [self.eventsCollectionView reloadData];
+    if(self.isNewEventAdded == true)
+    {
+        [self loadEvents];
+        [self.eventsCollectionView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning

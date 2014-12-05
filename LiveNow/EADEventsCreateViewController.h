@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADEventsCreateViewController : UITableViewController
+@interface EADEventsCreateViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *eventNameText;
 @property (weak, nonatomic) IBOutlet UITextField *locationText;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionText;
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *endDateText;
-- (IBAction)saveEvent:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *eventTypeText;
 @property (weak, nonatomic) IBOutlet UIDatePicker *eventsDatePicker;
+@property (weak, nonatomic) IBOutlet UITextField *restrictionsText;
+@property (weak, nonatomic) IBOutlet UIPickerView *restrictionsPicker;
 
+@property NSArray *pickerData;
 @property NSString *locationName;
 @property double latitude;
 @property double longitude;

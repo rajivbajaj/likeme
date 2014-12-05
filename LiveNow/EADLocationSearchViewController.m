@@ -138,7 +138,7 @@
                 }
         }
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     [tableView deselectRowAtIndexPath:currentIdx animated:YES];

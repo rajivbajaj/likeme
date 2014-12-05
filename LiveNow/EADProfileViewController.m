@@ -23,43 +23,6 @@
 @synthesize profilePicImageView;
 @synthesize location;
 
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//    self = [super init];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-
-//
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (IBAction)updateProfile:(id)sender {
-    Postman* postMan = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
-    // update user information
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        //[postMan GetValueOrEmpty:ageText.text], @"Age",
-                                        [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
-                                        [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
-                                        [postMan GetValueOrEmpty:location.text], @"City",
-                                        nil];
-    
-    //[postMan UserUpdate:userDataDictionary];
-    [postMan Post:@"users/post?value=%@" :userDataDictionary];
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -93,6 +56,7 @@
     profilePicImageView.image = im2;
     profilePicImageView.contentMode = UIViewContentModeTop;
     
+    _pickerData = @[@"Male", @"Female"];
     //profilePicImageView.image = image;
 
     // Do any additional setup after loading the view.
@@ -100,7 +64,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if(![self.locationName isEqualToString:@""])
+    if(self.locationName != nil && ![self.locationName isEqualToString:@""])
     {
         self.location.text = self.locationName;
     }
@@ -135,6 +99,23 @@
     return 1;
 }
 
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    _selectedGender = _pickerData[row];
+}
 
 
 #pragma mark - Navigation
