@@ -18,4 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *eventTypeText;
 @property (weak, nonatomic) IBOutlet UIDatePicker *eventsDatePicker;
 
+@property NSString *locationName;
+@property double latitude;
+@property double longitude;
 @end

@@ -9,6 +9,8 @@
 #import "EADEventsCreateViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADLocationSearchViewController.h"
+
 @interface EADEventsCreateViewController ()
 
 @end
@@ -35,6 +37,14 @@ NSString* endDateString;
     self.locationText.text=userInfo.userLocation;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(![self.locationName isEqualToString:@""])
+    {
+        self.locationText.text = self.locationName;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -57,6 +67,9 @@ NSString* endDateString;
                                         [postMan GetValueOrEmpty:startDateString], @"StartTime",
                                         [postMan GetValueOrEmpty:endDateString], @"EndTime",
                                         [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
+                                        _latitude, @"Latitude",
+                                        _longitude, @"Longitude",
+                                        
                                         nil];
     
     
@@ -66,13 +79,15 @@ NSString* endDateString;
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if([segue.identifier isEqualToString:@"eventSaveSegue"])
-//    {
-//
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"segueLocationPicker"])
+    {
+        EADLocationSearchViewController *locationSearchController = segue.destinationViewController;
+        
+        locationSearchController.initiatingController = @"event";
+    }
+}
 
 - (IBAction)datePickerValueChanged:(id)sender
 {

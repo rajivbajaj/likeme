@@ -13,5 +13,5 @@
 @property (strong, nonatomic) NSMutableArray *matchingItems;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
 -(IBAction)textFieldReturn:(id)sender;
-
+@property NSString *initiatingController;
 @end

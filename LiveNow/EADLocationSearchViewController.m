@@ -9,6 +9,8 @@
 #import "EADLocationSearchViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADEventsCreateViewController.h"
+#import "EADProfileViewController.h"
 
 @interface EADLocationSearchViewController ()
 
@@ -49,7 +51,7 @@
     //request.region = region;
    
     _matchingItems = [[NSMutableArray alloc] init];
-    NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
+    //NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
     MKLocalSearch *search =
     [[MKLocalSearch alloc]initWithRequest:request];
     
@@ -111,7 +113,33 @@
     NSIndexPath *currentIdx = nil;
             currentIdx = indexPath;
     
+    MKMapItem *selectedItem = self.matchingItems[indexPath.row];
+
     
+    if(selectedItem != nil)
+    {
+        if(selectedItem.placemark != nil)
+        {
+                if([self.initiatingController isEqualToString:@"profile"])
+                {
+                  EADProfileViewController *profileViewController =  [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+                    
+                    profileViewController.locationName = selectedItem.name;
+                    profileViewController.latitude = selectedItem.placemark.coordinate.latitude;
+                    profileViewController.longitude = selectedItem.placemark.coordinate.longitude;
+                }
+                else if([self.initiatingController isEqualToString:@"event"])
+                {
+                    EADEventsCreateViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+                    
+                    eventViewController.locationName = selectedItem.name;
+                    eventViewController.latitude = selectedItem.placemark.coordinate.latitude;
+                    eventViewController.longitude = selectedItem.placemark.coordinate.longitude;
+                }
+        }
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
     
     [tableView deselectRowAtIndexPath:currentIdx animated:YES];
 }
