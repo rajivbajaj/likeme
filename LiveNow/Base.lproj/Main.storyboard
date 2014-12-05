@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -93,7 +92,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kWC-df-Exw" kind="push" identifier="GroupDetailsSegue" id="Qsh-tr-pMg"/>
+                                    <segue destination="QYa-EQ-8Ox" kind="push" id="gum-FE-985"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -128,6 +127,21 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1087" y="1136"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eub-vm-hhd">
+            <objects>
+                <viewController id="QYa-EQ-8Ox" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O4X-6h-BAm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MVO-cA-7O5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erW-bh-v5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121" y="1788"/>
         </scene>
         <!--Group Details View Controller-->
         <scene sceneID="I0I-B1-alP">
@@ -1054,6 +1068,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="HlL-J3-QH3"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1070,6 +1087,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="IHc-o6-IzY"/>
+                                                    </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GrQ-E6-WzO">
                                                     <rect key="frame" x="277" y="11" width="24" height="24"/>
@@ -1096,6 +1116,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="cDY-0O-qYh"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1112,6 +1135,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="ZZn-7b-VEv"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1271,8 +1297,7 @@
         <segue reference="s2S-s4-CzB"/>
         <segue reference="GBq-uG-Q6z"/>
         <segue reference="uZl-yr-jNO"/>
-        <segue reference="WlC-XK-j1v"/>
         <segue reference="JIy-4n-H5h"/>
-        <segue reference="4Xp-nV-93B"/>
+        <segue reference="zhF-AW-XRQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -122,6 +122,7 @@ NSString* endDateString;
 
 - (IBAction)startDateStartEditing:(id)sender
 {
+    [self.restrictionsPicker setHidden:true];
     [sender resignFirstResponder];
     datePickerContextText = @"start";
     [self datePickerContext:[self.startDateText text]];
@@ -129,6 +130,7 @@ NSString* endDateString;
 
 - (IBAction)endDateStartEditing:(id)sender
 {
+    [self.restrictionsPicker setHidden:true];
     [sender resignFirstResponder];
     datePickerContextText = @"end";
     [self datePickerContext:[self.endDateText text]];
@@ -152,6 +154,8 @@ NSString* endDateString;
 
 - (IBAction)restrictionsEditingBegin:(id)sender
 {
+    //Hide the datepicker
+    [self.eventsDatePicker setHidden:true];
     [sender resignFirstResponder];
     [self.restrictionsPicker setHidden:false];
 }
@@ -177,6 +181,12 @@ NSString* endDateString;
       inComponent:(NSInteger)component
 {
     self.restrictionsText.text = _pickerData[row];
+}
+
+- (IBAction)genericTouchDown:(id)sender {
+    // hide both pickers becauase these textfields don't need any pickers
+    [self.eventsDatePicker setHidden:true];
+    [self.restrictionsPicker setHidden:true];
 }
 
 

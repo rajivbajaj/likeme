@@ -132,6 +132,7 @@
 		146A4DFD19D40D6900C0182B /* EADImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146A4DFC19D40D6900C0182B /* EADImagePickerViewController.m */; };
 		146D471419EC739D009FE413 /* MessagesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D471319EC739D009FE413 /* MessagesData.m */; };
 		146D471719EC73CF009FE413 /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D471619EC73CF009FE413 /* NSUserDefaults+DemoSettings.m */; };
+		146DD2DC1A32421700EBAB9D /* EADGroupReadOnlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */; };
 		1473D6CB1A2F28C3009E633A /* LocationPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1473D6CA1A2F28C3009E633A /* LocationPin.png */; };
 		1473D6CE1A2F2C89009E633A /* EADLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
@@ -346,6 +347,8 @@
 		146D471319EC739D009FE413 /* MessagesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesData.m; sourceTree = "<group>"; };
 		146D471519EC73CF009FE413 /* NSUserDefaults+DemoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DemoSettings.h"; sourceTree = "<group>"; };
 		146D471619EC73CF009FE413 /* NSUserDefaults+DemoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DemoSettings.m"; sourceTree = "<group>"; };
+		146DD2DA1A32421700EBAB9D /* EADGroupReadOnlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADGroupReadOnlyViewController.h; sourceTree = "<group>"; };
+		146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADGroupReadOnlyViewController.m; sourceTree = "<group>"; };
 		1473D6CA1A2F28C3009E633A /* LocationPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationPin.png; sourceTree = "<group>"; };
 		1473D6CC1A2F2C89009E633A /* EADLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADLocationPickerViewController.h; sourceTree = "<group>"; };
 		1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADLocationPickerViewController.m; sourceTree = "<group>"; };
@@ -517,6 +520,8 @@
 				0B7A23461A185CC2008E11FE /* EADUserListProfileViewController.m */,
 				1473D6CC1A2F2C89009E633A /* EADLocationPickerViewController.h */,
 				1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */,
+				146DD2DA1A32421700EBAB9D /* EADGroupReadOnlyViewController.h */,
+				146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -966,6 +971,7 @@
 				0BD6A8881A09BD6900AC370C /* EADUserListTableViewController.m in Sources */,
 				146A4DF319D182FC00C0182B /* UserInfo.m in Sources */,
 				144CE65A19E5716C00C6EC03 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
+				146DD2DC1A32421700EBAB9D /* EADGroupReadOnlyViewController.m in Sources */,
 				144CE65F19E5716C00C6EC03 /* JSQMessage.m in Sources */,
 				144CE66219E5716C00C6EC03 /* JSQPhotoMediaItem.m in Sources */,
 				0B89FFBA19BE52E90077E029 /* main.m in Sources */,
