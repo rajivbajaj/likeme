@@ -266,11 +266,13 @@
                     <connections>
                         <outlet property="mapView" destination="HO9-d7-ofH" id="obw-gj-ada"/>
                         <outlet property="searchText" destination="XyL-h0-la3" id="5CU-Bm-yzV"/>
+                        <segue destination="9l0-5e-gMr" kind="push" identifier="mapToProfileDetail" id="s2S-s4-CzB"/>
+                        <segue destination="fXq-rB-dvi" kind="push" identifier="mapToEventDetail" id="GBq-uG-Q6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeP-kg-wGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1685" y="-343"/>
+            <point key="canvasLocation" x="1769" y="-67"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="tR6-On-WX7">
@@ -393,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNc-Zn-xSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="-355"/>
+            <point key="canvasLocation" x="2393" y="-461"/>
         </scene>
         <!--Message Details View Controller-->
         <scene sceneID="sTz-OB-7Qq">
@@ -1204,9 +1206,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="GBq-uG-Q6z"/>
+        <segue reference="s2S-s4-CzB"/>
         <segue reference="uZl-yr-jNO"/>
         <segue reference="WlC-XK-j1v"/>
         <segue reference="JIy-4n-H5h"/>
+        <segue reference="4Xp-nV-93B"/>
     </inferredMetricsTieBreakers>
 </document>

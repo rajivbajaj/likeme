@@ -61,13 +61,20 @@
     {
 
     
-    self.userDisplayValue.text = [currentObject valueForKey:@"UserName"];
-    self.userStatus.text = [currentObject valueForKey:@"UserStatus"];
-    self.userLocation.text = [userDataDictionary valueForKey:@"UserLocation"];
-    self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%@",[userDataDictionary valueForKey:@"UserEventAttendanceCount"]];
-    self.userNoOfEventsCreated.text=[userDataDictionary valueForKey:@"UserEventAttendanceCount"];
-    self.userNoOfGroupsMember.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
-    self.userNoOfGroupsAdmin.text =[userDataDictionary valueForKey:@"UserGroupsCount"];
+    self.userDisplayValue.text = [currentObject valueForKey:@"DisplayName"];
+    self.userStatus.text = [currentObject valueForKey:@"ProfileStatus"];
+    self.userLocation.text = [userDataDictionary valueForKey:@"City"];
+        
+        NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+        NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+        NSInteger numberOfUserGroupCount = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+        NSInteger numberOfGroupAdmin = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+        
+    self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsAttending];
+        self.userNoOfEventsCreated.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsCreated];
+
+        self.userNoOfGroupsMember.text =[NSString stringWithFormat:@"%ld",(long)numberOfUserGroupCount];
+    self.userNoOfGroupsAdmin.text =[NSString stringWithFormat:@"%ld",(long)numberOfGroupAdmin];
         
     NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURLBig"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
