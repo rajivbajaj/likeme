@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "EADUserListProfileViewController.h"
 #import "EADMKPointAnnotation.h"
-//#import "EADEventDetailViewController.m"
+#import "EADEventDetailViewController.h"
 
 @interface EADMapViewController ()
 
@@ -180,10 +180,10 @@
         {
             [self performSegueWithIdentifier:@"mapToProfileDetail" sender:view];
         }
-//        else
-//        {
-//             [self performSegueWithIdentifier:@"mapToEventDetail" sender:view];
-//        }
+        else
+        {
+             [self performSegueWithIdentifier:@"mapToEventDetail" sender:view];
+        }
     }
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -234,12 +234,12 @@
         
         
     }
-//    else if ([segue.identifier isEqualToString:@"mapToEventDetail"])
-//    {
-//        EADEventDetailViewController *destinationDetailVC = [segue destinationViewController];
-//        
-//        destinationDetailVC.eventId = _annotationId;
-//    }
+    else if ([segue.identifier isEqualToString:@"mapToEventDetail"])
+    {
+        EADEventDetailViewController *destinationDetailVC = [segue destinationViewController];
+        
+        destinationDetailVC.eventId = _annotationId;
+    }
 }
 
 
