@@ -94,7 +94,7 @@
     {
         EADImagePickerViewController *destinationVC = [segue destinationViewController];
         
-        destinationVC.shouldLaunchCamera=true;
+        destinationVC.shouldLaunchCamera=_launchCamera;
         
     }
 }

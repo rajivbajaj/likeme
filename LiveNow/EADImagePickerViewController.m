@@ -7,6 +7,8 @@
 //
 
 #import "EADImagePickerViewController.h"
+#import "EADGroupDetailsViewController.h"
+#import "MessagesData.h"
 
 @interface EADImagePickerViewController ()
 
@@ -73,6 +75,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
+    if ([self.launchedFrom isEqualToString:@"Groups"])
+    {
+        EADGroupDetailsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+        
+        groupViewController.imageView.image = image;
+        
+    }
+    else
+    {
+        MessagesData *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+        
+        msgViewController.imageView.image = image;
+        [msgViewController addPhotoMediaMessage];
+    }
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {

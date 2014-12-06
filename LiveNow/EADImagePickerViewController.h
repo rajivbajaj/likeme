@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property BOOL shouldLaunchCamera;
 @property BOOL newMedia;
+@property NSString* launchedFrom;
 @end

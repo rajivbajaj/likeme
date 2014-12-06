@@ -9,6 +9,7 @@
 #import "EADMessageDetailsViewController.h"
 #import "UserInfo.h"
 #import "Postman.h"
+#import "EADImagePickerViewController.h"
 
 @interface EADMessageDetailsViewController ()
 
@@ -304,12 +305,13 @@
 
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Media messages"
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", nil];
-    
+                                              otherButtonTitles:nil];
+    [sheet addButtonWithTitle:@"Take a Picture"];
+    [sheet addButtonWithTitle:@"Camera Roll"];
     [sheet showFromToolbar:self.inputToolbar];
 }
 
@@ -321,21 +323,38 @@
     
     switch (buttonIndex) {
         case 0:
-            [self.demoData addPhotoMediaMessage];
+            
+           
             break;
         case 1:
         {
-            __weak UICollectionView *weakView = self.collectionView;
-            
-            [self.demoData addLocationMediaMessageCompletion:^{
-                [weakView reloadData];
-            }];
+            _launchCamera = true;
+            [self performSegueWithIdentifier:@"msgToImagePicker" sender:self];
+          //  self.demoData.imageView = _imageView;
+//            __weak UICollectionView *weakView = self.collectionView;
+//            
+//            [self.demoData addLocationMediaMessageCompletion:^{
+//                [weakView reloadData];
+//            }];
         }
             break;
     }
     
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+   // [JSQSystemSoundPlayer jsq_playMessageSentSound];
     [self finishSendingMessage];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+ if([segue.identifier isEqualToString:@"msgToImagePicker"])
+    {
+        EADImagePickerViewController *destinationVC = [segue destinationViewController];
+        
+        destinationVC.shouldLaunchCamera=_launchCamera;
+        destinationVC.launchedFrom =@"Messages";
+        
+    }
 }
 
 
