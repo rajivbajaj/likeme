@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erW-bh-v5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="1788"/>
+            <point key="canvasLocation" x="1087" y="1812"/>
         </scene>
         <!--Create Group-->
         <scene sceneID="2Mc-tq-kO1">
@@ -229,11 +229,16 @@
                     <navigationItem key="navigationItem" title="Create Group" id="eUA-Ok-0b5">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="IJ5-8p-sGg">
                             <connections>
-                                <segue destination="Brx-Xe-Ic9" kind="push" identifier="saveGroupSegue" id="dZh-BR-fL9"/>
+                                <action selector="newGroupSave:" destination="qUa-6l-J0w" id="lUX-25-xO9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="groupDescription" destination="ajI-Ly-dcM" id="4ZB-9B-Tmg"/>
+                        <outlet property="groupName" destination="iXU-RL-HeX" id="KLV-e8-oTP"/>
+                        <outlet property="imageView" destination="Pio-cf-etk" id="daO-rJ-Fej"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJI-Zh-D9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

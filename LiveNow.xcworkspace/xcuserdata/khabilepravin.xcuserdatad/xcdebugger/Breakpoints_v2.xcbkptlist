@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupsViewController.m"
-            timestampString = "436050679.450252"
+            timestampString = "439677386.354708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-loadUserGroups"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "436020542.112955"
+            timestampString = "439677386.354708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupsViewController.m"
-            timestampString = "436050679.450252"
+            timestampString = "439677386.354708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupsViewController.m"
-            timestampString = "436050679.450252"
+            timestampString = "439677386.354708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupsViewController.m"
-            timestampString = "436050679.450252"
+            timestampString = "439677386.354708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-filterContentForSearchText:scope:"
             landmarkType = "5">
          </BreakpointContent>
@@ -686,6 +686,22 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "439677511.31233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-newGroupSave:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

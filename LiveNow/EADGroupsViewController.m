@@ -38,6 +38,14 @@
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.dataArray count]];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(self.isNewGroupAdded == true)
+    {
+        [self loadUserGroups];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

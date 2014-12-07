@@ -12,4 +12,5 @@
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *searchResult;
 @property (strong, nonatomic) IBOutlet UITableView *groupsTableView;
+@property bool isNewGroupAdded;
 @end
