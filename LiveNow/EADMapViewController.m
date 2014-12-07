@@ -35,7 +35,7 @@
     
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [postMan GetValueOrEmpty:_searchText.text], @"searchstring", nil];
-    self.matchingItems = [postMan Get:@"utility/search?jsonParams=%@" :paramsData];
+    self.matchingItems = [[postMan Get:@"utility/search?jsonParams=%@" :paramsData] mutableCopy];
     
    NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
     

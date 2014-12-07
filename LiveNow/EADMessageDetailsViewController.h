@@ -42,7 +42,7 @@
 @property (strong, nonatomic) NSString *eventId;
 @property (strong, nonatomic) NSString *messangerType;
 @property (strong, nonatomic) NSString *currentUserId;
-@property BOOL *launchCamera;
+@property BOOL launchCamera;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

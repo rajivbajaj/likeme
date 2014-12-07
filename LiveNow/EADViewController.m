@@ -23,7 +23,8 @@
     [super viewDidLoad];
     if (_logout)
     {
-        FBSession.activeSession.closeAndClearTokenInformation;
+        //ToDO need to call this from slide menu
+        //FBSession.activeSession.closeAndClearTokenInformation;
         _logout = false;
     }
     else
@@ -153,7 +154,7 @@
     
 
     
-    EADAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];
 }
 

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADGroupDetailsViewController : UIViewController
+@interface EADGroupDetailsViewController : UIViewController<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *groupName;
 @property (weak, nonatomic) IBOutlet UITextField *groupDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property BOOL *launchCamera;
+@property BOOL launchCamera;
 @end

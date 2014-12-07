@@ -25,7 +25,7 @@
                                     <action selector="guestLoginTouch:" destination="vXZ-lx-hvc" eventType="touchDown" id="qwP-0D-Bbc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Design 2.png" highlightedImage="Logo Design 2.png" highlighted="YES" id="1IN-lh-4ip">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Design 2.png" highlightedImage="Logo Design 2.png" id="1IN-lh-4ip">
                                 <rect key="frame" x="31" y="69" width="255" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" hint="LiveNow"/>

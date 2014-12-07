@@ -19,5 +19,12 @@
     //[NSMutableURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[formattedServiceURL host]];
     NSError *connectionError;
     return [NSURLConnection sendSynchronousRequest:request returningResponse:NULL error:&connectionError];
+//    [NSURLConnection sendAsynchronousRequest:request
+//                                       queue:[NSOperationQueue mainQueue]
+//                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+//     {
+//         return data;
+//     }];
+    
 }
 @end

@@ -95,7 +95,7 @@
 {
     //---- For getting current gps location
     locationManager = [CLLocationManager new];
-    if(locationManager.locationServicesEnabled == YES){
+    if([CLLocationManager locationServicesEnabled] == YES){
     locationManager.delegate = self;
     locationManager.distanceFilter = 100;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
