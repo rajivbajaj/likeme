@@ -106,7 +106,7 @@
                     <navigationItem key="navigationItem" id="Q5x-Xa-1WL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HjU-PJ-r1I">
                             <connections>
-                                <segue destination="kWC-df-Exw" kind="push" id="WlC-XK-j1v"/>
+                                <segue destination="qUa-6l-J0w" kind="push" id="UBI-vc-6By"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -144,61 +144,100 @@
             </objects>
             <point key="canvasLocation" x="1121" y="1788"/>
         </scene>
-        <!--Group Details View Controller-->
-        <scene sceneID="I0I-B1-alP">
+        <!--Create Group-->
+        <scene sceneID="2Mc-tq-kO1">
             <objects>
-                <viewController storyboardIdentifier="GroupDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kWC-df-Exw" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3nM-dU-vnh">
+                <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KDf-5m-662">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" minimumFontSize="17" id="hYe-4m-i0H">
-                                <rect key="frame" x="30" y="91" width="251" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Description" minimumFontSize="17" id="weR-7w-hmr">
-                                <rect key="frame" x="30" y="135" width="251" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ihk-Gx-8sd">
-                                <rect key="frame" x="5" y="529" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="camera" id="rLv-GB-PI8">
-                                        <connections>
-                                            <action selector="actionInitiatorTouched:" destination="kWC-df-Exw" id="fB0-9Y-Xu8"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="b83-b6-JLj">
-                                <rect key="frame" x="2" y="401" width="315" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="XzA-bu-hvM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aMv-Sj-ekS">
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cZV-FZ-AGi">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="camera" id="DSB-cD-oIU">
+                                    <connections>
+                                        <action selector="actionInitiatorTouched:" destination="qUa-6l-J0w" id="OsW-xv-lk6"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" id="pOs-zg-hOJ">
+                                    <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BCI-jW-x6f">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="d6f-xA-AFD" kind="push" identifier="imagePicker" id="kJo-m6-U5Y"/>
+                                        </connections>
+                                    </button>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <sections>
+                            <tableViewSection id="L8S-Rs-MZb">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Jd-m7-aUC">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Jd-m7-aUC" id="zmz-kG-pGb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" minimumFontSize="17" id="iXU-RL-HeX">
+                                                    <rect key="frame" x="13" y="7" width="293" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lOV-Ld-FMb">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOV-Ld-FMb" id="CQO-Yn-tKE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Description" minimumFontSize="17" id="ajI-Ly-dcM">
+                                                    <rect key="frame" x="13" y="7" width="293" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="148" id="BdC-nG-QmS">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BdC-nG-QmS" id="MpC-xi-dfR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Pio-cf-etk">
+                                                    <rect key="frame" x="7" y="10" width="305" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="qUa-6l-J0w" id="KXm-Z7-wiB"/>
+                            <outlet property="delegate" destination="qUa-6l-J0w" id="EcH-Sa-e8V"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Create Group" id="eUA-Ok-0b5">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="IJ5-8p-sGg">
                             <connections>
-                                <segue destination="Brx-Xe-Ic9" kind="push" identifier="saveGroupSegue" id="DSL-zP-sZc"/>
+                                <segue destination="Brx-Xe-Ic9" kind="push" identifier="saveGroupSegue" id="dZh-BR-fL9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="groupDescription" destination="weR-7w-hmr" id="Rna-wc-9I4"/>
-                        <outlet property="groupName" destination="hYe-4m-i0H" id="k5E-ai-dbl"/>
-                        <outlet property="imageView" destination="b83-b6-JLj" id="KW4-dz-FgL"/>
-                        <segue destination="d6f-xA-AFD" kind="push" identifier="imagePicker" id="JIy-4n-H5h"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zUI-D9-JfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jJI-Zh-D9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="1144"/>
+            <point key="canvasLocation" x="1515" y="1191"/>
         </scene>
         <!--Interests View Controller-->
         <scene sceneID="T3m-Vc-0rK">
@@ -1301,10 +1340,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GBq-uG-Q6z"/>
+        <segue reference="kJo-m6-U5Y"/>
         <segue reference="s2S-s4-CzB"/>
+        <segue reference="GBq-uG-Q6z"/>
         <segue reference="uZl-yr-jNO"/>
-        <segue reference="0TZ-wD-kUB"/>
         <segue reference="zhF-AW-XRQ"/>
     </inferredMetricsTieBreakers>
 </document>
