@@ -9,6 +9,7 @@
 #import "EADGroupsViewController.h"
 #import "UserInfo.h"
 #import "Postman.h"
+#import "EADGroupReadOnlyViewController.h"
 
 @interface EADGroupsViewController ()
 
@@ -127,15 +128,38 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"groupsReadonlyViewSegue"])
+    {
+        NSIndexPath *selectedIndexPath = [self.groupsTableView indexPathForSelectedRow];
+        NSDictionary *currentObject;
+        
+        
+        if(self.searchResult != nil && self.searchResult.count > 0)
+        {
+            currentObject = [self.searchResult objectAtIndex:selectedIndexPath.row];
+        }
+        else
+        {
+            currentObject = [self.dataArray objectAtIndex:selectedIndexPath.row];
+        }
+        
+        if(currentObject != nil)
+        {
+            EADGroupReadOnlyViewController *groupReadOnlyView = [segue destinationViewController];
+            
+            if(groupReadOnlyView != nil)
+            {
+              groupReadOnlyView.groupId = [currentObject valueForKey:@"GroupId"];
+            }
+        }
+    }
 }
-*/
+
 
 @end

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADGroupReadOnlyViewController : UIViewController
+@interface EADGroupReadOnlyViewController : UITableViewController
+@property (strong, nonatomic)  NSString *groupId;
+@property (nonatomic, strong) NSArray *groupDetailsArray;
 
+@property (weak, nonatomic) IBOutlet UIImageView *groupImageView;
+@property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *groupDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *groupMemberCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *groupMessagesCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *leaveGroupButton;
+@property (weak, nonatomic) IBOutlet UIButton *joinGroupButton;
 @end
