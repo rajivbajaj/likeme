@@ -29,8 +29,14 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     
     Postman* postman = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
+    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"GenderList", @"LKGroupName",
+                                      nil];
+    
+    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
     
     NSInteger age = [[userDataDictionary objectForKey:@"Age"] integerValue];
@@ -42,11 +48,11 @@
 
     if([gender isEqualToString:@"Male"])
     {
-        [self.genderPickerView selectRow:0 inComponent:0 animated:YES];
+        [self.genderPickerView selectRow:1 inComponent:0 animated:YES];
     }
     else if ([gender isEqualToString:@"Female"])
     {
-        [self.genderPickerView selectRow:1 inComponent:0 animated:YES];
+        [self.genderPickerView selectRow:0 inComponent:0 animated:YES];
     }
     
     
@@ -70,8 +76,6 @@
     UIGraphicsEndImageContext();
     profilePicImageView.image = im2;
     profilePicImageView.contentMode = UIViewContentModeTop;
-    
-    _pickerData = @[@"Male", @"Female"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -121,13 +125,25 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _pickerData[row];
+    NSString *genderValue;
+    NSDictionary *currentObject = _pickerData[row];
+    
+    if(currentObject != nil)
+    {
+        genderValue = [currentObject valueForKey:@"DisplayValue"];
+    }
+    
+    return genderValue;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    _selectedGender = _pickerData[row];
+    NSDictionary *selectedGenderItem = _pickerData[row];
+    if(selectedGenderItem != nil)
+    {
+        _selectedGender = [selectedGenderItem valueForKey:@"DisplayValue"];
+    }
 }
 
 
