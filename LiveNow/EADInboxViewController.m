@@ -121,11 +121,6 @@
     return cell;
 }
 
-
-- (IBAction)composeSelected:(id)sender {
-    
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -149,6 +144,11 @@
         {
             destinationVC.eventId = [selectedItem valueForKey:@"SenderId"];
             destinationVC.messangerType = @"Event";
+        }
+        else if([[selectedItem valueForKey:@"SenderType"] isEqualToString:@"Group"])
+        {
+            destinationVC.groupId = [selectedItem valueForKey:@"SenderId"];
+            destinationVC.messangerType = @"Group";
         }
         
     }

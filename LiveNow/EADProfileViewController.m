@@ -33,9 +33,22 @@
     
     NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
     
-    //ageText.text = [userDataDictionary valueForKey:@"Age"];
+    NSInteger age = [[userDataDictionary objectForKey:@"Age"] integerValue];
+    ageText.text = [NSString stringWithFormat:@"%ld", (long)age];
     statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
+    NSString *gender = [userDataDictionary valueForKey:@"Gender"];
+
+    if([gender isEqualToString:@"Male"])
+    {
+        [self.genderPickerView selectRow:0 inComponent:0 animated:YES];
+    }
+    else if ([gender isEqualToString:@"Female"])
+    {
+        [self.genderPickerView selectRow:1 inComponent:0 animated:YES];
+    }
+    
+    
     if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
     {
         location.text = userInfo.userLocation;
@@ -44,6 +57,7 @@
     {
         location.text = [userDataDictionary valueForKey:@"City"];
     }
+
     
     NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
@@ -57,9 +71,6 @@
     profilePicImageView.contentMode = UIViewContentModeTop;
     
     _pickerData = @[@"Male", @"Female"];
-    //profilePicImageView.image = image;
-
-    // Do any additional setup after loading the view.
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -89,6 +100,7 @@
                                         [postMan GetValueOrEmpty:location.text], @"City",
                                         _latitude, @"Latitude",
                                         _longitude, @"Longitude",
+                                        _selectedGender, @"Gender",
                                         nil];
     
     [postMan Post:@"users/post?value=%@" :userDataDictionary];

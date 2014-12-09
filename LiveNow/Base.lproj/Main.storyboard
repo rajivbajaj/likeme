@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -209,7 +208,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="F6R-5g-4mK" kind="push" id="slm-aI-TrD"/>
+                                                        <segue destination="F6R-5g-4mK" kind="push" identifier="groupMessagesSegue" id="slm-aI-TrD"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -242,7 +241,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="oGN-A2-31E" kind="push" id="pdK-Z6-3XM"/>
+                                                        <segue destination="oGN-A2-31E" kind="push" identifier="groupUsersSegue" id="pdK-Z6-3XM"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -294,6 +293,8 @@
                         <outlet property="groupNameLabel" destination="uWY-7P-PPh" id="WgV-L5-z5P"/>
                         <outlet property="joinGroupButton" destination="UKL-AM-I9b" id="0cS-q6-H65"/>
                         <outlet property="leaveGroupButton" destination="7gd-7e-xs4" id="3n1-vs-Wxw"/>
+                        <outlet property="messagesSegueButton" destination="OcQ-Sz-Mjl" id="HTd-cb-1pw"/>
+                        <outlet property="usersSegueButton" destination="Ier-S8-rX8" id="ddM-ii-4cW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eea-EG-JNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1501,11 +1502,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pdK-Z6-3XM"/>
-        <segue reference="kJo-m6-U5Y"/>
-        <segue reference="slm-aI-TrD"/>
-        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="TAK-hv-Tob"/>
         <segue reference="GBq-uG-Q6z"/>
         <segue reference="s2S-s4-CzB"/>
+        <segue reference="uZl-yr-jNO"/>
+        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="kJo-m6-U5Y"/>
     </inferredMetricsTieBreakers>
 </document>

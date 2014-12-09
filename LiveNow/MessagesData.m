@@ -35,6 +35,7 @@
 @synthesize messangerType;
 @synthesize authorId;
 @synthesize eventId;
+@synthesize groupId;
 
 - (instancetype)init
 {
@@ -128,6 +129,15 @@
                                           nil];
         
         dataArray = [postman Get:@"messages/getbyevent?jsonParams=%@" :paramsDictionary];
+    }
+    else if([self.messangerType isEqualToString:@"Group"])
+    {
+        NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthenticationToken",
+                                          self.groupId, @"GroupId",
+                                          nil];
+        
+        dataArray = [postman Get:@"messages/getbygroup?jsonParams=%@" :paramsDictionary];
     }
     
     if(dataArray != nil)

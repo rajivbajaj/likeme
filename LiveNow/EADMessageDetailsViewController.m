@@ -280,6 +280,12 @@
         recipientType = @"User";
         recipientId = @"";
     }
+    else if([self.messangerType isEqualToString:@"Group"])
+    {
+        recipientId = [self groupId];
+        recipientType = @"Group";
+        recipientAuthToken = @"";
+    }
     
     Postman* postMan = [Postman alloc];
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:

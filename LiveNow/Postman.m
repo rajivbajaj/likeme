@@ -69,7 +69,6 @@
 
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
     NSData *data = [self ServiceCall:completeUrlWIthParams];
-    //NSMutableDictionary *dataDictionary = nil;
     NSArray *dataArray;
     
     if(data != nil)
@@ -78,13 +77,7 @@
         
         if(masterDictionary != nil && masterDictionary.count > 0)
         {
-  //          dataDictionary = [[NSMutableDictionary alloc] init];
              dataArray = (NSArray *)masterDictionary;
-            
-//            for (int i=0; i<dataArray.count; i++) {
-//                [dataDictionary setObject:[dataArray objectAtIndex:i] forKey:[NSString stringWithFormat:@"item%d", i]];
-////                [dataDictionary setValue:[dataArray objectAtIndex:i] forKey:[NSString stringWithFormat:@"item%d", i]]; // = [dataArray objectAtIndex:i];
-//            }
         }
     }
     

@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupMessagesCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *leaveGroupButton;
 @property (weak, nonatomic) IBOutlet UIButton *joinGroupButton;
+@property (weak, nonatomic) IBOutlet UIButton *messagesSegueButton;
+@property (weak, nonatomic) IBOutlet UIButton *usersSegueButton;
 @end

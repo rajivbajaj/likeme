@@ -9,6 +9,7 @@
 #import "EADGroupReadOnlyViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADMessageDetailsViewController.h"
 
 @interface EADGroupReadOnlyViewController ()
 
@@ -57,16 +58,22 @@
             {
                 [self.joinGroupButton setHidden:YES];
                 [self.leaveGroupButton setHidden:YES];
+                [self.messagesSegueButton setEnabled:YES];
+                [self.usersSegueButton setEnabled:YES];
             }
             else if([[currentObject valueForKey:@"IsMember"] isEqualToString:@"Yes"])
             {
                 [self.leaveGroupButton setHidden:NO];
                 [self.joinGroupButton setHidden:YES];
+                [self.messagesSegueButton setEnabled:YES];
+                [self.usersSegueButton setEnabled:YES];
             }
             else
             {
                 [self.joinGroupButton setHidden:NO];
                 [self.leaveGroupButton setHidden:YES];
+                [self.messagesSegueButton setEnabled:NO];
+                [self.usersSegueButton setEnabled:NO];
             }
         }
     }
@@ -101,14 +108,39 @@
     [self loadGroupDetails];
 }
 
-/*
+
 #pragma mark - Navigation
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    BOOL canSegue = false;
+    if([identifier isEqualToString:@"groupMessagesSegue"] || [identifier isEqualToString:@"groupUsersSegue"])
+    {
+        canSegue = self.messagesSegueButton.isEnabled;
+    }
+    else
+    {
+        canSegue = true;
+    }
+    return canSegue;
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"groupMessagesSegue"])
+    {
+        EADMessageDetailsViewController *messageDetailsViewController = segue.destinationViewController;
+        
+        if(messageDetailsViewController != nil)
+        {
+            messageDetailsViewController.senderDisplayName = [self.groupNameLabel text];
+            messageDetailsViewController.messangerType = @"Group";
+            messageDetailsViewController.groupId = self.groupId;
+        }
+    }
 }
-*/
+
 
 @end
