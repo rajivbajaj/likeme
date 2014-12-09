@@ -19,4 +19,5 @@
 @property (strong, nonatomic)  NSString *userId;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (nonatomic, strong) NSArray *userDetailArray;
+@property (weak, nonatomic) IBOutlet UILabel *userInterestsLabel;
 @end

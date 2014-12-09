@@ -435,6 +435,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="w0T-8d-Zli"/>
                     <connections>
                         <outlet property="interestsTableView" destination="qzR-33-5Do" id="oco-xg-MJT"/>
                         <outlet property="searchDisplayController" destination="faT-86-XjS" id="yVR-KN-VBg"/>
@@ -755,6 +756,25 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="lRp-eZ-bXM">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lRp-eZ-bXM" id="MK1-S7-rUm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tpR-Xn-4GZ">
+                                                    <rect key="frame" x="8" y="0.0" width="304" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="W5v-cK-FMU" kind="push" id="zkd-Tj-wJo"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -774,6 +794,7 @@
                         <outlet property="location" destination="pmX-kz-Fka" id="y13-q3-7Q0"/>
                         <outlet property="profilePicImageView" destination="L78-8D-Jwb" id="glF-OB-Les"/>
                         <outlet property="statusText" destination="Prr-Ca-owe" id="g7M-Na-6Mi"/>
+                        <outlet property="userInterestsLabel" destination="tpR-Xn-4GZ" id="FwZ-R9-b8E"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTv-fe-cVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -973,12 +994,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exR-hk-uQF">
+                                <rect key="frame" x="20" y="516" width="277" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="KHc-lT-Ke3"/>
                     <connections>
                         <outlet property="userDisplayValue" destination="Ip5-WF-pCf" id="kLB-5x-dR4"/>
+                        <outlet property="userInterestsLabel" destination="exR-hk-uQF" id="lKz-hY-vTG"/>
                         <outlet property="userLocation" destination="DfN-zr-Sdx" id="ATn-Ye-lxy"/>
                         <outlet property="userNoOfEventsAttended" destination="0IR-me-773" id="5mr-Fi-1OC"/>
                         <outlet property="userNoOfEventsCreated" destination="xPE-2g-Rv3" id="sQ9-wE-YNG"/>
@@ -1506,7 +1535,7 @@
         <segue reference="GBq-uG-Q6z"/>
         <segue reference="s2S-s4-CzB"/>
         <segue reference="uZl-yr-jNO"/>
-        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="4Xp-nV-93B"/>
         <segue reference="kJo-m6-U5Y"/>
     </inferredMetricsTieBreakers>
 </document>
