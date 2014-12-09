@@ -60,14 +60,19 @@
         if (response.mapItems.count == 0)
             NSLog(@"No Matches");
         else
-            for (MKMapItem *item in response.mapItems)
+        {
+            NSPredicate *noBusiness = [NSPredicate predicateWithFormat:@"business.uID == 0"];
+            NSMutableArray *itemsWithoutBusinesses = [response.mapItems mutableCopy];
+            [itemsWithoutBusinesses filterUsingPredicate:noBusiness];
+            for (MKMapItem *item in itemsWithoutBusinesses)
             {
                 [_matchingItems addObject:item];
                
                 
                 
             }
-    [self.locationsTableView reloadData];   
+        }
+    [self.locationsTableView reloadData];
     }];
     
     
