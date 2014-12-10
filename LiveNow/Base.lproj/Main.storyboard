@@ -410,8 +410,11 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="D6S-dD-Wxa">
                                                     <rect key="frame" x="8" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="groupStatusChanged:" destination="qUa-6l-J0w" eventType="valueChanged" id="GPI-Ty-s9V"/>
+                                                    </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Active" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qLq-GQ-t9C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qLq-GQ-t9C">
                                                     <rect key="frame" x="74" y="11" width="104" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -471,6 +474,7 @@
                     <connections>
                         <outlet property="groupDescription" destination="ajI-Ly-dcM" id="4ZB-9B-Tmg"/>
                         <outlet property="groupName" destination="iXU-RL-HeX" id="KLV-e8-oTP"/>
+                        <outlet property="groupStatusLabel" destination="qLq-GQ-t9C" id="jNr-Ul-CeX"/>
                         <outlet property="groupStatusSwitch" destination="D6S-dD-Wxa" id="iTS-Wh-heh"/>
                         <outlet property="imageView" destination="Pio-cf-etk" id="daO-rJ-Fej"/>
                         <outlet property="restrictionsPicker" destination="oCw-Wn-DO8" id="yOi-m2-2z5"/>

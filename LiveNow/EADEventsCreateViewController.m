@@ -38,7 +38,13 @@ NSString* endDateString;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     self.locationText.text=userInfo.userLocation;
     
-    _pickerData = @[@"Male only", @"Female only", @"For kids", @"18 and above"];
+    Postman* postman = [Postman alloc];
+    
+    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"EventRestrictions", @"LKGroupName",
+                                      nil];
+    
+    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
 //    UIImage *btnImage = _imageView.image;
 //    [_cameraButton setImage:btnImage forState:UIControlStateNormal];
 }
@@ -186,13 +192,26 @@ NSString* endDateString;
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _pickerData[row];
+    NSDictionary *currentObject = [self.pickerData objectAtIndex:row];
+    NSString *title;
+
+    if(currentObject != nil)
+    {
+        title = [currentObject valueForKey:@"DisplayValue"];
+    }
+
+    return title;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    self.restrictionsText.text = _pickerData[row];
+    NSDictionary *currentObject = _pickerData[row];
+    
+    if(currentObject != nil)
+    {
+        self.restrictionsText.text = [currentObject valueForKey:@"DisplayValue"];
+    }
 }
 
 - (IBAction)genericTouchDown:(id)sender {

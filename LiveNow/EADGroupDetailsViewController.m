@@ -19,13 +19,23 @@
 @implementation EADGroupDetailsViewController
 @synthesize groupName;
 @synthesize groupDescription;
+@synthesize restrictionsText;
+@synthesize groupStatusLabel;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-     _pickerData = @[@"Male only", @"Female only", @"For kids", @"18 and above"];
+    Postman* postman = [Postman alloc];
+    
+    NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"EventRestrictions", @"LKGroupName",
+                                      nil];
+    
+    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -69,6 +79,8 @@
                                          [postMan GetValueOrEmpty:groupDescription.text], @"GroupDescription",
                                          [postMan GetValueOrEmpty:userInfo.userId], @"GroupCreatedBy",
                                          [foramtter stringFromDate:[NSDate date]], @"GroupCreatedDate",
+                                         [postMan GetValueOrEmpty:restrictionsText.text], @"Restriction",
+                                         [postMan GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
                                          nil];
     
     [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
@@ -94,14 +106,28 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _pickerData[row];
+    NSDictionary *currentObject = [self.pickerData objectAtIndex:row];
+    NSString *title;
+    
+    if(currentObject != nil)
+    {
+        title = [currentObject valueForKey:@"DisplayValue"];
+    }
+    
+    return title;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    self.restrictionsText.text = _pickerData[row];
+    NSDictionary *currentObject = _pickerData[row];
+    
+    if(currentObject != nil)
+    {
+        self.restrictionsText.text = [currentObject valueForKey:@"DisplayValue"];
+    }
 }
+
 
 - (IBAction)restrictionsEditingBegin:(id)sender
 {
@@ -127,5 +153,16 @@
     }
 }
 
+- (IBAction)groupStatusChanged:(id)sender
+{
+    if(self.groupStatusSwitch.isOn == true)
+    {
+        self.groupStatusLabel.text = @"Active";
+    }
+    else if(self.groupStatusSwitch.isOn == false)
+    {
+        self.groupStatusLabel.text = @"Inactive";
+    }
+}
 
 @end

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *restrictionsPicker;
 @property (weak, nonatomic) IBOutlet UITextField *restrictionsText;
 @property (weak, nonatomic) IBOutlet UISwitch *groupStatusSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *groupStatusLabel;
 @property NSArray *pickerData;
 @property BOOL launchCamera;
 @end
