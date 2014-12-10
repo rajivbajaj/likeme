@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADLocationSearchViewController.h"
 #import "EADEventsViewController.h"
+#import "EADImagePickerViewController.h"
 
 @interface EADEventsCreateViewController ()
 
@@ -38,6 +39,8 @@ NSString* endDateString;
     self.locationText.text=userInfo.userLocation;
     
     _pickerData = @[@"Male only", @"Female only", @"For kids", @"18 and above"];
+//    UIImage *btnImage = _imageView.image;
+//    [_cameraButton setImage:btnImage forState:UIControlStateNormal];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -70,6 +73,7 @@ NSString* endDateString;
                                         [postMan GetValueOrEmpty:startDateString], @"StartTime",
                                         [postMan GetValueOrEmpty:endDateString], @"EndTime",
                                         [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
+                                        [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
                                         _latitude, @"Latitude",
                                         _longitude, @"Longitude",
                                         
@@ -95,6 +99,14 @@ NSString* endDateString;
         
         locationSearchController.initiatingController = @"event";
     }
+    else if([segue.identifier isEqualToString:@"eventToImagePicker"])
+    {
+        EADImagePickerViewController *destinationVC = [segue destinationViewController];
+        destinationVC.launchedFrom = @"Event";
+        destinationVC.shouldLaunchCamera=true;
+        
+    }
+
 }
 
 - (IBAction)datePickerValueChanged:(id)sender

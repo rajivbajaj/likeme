@@ -8,6 +8,7 @@
 
 #import "EADImagePickerViewController.h"
 #import "EADGroupDetailsViewController.h"
+#import "EADEventsCreateViewController.h"
 #import "MessagesData.h"
 
 @interface EADImagePickerViewController ()
@@ -81,6 +82,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         groupViewController.imageView.image = image;
         
+    }
+    if ([self.launchedFrom isEqualToString:@"Event"])
+    {
+            EADEventsCreateViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+            
+            eventViewController.imageView.image = image;
+//            [eventViewController.cameraButton setImage:image forState:UIControlStateNormal];
+//        [eventViewController.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
     }
     else
     {
