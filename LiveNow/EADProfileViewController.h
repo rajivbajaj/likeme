@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *ageText;
 @property (weak, nonatomic) IBOutlet UIPickerView *genderPickerView;
 @property (weak, nonatomic) IBOutlet UIButton *interestsButton;
+@property (weak, nonatomic) IBOutlet UITextField *genderText;
 
 @property NSString *selectedGender;
 @property NSArray *pickerData;

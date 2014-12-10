@@ -22,6 +22,7 @@
 @synthesize displayNameText;
 @synthesize profilePicImageView;
 @synthesize location;
+@synthesize genderText;
 
 - (void)viewDidLoad
 {
@@ -43,17 +44,8 @@
     ageText.text = [NSString stringWithFormat:@"%ld", (long)age];
     statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
+    genderText.text = [userDataDictionary valueForKey:@"Gender"];
     [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
-    NSString *gender = [userDataDictionary valueForKey:@"Gender"];
-
-    if([gender isEqualToString:@"Male"])
-    {
-        [self.genderPickerView selectRow:1 inComponent:0 animated:YES];
-    }
-    else if ([gender isEqualToString:@"Female"])
-    {
-        [self.genderPickerView selectRow:0 inComponent:0 animated:YES];
-    }
     
     
     if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
@@ -91,6 +83,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)allOtherEditingBegin:(id)sender
+{
+    [self.genderPickerView setHidden:true];
+}
+
+- (IBAction)genderEditingBegin:(id)sender
+{
+    [self.genderPickerView setHidden:false];
+}
+
 - (IBAction)updateProfileTouch:(id)sender
 {
     Postman* postMan = [Postman alloc];
@@ -105,7 +108,7 @@
                                         [postMan GetValueOrEmpty:location.text], @"City",
                                         _latitude, @"Latitude",
                                         _longitude, @"Longitude",
-                                        _selectedGender, @"Gender",
+                                        [postMan GetValueOrEmpty:self.genderText.text], @"Gender",
                                         nil];
     
     [postMan Post:@"users/post?value=%@" :userDataDictionary];
@@ -120,6 +123,11 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return _pickerData.count;
+}
+
+- (IBAction)locationEditingDidBegin:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueLocationPicker" sender:self];
 }
 
 // The data to return for the row and component (column) that's being passed in
@@ -142,7 +150,7 @@
     NSDictionary *selectedGenderItem = _pickerData[row];
     if(selectedGenderItem != nil)
     {
-        _selectedGender = [selectedGenderItem valueForKey:@"DisplayValue"];
+        self.genderText.text = [selectedGenderItem valueForKey:@"DisplayValue"];
     }
 }
 

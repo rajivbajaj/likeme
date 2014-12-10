@@ -22,15 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+     _pickerData = @[@"Male only", @"Female only", @"For kids", @"18 and above"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)saveTouched:(id)sender {
 }
 
 - (IBAction)actionInitiatorTouched:(id)sender {
@@ -74,7 +71,6 @@
                                          [foramtter stringFromDate:[NSDate date]], @"GroupCreatedDate",
                                          nil];
     
-    //[postMan UserUpdate:userDataDictionary];
     [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
     
     EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
@@ -84,36 +80,45 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    self.restrictionsText.text = _pickerData[row];
+}
+
+- (IBAction)restrictionsEditingBegin:(id)sender
+{
+    [self.restrictionsPicker setHidden:false];
+}
+
+- (IBAction)allOtherEditingBegin:(id)sender
+{
+    [self.restrictionsPicker setHidden:true];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"saveGroupSegue"])
-    {
-//        NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
-//        [foramtter setDateFormat:@"mm/dd/yyyy"];
-//        UserInfo *userInfo = [UserInfo sharedUserInfo];
-//        Postman *postMan = [Postman alloc];
-//        NSDictionary *groupDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            [postMan GetValueOrEmpty:groupName.text], @"GroupName",
-//                                            [postMan GetValueOrEmpty:groupDescription.text], @"GroupDescription",
-//                                            [postMan GetValueOrEmpty:userInfo.userId], @"GroupCreatedBy",
-//                                            [foramtter stringFromDate:[NSDate date]], @"GroupCreatedDate",
-//                                            nil];
-//        
-//        //[postMan UserUpdate:userDataDictionary];
-//        [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
-//        
-//        EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
-//        
-//        groupViewController.isNewGroupAdded = true;
-//        
-//        [self.navigationController popViewControllerAnimated:YES];
-
-    }
-    else if([segue.identifier isEqualToString:@"imagePicker"])
+    if([segue.identifier isEqualToString:@"imagePicker"])
     {
         EADImagePickerViewController *destinationVC = [segue destinationViewController];
         
