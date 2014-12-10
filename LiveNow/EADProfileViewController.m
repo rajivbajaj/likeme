@@ -43,7 +43,7 @@
     ageText.text = [NSString stringWithFormat:@"%ld", (long)age];
     statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
-    self.userInterestsLabel.text = [userDataDictionary valueForKey:@"UserInterests"];
+    [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
     NSString *gender = [userDataDictionary valueForKey:@"Gender"];
 
     if([gender isEqualToString:@"Male"])

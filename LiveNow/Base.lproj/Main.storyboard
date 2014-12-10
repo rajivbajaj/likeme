@@ -384,7 +384,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Pio-cf-etk">
+<<<<<<< Updated upstream
                                                     <rect key="frame" x="0.0" y="0.0" width="305" height="128"/>
+=======
+                                                    <rect key="frame" x="15" y="0.0" width="305" height="128"/>
+>>>>>>> Stashed changes
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -778,18 +782,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tpR-Xn-4GZ">
-                                                    <rect key="frame" x="8" y="0.0" width="304" height="43"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QE7-48-AHs">
+                                                    <rect key="frame" x="8" y="7" width="286" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="W5v-cK-FMU" kind="push" identifier="userInterestsSegue" id="byF-Tc-w4a"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="W5v-cK-FMU" kind="push" id="zkd-Tj-wJo"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -807,10 +811,10 @@
                         <outlet property="ageText" destination="DyH-bI-oBl" id="Pba-h1-KCh"/>
                         <outlet property="displayNameText" destination="4Tj-gO-tye" id="u8L-dG-yAz"/>
                         <outlet property="genderPickerView" destination="PrW-4b-KSF" id="nbh-eR-tIG"/>
+                        <outlet property="interestsButton" destination="QE7-48-AHs" id="xrE-Vo-gPZ"/>
                         <outlet property="location" destination="pmX-kz-Fka" id="y13-q3-7Q0"/>
                         <outlet property="profilePicImageView" destination="L78-8D-Jwb" id="glF-OB-Les"/>
                         <outlet property="statusText" destination="Prr-Ca-owe" id="g7M-Na-6Mi"/>
-                        <outlet property="userInterestsLabel" destination="tpR-Xn-4GZ" id="FwZ-R9-b8E"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTv-fe-cVL" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -55,6 +55,7 @@
     messagesData.messangerType = [self messangerType];
     messagesData.authorId = [self authorId];
     messagesData.eventId = [self eventId];
+    messagesData.groupId = [self groupId];
     
     self.demoData = [messagesData init];
     
