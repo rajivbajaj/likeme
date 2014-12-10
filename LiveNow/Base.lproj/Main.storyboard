@@ -889,8 +889,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
-                                    <action selector="textFieldReturn:" destination="Mbj-lP-5Rx" eventType="editingDidEnd" id="YTa-Rx-oHd"/>
-                                    <action selector="textFieldReturn:" destination="Mbj-lP-5Rx" eventType="editingDidEndOnExit" id="cGg-X4-OEv"/>
+                                    <action selector="textFieldReturn:" destination="Mbj-lP-5Rx" eventType="editingDidEndOnExit" id="Jgw-Dg-IzH"/>
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TzC-Ch-qXZ">
