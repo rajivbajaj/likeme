@@ -9,6 +9,7 @@
 #import "EADUserListProfileViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
+#import "EADMessageDetailsViewController.h"
 
 @interface EADUserListProfileViewController ()
 
@@ -23,6 +24,7 @@
 @synthesize userNoOfGroupsMember;
 @synthesize userNoOfGroupsAdmin;
 @synthesize userProfileImage;
+@synthesize userInterestsLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -61,8 +63,8 @@
         {
             self.userDisplayValue.text = [currentObject valueForKey:@"DisplayName"];
             self.userStatus.text = [currentObject valueForKey:@"ProfileStatus"];
-            self.userLocation.text = [userDataDictionary valueForKey:@"City"];
-            self.userInterestsLabel.text = [userDataDictionary valueForKey:@"UserInterests"];
+            self.userLocation.text = [currentObject valueForKey:@"City"];
+            self.userInterestsLabel.text = [currentObject valueForKey:@"UserInterests"];
                 
                 NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
                 NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
@@ -91,7 +93,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -99,7 +101,22 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"userProfileToMessage"])
+    {
+        EADMessageDetailsViewController *destinationVC = [segue destinationViewController];
+        if (_userDetailArray != nil)
+        {
+            NSDictionary *currentObject = [self.userDetailArray objectAtIndex:0];
+            
+        
+            destinationVC.senderName = [currentObject valueForKey:@"DisplayName"];;
+        
+            destinationVC.authorId = [currentObject valueForKey:@"UserId"];;
+            destinationVC.messangerType = @"User";
+        }
+    }
+
 }
-*/
+
 
 @end
