@@ -143,7 +143,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.eventsCollectionView reloadData];
 }
 
-
+-(IBAction) filterEvents
+{
+    [self.filteredArray removeAllObjects];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"IsOwner=", @"Yes"];
+    
+    self.filteredArray = [NSMutableArray arrayWithArray: [self.eventsArray filteredArrayUsingPredicate:resultPredicate]];
+    [self.eventsCollectionView reloadData];
+    NSLog(@"my events ...");
+}
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation

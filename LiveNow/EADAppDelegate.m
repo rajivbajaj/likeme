@@ -30,8 +30,13 @@
         [FBLoginView class];
 
     }
-    
+    NSSetUncaughtExceptionHandler(&customExceptionHandler);
     return YES;
+}
+void customExceptionHandler(NSException *exception)
+{
+    NSArray *stack = [exception callStackReturnAddresses];
+    NSLog(@"Stack trace: %@", stack);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
