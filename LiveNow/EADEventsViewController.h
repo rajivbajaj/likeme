@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSMutableArray *filteredArray;
 @property BOOL isNewEventAdded;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *myEvents;
+@property BOOL isMyEvent;
 
 @end

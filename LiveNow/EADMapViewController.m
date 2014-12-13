@@ -204,6 +204,10 @@
 
     [_mapView setRegion:region animated:YES];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    if (_loadEvents)
+    {
+        [self drawEvents];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -216,6 +220,33 @@
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     _mapView.centerCoordinate = userLocation.location.coordinate;
+}
+
+-(void)drawEvents
+{
+    NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
+    
+    for (NSDictionary *currentObject in self.matchingItems)
+    {
+        
+        CLLocationCoordinate2D  ctrpoint;
+        ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
+        ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
+        // EADMKPointAnnotation *annotation =
+        // [[EADMKPointAnnotation alloc]init];
+        EADMKPointAnnotation *annotation = [[EADMKPointAnnotation alloc] initWithName:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EventId"]] entityType:@"Event" coordinate:ctrpoint] ;
+        //annotation.coordinate=ctrpoint;
+        annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EventName"]];
+        
+        annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EventType"]];
+       
+        
+        [marketLocations addObject:annotation];
+        //[_mapView addAnnotation:annotation];
+    }
+    [_mapView addAnnotations:marketLocations];
+    
+    
 }
 
 

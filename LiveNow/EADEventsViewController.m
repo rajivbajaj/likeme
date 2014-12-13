@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADEventDetailViewController.h"
+#import "EADMapViewController.h"
 
 @interface EADEventsViewController ()
 
@@ -61,12 +62,24 @@ NSInteger selectedCellIndex;
     Postman *postman = [Postman alloc];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
+    if (_isMyEvent)
+    {
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-//                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
+                                        [postman GetValueOrEmpty:@"true"], @"IsAttending",
                                         nil];
+        self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
+    }
+    else
+    {
+        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                            //                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
+                                            nil];
+        self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
+
+    }
     
-    self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -152,6 +165,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.eventsCollectionView reloadData];
     NSLog(@"my events ...");
 }
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self performSegueWithIdentifier:@"eventToMap" sender:searchBar];
+
+}
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -165,6 +184,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
              NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
             // 
             destinationVC.eventId = [selectedItem valueForKey:@"EventId"];
+     }
+     else if ([segue.identifier isEqualToString:@"eventToMap"])
+     {
+      
+         EADMapViewController *destinationVC = [segue destinationViewController];
+         //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
+         //NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
+         //
+         destinationVC.loadEvents = true;
+         destinationVC.matchingItems = [[NSMutableArray alloc] initWithArray:self.eventsArray];
      }
  }
 

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableArray *matchingItems;
 @property NSString *annotationId;
 @property NSString *annotationType;
-
+@property BOOL loadEvents;
+@property BOOL loadUsers;
 -(IBAction)textFieldReturn:(id)sender;
 @end
