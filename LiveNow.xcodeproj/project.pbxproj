@@ -135,6 +135,7 @@
 		146DD2DC1A32421700EBAB9D /* EADGroupReadOnlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */; };
 		1473D6CB1A2F28C3009E633A /* LocationPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1473D6CA1A2F28C3009E633A /* LocationPin.png */; };
 		1473D6CE1A2F2C89009E633A /* EADLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */; };
+		14B17A0A1A3CD75C00E46FC4 /* EADReportAbuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -352,6 +353,8 @@
 		1473D6CA1A2F28C3009E633A /* LocationPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationPin.png; sourceTree = "<group>"; };
 		1473D6CC1A2F2C89009E633A /* EADLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADLocationPickerViewController.h; sourceTree = "<group>"; };
 		1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADLocationPickerViewController.m; sourceTree = "<group>"; };
+		14B17A081A3CD75C00E46FC4 /* EADReportAbuseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADReportAbuseViewController.h; sourceTree = "<group>"; };
+		14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADReportAbuseViewController.m; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -522,6 +525,8 @@
 				1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */,
 				146DD2DA1A32421700EBAB9D /* EADGroupReadOnlyViewController.h */,
 				146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */,
+				14B17A081A3CD75C00E46FC4 /* EADReportAbuseViewController.h */,
+				14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1026,6 +1031,7 @@
 				144CE66D19E5716C00C6EC03 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				143585D019CA422C007F03DF /* AMTableView.m in Sources */,
 				0BBDFE371A2FF5E30030F974 /* EADLocationSearchViewController.m in Sources */,
+				14B17A0A1A3CD75C00E46FC4 /* EADReportAbuseViewController.m in Sources */,
 				144CE66419E5716C00C6EC03 /* JSQMessagesCollectionView.m in Sources */,
 				144CE65019E5716C00C6EC03 /* UIColor+JSQMessages.m in Sources */,
 				143585E919CA57AE007F03DF /* EADProfileViewController.m in Sources */,

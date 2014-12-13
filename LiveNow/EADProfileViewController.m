@@ -125,10 +125,10 @@
     return _pickerData.count;
 }
 
-- (IBAction)locationEditingDidBegin:(id)sender
-{
-    [self performSegueWithIdentifier:@"segueLocationPicker" sender:self];
-}
+//- (IBAction)locationEditingDidBegin:(id)sender
+//{
+//    [self performSegueWithIdentifier:@"segueLocationPicker" sender:self];
+//}
 
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component

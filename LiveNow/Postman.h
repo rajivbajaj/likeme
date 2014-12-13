@@ -16,4 +16,5 @@
 -(void) Post :(NSString*)actionURLWithPlaceHolder :(NSDictionary*)dicData;
 -(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData;
 -(NSDictionary*) Get :(NSString*)urlWithParams;
+-(void)PostWithFileData :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSData*)fileData;
 @end

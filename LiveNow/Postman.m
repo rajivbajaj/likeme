@@ -9,6 +9,8 @@
 #import "Postman.h"
 #import "URLRequest.h"
 #import "Constants.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFHTTPRequestOperation.h>
 
 @implementation Postman
 -(NSDictionary*) UserGet :(NSString*)userId
@@ -117,5 +119,30 @@
 -(NSString*)GetValueOrEmpty :(NSString*)inputValue
 {
     return inputValue == nil ? @"" : inputValue;
+}
+
+-(void)PostWithFileData :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSData*)fileData
+{
+    // Create json data from the dictionary parameters
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    
+    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, @"value", nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    [manager POST:completeServiceUrl parameters:updatedParamsData constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+    {
+        [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"imageName" mimeType:@"image/jpeg"];
+    }
+    success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSLog(@"Success: %@", responseObject);
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        NSLog(@"Error: %@", error);
+    }];
 }
 @end

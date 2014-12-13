@@ -146,8 +146,14 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Events" andIcon:@"Clock.png"];
     
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Events" andIcon:@"Clock.png"];
+    
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"Groups.png"];
+    
+    controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"Groups.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:8 withTitle:@"Logout" andIcon:@"logout.png"];

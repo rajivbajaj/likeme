@@ -71,6 +71,8 @@
 - (IBAction)newGroupSave:(id)sender
 {
     NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
+    
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
     [foramtter setDateFormat:@"mm/dd/yyyy"];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     Postman *postMan = [Postman alloc];
@@ -83,7 +85,11 @@
                                          [postMan GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
                                          nil];
     
-    [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
+    
+//    [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
+    [postMan PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
+    
+//    self.imageView.image
     
     EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
     

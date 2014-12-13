@@ -53,6 +53,34 @@
             self.groupMessagesCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.groupMemberCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMembers];
             
+            
+            //NSData *imageData = [NSData dataWithBytes:[currentObject valueForKey:@"GroupPic"] length:<#(NSUInteger)#>
+            NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
+
+            if(imageStringData != nil)
+            {
+                NSData *imageData = [self parseStringToData:imageStringData];
+                UIImage *image = [UIImage imageWithData:imageData];
+                
+                                UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
+                                [image drawInRect:CGRectMake(0,0,36,36)];
+                                UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+                                UIGraphicsEndImageContext();
+                                self.groupImageView .image = im2;
+
+            }
+//            if(imageData != nil)
+//            {
+//                byte[]
+//                UIImage *image = [UIImage imageWithData:[currentObject valueForKey:@"GroupPic"]];
+//                
+//                UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
+//                [image drawInRect:CGRectMake(0,0,36,36)];
+//                UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+//                UIGraphicsEndImageContext();
+//                self.groupImageView .image = im2;
+//            }
+            
             // If user is owner of the group don't show the join or leave buttons
             if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])
             {
@@ -78,6 +106,26 @@
         }
     }
 }
+
+- (NSData *) parseStringToData:(NSString *) str
+{
+    if ([str length] % 3 != 0)
+    {
+        // raise an exception, because the string's length should be a multiple of 3.
+    }
+    
+    NSMutableData *result = [NSMutableData dataWithLength:[str length] / 3];
+    unsigned char *buffer = [result mutableBytes];
+    
+    for (NSUInteger i = 0; i < [result length]; i++)
+    {
+        NSString *byteString = [str substringWithRange:NSMakeRange(i * 3, 3)];
+        buffer[i] = [byteString intValue];
+    }
+    
+    return result;
+}
+
 - (IBAction)joinGroupTouched:(id)sender
 {
     Postman *postman = [Postman alloc];

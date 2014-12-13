@@ -63,7 +63,7 @@
                                         nil];
     
     self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
-    
+    [self.groupsTableView reloadData];
     
 }
 
