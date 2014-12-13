@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -311,7 +311,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1860"/>
         </scene>
-        <!--Create Group-->
+        <!--Group Details View Controller - Create Group-->
         <scene sceneID="2Mc-tq-kO1">
             <objects>
                 <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
@@ -716,7 +716,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile-->
+        <!--Profile View Controller - Profile-->
         <scene sceneID="oeB-wE-aUz">
             <objects>
                 <tableViewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="Odl-cT-7gB" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -978,7 +978,7 @@
             </objects>
             <point key="canvasLocation" x="1872" y="358"/>
         </scene>
-        <!--Pick Location-->
+        <!--Location Search View Controller - Pick Location-->
         <scene sceneID="jh7-8P-8Et">
             <objects>
                 <viewController storyboardIdentifier="LocationSelection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbj-lP-5Rx" customClass="EADLocationSearchViewController" sceneMemberID="viewController">
@@ -1187,7 +1187,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox-->
+        <!--Inbox View Controller - Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -1254,7 +1254,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker-->
+        <!--Image Picker View Controller - Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -1282,7 +1282,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events-->
+        <!--Events View Controller - Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
@@ -1297,6 +1297,11 @@
                                     <barButtonItem systemItem="add" id="qQU-ye-Mjh">
                                         <connections>
                                             <segue destination="fzM-RJ-wU7" kind="push" id="igJ-y3-ovU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="My Events" id="hjk-2n-dTc">
+                                        <connections>
+                                            <action selector="filterEvents" destination="OOz-R3-8bN" id="7Fr-MH-qTq"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1378,6 +1383,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="Twf-JH-jS9"/>
+                        <outlet property="myEvents" destination="hjk-2n-dTc" id="drS-fL-bhK"/>
                         <outlet property="searchBar" destination="YX0-s6-FxT" id="ayi-Uz-lFZ"/>
                         <outlet property="searchDisplayController" destination="XDf-Mr-4E1" id="iLx-d2-aUu"/>
                         <segue destination="fXq-rB-dvi" kind="push" identifier="eventDetail" id="j80-dk-2le"/>
@@ -1395,7 +1401,7 @@
             </objects>
             <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
-        <!--Create Event-->
+        <!--Events Create View Controller - Create Event-->
         <scene sceneID="aug-Rb-WMD">
             <objects>
                 <tableViewController id="fzM-RJ-wU7" customClass="EADEventsCreateViewController" sceneMemberID="viewController">
@@ -1683,11 +1689,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kJo-m6-U5Y"/>
-        <segue reference="GBq-uG-Q6z"/>
+        <segue reference="j80-dk-2le"/>
         <segue reference="TAK-hv-Tob"/>
         <segue reference="sQm-xv-8oR"/>
         <segue reference="HDh-NI-nOR"/>
+        <segue reference="kJo-m6-U5Y"/>
         <segue reference="4Xp-nV-93B"/>
     </inferredMetricsTieBreakers>
 </document>
