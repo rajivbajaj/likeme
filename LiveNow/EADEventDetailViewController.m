@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
+#import "EADReportAbuseViewController.h"
 
 @interface EADEventDetailViewController ()
 
@@ -146,6 +147,17 @@ bool isAttendingThisEvent = false;
          destinationVC.eventId = eventId;
          destinationVC.messangerType = @"Event";
      
+     }
+     else if([segue.identifier isEqualToString:@"reportAbuseSegue"])
+     {
+         EADReportAbuseViewController *reportAbuseViewController = segue.destinationViewController;
+         
+         if(reportAbuseViewController != nil)
+         {
+             reportAbuseViewController.entityId = self.eventId;
+             reportAbuseViewController.entityType = @"event";
+             reportAbuseViewController.entityName = self.eventNameLabel.text;
+         }
      }
  }
 

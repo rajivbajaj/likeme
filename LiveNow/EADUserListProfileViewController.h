@@ -20,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (nonatomic, strong) NSArray *userDetailArray;
 @property (weak, nonatomic) IBOutlet UILabel *userInterestsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *reportAbuseButton;
 @end

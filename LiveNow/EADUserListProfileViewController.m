@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
+#import "EADReportAbuseViewController.h"
 
 @interface EADUserListProfileViewController ()
 
@@ -66,10 +67,10 @@
             self.userLocation.text = [currentObject valueForKey:@"City"];
             self.userInterestsLabel.text = [currentObject valueForKey:@"UserInterests"];
                 
-                NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
-                NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
-                NSInteger numberOfUserGroupCount = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
-                NSInteger numberOfGroupAdmin = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+            NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+            NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+            NSInteger numberOfUserGroupCount = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+            NSInteger numberOfGroupAdmin = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
                 
             self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsAttending];
                 self.userNoOfEventsCreated.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsCreated];
@@ -113,6 +114,17 @@
         
             destinationVC.authorId = [currentObject valueForKey:@"UserId"];;
             destinationVC.messangerType = @"User";
+        }
+    }
+    else if([segue.identifier isEqualToString:@"reportAbuseSegue"])
+    {
+        EADReportAbuseViewController *reportAbuseViewController = segue.destinationViewController;
+        
+        if(reportAbuseViewController != nil)
+        {
+            reportAbuseViewController.entityId = self.userId;
+            reportAbuseViewController.entityType = @"user";
+            reportAbuseViewController.entityName = self.userDisplayValue.text;
         }
     }
 

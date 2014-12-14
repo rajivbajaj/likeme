@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface EADReportAbuseViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UILabel *entityNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *entityTypeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionLabel;
 
+@property NSString* entityType;
+@property NSString* entityName;
+@property NSString* entityId;
+@property NSString* authenticationToken;
 @end

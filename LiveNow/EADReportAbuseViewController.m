@@ -7,6 +7,8 @@
 //
 
 #import "EADReportAbuseViewController.h"
+#import "Postman.h"
+#import "UserInfo.h"
 
 @interface EADReportAbuseViewController ()
 
@@ -14,14 +16,35 @@
 
 @implementation EADReportAbuseViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.entityTypeLabel.text = self.entityType;
+    self.entityNameLabel.text = self.entityName;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)saveTouched:(id)sender
+{
+    Postman *postman = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    
+    NSDictionary *reportAbuseDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        self.entityId, @"EntityId",
+                                        self.entityType, @"EntityType",
+                                        userInfo.userId, @"ReportedBy",
+                                        [self.descriptionLabel text], @"ReportDescription",
+                                        nil];
+    
+    [postman Post:@"reportabuse/post?value=%@" :reportAbuseDataDictionary];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

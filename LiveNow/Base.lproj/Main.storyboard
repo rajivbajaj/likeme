@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -148,7 +147,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qdF-Bi-y74">
-                                                    <rect key="frame" x="86" y="8" width="127" height="154"/>
+                                                    <rect key="frame" x="85" y="8" width="127" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -299,7 +298,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="h4P-Nt-FJ3" kind="push" id="tmE-nI-V2m"/>
+                                                        <segue destination="h4P-Nt-FJ3" kind="push" identifier="reportAbuseSegue" id="tmE-nI-V2m"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -330,7 +329,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1860"/>
         </scene>
-        <!--Report Abuse View Controller - Title-->
+        <!--Title-->
         <scene sceneID="Cm8-zn-18X">
             <objects>
                 <tableViewController id="h4P-Nt-FJ3" customClass="EADReportAbuseViewController" sceneMemberID="viewController">
@@ -394,15 +393,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="jw5-v3-8nV">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="U9f-ZF-Ag5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="U9f-ZF-Ag5">
+                            <connections>
+                                <action selector="saveTouched:" destination="h4P-Nt-FJ3" id="Han-yh-xaV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="u6m-kK-e9F" id="R5K-HI-CQY"/>
+                        <outlet property="entityNameLabel" destination="5pH-Zw-qhu" id="mcM-1X-iz7"/>
+                        <outlet property="entityTypeLabel" destination="m6m-MD-EoG" id="A9y-8d-JP9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibv-ps-OGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1453" y="2508"/>
         </scene>
-        <!--Group Details View Controller - Create Group-->
+        <!--Create Group-->
         <scene sceneID="2Mc-tq-kO1">
             <objects>
                 <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
@@ -522,7 +530,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView hidden="YES" contentMode="scaleToFill" id="oCw-Wn-DO8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="640" height="162"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="960" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="qUa-6l-J0w" id="OUC-t3-TAx"/>
@@ -540,7 +548,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Pio-cf-etk">
-                                                    <rect key="frame" x="15" y="13" width="305" height="128"/>
+                                                    <rect key="frame" x="15" y="8" width="305" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -775,7 +783,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="h4P-Nt-FJ3" kind="push" id="zNI-fD-lE8"/>
+                                            <segue destination="h4P-Nt-FJ3" kind="push" identifier="reportAbuseSegue" id="zNI-fD-lE8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -817,7 +825,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="oeB-wE-aUz">
             <objects>
                 <tableViewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="Odl-cT-7gB" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -1079,7 +1087,7 @@
             </objects>
             <point key="canvasLocation" x="1872" y="358"/>
         </scene>
-        <!--Location Search View Controller - Pick Location-->
+        <!--Pick Location-->
         <scene sceneID="jh7-8P-8Et">
             <objects>
                 <viewController storyboardIdentifier="LocationSelection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbj-lP-5Rx" customClass="EADLocationSearchViewController" sceneMemberID="viewController">
@@ -1217,11 +1225,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i3w-Ag-TdM">
+                                <rect key="frame" x="177" y="454" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Report Abuse">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="h4P-Nt-FJ3" kind="push" identifier="reportAbuseSegue" id="OCl-Un-Pl0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="KHc-lT-Ke3"/>
                     <connections>
+                        <outlet property="reportAbuseButton" destination="i3w-Ag-TdM" id="zeI-OR-Lau"/>
                         <outlet property="userDisplayValue" destination="Ip5-WF-pCf" id="kLB-5x-dR4"/>
                         <outlet property="userInterestsLabel" destination="exR-hk-uQF" id="lKz-hY-vTG"/>
                         <outlet property="userLocation" destination="DfN-zr-Sdx" id="ATn-Ye-lxy"/>
@@ -1288,7 +1307,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox View Controller - Inbox-->
+        <!--Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -1355,7 +1374,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker View Controller - Image Picker-->
+        <!--Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -1383,7 +1402,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events View Controller - Events-->
+        <!--Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
@@ -1497,7 +1516,7 @@
             </objects>
             <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
-        <!--Events Create View Controller - Create Event-->
+        <!--Create Event-->
         <scene sceneID="aug-Rb-WMD">
             <objects>
                 <tableViewController id="fzM-RJ-wU7" customClass="EADEventsCreateViewController" sceneMemberID="viewController">
@@ -1785,13 +1804,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HDh-NI-nOR"/>
-        <segue reference="sQm-xv-8oR"/>
-        <segue reference="TAK-hv-Tob"/>
-        <segue reference="j80-dk-2le"/>
         <segue reference="8OK-M8-tPy"/>
-        <segue reference="zNI-fD-lE8"/>
-        <segue reference="kJo-m6-U5Y"/>
+        <segue reference="j80-dk-2le"/>
         <segue reference="4Xp-nV-93B"/>
+        <segue reference="pdK-Z6-3XM"/>
+        <segue reference="tmE-nI-V2m"/>
+        <segue reference="slm-aI-TrD"/>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="kJo-m6-U5Y"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
+#import "EADReportAbuseViewController.h"
 
 @interface EADGroupReadOnlyViewController ()
 
@@ -186,6 +187,17 @@
             messageDetailsViewController.senderDisplayName = [self.groupNameLabel text];
             messageDetailsViewController.messangerType = @"Group";
             messageDetailsViewController.groupId = self.groupId;
+        }
+    }
+    else if([segue.identifier isEqualToString:@"reportAbuseSegue"])
+    {
+        EADReportAbuseViewController *reportAbuseViewController = segue.destinationViewController;
+        
+        if(reportAbuseViewController != nil)
+        {
+            reportAbuseViewController.entityId = self.groupId;
+            reportAbuseViewController.entityType = @"group";
+            reportAbuseViewController.entityName = self.groupNameLabel.text;
         }
     }
 }
