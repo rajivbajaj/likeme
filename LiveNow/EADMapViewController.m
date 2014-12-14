@@ -208,6 +208,10 @@
     {
         [self drawEvents];
     }
+    else if (_loadUsers)
+    {
+        [self drawUsers];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -240,6 +244,31 @@
         
         annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EventType"]];
        
+        
+        [marketLocations addObject:annotation];
+        //[_mapView addAnnotation:annotation];
+    }
+    [_mapView addAnnotations:marketLocations];
+    
+    
+}
+-(void)drawUsers
+{
+    NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
+    
+    for (NSDictionary *currentObject in self.matchingItems)
+    {
+        
+        CLLocationCoordinate2D  ctrpoint;
+        ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
+        ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
+        // EADMKPointAnnotation *annotation =
+        // [[EADMKPointAnnotation alloc]init];
+        EADMKPointAnnotation *annotation = [[EADMKPointAnnotation alloc] initWithName:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"UserId"]] entityType:@"User" coordinate:ctrpoint] ;
+        //annotation.coordinate=ctrpoint;
+        annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"FirstName"]];
+        
+        annotation.subtitle=@"User";
         
         [marketLocations addObject:annotation];
         //[_mapView addAnnotation:annotation];

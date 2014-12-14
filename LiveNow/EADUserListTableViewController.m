@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADUserListProfileViewController.h"
+#import "EADMapViewController.h"
 
 @interface EADUserListTableViewController ()
 
@@ -165,7 +166,12 @@
     return 0;
 }
 
-
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self performSegueWithIdentifier:@"userListToMap" sender:searchBar];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -222,6 +228,17 @@
         destinationVC.userId = [_userListData[row] valueForKey:@"UserId"];
         
     }
+    else if ([segue.identifier isEqualToString:@"userListToMap"])
+    {
+        
+        EADMapViewController *destinationVC = [segue destinationViewController];
+        //NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
+        //NSDictionary *selectedItem = [self.eventsArray objectAtIndex:selectedCellIndex];
+        //
+        destinationVC.loadUsers = true;
+        destinationVC.matchingItems = [[NSMutableArray alloc] initWithArray:self.userListData];
+    }
+
 
 }
 
