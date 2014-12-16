@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString* userLocation;
 @property (nonatomic, retain) NSString* Latitude;
 @property (nonatomic, retain) NSString* Longitude;
+@property int interestedRadius;
 
 +(id)sharedUserInfo;
 @end

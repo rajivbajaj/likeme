@@ -68,6 +68,8 @@
     UIGraphicsEndImageContext();
     profilePicImageView.image = im2;
     profilePicImageView.contentMode = UIViewContentModeTop;
+    
+    userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -109,6 +111,7 @@
                                         _latitude, @"Latitude",
                                         _longitude, @"Longitude",
                                         [postMan GetValueOrEmpty:self.genderText.text], @"Gender",
+                                        userInfo.interestedRadius, @"Radius",
                                         nil];
     
     [postMan Post:@"users/post?value=%@" :userDataDictionary];
@@ -154,6 +157,13 @@
     }
 }
 
+- (IBAction)radiusSliderValueChanged:(id)sender
+{
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
+    NSString *interestedMiles = [NSString stringWithFormat:@"%i", userInfo.interestedRadius];
+    self.milesLabel.text = [interestedMiles stringByAppendingString:@" miles"];
+}
 
 #pragma mark - Navigation
 

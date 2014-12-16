@@ -62,11 +62,13 @@ NSInteger selectedCellIndex;
     Postman *postman = [Postman alloc];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
+
     if (_isMyEvent)
     {
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        [postman GetValueOrEmpty:@"true"], @"IsAttending",
+                                        [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
+                                        @"true", @"IsAttending",
                                         nil];
         self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
     }
@@ -74,12 +76,15 @@ NSInteger selectedCellIndex;
     {
         NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                             [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                            //                                        [postman GetValueOrEmpty:@"false"], @"IsAttending",
+                                            [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
+                                            @"false", @"IsAttending",
                                             nil];
+        
         self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
 
     }
     
+    [self.eventsCollectionView reloadData];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
