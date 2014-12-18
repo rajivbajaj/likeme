@@ -43,12 +43,12 @@
     }
     self.title = [self senderName];
     [NSUserDefaults saveIncomingAvatarSetting:YES];
-    [NSUserDefaults saveOutgoingAvatarSetting:YES];
+    //[NSUserDefaults saveOutgoingAvatarSetting:YES];
     /**
      *  You MUST set your senderId and display name
      */
-    self.senderId = kJSQDemoAvatarIdSquires;
-    self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
+    //self.senderId = kJSQDemoAvatarIdSquires;
+    //self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
     
 
     MessagesData *messagesData = [MessagesData alloc];
@@ -415,7 +415,7 @@
      */
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if ([message.senderId isEqualToString:self.senderId]) {
+    if ([message.senderId isEqualToString:self.currentUserId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
             return nil;
         }
@@ -438,12 +438,16 @@
      *
      *  Show a timestamp for every 3rd message
      */
-//    if (indexPath.item % 3 == 0) {
-//        JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
-//        return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
-//    }
+    if (indexPath.item % 3 == 0) {
+        JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
+        return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
+    }
+    else
+    {
+        return nil;
+    }
     
-    return nil;
+//    return nil;
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
@@ -453,7 +457,7 @@
     /**
      *  iOS7-style sender name labels
      */
-    if ([message.senderId isEqualToString:self.senderId]) {
+    if ([message.senderId isEqualToString:self.currentUserId]) {
         return nil;
     }
     
@@ -505,8 +509,18 @@
     
     JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if ([msg isKindOfClass:[JSQTextMessage class]]) {
+    if ([msg isKindOfClass:[JSQTextMessage class]])
+    {
         
+        if ([msg.senderId isEqualToString:self.senderId])
+        {
+            cell.textView.textColor = [UIColor blackColor];
+        }
+        else
+        {
+            cell.textView.textColor = [UIColor whiteColor];
+        }
+
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
     }
@@ -547,13 +561,16 @@
      *  iOS7-style sender name labels
      */
     JSQMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.item];
-    if ([[currentMessage senderId] isEqualToString:self.senderId]) {
+    if ([[currentMessage senderId] isEqualToString:self.currentUserId])
+    {
         return 0.0f;
     }
     
-    if (indexPath.item - 1 > 0) {
+    if (indexPath.item - 1 > 0)
+    {
         JSQMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
-        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
+        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]])
+        {
             return 0.0f;
         }
     }

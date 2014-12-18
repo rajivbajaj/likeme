@@ -44,7 +44,8 @@ NSInteger selectedCellIndex;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if(self.isNewEventAdded == true)
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    if(self.isNewEventAdded == true || userInfo.isRadiusChanged == true)
     {
         [self loadEvents];
         [self.eventsCollectionView reloadData];

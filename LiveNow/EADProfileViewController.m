@@ -161,6 +161,7 @@
 {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
+    userInfo.isRadiusChanged = true;
     NSString *interestedMiles = [NSString stringWithFormat:@"%i", userInfo.interestedRadius];
     self.milesLabel.text = [interestedMiles stringByAppendingString:@" miles"];
 }

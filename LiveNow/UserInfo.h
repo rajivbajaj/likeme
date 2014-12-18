@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString* Latitude;
 @property (nonatomic, retain) NSString* Longitude;
 @property int interestedRadius;
+@property BOOL isRadiusChanged;
 
 +(id)sharedUserInfo;
 @end
