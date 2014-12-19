@@ -101,6 +101,9 @@
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
 
+    NSString *latitudeString = [[NSNumber numberWithDouble:_latitude] stringValue];
+    NSString *longitudeString = [[NSNumber numberWithDouble:_longitude] stringValue];
+    
     // update user information
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
@@ -108,10 +111,10 @@
                                         [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
                                         [postMan GetValueOrEmpty:displayNameText.text], @"UserName",
                                         [postMan GetValueOrEmpty:location.text], @"City",
-                                        _latitude, @"Latitude",
-                                        _longitude, @"Longitude",
+                                        latitudeString, @"Latitude",
+                                        longitudeString, @"Longitude",
                                         [postMan GetValueOrEmpty:self.genderText.text], @"Gender",
-                                        userInfo.interestedRadius, @"Radius",
+                                        [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"Radius",
                                         nil];
     
     [postMan Post:@"users/post?value=%@" :userDataDictionary];

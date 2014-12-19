@@ -45,8 +45,10 @@
     UserInfo *userInfo = [UserInfo sharedUserInfo];
 
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
-    self.userListData = [postMan Get:@"users/getall?jsonParams=%@" :paramsData];
+                                [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
+                                nil];
+    self.userListData = [postMan Get:@"users/getbyradius?jsonParams=%@" :paramsData];
     
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.userListData count]];
     

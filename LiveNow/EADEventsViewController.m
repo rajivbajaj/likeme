@@ -49,6 +49,7 @@ NSInteger selectedCellIndex;
     {
         [self loadEvents];
         [self.eventsCollectionView reloadData];
+        userInfo.isRadiusChanged = false;
     }
 }
 
