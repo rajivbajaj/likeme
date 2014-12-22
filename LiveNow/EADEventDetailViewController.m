@@ -80,6 +80,15 @@ bool isAttendingThisEvent = false;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = YES;
                 self.leaveEventButton.hidden = false;
                 isAttendingThisEvent = true;
+                
+                if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
+                {
+                    [self.reportAbuseButton setHidden:YES];
+                }
+                else
+                {
+                    [self.reportAbuseButton setHidden:NO];
+                }
             }
             else
             {
@@ -87,7 +96,10 @@ bool isAttendingThisEvent = false;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
                 self.leaveEventButton.hidden = true;
                 isAttendingThisEvent = false;
+                [self.reportAbuseButton setHidden:NO];
             }
+            
+           
         }
         
     }
