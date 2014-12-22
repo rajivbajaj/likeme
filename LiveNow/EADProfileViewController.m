@@ -69,6 +69,14 @@
     profilePicImageView.image = im2;
     profilePicImageView.contentMode = UIViewContentModeTop;
     
+    NSString *radiusString = [userDataDictionary valueForKey:@"Radius"];
+    if(radiusString != nil)
+    {
+        [self.radiusSlider setValue:[radiusString floatValue] animated:YES];
+        self.milesLabel.text = [[NSString stringWithFormat:@"%i", [radiusString integerValue]] stringByAppendingString:@" miles"];
+        
+    }
+    
     userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
 }
 
