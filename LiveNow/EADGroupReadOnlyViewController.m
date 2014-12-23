@@ -89,6 +89,8 @@
                 [self.leaveGroupButton setHidden:YES];
                 [self.messagesSegueButton setEnabled:YES];
                 [self.usersSegueButton setEnabled:YES];
+                [self.reportAbuseButton setHidden:YES];
+
             }
             else if([[currentObject valueForKey:@"IsMember"] isEqualToString:@"Yes"])
             {
@@ -96,6 +98,14 @@
                 [self.joinGroupButton setHidden:YES];
                 [self.messagesSegueButton setEnabled:YES];
                 [self.usersSegueButton setEnabled:YES];
+                if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
+                {
+                    [self.reportAbuseButton setHidden:YES];
+                }
+                else
+                {
+                    [self.reportAbuseButton setHidden:NO];
+                }
             }
             else
             {
@@ -103,6 +113,7 @@
                 [self.leaveGroupButton setHidden:YES];
                 [self.messagesSegueButton setEnabled:NO];
                 [self.usersSegueButton setEnabled:NO];
+                [self.reportAbuseButton setHidden:YES];
             }
         }
     }

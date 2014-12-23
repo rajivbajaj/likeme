@@ -47,10 +47,11 @@
 -(void) loadUserProfile
 {
     Postman* postman = [Postman alloc];
- 
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:_userId], @"UserId",
+                                        userInfo.userId, @"AuthenticationToken",
                                         nil];
 
     
@@ -82,6 +83,15 @@
             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
             UIImage *image = [UIImage imageWithData:imageData];
                 self.userProfileImage.image=image;
+            
+            if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
+            {
+                [self.reportAbuseButton setHidden:YES];
+            }
+            else
+            {
+                [self.reportAbuseButton setHidden:NO];
+            }
         }
     }
     
