@@ -24,7 +24,7 @@
     if (_logout)
     {
         //ToDO need to call this from slide menu
-        //FBSession.activeSession.closeAndClearTokenInformation;
+        [FBSession.activeSession closeAndClearTokenInformation];
         _logout = false;
     }
     else

@@ -89,6 +89,11 @@ void customExceptionHandler(NSException *exception)
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"My token is: %@", deviceToken);
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    userInfo.userDeviceToken = [[[NSString stringWithFormat:@"%@",deviceToken]
+                           stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

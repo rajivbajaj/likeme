@@ -28,6 +28,52 @@
 - (IBAction)searchText:(id)sender {
 }
 
+- (void)zoomToAnnotations
+{
+    MKMapRect zoomRect = MKMapRectNull;
+    for (id <MKAnnotation> annotation in _mapView.annotations) {
+        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+        if (MKMapRectIsNull(zoomRect)) {
+            zoomRect = pointRect;
+        } else {
+            zoomRect = MKMapRectUnion(zoomRect, pointRect);
+        }
+    }
+    //[_mapView setVisibleMapRect:zoomRect animated:YES];
+    [_mapView setVisibleMapRect:zoomRect edgePadding:UIEdgeInsetsMake(10, 10, 10, 10) animated:YES];
+}
+-(void)zoomToFitMapAnnotations:(MKMapView*)aMapView
+{
+    if([aMapView.annotations count] == 0)
+        return;
+    
+    CLLocationCoordinate2D topLeftCoord;
+    topLeftCoord.latitude = -90;
+    topLeftCoord.longitude = 180;
+    
+    CLLocationCoordinate2D bottomRightCoord;
+    bottomRightCoord.latitude = 90;
+    bottomRightCoord.longitude = -180;
+    
+    for(MKPointAnnotation *_annotationId in _mapView.annotations)
+    {
+        topLeftCoord.longitude = fmin(topLeftCoord.longitude, _annotationId.coordinate.longitude);
+        topLeftCoord.latitude = fmax(topLeftCoord.latitude, _annotationId.coordinate.latitude);
+        
+        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, _annotationId.coordinate.longitude);
+        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, _annotationId.coordinate.latitude);
+    }
+    
+    MKCoordinateRegion region;
+    region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
+    region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
+    region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1; // Add a little extra space on the sides
+    region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1; // Add a little extra space on the sides
+    
+    region = [aMapView regionThatFits:region];
+    [_mapView setRegion:region animated:YES];
+}
 -(void)searchAll
 {
     Postman* postMan = [Postman alloc];
@@ -60,7 +106,9 @@
         //[_mapView addAnnotation:annotation];
     }
     [_mapView addAnnotations:marketLocations];
-
+    [_mapView showAnnotations:marketLocations animated:YES];
+    //[self zoomToAnnotations];
+    //[self zoomToFitMapAnnotations:_mapView];
     //AddressAnnotation *addAnnotation = [[AddressAnnotation alloc] initWithCoordinate:ctrpoint];
     //[mapview addAnnotation:addAnnotation];
     //[addAnnotation release];
@@ -90,7 +138,7 @@
     MKLocalSearchRequest *request =
     [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = _searchText.text;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 2000, 2000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 200000, 200000);
     
     request.region = region;
     [_mapView setRegion:region animated:YES];
@@ -200,7 +248,16 @@
     [super viewDidLoad];
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 2000, 2000);
+    [_mapView removeAnnotations:[_mapView annotations]];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+   // NSString *latitudeString = [[NSNumber numberWithDouble:userInfo.Latitude] stringValue];
+    //NSString *longitudeString = [[NSNumber numberWithDouble:_longitude] stringValue];
+    
+    CLLocationCoordinate2D  ctrpoint;
+    ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[userInfo valueForKey:@"Latitude"]] doubleValue ];
+    ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[userInfo valueForKey:@"Longitude"]] doubleValue ];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(ctrpoint, 20000, 20000);
 
     [_mapView setRegion:region animated:YES];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
@@ -250,7 +307,8 @@
     }
     [_mapView addAnnotations:marketLocations];
     
-    
+    [self zoomToAnnotations];
+    //[_mapView showAnnotations:marketLocations animated:YES];
 }
 -(void)drawUsers
 {
@@ -275,7 +333,8 @@
     }
     [_mapView addAnnotations:marketLocations];
     
-    
+ //[self zoomToAnnotations];
+    [_mapView showAnnotations:marketLocations animated:YES];
 }
 
 

@@ -127,9 +127,10 @@
         {
                 if([self.initiatingController isEqualToString:@"profile"])
                 {
+                    
                   EADProfileViewController *profileViewController =  [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
                     
-                    profileViewController.locationName = selectedItem.name;
+                    profileViewController.location.text = selectedItem.name;
                     profileViewController.latitude = selectedItem.placemark.coordinate.latitude;
                     profileViewController.longitude = selectedItem.placemark.coordinate.longitude;
                 }

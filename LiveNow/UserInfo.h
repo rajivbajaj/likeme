@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString* Longitude;
 @property int interestedRadius;
 @property BOOL isRadiusChanged;
+@property (nonatomic, retain) NSString* userDeviceToken;
 
 +(id)sharedUserInfo;
 @end

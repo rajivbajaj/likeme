@@ -6,3 +6,5 @@ LiveNow/Base.lproj/Main.storyboard
 *.xcbkptlist
 
 *.storyboard
+
+LiveNow.xcodeproj/project.pbxproj

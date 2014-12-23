@@ -70,6 +70,7 @@
     profilePicImageView.contentMode = UIViewContentModeTop;
     
     userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
+    [self.genderPickerView setHidden:true];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -105,7 +106,7 @@
     NSString *longitudeString = [[NSNumber numberWithDouble:_longitude] stringValue];
     
     // update user information
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *userDataDictionaryUpdate = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         [postMan GetValueOrEmpty:ageText.text], @"Age",
                                         [postMan GetValueOrEmpty:statusText.text], @"ProfileStatus",
@@ -117,7 +118,7 @@
                                         [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"Radius",
                                         nil];
     
-    [postMan Post:@"users/post?value=%@" :userDataDictionary];
+    [postMan Post:@"users/post?value=%@" :userDataDictionaryUpdate];
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
