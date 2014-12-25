@@ -99,7 +99,7 @@
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         NSDictionary *currentItem  = self.searchResult[indexPath.row];
-        cell.textLabel.text = [currentItem valueForKey:@"FirstName"];
+        cell.textLabel.text = [currentItem valueForKey:@"DisplayName"];
         
         NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
@@ -109,7 +109,7 @@
     else
     {
         NSDictionary *currentItem  = self.userListData[indexPath.row];
-        cell.textLabel.text = [currentItem valueForKey:@"FirstName"];
+        cell.textLabel.text = [currentItem valueForKey:@"DisplayName"];
         NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
@@ -126,7 +126,7 @@
         NSDictionary *selectedItem = [self.searchResult objectAtIndex:indexPath.row];
         if(selectedItem != nil)
         {
-            int selectedIndex = [self getIndexOfItem:[selectedItem objectForKey:@"FirstName"]];
+            int selectedIndex = [self getIndexOfItem:[selectedItem objectForKey:@"DisplayName"]];
             currentIdx = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
         }
     }
@@ -141,7 +141,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"FirstName beginswith[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"DisplayName beginswith[c] %@", searchText];
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.userListData filteredArrayUsingPredicate:resultPredicate]];
 }

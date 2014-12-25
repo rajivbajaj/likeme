@@ -122,6 +122,7 @@
                                         [postMan GetValueOrEmpty:location.text], @"City",
                                         latitudeString, @"Latitude",
                                         longitudeString, @"Longitude",
+                                         [postMan GetValueOrEmpty:userInfo.userDeviceToken], @"DeviceToken",
                                         [postMan GetValueOrEmpty:self.genderText.text], @"Gender",
                                         [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"Radius",
                                         nil];
