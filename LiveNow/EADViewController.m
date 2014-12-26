@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 #import "Constants.h"
 #import "Postman.h"
+#import "EADEventsViewController.h"
 
 @interface EADViewController ()
 
@@ -29,15 +30,15 @@
     }
     else
     {
-    //[self CurrentLocationIdentifier];
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    loginView.delegate = self;
-    [self.view addSubview:loginView];
-    // Align the button in the center horizontally
-    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
-    //[self.view addSubview:loginView];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+        //[self CurrentLocationIdentifier];
+        FBLoginView *loginView = [[FBLoginView alloc] init];
+        loginView.delegate = self;
+        [self.view addSubview:loginView];
+        // Align the button in the center horizontally
+        loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
+        //[self.view addSubview:loginView];
+        // Do any additional setup after loading the view, typically from a nib.
+        self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     }
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
 }
@@ -143,11 +144,15 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Inbox"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Inbox" andIcon:@"Inbox.png"];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:6 withTitle:@"Events" andIcon:@"Clock.png"];
+    EADEventsViewController *eventController;
+    eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
+    eventController.isMyEvent = false;
+    [self.slideoutController addViewControllerToLastSection:eventController tagged:6 withTitle:@"Events" andIcon:@"Clock.png"];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Events" andIcon:@"Clock.png"];
+
+    eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
+    eventController.isMyEvent = true;
+    [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"Clock.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"Groups.png"];
@@ -155,8 +160,10 @@
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"Groups.png"];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:8 withTitle:@"Logout" andIcon:@"logout.png"];
+    EADViewController *loginController;
+    loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
+    loginController.logout = true;
+    [self.slideoutController addViewControllerToLastSection:loginController tagged:8 withTitle:@"Logout" andIcon:@"logout.png"];
     
 
     

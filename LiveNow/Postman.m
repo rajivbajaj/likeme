@@ -132,17 +132,33 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-    [manager POST:completeServiceUrl parameters:updatedParamsData constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+    if(fileData != nil)
     {
-        [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"imageName" mimeType:@"image/jpeg"];
+        [manager POST:completeServiceUrl parameters:updatedParamsData constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+        {
+            [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"imageName" mimeType:@"image/jpeg"];
+        }
+        success:^(AFHTTPRequestOperation *operation, id responseObject)
+        {
+            NSLog(@"Success: %@", responseObject);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        {
+            NSLog(@"Error: %@", error);
+        }];
     }
-    success:^(AFHTTPRequestOperation *operation, id responseObject)
+    else
     {
-        NSLog(@"Success: %@", responseObject);
+         [manager POST:completeServiceUrl parameters:updatedParamsData
+         success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSLog(@"Success: %@", responseObject);
+         }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             NSLog(@"Error: %@", error);
+         }];
+        
     }
-    failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"Error: %@", error);
-    }];
 }
 @end

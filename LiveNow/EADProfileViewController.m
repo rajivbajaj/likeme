@@ -103,6 +103,7 @@
 - (IBAction)genderEditingBegin:(id)sender
 {
     [self.genderPickerView setHidden:false];
+    [sender resignFirstResponder];
 }
 
 - (IBAction)updateProfileTouch:(id)sender

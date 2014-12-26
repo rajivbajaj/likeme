@@ -828,7 +828,7 @@
 				ORGANIZATIONNAME = EliteAppDesigner;
 				TargetAttributes = {
 					0B89FFA919BE52E90077E029 = {
-						DevelopmentTeam = Z3K7VHNBGJ;
+						DevelopmentTeam = 7T77WB53J7;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1120,7 +1120,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f266ad1b-4985-453d-b324-22b33a2a7f31";
+				PROVISIONING_PROFILE = "02683a01-323d-477b-b99c-a187febabea9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1153,7 +1153,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "f266ad1b-4985-453d-b324-22b33a2a7f31";
+				PROVISIONING_PROFILE = "02683a01-323d-477b-b99c-a187febabea9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

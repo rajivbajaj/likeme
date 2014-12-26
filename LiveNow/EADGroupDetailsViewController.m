@@ -85,11 +85,8 @@
                                          [postMan GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
                                          nil];
     
-    
-//    [postMan Post:@"groups/post?value=%@" :groupDataDictionary];
     [postMan PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
-    
-//    self.imageView.image
+   
     
     EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
     
@@ -138,6 +135,7 @@
 - (IBAction)restrictionsEditingBegin:(id)sender
 {
     [self.restrictionsPicker setHidden:false];
+    [sender resignFirstResponder];
 }
 
 - (IBAction)allOtherEditingBegin:(id)sender

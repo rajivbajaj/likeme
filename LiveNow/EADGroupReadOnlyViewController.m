@@ -53,34 +53,24 @@
             NSInteger numberOfMembers = [[currentObject objectForKey:@"GroupMembersCount"] integerValue];
             self.groupMessagesCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.groupMemberCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMembers];
-            
-            
-            //NSData *imageData = [NSData dataWithBytes:[currentObject valueForKey:@"GroupPic"] length:<#(NSUInteger)#>
+
             NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
-
-            if(imageStringData != nil)
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
             {
-                NSData *imageData = [self parseStringToData:imageStringData];
-                UIImage *image = [UIImage imageWithData:imageData];
+                NSData *imageData;
                 
-                                UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
-                                [image drawInRect:CGRectMake(0,0,36,36)];
-                                UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
-                                UIGraphicsEndImageContext();
-                                self.groupImageView .image = im2;
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
 
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.groupImageView .image = image;
+                }
             }
-//            if(imageData != nil)
-//            {
-//                byte[]
-//                UIImage *image = [UIImage imageWithData:[currentObject valueForKey:@"GroupPic"]];
-//                
-//                UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
-//                [image drawInRect:CGRectMake(0,0,36,36)];
-//                UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
-//                UIGraphicsEndImageContext();
-//                self.groupImageView .image = im2;
-//            }
             
             // If user is owner of the group don't show the join or leave buttons
             if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])

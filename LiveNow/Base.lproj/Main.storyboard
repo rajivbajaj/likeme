@@ -148,7 +148,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qdF-Bi-y74">
-                                                    <rect key="frame" x="90" y="8" width="127" height="107"/>
+                                                    <rect key="frame" x="89" y="8" width="127" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -525,14 +525,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="189" id="Pmr-d3-SaH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="Pmr-d3-SaH">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pmr-d3-SaH" id="oUO-dR-eng">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView hidden="YES" contentMode="scaleToFill" id="oCw-Wn-DO8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="1280" height="162"/>
+                                                    <rect key="frame" x="13" y="-5" width="244" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="qUa-6l-J0w" id="OUC-t3-TAx"/>
@@ -549,8 +549,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Pio-cf-etk">
-                                                    <rect key="frame" x="15" y="5" width="305" height="128"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="demo_avatar_jobs" id="Pio-cf-etk">
+                                                    <rect key="frame" x="8" y="8" width="305" height="121"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -940,7 +940,6 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="genderEditingBegin:" destination="Odl-cT-7gB" eventType="editingDidBegin" id="qFA-hO-S6b"/>
-                                                        <action selector="genderTouchDown:" destination="Odl-cT-7gB" eventType="touchDown" id="NU5-Fr-aeG"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -960,7 +959,6 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="allOtherTouchDown:" destination="Odl-cT-7gB" eventType="touchDown" id="qr7-Lk-rvq"/>
                                                         <segue destination="W5v-cK-FMU" kind="push" identifier="userInterestsSegue" id="byF-Tc-w4a"/>
                                                     </connections>
                                                 </button>
@@ -1806,6 +1804,7 @@
         <image name="LocationPin.png" width="24" height="24"/>
         <image name="Logo Design 2.png" width="864" height="720"/>
         <image name="Messages.png" width="100" height="94"/>
+        <image name="demo_avatar_jobs" width="64" height="64"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1813,13 +1812,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="pdK-Z6-3XM"/>
+        <segue reference="kJo-m6-U5Y"/>
+        <segue reference="tmE-nI-V2m"/>
+        <segue reference="slm-aI-TrD"/>
+        <segue reference="4Xp-nV-93B"/>
         <segue reference="8OK-M8-tPy"/>
         <segue reference="j80-dk-2le"/>
-        <segue reference="uZl-yr-jNO"/>
-        <segue reference="TAK-hv-Tob"/>
-        <segue reference="zNI-fD-lE8"/>
-        <segue reference="sQm-xv-8oR"/>
-        <segue reference="4Xp-nV-93B"/>
-        <segue reference="kJo-m6-U5Y"/>
     </inferredMetricsTieBreakers>
 </document>
