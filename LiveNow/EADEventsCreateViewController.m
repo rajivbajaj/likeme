@@ -70,8 +70,12 @@ NSString* endDateString;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     
+    NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
+    NSString *longitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
+    
+    NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
     // update event
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *eventDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
                                         [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
                                         [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
@@ -80,13 +84,13 @@ NSString* endDateString;
                                         [postMan GetValueOrEmpty:endDateString], @"EndTime",
                                         [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
                                         [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
-                                        _latitude, @"Latitude",
-                                        _longitude, @"Longitude",
-                                        
+                                        latitudeString, @"Latitude",
+                                        longitudeString, @"Longitude",
                                         nil];
     
     
-    [postMan Post:@"events/post?value=%@" :userDataDictionary];
+    //[postMan Post:@"events/post?value=%@" :eventDataDictionary];
+    [postMan PostWithFileData:@"events/post" :eventDataDictionary :imageData];
     
     EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
     

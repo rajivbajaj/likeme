@@ -59,12 +59,24 @@ bool isAttendingThisEvent = false;
         
         if(currentObject != nil)
         {
-            NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-            UIImage *image = [UIImage imageWithData:imageData];
+            NSString *imageStringData = [currentObject valueForKey:@"EventPic"];
             
-            self.userProfileImageView.image=image;
-
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.userProfileImageView.image = image;
+                }
+            }
+            
             self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
             self.eventNameLabel.text = [currentObject valueForKey:@"EventName"];
             self.eventDescriptionLabel.text=[currentObject valueForKey:@"EventDescription"];
