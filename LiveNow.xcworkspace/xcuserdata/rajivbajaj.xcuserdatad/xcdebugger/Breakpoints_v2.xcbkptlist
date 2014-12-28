@@ -879,8 +879,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "@implementation EADViewController"
-            landmarkType = "3">
+            landmarkName = "-navigateToMainPage"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

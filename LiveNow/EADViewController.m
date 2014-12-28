@@ -133,37 +133,37 @@
     [self.slideoutController addViewControllerToLastSection:controller tagged:1 withTitle:userInfo.firstName andIcon:image];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"UserInterests"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Interests" andIcon:@"favorite.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:2 withTitle:@"Interests" andIcon:@"img_interesticon.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"userList"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Search People" andIcon:@"favorite.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:3 withTitle:@"Search People" andIcon:@"img_searchpeople.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Live Search" andIcon:@"map.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:4 withTitle:@"Live Search" andIcon:@"img_livesearch.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Inbox"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Inbox" andIcon:@"Inbox.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:5 withTitle:@"Inbox" andIcon:@"img_inbox.png"];
     
     EADEventsViewController *eventController;
     eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     eventController.isMyEvent = false;
-    [self.slideoutController addViewControllerToLastSection:eventController tagged:6 withTitle:@"Events" andIcon:@"Clock.png"];
+    [self.slideoutController addViewControllerToLastSection:eventController tagged:6 withTitle:@"Events" andIcon:@"img_events.png"];
     
 
     eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     eventController.isMyEvent = true;
-    [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"Clock.png"];
+    [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"img_events.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"Groups.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"img_group.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"Groups.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"img_group.png"];
     
     EADViewController *loginController;
     loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
     loginController.logout = true;
-    [self.slideoutController addViewControllerToLastSection:loginController tagged:8 withTitle:@"Logout" andIcon:@"logout.png"];
+    [self.slideoutController addViewControllerToLastSection:loginController tagged:8 withTitle:@"Logout" andIcon:@"img_logout.png"];
     
 
     
