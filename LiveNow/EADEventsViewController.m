@@ -123,7 +123,27 @@ NSInteger selectedCellIndex;
     {
         currentItem = self.filteredArray[indexPath.row];
     }
-    
+    if(currentItem != nil)
+    {
+        NSString *imageStringData = [currentItem valueForKey:@"EventPic"];
+        
+        if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+        {
+            NSData *imageData;
+            
+            if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+            {
+                imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+            }
+            
+            if(imageData != nil)
+            {
+                UIImage *image = [UIImage imageWithData:imageData];
+                myCell.eventImage.image = image;
+            }
+        }
+
+    }
     NSURL *imageURL = [NSURL URLWithString:[currentItem valueForKey:@"FBProfileURL"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
@@ -132,6 +152,7 @@ NSInteger selectedCellIndex;
     myCell.eventName.text=cellText;
     myCell.labelView.text=[currentItem valueForKey:@"EventDescription"];
     myCell.eventCreatedBy.text=[currentItem valueForKey:@"UserName"];
+    
     
     return myCell;
 }

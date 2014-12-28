@@ -1444,7 +1444,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="cellDescriptionText" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="7" id="gjS-Kn-JZe">
-                                                    <rect key="frame" x="5" y="75" width="145" height="48"/>
+                                                    <rect key="frame" x="5" y="81" width="145" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1455,19 +1455,21 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="cellEventNameText" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="KmR-JR-vAA">
-                                                    <rect key="frame" x="6" y="41" width="144" height="26"/>
+                                                    <rect key="frame" x="2" y="109" width="144" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <color key="textColor" red="0.22941390176704032" green="0.61090353260869568" blue="0.075424153884182416" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventCreatedBy" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tRt-Ou-hBo">
                                                     <rect key="frame" x="57" y="2" width="93" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.28149667540000001" green="0.2941505089" blue="0.77617612089999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventImage" id="l6j-nt-zw8">
+                                                    <rect key="frame" x="5" y="48" width="141" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1475,6 +1477,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="eventCreatedBy" destination="tRt-Ou-hBo" id="4rT-am-R6I"/>
+                                            <outlet property="eventImage" destination="l6j-nt-zw8" id="1aR-LR-CgA"/>
                                             <outlet property="eventName" destination="KmR-JR-vAA" id="YFM-J1-9Ck"/>
                                             <outlet property="imageView" destination="bFS-hd-lMy" id="NCs-B2-4dS"/>
                                             <outlet property="labelView" destination="gjS-Kn-JZe" id="0rl-jg-E0L"/>
@@ -1501,7 +1504,7 @@
                     <navigationItem key="navigationItem" id="9Vu-a8-Af3"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="Twf-JH-jS9"/>
+                        <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="MTV-Tb-eGu"/>
                         <outlet property="searchBar" destination="YX0-s6-FxT" id="ayi-Uz-lFZ"/>
                         <outlet property="searchDisplayController" destination="XDf-Mr-4E1" id="iLx-d2-aUu"/>
                         <segue destination="fXq-rB-dvi" kind="push" identifier="eventDetail" id="j80-dk-2le"/>

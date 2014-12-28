@@ -13,5 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *eventCreatedBy;
-
+@property (weak, nonatomic) IBOutlet UIImageView *eventImage;
 @end
