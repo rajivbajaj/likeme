@@ -109,16 +109,62 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+   
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         NSDictionary *currentObject = [self.searchResult objectAtIndex:indexPath.row];
+        if(currentObject != nil)
+        {
+            NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    cell.imageView.image = image;
+                }
+            }
+            
+        }
+
         cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
         cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
+        
     }
     else
     {
         NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
+        if(currentObject != nil)
+        {
+            NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    cell.imageView.image = image;
+                }
+            }
+            
+        }
+
         cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
         cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
     }

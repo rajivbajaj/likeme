@@ -82,12 +82,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         groupViewController.imageView.image = image;
         
+        
     }
-    if ([self.launchedFrom isEqualToString:@"Event"])
+    else if ([self.launchedFrom isEqualToString:@"Event"])
     {
             EADEventsCreateViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
             
             eventViewController.imageView.image = image;
+        
 //            [eventViewController.cameraButton setImage:image forState:UIControlStateNormal];
 //        [eventViewController.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
     }
@@ -100,10 +102,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
         [self.navigationController popViewControllerAnimated:YES];
     }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
-    }
+//    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+//    {
+//        // Code here to support video if enabled
+//    }
 }
 - (IBAction)actionInitiatorTouched:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -150,6 +152,8 @@ finishedSavingWithError:(NSError *)error
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+
     
 }
 - (void)viewDidLoad

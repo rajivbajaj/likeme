@@ -57,10 +57,12 @@
     switch (buttonIndex)
     {
         case 0:
+            break;
+        case 1:
             _launchCamera = true;
             [self performSegueWithIdentifier:@"imagePicker" sender:self];
             break;
-        case 1:
+        case 2:
             _launchCamera = false;
             [self performSegueWithIdentifier:@"imagePicker" sender:self];
             break;
@@ -153,6 +155,7 @@
         EADImagePickerViewController *destinationVC = [segue destinationViewController];
         
         destinationVC.shouldLaunchCamera=_launchCamera;
+        destinationVC.launchedFrom =@"Groups";
         
     }
 }
