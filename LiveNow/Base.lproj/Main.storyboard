@@ -1756,6 +1756,18 @@
                                                                 <action selector="actionInitiatorTouched:" destination="fzM-RJ-wU7" id="j36-UE-jJH"/>
                                                             </connections>
                                                         </barButtonItem>
+                                                        <barButtonItem style="plain" id="BA3-MO-k6x">
+                                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aeP-TP-CoR">
+                                                                <rect key="frame" x="51" y="7" width="46" height="30"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <connections>
+                                                                <segue destination="d6f-xA-AFD" kind="push" identifier="eventToImagePicker" id="lJr-Xy-1ke"/>
+                                                            </connections>
+                                                        </barButtonItem>
                                                     </items>
                                                 </toolbar>
                                             </subviews>
@@ -1822,6 +1834,6 @@
         <segue reference="uZl-yr-jNO"/>
         <segue reference="sQm-xv-8oR"/>
         <segue reference="zhF-AW-XRQ"/>
-        <segue reference="kJo-m6-U5Y"/>
+        <segue reference="lJr-Xy-1ke"/>
     </inferredMetricsTieBreakers>
 </document>
