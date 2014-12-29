@@ -1546,7 +1546,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Name" minimumFontSize="17" id="Dlo-3g-AHi">
-                                                    <rect key="frame" x="16" y="7" width="203" height="30"/>
+                                                    <rect key="frame" x="16" y="7" width="218" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
@@ -1554,16 +1554,10 @@
                                                         <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="HlL-J3-QH3"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YD3-Sx-dX1">
-                                                    <rect key="frame" x="247" y="7" width="64" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="l4f-7C-y9j">
+                                                    <rect key="frame" x="249" y="-1" width="69" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Add Pic">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="d6f-xA-AFD" kind="push" identifier="eventToImagePicker" id="6sE-9j-jQb"/>
-                                                    </connections>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1735,10 +1729,6 @@
                                                         <action selector="datePickerValueChanged:" destination="fzM-RJ-wU7" eventType="valueChanged" id="TpU-Dg-B8Z"/>
                                                     </connections>
                                                 </datePicker>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="l4f-7C-y9j">
-                                                    <rect key="frame" x="72" y="45" width="160" height="53"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1757,6 +1747,17 @@
                                                         <outlet property="delegate" destination="fzM-RJ-wU7" id="9S7-ev-qCN"/>
                                                     </connections>
                                                 </pickerView>
+                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="PMY-Mz-xam">
+                                                    <rect key="frame" x="0.0" y="-2" width="320" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <items>
+                                                        <barButtonItem systemItem="camera" id="HC4-OZ-GHK">
+                                                            <connections>
+                                                                <action selector="actionInitiatorTouched:" destination="fzM-RJ-wU7" id="j36-UE-jJH"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </items>
+                                                </toolbar>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1780,7 +1781,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="cameraButton" destination="YD3-Sx-dX1" id="Xor-fS-EMS"/>
                         <outlet property="descriptionText" destination="Kge-MC-2lP" id="Ttp-JB-Tms"/>
                         <outlet property="endDateText" destination="25d-5Y-BQj" id="XhY-cW-d1T"/>
                         <outlet property="eventNameText" destination="Dlo-3g-AHi" id="JlL-ru-aC1"/>
@@ -1821,7 +1821,7 @@
         <segue reference="zNI-fD-lE8"/>
         <segue reference="uZl-yr-jNO"/>
         <segue reference="sQm-xv-8oR"/>
-        <segue reference="6sE-9j-jQb"/>
-        <segue reference="4Xp-nV-93B"/>
+        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="kJo-m6-U5Y"/>
     </inferredMetricsTieBreakers>
 </document>

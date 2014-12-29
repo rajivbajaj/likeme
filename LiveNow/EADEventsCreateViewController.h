@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADEventsCreateViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EADEventsCreateViewController : UITableViewController<UIActionSheetDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *eventNameText;
 @property (weak, nonatomic) IBOutlet UITextField *locationText;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionText;
@@ -25,4 +25,5 @@
 @property NSString *locationName;
 @property double latitude;
 @property double longitude;
+@property BOOL launchCamera;
 @end

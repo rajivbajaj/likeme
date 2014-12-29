@@ -113,7 +113,7 @@ NSString* endDateString;
     {
         EADImagePickerViewController *destinationVC = [segue destinationViewController];
         destinationVC.launchedFrom = @"Event";
-        destinationVC.shouldLaunchCamera=true;
+        destinationVC.shouldLaunchCamera=_launchCamera;
         
     }
 
@@ -222,6 +222,36 @@ NSString* endDateString;
     // hide both pickers becauase these textfields don't need any pickers
     [self.eventsDatePicker setHidden:true];
     [self.restrictionsPicker setHidden:true];
+}
+- (IBAction)actionInitiatorTouched:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    [actionSheet addButtonWithTitle:@"Take a Picture"];
+    [actionSheet addButtonWithTitle:@"Camera Roll"];
+    [actionSheet showFromBarButtonItem:sender animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            break;
+        case 1:
+            _launchCamera = true;
+            [self performSegueWithIdentifier:@"eventToImagePicker" sender:self];
+            break;
+        case 2:
+            _launchCamera = false;
+            [self performSegueWithIdentifier:@"eventToImagePicker" sender:self];
+            break;
+        default:
+            break;
+    }
 }
 
 
