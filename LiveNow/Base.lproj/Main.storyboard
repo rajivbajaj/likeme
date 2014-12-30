@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -323,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1860"/>
         </scene>
-        <!--Report Abuse View Controller - Title-->
+        <!--Title-->
         <scene sceneID="Cm8-zn-18X">
             <objects>
                 <tableViewController id="h4P-Nt-FJ3" customClass="EADReportAbuseViewController" sceneMemberID="viewController">
@@ -410,7 +410,7 @@
             </objects>
             <point key="canvasLocation" x="1453" y="2508"/>
         </scene>
-        <!--Group Details View Controller - Create Group-->
+        <!--Create Group-->
         <scene sceneID="2Mc-tq-kO1">
             <objects>
                 <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
@@ -829,7 +829,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="oeB-wE-aUz">
             <objects>
                 <tableViewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="Odl-cT-7gB" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -868,7 +868,6 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="allOtherEditingBegin:" destination="Odl-cT-7gB" eventType="editingDidBegin" id="KRa-Ov-7Y8"/>
-                                                        <action selector="allOtherTouchDown:" destination="Odl-cT-7gB" eventType="touchDown" id="ag8-Kq-jGR"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -914,7 +913,6 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
                                                         <action selector="allOtherEditingBegin:" destination="Odl-cT-7gB" eventType="editingDidBegin" id="j7S-dn-0gC"/>
-                                                        <action selector="allOtherTouchDown:" destination="Odl-cT-7gB" eventType="touchDown" id="gyY-m8-WKM"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Years" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q6B-aa-jro">
@@ -1095,7 +1093,7 @@
             </objects>
             <point key="canvasLocation" x="1872" y="358"/>
         </scene>
-        <!--Location Search View Controller - Pick Location-->
+        <!--Pick Location-->
         <scene sceneID="jh7-8P-8Et">
             <objects>
                 <viewController storyboardIdentifier="LocationSelection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbj-lP-5Rx" customClass="EADLocationSearchViewController" sceneMemberID="viewController">
@@ -1315,7 +1313,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox View Controller - Inbox-->
+        <!--Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -1382,7 +1380,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker View Controller - Image Picker-->
+        <!--Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -1410,7 +1408,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events View Controller - Events-->
+        <!--Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
@@ -1421,6 +1419,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8RK-pu-9RM">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.2627450980392157" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem systemItem="add" id="qQU-ye-Mjh">
                                         <connections>
@@ -1477,7 +1476,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.58039218189999997" green="0.68627452850000004" blue="0.72941178080000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" red="0.70980392156862748" green="0.7686274509803922" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="eventCreatedBy" destination="tRt-Ou-hBo" id="4rT-am-R6I"/>
@@ -1496,6 +1495,7 @@
                             <searchBar contentMode="redraw" restorationIdentifier="searchBar" placeholder="Search Events" showsBookmarkButton="YES" id="YX0-s6-FxT">
                                 <rect key="frame" x="0.0" y="3" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20341599350986464" green="0.26284674502563649" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="OOz-R3-8bN" id="gRV-4f-g3i"/>
@@ -1527,7 +1527,7 @@
             </objects>
             <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
-        <!--Events Create View Controller - Create Event-->
+        <!--Create Event-->
         <scene sceneID="aug-Rb-WMD">
             <objects>
                 <tableViewController id="fzM-RJ-wU7" customClass="EADEventsCreateViewController" sceneMemberID="viewController">
