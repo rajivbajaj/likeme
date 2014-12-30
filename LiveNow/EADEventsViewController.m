@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADEventDetailViewController.h"
 #import "EADMapViewController.h"
+#import "HumanInterfaceUtility.h"
 
 @interface EADEventsViewController ()
 
@@ -40,6 +41,11 @@ NSInteger selectedCellIndex;
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
     [self loadEvents];
+    
+    
+    self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+    self.toolbar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"3E5561"];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated

@@ -1416,18 +1416,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8RK-pu-9RM">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.19607843137254902" green="0.2627450980392157" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <barButtonItem systemItem="add" id="qQU-ye-Mjh">
-                                        <connections>
-                                            <segue destination="fzM-RJ-wU7" kind="push" id="igJ-y3-ovU"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="collectionView" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="interactive" dataMode="prototypes" id="hLk-qn-qdS">
                                 <rect key="frame" x="0.0" y="47" width="320" height="477"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1496,21 +1484,35 @@
                                 <rect key="frame" x="0.0" y="3" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20341599350986464" green="0.26284674502563649" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.18823529411764706" green="0.2627450980392157" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="OOz-R3-8bN" id="gRV-4f-g3i"/>
                                 </connections>
                             </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="8RK-pu-9RM">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="add" id="qQU-ye-Mjh">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="fzM-RJ-wU7" kind="push" id="igJ-y3-ovU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.19113096351234785" green="0.25492144978500531" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9Vu-a8-Af3"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventsCollectionView" destination="hLk-qn-qdS" id="MTV-Tb-eGu"/>
                         <outlet property="searchBar" destination="YX0-s6-FxT" id="ayi-Uz-lFZ"/>
                         <outlet property="searchDisplayController" destination="XDf-Mr-4E1" id="iLx-d2-aUu"/>
+                        <outlet property="toolbar" destination="8RK-pu-9RM" id="1nh-IM-8cZ"/>
                         <segue destination="fXq-rB-dvi" kind="push" identifier="eventDetail" id="j80-dk-2le"/>
                         <segue destination="MMI-yS-r67" kind="push" identifier="eventToMap" id="8OK-M8-tPy"/>
                     </connections>
@@ -1827,13 +1829,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8OK-M8-tPy"/>
         <segue reference="j80-dk-2le"/>
-        <segue reference="TAK-hv-Tob"/>
+        <segue reference="8OK-M8-tPy"/>
         <segue reference="zNI-fD-lE8"/>
         <segue reference="uZl-yr-jNO"/>
+        <segue reference="TAK-hv-Tob"/>
         <segue reference="sQm-xv-8oR"/>
-        <segue reference="zhF-AW-XRQ"/>
         <segue reference="lJr-Xy-1ke"/>
+        <segue reference="4Xp-nV-93B"/>
     </inferredMetricsTieBreakers>
 </document>

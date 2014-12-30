@@ -158,6 +158,7 @@
 		1473D6CB1A2F28C3009E633A /* LocationPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1473D6CA1A2F28C3009E633A /* LocationPin.png */; };
 		1473D6CE1A2F2C89009E633A /* EADLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */; };
 		14B17A0A1A3CD75C00E46FC4 /* EADReportAbuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */; };
+		14DE56B11A525B88007A9BC2 /* HumanInterfaceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DE56B01A525B88007A9BC2 /* HumanInterfaceUtility.m */; };
 		4E7426FA19064789A9742C32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC784B86182D40378C40F2DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -399,6 +400,8 @@
 		1473D6CD1A2F2C89009E633A /* EADLocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADLocationPickerViewController.m; sourceTree = "<group>"; };
 		14B17A081A3CD75C00E46FC4 /* EADReportAbuseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADReportAbuseViewController.h; sourceTree = "<group>"; };
 		14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADReportAbuseViewController.m; sourceTree = "<group>"; };
+		14DE56AF1A525B87007A9BC2 /* HumanInterfaceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanInterfaceUtility.h; sourceTree = "<group>"; };
+		14DE56B01A525B88007A9BC2 /* HumanInterfaceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanInterfaceUtility.m; sourceTree = "<group>"; };
 		71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AC784B86182D40378C40F2DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -603,6 +606,8 @@
 				1412AAAD19CADF6B008052B5 /* Postman.m */,
 				1412AAAF19CADFA1008052B5 /* Constants.h */,
 				1412AAB019CADFA1008052B5 /* Constants.m */,
+				14DE56AF1A525B87007A9BC2 /* HumanInterfaceUtility.h */,
+				14DE56B01A525B88007A9BC2 /* HumanInterfaceUtility.m */,
 			);
 			name = DataServices;
 			sourceTree = "<group>";
@@ -1101,6 +1106,7 @@
 				146D471719EC73CF009FE413 /* NSUserDefaults+DemoSettings.m in Sources */,
 				0B89FFBE19BE52E90077E029 /* EADAppDelegate.m in Sources */,
 				144CE65819E5716C00C6EC03 /* JSQMessagesTimestampFormatter.m in Sources */,
+				14DE56B11A525B88007A9BC2 /* HumanInterfaceUtility.m in Sources */,
 				144CE67019E5716C00C6EC03 /* JSQMessagesToolbarContentView.m in Sources */,
 				144CE65219E5716C00C6EC03 /* UIView+JSQMessages.m in Sources */,
 				143585CE19CA422C007F03DF /* AMSlideTableCell.m in Sources */,

@@ -20,5 +20,6 @@
 @property BOOL isMyEvent;
 
 
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
