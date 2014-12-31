@@ -12,7 +12,7 @@
 #import "EADUserListProfileViewController.h"
 #import "EADMKPointAnnotation.h"
 #import "EADEventDetailViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADMapViewController ()
 
 @end
@@ -260,7 +260,8 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(ctrpoint, 20000, 20000);
 
     [_mapView setRegion:region animated:YES];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
+    [self.searchDisplayController.searchBar setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"3E5561"]];
     if (_loadEvents)
     {
         [self drawEvents];

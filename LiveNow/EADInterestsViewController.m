@@ -9,7 +9,7 @@
 #import "EADInterestsViewController.h"
 #import "Postman.h"
 #import "UserInfo.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADInterestsViewController ()
 
 @end
@@ -35,8 +35,11 @@
     self.interestsTableView.dataSource = self;
     self.interestsTableView.delegate = self;
     selectedRows = [[NSMutableArray alloc] init];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    // Do any additional setup after loading the view.
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+    self.searchDisplayController.searchBar.backgroundColor=[HumanInterfaceUtility colorWithHexString:@"3E5561"];
+
+       // Do any additional setup after loading the view.
     
     Postman* postMan = [Postman alloc];
     
@@ -127,6 +130,7 @@
                 [self.interestsTableView selectRowAtIndexPath:idxPath animated:YES scrollPosition:UITableViewScrollPositionNone];
                 
                 UITableViewCell *cell = [self.interestsTableView cellForRowAtIndexPath:idxPath];
+                cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
                 if(cell.accessoryType == UITableViewCellAccessoryNone) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
             
@@ -250,6 +254,8 @@
         if(cell.accessoryType == UITableViewCellAccessoryNone) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [self.selectedRows addObject:currentIdx];
+            cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+
         }
         else {
             cell.accessoryType = UITableViewCellAccessoryNone;
