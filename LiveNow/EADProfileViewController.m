@@ -10,6 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADLocationSearchViewController.h"
+#import "HumanInterfaceUtility.h"
 
 @interface EADProfileViewController ()
 
@@ -27,8 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+    //self.toolbar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"3E5561"];
+
     Postman* postman = [Postman alloc];
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

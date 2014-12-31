@@ -10,7 +10,7 @@
 #import "UserInfo.h"
 #import "Postman.h"
 #import "EADGroupReadOnlyViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADGroupsViewController ()
 
 @end
@@ -31,7 +31,8 @@
     [super viewDidLoad];
     self.groupsTableView.delegate = self;
     self.groupsTableView.dataSource = self;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     //self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view.
     
@@ -110,7 +111,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
    
-    
+    if( [indexPath row] % 2){
+        cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+        
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+        
+    }
+
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         NSDictionary *currentObject = [self.searchResult objectAtIndex:indexPath.row];

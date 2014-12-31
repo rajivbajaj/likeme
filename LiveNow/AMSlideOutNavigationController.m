@@ -9,7 +9,7 @@
 #import "AMSlideOutNavigationController.h"
 #import "AMSlideTableCell.h"
 #import "AMSlideTableHeader.h"
-
+#import "HumanInterfaceUtility.h"
 #define SCREEN_WIDTH ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_HEIGHT ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
 
@@ -603,7 +603,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+	[self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"#3E5561"]];
     	self.currentViewController = nil;
 	
 	[self.tableView setDelegate:self];
@@ -758,6 +758,7 @@
 		[selection setBackgroundColor:self.options[AMOptionsSelectionBackground]];
 		cell.selectedBackgroundView = selection;
         [cell.textLabel setHighlightedTextColor:self.options[AMOptionsCellSelectionFontColor]];
+        cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
 	}
     
     if([indexPath row] >= [(self.menuItems)[[indexPath section]][kSOSection] count] - 1 &&

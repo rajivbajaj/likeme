@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "EADUserListProfileViewController.h"
 #import "EADMapViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADUserListTableViewController ()
 
 @end
@@ -32,7 +32,8 @@
     [super viewDidLoad];
     
     [self loadUsers];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -95,7 +96,15 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    if( [indexPath row] % 2){
+        cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+        
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+        
+    }
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         NSDictionary *currentItem  = self.searchResult[indexPath.row];
@@ -105,7 +114,7 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
         cell.imageView.image=image;
-    }
+         }
     else
     {
         NSDictionary *currentItem  = self.userListData[indexPath.row];
@@ -114,6 +123,7 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         UIImage *image = [UIImage imageWithData:imageData];
         cell.imageView.image=image;
+        
     }
     
     return cell;
