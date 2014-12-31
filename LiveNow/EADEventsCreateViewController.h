@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *startDateText;
 @property (weak, nonatomic) IBOutlet UITextField *endDateText;
 @property (weak, nonatomic) IBOutlet UITextField *eventTypeText;
-@property (weak, nonatomic) IBOutlet UITextField *eventStatusText;
 @property (weak, nonatomic) IBOutlet UIDatePicker *eventsDatePicker;
 @property (weak, nonatomic) IBOutlet UITextField *restrictionsText;
 @property (weak, nonatomic) IBOutlet UIPickerView *restrictionsPicker;
@@ -26,4 +25,6 @@
 @property double latitude;
 @property double longitude;
 @property BOOL launchCamera;
+@property (weak, nonatomic) IBOutlet UISwitch *eventStatus;
+@property (weak, nonatomic) IBOutlet UILabel *eventStatusText;
 @end

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -1637,15 +1636,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Status" minimumFontSize="17" id="6Or-V8-ktk">
-                                                    <rect key="frame" x="16" y="7" width="276" height="30"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="ZL9-Hd-Pvu">
+                                                    <rect key="frame" x="13" y="4" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                     <connections>
-                                                        <action selector="genericTouchDown:" destination="fzM-RJ-wU7" eventType="touchDown" id="iOT-u5-CZA"/>
+                                                        <action selector="eventStatusValueChanged:" destination="fzM-RJ-wU7" eventType="valueChanged" id="IDU-om-nXZ"/>
                                                     </connections>
-                                                </textField>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XPu-ay-5pm">
+                                                    <rect key="frame" x="75" y="9" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1798,7 +1802,8 @@
                         <outlet property="descriptionText" destination="Kge-MC-2lP" id="Ttp-JB-Tms"/>
                         <outlet property="endDateText" destination="25d-5Y-BQj" id="XhY-cW-d1T"/>
                         <outlet property="eventNameText" destination="Dlo-3g-AHi" id="JlL-ru-aC1"/>
-                        <outlet property="eventStatusText" destination="6Or-V8-ktk" id="ydT-wW-QdR"/>
+                        <outlet property="eventStatus" destination="ZL9-Hd-Pvu" id="SHP-Tj-HPp"/>
+                        <outlet property="eventStatusText" destination="XPu-ay-5pm" id="gHQ-Y4-ARn"/>
                         <outlet property="eventTypeText" destination="Oi2-dQ-wTa" id="lVu-R9-aCY"/>
                         <outlet property="eventsDatePicker" destination="MGe-IZ-nXv" id="BnE-dg-PJH"/>
                         <outlet property="imageView" destination="l4f-7C-y9j" id="Yt8-jS-oYT"/>
@@ -1829,13 +1834,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="j80-dk-2le"/>
         <segue reference="8OK-M8-tPy"/>
+        <segue reference="j80-dk-2le"/>
+        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="lJr-Xy-1ke"/>
         <segue reference="zNI-fD-lE8"/>
         <segue reference="uZl-yr-jNO"/>
         <segue reference="TAK-hv-Tob"/>
         <segue reference="sQm-xv-8oR"/>
-        <segue reference="lJr-Xy-1ke"/>
-        <segue reference="4Xp-nV-93B"/>
     </inferredMetricsTieBreakers>
 </document>

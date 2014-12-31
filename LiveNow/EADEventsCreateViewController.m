@@ -254,5 +254,17 @@ NSString* endDateString;
     }
 }
 
+- (IBAction)eventStatusValueChanged:(id)sender
+{
+    if(self.eventStatus.isOn == true)
+    {
+        self.eventStatusText.text = @"Active";
+    }
+    else if(self.eventStatus.isOn == false)
+    {
+        self.eventStatusText.text = @"Inactive";
+    }
+}
+
 
 @end
