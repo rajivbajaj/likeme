@@ -152,13 +152,13 @@
 
     eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     eventController.isMyEvent = true;
-    [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"img_events.png"];
+    [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"MyEvents.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
     [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"img_group.png"];
     
     controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"img_group.png"];
+    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"MyGroups.png"];
     
     EADViewController *loginController;
     loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];

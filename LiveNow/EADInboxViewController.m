@@ -118,6 +118,16 @@
         //NSString *objectKey =
         cell.textLabel.text = [currentObject valueForKey:@"SenderName"];
         cell.detailTextLabel.text = [currentObject valueForKey:@""];
+        if( [indexPath row] % 2){
+            cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+            
+        }
+        else
+        {
+            cell.backgroundColor = [UIColor whiteColor];
+            
+        }
+
     }
     return cell;
 }

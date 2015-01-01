@@ -853,7 +853,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSDictionary* dict = (self.menuItems)[indexPath.section][kSOSection][indexPath.row];
+	NSString* cellID = self.options[AMOptionsTableCellClass];
+	
+	
+	UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:cellID];
+	if (cell == nil) {
+        cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"#3E5561"];
+        
+    }
+    NSDictionary* dict = (self.menuItems)[indexPath.section][kSOSection][indexPath.row];
 	
 	AMSlideOutBeforeHandler before = dict[kSOBeforeBlock];
 	if (before) {
