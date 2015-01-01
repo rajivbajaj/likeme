@@ -59,6 +59,13 @@ bool isAttendingThisEvent = false;
         
         if(currentObject != nil)
         {
+            NSURL *profileimageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+            NSData *profileimageData = [NSData dataWithContentsOfURL:profileimageURL];
+            UIImage *profileimage = [UIImage imageWithData:profileimageData];
+            if(profileimage != nil)
+            {
+                self.userProfileImageView.image = profileimage;
+            }
             NSString *imageStringData = [currentObject valueForKey:@"EventPic"];
             
             if(imageStringData != nil && ![imageStringData isEqualToString:@""])
@@ -73,7 +80,7 @@ bool isAttendingThisEvent = false;
                 if(imageData != nil)
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
-                    self.userProfileImageView.image = image;
+                    self.eventImageView.image = image;
                 }
             }
             

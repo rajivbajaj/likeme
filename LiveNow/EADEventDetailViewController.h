@@ -20,4 +20,5 @@
 @property (nonatomic, strong) NSArray *eventArray;
 @property (weak, nonatomic) IBOutlet UIButton *leaveEventButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportAbuseButton;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @end
