@@ -10,7 +10,7 @@
 #import "EADGroupDetailsViewController.h"
 #import "EADEventsCreateViewController.h"
 #import "MessagesData.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADImagePickerViewController ()
 
 @end
@@ -159,7 +159,8 @@ finishedSavingWithError:(NSError *)error
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+   // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
     if (_shouldLaunchCamera)
     {

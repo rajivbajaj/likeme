@@ -7,7 +7,7 @@
 //
 
 #import "EADComposeMessageViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADComposeMessageViewController ()
 
 @end
@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
 }
 

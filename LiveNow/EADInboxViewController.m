@@ -10,7 +10,7 @@
 #import "Postman.h"
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADInboxViewController ()
 
 @end
@@ -72,7 +72,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
     [self loadInbox];
 }

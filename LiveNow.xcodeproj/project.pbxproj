@@ -42,7 +42,6 @@
 		0B7C9BE419C507E700BD6772 /* EADMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE319C507E700BD6772 /* EADMapViewController.m */; };
 		0B7C9BE719C5128500BD6772 /* Loading Page.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE519C5128500BD6772 /* Loading Page.jpg */; };
 		0B7C9BE819C5128500BD6772 /* App Icon Design v2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE619C5128500BD6772 /* App Icon Design v2.jpg */; };
-		0B7C9BEA19C7811200BD6772 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C9BE919C7811200BD6772 /* Background.jpg */; };
 		0B89FFAE19BE52E90077E029 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFAD19BE52E90077E029 /* Foundation.framework */; };
 		0B89FFB019BE52E90077E029 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFAF19BE52E90077E029 /* CoreGraphics.framework */; };
 		0B89FFB219BE52E90077E029 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFB119BE52E90077E029 /* UIKit.framework */; };
@@ -210,7 +209,6 @@
 		0B7C9BE319C507E700BD6772 /* EADMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADMapViewController.m; sourceTree = "<group>"; };
 		0B7C9BE519C5128500BD6772 /* Loading Page.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Loading Page.jpg"; sourceTree = "<group>"; };
 		0B7C9BE619C5128500BD6772 /* App Icon Design v2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "App Icon Design v2.jpg"; sourceTree = "<group>"; };
-		0B7C9BE919C7811200BD6772 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
 		0B89FFAA19BE52E90077E029 /* LiveNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B89FFAD19BE52E90077E029 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B89FFAF19BE52E90077E029 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -502,7 +500,6 @@
 				0B89FFC519BE52E90077E029 /* Images.xcassets */,
 				0B34794E19CF93C700A9B3F1 /* App Icon Design v4.png */,
 				0B34794C19CF3DB400A9B3F1 /* App Icon Design v3.png */,
-				0B7C9BE919C7811200BD6772 /* Background.jpg */,
 				0B7C9BE619C5128500BD6772 /* App Icon Design v2.jpg */,
 				0B7C9BE519C5128500BD6772 /* Loading Page.jpg */,
 				0B7C9BE019C2844100BD6772 /* Logo Design 2.png */,
@@ -1007,7 +1004,6 @@
 				0B34796319D4DBBE00A9B3F1 /* Clock.png in Resources */,
 				0B31D6B21A506A7400276A0C /* img_profilepic_empty.png in Resources */,
 				143585C819CA422C007F03DF /* iconSlide.png in Resources */,
-				0B7C9BEA19C7811200BD6772 /* Background.jpg in Resources */,
 				143585CA19CA422C007F03DF /* iconSlideBlack.png in Resources */,
 				146A4DFA19D4044300C0182B /* search.png in Resources */,
 				144CE64519E5716C00C6EC03 /* bubble_tailless@2x.png in Resources */,

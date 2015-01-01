@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "Postman.h"
 #import "EADEventsViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADViewController ()
 
 @end
@@ -40,7 +40,7 @@
         // Do any additional setup after loading the view, typically from a nib.
         self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     }
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
 }
 //-(void)CurrentLocationIdentifier
 //{

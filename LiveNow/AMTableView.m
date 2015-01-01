@@ -8,7 +8,7 @@
 
 #import "AMTableView.h"
 #import "AMSlideOutGlobals.h"
-
+#import "HumanInterfaceUtility.h"
 @implementation AMTableView
 
 - (void)drawRect:(CGRect)rect
@@ -28,7 +28,7 @@
 {
 	[super layoutSubviews];
 	//[self setBackgroundColor:[UIColor clearColor]];
-    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    [self setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
 }
 
 @end

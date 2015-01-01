@@ -12,7 +12,7 @@
 #import "EADLocationSearchViewController.h"
 #import "EADEventsViewController.h"
 #import "EADImagePickerViewController.h"
-
+#import "HumanInterfaceUtility.h"
 @interface EADEventsCreateViewController ()
 
 @end
@@ -34,7 +34,7 @@ NSString* endDateString;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     self.locationText.text=userInfo.userLocation;
     
