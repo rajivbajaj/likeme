@@ -34,6 +34,7 @@
     [self loadUsers];
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+    [self.searchDisplayController.searchBar setImage:[UIImage imageNamed:@"LocationPin.png"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

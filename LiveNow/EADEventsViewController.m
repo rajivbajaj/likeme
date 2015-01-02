@@ -37,7 +37,7 @@ NSInteger selectedCellIndex;
     [super viewDidLoad];
     //self.navigationItem.hidesBackButton = YES;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-    
+    [self.searchBar setImage:[UIImage imageNamed:@"LocationPin.png"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     // Do any additional setup after loading the view.
     [self loadEvents];
