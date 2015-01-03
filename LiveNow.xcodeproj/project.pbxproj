@@ -32,6 +32,9 @@
 		0B31D6CE1A55EA9100276A0C /* MyGroups.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6CC1A55EA9100276A0C /* MyGroups.png */; };
 		0B31D6CF1A55EA9100276A0C /* MyEvents.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6CD1A55EA9100276A0C /* MyEvents.png */; };
 		0B31D6D11A55EB3800276A0C /* App Icon Design v5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6D01A55EB3800276A0C /* App Icon Design v5.png */; };
+		0B31D6D31A588C2000276A0C /* Report Abuse v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6D21A588C2000276A0C /* Report Abuse v2.png */; };
+		0B31D6D61A58935200276A0C /* GroupsDefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6D41A58935200276A0C /* GroupsDefaultImage.png */; };
+		0B31D6D71A58935200276A0C /* EventsDefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6D51A58935200276A0C /* EventsDefaultImage.png */; };
 		0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34794C19CF3DB400A9B3F1 /* App Icon Design v3.png */; };
 		0B34794F19CF93C700A9B3F1 /* App Icon Design v4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34794E19CF93C700A9B3F1 /* App Icon Design v4.png */; };
 		0B34796319D4DBBE00A9B3F1 /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B34795E19D4DBBE00A9B3F1 /* Clock.png */; };
@@ -200,6 +203,9 @@
 		0B31D6CC1A55EA9100276A0C /* MyGroups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyGroups.png; sourceTree = "<group>"; };
 		0B31D6CD1A55EA9100276A0C /* MyEvents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyEvents.png; sourceTree = "<group>"; };
 		0B31D6D01A55EB3800276A0C /* App Icon Design v5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App Icon Design v5.png"; sourceTree = "<group>"; };
+		0B31D6D21A588C2000276A0C /* Report Abuse v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Report Abuse v2.png"; sourceTree = "<group>"; };
+		0B31D6D41A58935200276A0C /* GroupsDefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroupsDefaultImage.png; sourceTree = "<group>"; };
+		0B31D6D51A58935200276A0C /* EventsDefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventsDefaultImage.png; sourceTree = "<group>"; };
 		0B34794C19CF3DB400A9B3F1 /* App Icon Design v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App Icon Design v3.png"; sourceTree = "<group>"; };
 		0B34794E19CF93C700A9B3F1 /* App Icon Design v4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App Icon Design v4.png"; sourceTree = "<group>"; };
 		0B34795E19D4DBBE00A9B3F1 /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
@@ -476,6 +482,9 @@
 		0B89FFB319BE52E90077E029 /* LiveNow */ = {
 			isa = PBXGroup;
 			children = (
+				0B31D6D41A58935200276A0C /* GroupsDefaultImage.png */,
+				0B31D6D51A58935200276A0C /* EventsDefaultImage.png */,
+				0B31D6D21A588C2000276A0C /* Report Abuse v2.png */,
 				0B31D6D01A55EB3800276A0C /* App Icon Design v5.png */,
 				0B31D6CC1A55EA9100276A0C /* MyGroups.png */,
 				0B31D6CD1A55EA9100276A0C /* MyEvents.png */,
@@ -964,6 +973,7 @@
 				0B31D6C31A506C5400276A0C /* img_eventscreated.png in Resources */,
 				0B31D6C61A506C5400276A0C /* img_messageicon.png in Resources */,
 				0B34794D19CF3DB400A9B3F1 /* App Icon Design v3.png in Resources */,
+				0B31D6D61A58935200276A0C /* GroupsDefaultImage.png in Resources */,
 				0B31D6C21A506C5400276A0C /* img_eventattended.png in Resources */,
 				0B31D6C01A506C5400276A0C /* img_groupmembers.png in Resources */,
 				0BD6A8791A0573F800AC370C /* Map.png in Resources */,
@@ -975,6 +985,7 @@
 				0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */,
 				144CE64B19E5716C00C6EC03 /* typing@3x.png in Resources */,
 				0B31D6B31A506A7400276A0C /* img_profilepic.png in Resources */,
+				0B31D6D71A58935200276A0C /* EventsDefaultImage.png in Resources */,
 				144CE67119E5716C00C6EC03 /* JSQMessagesToolbarContentView.xib in Resources */,
 				0B31D6C81A506C5400276A0C /* img_searchinputboxicon.png in Resources */,
 				0B31D6CA1A506C5400276A0C /* btn_leave.png in Resources */,
@@ -998,6 +1009,7 @@
 				144CE64619E5716C00C6EC03 /* clip.png in Resources */,
 				0B31D6AC1A506A7400276A0C /* img_events.png in Resources */,
 				0B31D6AE1A506A7400276A0C /* img_livesearch.png in Resources */,
+				0B31D6D31A588C2000276A0C /* Report Abuse v2.png in Resources */,
 				144CE64119E5716C00C6EC03 /* bubble_min@2x.png in Resources */,
 				0B31D6B01A506A7400276A0C /* img_interesticon.png in Resources */,
 				0B31D6C41A506C5400276A0C /* img_addicon.png in Resources */,

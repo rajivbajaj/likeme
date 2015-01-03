@@ -147,6 +147,11 @@ NSInteger selectedCellIndex;
                 UIImage *image = [UIImage imageWithData:imageData];
                 myCell.eventImage.image = image;
             }
+           
+        }
+        else
+        {
+            [myCell.eventImage setImage:[UIImage imageNamed:@"EventsDefaultImage.png"]];
         }
 
     }
