@@ -72,6 +72,22 @@
 }
 - (IBAction)newGroupSave:(id)sender
 {
+    if ([[self.groupName text]  isEqual:@""])
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"please fill the Group name first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        //[alert release];
+        
+        
+    }
+    else
+    {
+
     NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
     
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
@@ -95,6 +111,7 @@
     groupViewController.isNewGroupAdded = true;
     
     [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

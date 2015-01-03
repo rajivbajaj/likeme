@@ -66,6 +66,22 @@ NSString* endDateString;
 
 #pragma mark - Navigation
 - (IBAction)createEvent:(id)sender {
+    if ([[self.eventNameText text]  isEqual:@""])
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"please fill the event name first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        //[alert release];
+        
+        
+    }
+    else
+    {
+
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
@@ -97,6 +113,7 @@ NSString* endDateString;
     eventViewController.isNewEventAdded = true;
     
     [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

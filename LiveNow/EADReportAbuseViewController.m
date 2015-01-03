@@ -32,6 +32,21 @@
 
 - (IBAction)saveTouched:(id)sender
 {
+    if ([[self.descriptionLabel text]  isEqual:@""])
+    {
+        
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"error"
+                                                            message:@"please fill the description first"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            //[alert release];
+        
+        
+    }
+    else
+    {
     Postman *postman = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
@@ -45,6 +60,7 @@
     
     [postman Post:@"reportabuse/post?value=%@" :reportAbuseDataDictionary];
     [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*
