@@ -45,7 +45,17 @@ NSInteger selectedCellIndex;
     
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.toolbar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"3E5561"];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.eventsCollectionView addSubview:refreshControl];
 
+}
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self loadEvents]; //call method
+    [refreshControl endRefreshing];
+    //[self.eventsCollectionView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated

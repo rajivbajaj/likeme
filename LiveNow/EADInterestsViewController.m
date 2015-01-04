@@ -38,7 +38,10 @@
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.searchDisplayController.searchBar.backgroundColor=[HumanInterfaceUtility colorWithHexString:@"3E5561"];
-
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.interestsTableView addSubview:refreshControl];
        // Do any additional setup after loading the view.
     
     Postman* postMan = [Postman alloc];
@@ -53,7 +56,13 @@
     
     [self loadUserInterests];
 }
-
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self loadUserInterests]; //call method
+    [self.interestsTableView reloadData];
+    [refreshControl endRefreshing];
+    
+}
 - (void)updateIntrests
 {
     

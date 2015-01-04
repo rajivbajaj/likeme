@@ -75,8 +75,22 @@
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
      [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.inboxTablView addSubview:refreshControl];
     [self loadInbox];
+
+    
 }
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self loadInbox]; //call method
+    [refreshControl endRefreshing];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

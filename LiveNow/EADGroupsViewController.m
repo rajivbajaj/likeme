@@ -35,9 +35,18 @@
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     //self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view.
-    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.groupsTableView addSubview:refreshControl];
     [self loadUserGroups];
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.dataArray count]];
+}
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self loadUserGroups]; //call method
+    [refreshControl endRefreshing];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
