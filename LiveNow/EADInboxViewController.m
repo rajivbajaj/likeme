@@ -117,7 +117,13 @@
         NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
         //NSString *objectKey =
         cell.textLabel.text = [currentObject valueForKey:@"SenderName"];
-        cell.detailTextLabel.text = [currentObject valueForKey:@""];
+        NSInteger numberOfUnreadmessages = [[currentObject objectForKey:@"UnreadMsgCount"] integerValue];
+
+        if(numberOfUnreadmessages > 0)
+        {
+            cell.detailTextLabel.text =  [[NSString stringWithFormat:@"%ld", (long)numberOfUnreadmessages] stringByAppendingString:@" new message(s)"];
+        }
+        
         if( [indexPath row] % 2){
             cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
             
