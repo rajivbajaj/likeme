@@ -92,6 +92,12 @@
 
 
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self loadInbox];
+    //[self.inboxTablView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -129,7 +135,6 @@
     if(cell != nil)
     {
         NSDictionary *currentObject = [self.dataArray objectAtIndex:indexPath.row];
-        //NSString *objectKey =
         cell.textLabel.text = [currentObject valueForKey:@"SenderName"];
         NSInteger numberOfUnreadmessages = [[currentObject objectForKey:@"UnreadMsgCount"] integerValue];
 
@@ -138,6 +143,11 @@
             cell.detailTextLabel.text =  [[NSString stringWithFormat:@"%ld", (long)numberOfUnreadmessages] stringByAppendingString:@" new message(s)"];
             cell.detailTextLabel.textColor = [UIColor redColor];
         }
+        else
+        {
+            cell.detailTextLabel.text = @"";
+        }
+    
         
         if( [indexPath row] % 2){
             cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];

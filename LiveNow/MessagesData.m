@@ -144,6 +144,8 @@
     {
         NSMutableArray *jsqMessagesArray = [[NSMutableArray alloc] init];
         
+        NSString *messageIds = @"";
+        
         for (int i=0; i<dataArray.count; i++)
         {
             
@@ -155,8 +157,28 @@
                                                 text:[currentItem valueForKey:@"Message"]];
             
 
+            if(![messageIds isEqualToString:@""])
+            {
+                messageIds = [messageIds stringByAppendingString:@","];
+            }
+            
+            NSInteger messageIdVal = [[currentItem objectForKey:@"MessageId"] integerValue];
+            messageIds = [messageIds stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)messageIdVal]];
+            
             
             [jsqMessagesArray addObject:msg];
+        }
+        
+        //Update the read status
+        if(![messageIds isEqualToString:@""])
+        {
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                messageIds, @"MessageIds",
+                                              [postman GetValueOrEmpty:userInfo.userId], @"RecipientAuthToken",
+                                              @"A", @"MessageRecieptStatus",
+                                              nil];
+            
+            [postman Post:@"messages/messagerecipientupdate?jsonParams=%@" :params];
         }
         
         self.messages = jsqMessagesArray;
