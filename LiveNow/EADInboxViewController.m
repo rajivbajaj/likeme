@@ -122,6 +122,7 @@
         if(numberOfUnreadmessages > 0)
         {
             cell.detailTextLabel.text =  [[NSString stringWithFormat:@"%ld", (long)numberOfUnreadmessages] stringByAppendingString:@" new message(s)"];
+            cell.detailTextLabel.textColor = [UIColor redColor];
         }
         
         if( [indexPath row] % 2){

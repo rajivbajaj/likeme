@@ -8,3 +8,5 @@ LiveNow/Base.lproj/Main.storyboard
 *.storyboard
 
 LiveNow.xcodeproj/project.pbxproj
+
+*.storyboard
