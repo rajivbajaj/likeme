@@ -20,6 +20,8 @@
 
 @synthesize selectedRows;
 @synthesize interestsText;
+NSMutableArray *userSelectedItemsArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,6 +46,7 @@
     //[self.interestsTableView addSubview:refreshControl];
     
        // Do any additional setup after loading the view.
+    [self loadUserInterests];
     
     Postman* postMan = [Postman alloc];
     
@@ -54,8 +57,6 @@
     self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
 
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
-    
-    [self loadUserInterests];
 }
 
 /*- (void)refresh:(UIRefreshControl *)refreshControl
@@ -66,40 +67,56 @@
     
 }*/
 
+
 - (void)updateIntrests
 {
     
-    NSString *userInterestsString = nil;
-    for(int i =0; i<self.selectedRows.count;i++)
-    {
-        NSIndexPath *currentSelectionIndex = [self.selectedRows objectAtIndex:i];
-        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex.row];
-        
-        if(currentSelection != nil)
+//    NSString *userInterestsString = nil;
+//    for(int i =0; i<self.selectedRows.count;i++)
+//    {
+//        NSIndexPath *currentSelectionIndex = [self.selectedRows objectAtIndex:i];
+//        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex.row];
+//        
+//        if(currentSelection != nil)
+//        {
+//            NSString *currentSelectedString = @"";
+//            for(int j=0;j<currentSelection.allKeys.count;j++)
+//            {
+//                if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
+//                {
+//                    currentSelectedString = currentSelection.allValues[j];
+//                    break;
+//                }
+//            }
+//            
+//            if(userInterestsString != nil)
+//            {
+//                userInterestsString = [userInterestsString stringByAppendingString:@";"];
+//                userInterestsString = [userInterestsString stringByAppendingString:currentSelectedString];
+//            }
+//            else
+//            {
+//                userInterestsString = currentSelectedString;
+//            }
+//            
+//        }
+//        
+//    }
+    
+        NSString *userInterestsString = nil;
+        for(int i =0; i<userSelectedItemsArray.count;i++)
         {
-            NSString *currentSelectedString = @"";
-            for(int j=0;j<currentSelection.allKeys.count;j++)
-            {
-                if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
-                {
-                    currentSelectedString = currentSelection.allValues[j];
-                    break;
-                }
-            }
-            
             if(userInterestsString != nil)
             {
                 userInterestsString = [userInterestsString stringByAppendingString:@";"];
-                userInterestsString = [userInterestsString stringByAppendingString:currentSelectedString];
+                userInterestsString = [userInterestsString stringByAppendingString:userSelectedItemsArray[i]];
             }
             else
             {
-                userInterestsString = currentSelectedString;
+                userInterestsString = userSelectedItemsArray[i];
             }
-            
         }
-        
-    }
+
     
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
@@ -130,25 +147,51 @@
         
         if(selectedItemsString != nil && ![selectedItemsString isEqualToString:@""])
         {
-            NSArray *selectedItemsArray = [selectedItemsString componentsSeparatedByString:@";"];
+           NSArray *localArray = [selectedItemsString componentsSeparatedByString:@";"];
             
-            for(int i=0; i<selectedItemsArray.count; i++)
-            {
-                int selectedItem = [self getIndexOfItem:selectedItemsArray[i]];
-                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:selectedItem inSection:0];
-                
-                [self.selectedRows addObject:idxPath];
-                
-                [self.interestsTableView selectRowAtIndexPath:idxPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-                
-                UITableViewCell *cell = [self.interestsTableView cellForRowAtIndexPath:idxPath];
-                cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
-                if(cell.accessoryType == UITableViewCellAccessoryNone) {
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            
-                }
+           if(localArray != nil)
+           {
+               userSelectedItemsArray  = [NSMutableArray arrayWithArray:localArray];
+           }
+        }
+    }
+}
 
+- (BOOL)isSelectedByUser:(NSString*)currentInterestString
+{
+    bool wasSelectedByUser = false;
+    if(userSelectedItemsArray != nil && userSelectedItemsArray.count > 0)
+    {
+        for(int i=0;i<userSelectedItemsArray.count;i++)
+        {
+            if([userSelectedItemsArray[i] isEqualToString:currentInterestString])
+            {
+                wasSelectedByUser = true;
             }
+        }
+    }
+    
+    return wasSelectedByUser;
+}
+
+- (void)addItemToArray:(NSString*)selectedInterestString
+{
+    // Add it if it is not already selected
+    bool isAlreadyAdded = [self isSelectedByUser:selectedInterestString];
+    
+    if(isAlreadyAdded == false)
+    {
+        [userSelectedItemsArray addObject:selectedInterestString];
+    }
+}
+
+-(void)removeItemFromArray:(NSString*)itemStringToRemove
+{
+    for(int i=0;i<userSelectedItemsArray.count;i++)
+    {
+        if([userSelectedItemsArray[i] isEqualToString:itemStringToRemove])
+        {
+            [userSelectedItemsArray removeObject:itemStringToRemove];
         }
     }
 }
@@ -159,7 +202,7 @@
     {
         NSDictionary *nsDict  = self.interestsData[i];
         
-        if(nsDict != nil && [[nsDict objectForKey:@"DisplayValue"] isEqualToString:str])
+        if(nsDict != nil && [[nsDict valueForKey:@"DisplayValue"] isEqualToString:str])
         {
             return i;
             break;
@@ -240,6 +283,18 @@
     if(currentItem != nil)
     {
         cell.textLabel.text = [currentItem valueForKey:@"DisplayValue"];
+        
+        bool wasSelectedByUser = [self isSelectedByUser:[currentItem valueForKey:@"DisplayValue"]];
+        
+        if(wasSelectedByUser == true)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
     return cell;
@@ -267,6 +322,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.selectedRows addObject:currentIdx];
+        [self addItemToArray:cell.textLabel.text];
         cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
 
     }
@@ -274,11 +330,17 @@
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
         [self.selectedRows removeObject:currentIdx];
+        [self removeItemFromArray:cell.textLabel.text];
     }
         
     [self updateIntrests];
     
     [tableView deselectRowAtIndexPath:currentIdx animated:YES];
+}
+
+-(void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"Something");
 }
 
 
