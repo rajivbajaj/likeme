@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSMutableArray *searchResult;
 @property (strong, nonatomic) IBOutlet UITableView *groupsTableView;
 @property bool isNewGroupAdded;
+@property BOOL isMyGroup;
 @end

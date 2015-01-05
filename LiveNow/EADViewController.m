@@ -12,6 +12,7 @@
 #import "Postman.h"
 #import "EADEventsViewController.h"
 #import "HumanInterfaceUtility.h"
+#import "EADGroupsViewController.h"
 @interface EADViewController ()
 
 @end
@@ -153,17 +154,19 @@
     eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     eventController.isMyEvent = true;
     [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"MyEvents.png"];
+    EADGroupsViewController *groupController;
+    groupController = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
+    groupController.isMyGroup = false;
+    [self.slideoutController addViewControllerToLastSection:groupController tagged:8 withTitle:@"Groups" andIcon:@"img_group.png"];
     
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"Groups" andIcon:@"img_group.png"];
-    
-    controller = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
-    [self.slideoutController addViewControllerToLastSection:controller tagged:7 withTitle:@"My Groups" andIcon:@"MyGroups.png"];
+    groupController = [storyboard instantiateViewControllerWithIdentifier:@"Groups"];
+    groupController.isMyGroup = true;
+    [self.slideoutController addViewControllerToLastSection:groupController tagged:9 withTitle:@"My Groups" andIcon:@"MyGroups.png"];
     
     EADViewController *loginController;
     loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
     loginController.logout = true;
-    [self.slideoutController addViewControllerToLastSection:loginController tagged:8 withTitle:@"Logout" andIcon:@"img_logout.png"];
+    [self.slideoutController addViewControllerToLastSection:loginController tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
     
 
     

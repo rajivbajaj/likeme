@@ -18,7 +18,7 @@
     if(userInfo.userLocation == nil && ![userInfo.userLocation isEqualToString:@""])
     {
 
-    double delayInSeconds = 10.0; // number of seconds to wait
+    double delayInSeconds = 0.0; // number of seconds to wait
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     // Override point for customization after application launch.

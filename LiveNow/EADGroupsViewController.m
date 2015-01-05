@@ -66,13 +66,26 @@
 - (void)loadUserGroups
 {
     Postman *postman = [Postman alloc];
-    
+    if (_isMyGroup)
+    {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                         @"true", @"IsMember",
                                         nil];
     
     self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+    }
+    else
+    {
+        UserInfo *userInfo = [UserInfo sharedUserInfo];
+        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                             @"false", @"IsMember",
+                                            nil];
+        
+        self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+    }
     [self.groupsTableView reloadData];
     
 }
