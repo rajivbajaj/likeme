@@ -43,7 +43,7 @@ NSInteger selectedCellIndex;
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.eventsCollectionView addSubview:refreshControl];
-    
+    self.eventsCollectionView.alwaysBounceVertical = YES;
 
     // Do any additional setup after loading the view.
     [self loadEvents];
