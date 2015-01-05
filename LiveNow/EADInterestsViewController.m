@@ -18,8 +18,6 @@
 
 @implementation EADInterestsViewController
 
-@synthesize selectedRows;
-@synthesize interestsText;
 NSMutableArray *userSelectedItemsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,7 +34,6 @@ NSMutableArray *userSelectedItemsArray;
     [super viewDidLoad];
     self.interestsTableView.dataSource = self;
     self.interestsTableView.delegate = self;
-    selectedRows = [[NSMutableArray alloc] init];
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.searchDisplayController.searchBar.backgroundColor=[HumanInterfaceUtility colorWithHexString:@"3E5561"];
@@ -70,53 +67,19 @@ NSMutableArray *userSelectedItemsArray;
 
 - (void)updateIntrests
 {
-    
-//    NSString *userInterestsString = nil;
-//    for(int i =0; i<self.selectedRows.count;i++)
-//    {
-//        NSIndexPath *currentSelectionIndex = [self.selectedRows objectAtIndex:i];
-//        NSDictionary *currentSelection = [self.interestsData objectAtIndex:currentSelectionIndex.row];
-//        
-//        if(currentSelection != nil)
-//        {
-//            NSString *currentSelectedString = @"";
-//            for(int j=0;j<currentSelection.allKeys.count;j++)
-//            {
-//                if([currentSelection.allKeys[j] isEqualToString:@"DisplayValue"])
-//                {
-//                    currentSelectedString = currentSelection.allValues[j];
-//                    break;
-//                }
-//            }
-//            
-//            if(userInterestsString != nil)
-//            {
-//                userInterestsString = [userInterestsString stringByAppendingString:@";"];
-//                userInterestsString = [userInterestsString stringByAppendingString:currentSelectedString];
-//            }
-//            else
-//            {
-//                userInterestsString = currentSelectedString;
-//            }
-//            
-//        }
-//        
-//    }
-    
-        NSString *userInterestsString = nil;
-        for(int i =0; i<userSelectedItemsArray.count;i++)
+    NSString *userInterestsString = nil;
+    for(int i =0; i<userSelectedItemsArray.count;i++)
+    {
+        if(userInterestsString != nil)
         {
-            if(userInterestsString != nil)
-            {
-                userInterestsString = [userInterestsString stringByAppendingString:@";"];
-                userInterestsString = [userInterestsString stringByAppendingString:userSelectedItemsArray[i]];
-            }
-            else
-            {
-                userInterestsString = userSelectedItemsArray[i];
-            }
+            userInterestsString = [userInterestsString stringByAppendingString:@";"];
+            userInterestsString = [userInterestsString stringByAppendingString:userSelectedItemsArray[i]];
         }
-
+        else
+        {
+            userInterestsString = userSelectedItemsArray[i];
+        }
+    }
     
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
@@ -321,7 +284,6 @@ NSMutableArray *userSelectedItemsArray;
     if(cell.accessoryType == UITableViewCellAccessoryNone)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.selectedRows addObject:currentIdx];
         [self addItemToArray:cell.textLabel.text];
         cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
 
@@ -329,7 +291,6 @@ NSMutableArray *userSelectedItemsArray;
     else
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        [self.selectedRows removeObject:currentIdx];
         [self removeItemFromArray:cell.textLabel.text];
     }
         
