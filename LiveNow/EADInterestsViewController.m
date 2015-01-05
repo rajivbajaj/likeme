@@ -340,11 +340,7 @@ NSMutableArray *userSelectedItemsArray;
 
 -(void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"Something");
+    [self.interestsTableView reloadData];
 }
-
-
-
-
 
 @end
