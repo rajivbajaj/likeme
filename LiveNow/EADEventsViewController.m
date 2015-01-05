@@ -39,17 +39,19 @@ NSInteger selectedCellIndex;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     [self.searchBar setImage:[UIImage imageNamed:@"LocationPin.png"] forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.eventsCollectionView addSubview:refreshControl];
+    
+
     // Do any additional setup after loading the view.
     [self loadEvents];
     
     
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.toolbar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"3E5561"];
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.eventsCollectionView addSubview:refreshControl];
-
+   
 }
 - (void)refresh:(UIRefreshControl *)refreshControl
 {

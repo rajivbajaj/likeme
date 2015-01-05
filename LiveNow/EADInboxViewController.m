@@ -79,6 +79,7 @@
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.inboxTablView addSubview:refreshControl];
+    self.refreshControl = refreshControl;
     [self loadInbox];
 
     

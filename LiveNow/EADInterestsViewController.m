@@ -42,6 +42,7 @@
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.interestsTableView addSubview:refreshControl];
+    
        // Do any additional setup after loading the view.
     
     Postman* postMan = [Postman alloc];

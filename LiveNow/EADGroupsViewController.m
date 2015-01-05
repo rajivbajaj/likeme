@@ -39,8 +39,10 @@
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.groupsTableView addSubview:refreshControl];
+    self.refreshControl= refreshControl;
     [self loadUserGroups];
     self.searchResult = [NSMutableArray arrayWithCapacity:[self.dataArray count]];
+   
 }
 - (void)refresh:(UIRefreshControl *)refreshControl
 {
