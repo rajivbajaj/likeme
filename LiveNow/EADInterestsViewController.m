@@ -38,10 +38,10 @@
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.searchDisplayController.searchBar.backgroundColor=[HumanInterfaceUtility colorWithHexString:@"3E5561"];
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.interestsTableView addSubview:refreshControl];
+    //UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    //refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+    //[refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    //[self.interestsTableView addSubview:refreshControl];
     
        // Do any additional setup after loading the view.
     
@@ -57,13 +57,15 @@
     
     [self loadUserInterests];
 }
-- (void)refresh:(UIRefreshControl *)refreshControl
+
+/*- (void)refresh:(UIRefreshControl *)refreshControl
 {
     [self loadUserInterests]; //call method
     [self.interestsTableView reloadData];
     [refreshControl endRefreshing];
     
-}
+}*/
+
 - (void)updateIntrests
 {
     
@@ -260,19 +262,21 @@
         currentIdx = indexPath;
     }
     
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        if(cell.accessoryType == UITableViewCellAccessoryNone) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self.selectedRows addObject:currentIdx];
-            cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(cell.accessoryType == UITableViewCellAccessoryNone)
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedRows addObject:currentIdx];
+        cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
 
-        }
-        else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            [self.selectedRows removeObject:currentIdx];
-        }
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedRows removeObject:currentIdx];
+    }
         
-        [self updateIntrests];
+    [self updateIntrests];
     
     [tableView deselectRowAtIndexPath:currentIdx animated:YES];
 }
