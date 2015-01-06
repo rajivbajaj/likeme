@@ -50,14 +50,8 @@
     //self.senderId = kJSQDemoAvatarIdSquires;
     //self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
     
-
-    MessagesData *messagesData = [MessagesData alloc];
-    messagesData.messangerType = [self messangerType];
-    messagesData.authorId = [self authorId];
-    messagesData.eventId = [self eventId];
-    messagesData.groupId = [self groupId];
+    [self reloadMessageThread];
     
-    self.demoData = [messagesData init];
     
     
     /**
@@ -82,6 +76,17 @@
 //                                                                              style:UIBarButtonItemStyleBordered
 //                                                                             target:self
 //                                                                             action:@selector(receiveMessagePressed:)];
+}
+
+-(void)reloadMessageThread
+{
+    MessagesData *messagesData = [MessagesData alloc];
+    messagesData.messangerType = [self messangerType];
+    messagesData.authorId = [self authorId];
+    messagesData.eventId = [self eventId];
+    messagesData.groupId = [self groupId];
+    
+    self.demoData = [messagesData init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -306,7 +311,8 @@
                                                                   date:[NSDate date]
                                                                   text:text];
     
-    [self.demoData.messages addObject:message];
+    //[self.demoData.messages addObject:message];
+    [self reloadMessageThread];
     [self finishSendingMessage];
 }
 

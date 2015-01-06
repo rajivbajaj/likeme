@@ -1234,7 +1234,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "02683a01-323d-477b-b99c-a187febabea9";
+				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1267,7 +1267,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "02683a01-323d-477b-b99c-a187febabea9";
+				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1279,7 +1279,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1289,7 +1289,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1310,7 +1310,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
