@@ -914,7 +914,7 @@
 				ORGANIZATIONNAME = EliteAppDesigner;
 				TargetAttributes = {
 					0B89FFA919BE52E90077E029 = {
-						DevelopmentTeam = 7T77WB53J7;
+						DevelopmentTeam = Z3K7VHNBGJ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1278,7 +1278,7 @@
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1289,7 +1289,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1300,7 +1300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1310,7 +1310,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

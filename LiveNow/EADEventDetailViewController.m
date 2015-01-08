@@ -98,6 +98,7 @@ bool isAttendingThisEvent = false;
                 self.NoOfCommentsLabel.userInteractionEnabled = YES;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = YES;
                 self.leaveEventButton.hidden = false;
+                
                 isAttendingThisEvent = true;
                 
                 if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])

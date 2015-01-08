@@ -37,6 +37,7 @@
         [self.view addSubview:loginView];
         // Align the button in the center horizontally
         loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
+        
         //[self.view addSubview:loginView];
         // Do any additional setup after loading the view, typically from a nib.
         self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
@@ -218,6 +219,8 @@
     //self.profilePictureView.profileID = nil;
     //self.nameLabel.text = @"";
     //self.statusLabel.text= @"You're not logged in!";
+  
+    
 }
 
 // You need to override loginView:handleError in order to handle possible errors that can occur during login
