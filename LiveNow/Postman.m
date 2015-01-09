@@ -161,4 +161,28 @@
         
     }
 }
+
+-(void)GetAsync :(NSString*)urlParams :(NSDictionary*)paramData completion:(void (^)(NSArray *dataArray))callBack
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *completeUrlWIthParams = [NSString stringWithFormat:urlParams, jsonParams];
+    completeUrlWIthParams = [BaseServiceURL stringByAppendingString:completeUrlWIthParams];
+
+    completeUrlWIthParams = [completeUrlWIthParams stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:completeUrlWIthParams parameters:nil
+    success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSArray *dataArray = responseObject;
+        callBack(dataArray);
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        NSLog(@"Error: %@", error);
+    }];
+}
 @end

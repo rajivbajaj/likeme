@@ -17,4 +17,5 @@
 -(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData;
 -(NSDictionary*) Get :(NSString*)urlWithParams;
 -(void)PostWithFileData :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSData*)fileData;
+-(void)GetAsync :(NSString*)urlParams :(NSDictionary*)paramData completion:(void (^)(NSArray *dataArray))callBack;
 @end

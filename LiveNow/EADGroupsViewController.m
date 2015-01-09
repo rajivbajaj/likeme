@@ -86,9 +86,14 @@
                                              @"false", @"IsMember",
                                             nil];
         
-        self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+        //self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+        
+        [postman GetAsync:@"groups/getbyuser?jsonParams=%@" :userDataDictionary completion:^(NSArray *dataArray) {
+            self.dataArray = dataArray;
+            [self.groupsTableView reloadData];
+        }];
     }
-    [self.groupsTableView reloadData];
+
     
 }
 
