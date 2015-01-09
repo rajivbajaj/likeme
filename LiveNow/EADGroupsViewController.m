@@ -68,31 +68,38 @@
 - (void)loadUserGroups
 {
     Postman *postman = [Postman alloc];
+    UILabel *backgroundLbl = [[UILabel alloc] init];
+    backgroundLbl.text = @"Loading...";
+    backgroundLbl.textAlignment = NSTextAlignmentCenter;
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSDictionary *userDataDictionary;
+    
     if (_isMyGroup)
     {
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                         @"true", @"IsMember",
-                                        nil];
-    
-    self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
+        
+        userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                             @"true", @"IsMember",
+                                            nil];
+        
     }
     else
     {
-        UserInfo *userInfo = [UserInfo sharedUserInfo];
-        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+        userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                             [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                              @"false", @"IsMember",
                                             nil];
-        
-        //self.dataArray = [postman Get:@"groups/getbyuser?jsonParams=%@" :userDataDictionary];
-        
-        [postman GetAsync:@"groups/getbyuser?jsonParams=%@" :userDataDictionary completion:^(NSArray *dataArray) {
-            self.dataArray = dataArray;
-            [self.groupsTableView reloadData];
-        }];
     }
+    
+    self.groupsTableView.backgroundView = backgroundLbl;
+    [postman GetAsync:@"groups/getbyuser?jsonParams=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.dataArray = dataArray;
+         [self.groupsTableView reloadData];
+         self.groupsTableView.backgroundView = nil;
+     }];
 
     
 }
