@@ -175,6 +175,8 @@ NSInteger selectedCellIndex;
     myCell.eventName.text=cellText;
     myCell.labelView.text=[currentItem valueForKey:@"EventDescription"];
     myCell.eventCreatedBy.text=[currentItem valueForKey:@"UserName"];
+    myCell.eventDateTime.text =[currentItem valueForKey:@"StartTime"];
+
     
     
     return myCell;

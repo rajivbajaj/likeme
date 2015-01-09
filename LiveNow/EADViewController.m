@@ -25,6 +25,13 @@
     [super viewDidLoad];
     if (_logout)
     {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                           message:@"Are you sure to logout?"
+                                                          delegate:nil
+                                
+                                                  cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:@"OK", nil];
+        [alertView show];
         //ToDO need to call this from slide menu
         [FBSession.activeSession closeAndClearTokenInformation];
         _logout = false;
