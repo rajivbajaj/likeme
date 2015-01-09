@@ -23,18 +23,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _viewloaded = true;
     if (_logout)
     {
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
                                                            message:@"Are you sure to logout?"
-                                                          delegate:nil
+                                                          delegate:self
                                 
                                                   cancelButtonTitle:@"Cancel"
                                                  otherButtonTitles:@"OK", nil];
         [alertView show];
-        //ToDO need to call this from slide menu
-        [FBSession.activeSession closeAndClearTokenInformation];
-        _logout = false;
+       
+        
     }
     else
     {
@@ -47,9 +48,54 @@
         
         //[self.view addSubview:loginView];
         // Do any additional setup after loading the view, typically from a nib.
-        self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+        loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     }
     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
+}
+- (void) viewDidAppear:(BOOL)animated
+{
+    if (_logout && _viewloaded == false)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                            message:@"Are you sure to logout?"
+                                                           delegate:self
+                                  
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+        
+        
+    }
+    else
+    {
+        //[self CurrentLocationIdentifier];
+        FBLoginView *loginView = [[FBLoginView alloc] init];
+        loginView.delegate = self;
+        [self.view addSubview:loginView];
+        // Align the button in the center horizontally
+        loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
+        
+        //[self.view addSubview:loginView];
+        // Do any additional setup after loading the view, typically from a nib.
+        loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    }
+
+   
+}
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == alertView.cancelButtonIndex)
+    {
+        _logout = false;
+        [self navigateToMainPage];
+
+    }
+    else
+    {
+       
+        [FBSession.activeSession closeAndClearTokenInformation];
+        _logout = false;
+    }
 }
 //-(void)CurrentLocationIdentifier
 //{

@@ -1169,7 +1169,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6e0-RV-gCp">
-                                <rect key="frame" x="6" y="20" width="152" height="93"/>
+                                <rect key="frame" x="6" y="20" width="152" height="111"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="userName" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ip5-WF-pCf">
@@ -1919,11 +1919,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OCl-Un-Pl0"/>
-        <segue reference="sQm-xv-8oR"/>
         <segue reference="pdK-Z6-3XM"/>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="HDh-NI-nOR"/>
+        <segue reference="OCl-Un-Pl0"/>
         <segue reference="0TZ-wD-kUB"/>
-        <segue reference="bcw-vv-7D7"/>
         <segue reference="8OK-M8-tPy"/>
         <segue reference="j80-dk-2le"/>
         <segue reference="zhF-AW-XRQ"/>

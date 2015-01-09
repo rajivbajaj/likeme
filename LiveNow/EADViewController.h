@@ -13,7 +13,7 @@
 #import "EADAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface EADViewController : UIViewController <FBLoginViewDelegate,CLLocationManagerDelegate>{
+@interface EADViewController : UIViewController <FBLoginViewDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>{
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
 }
@@ -23,4 +23,5 @@
 @property (strong, nonatomic) AMSlideOutNavigationController*  slideoutController;
 @property (nonatomic, retain) NSString* userLocation;
 @property  BOOL logout;
+@property bool viewloaded;
 @end
