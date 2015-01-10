@@ -19,6 +19,7 @@
 @implementation EADInterestsViewController
 
 NSMutableArray *userSelectedItemsArray;
+UILabel *backgroundLbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +35,10 @@ NSMutableArray *userSelectedItemsArray;
     [super viewDidLoad];
     self.interestsTableView.dataSource = self;
     self.interestsTableView.delegate = self;
+    backgroundLbl = [[UILabel alloc] init];
+    backgroundLbl.text = @"Loading...";
+    backgroundLbl.textAlignment = NSTextAlignmentCenter;
+
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     self.searchDisplayController.searchBar.backgroundColor=[HumanInterfaceUtility colorWithHexString:@"3E5561"];
@@ -51,9 +56,17 @@ NSMutableArray *userSelectedItemsArray;
                                         @"Interests", @"LKGroupName",
                                         nil];
     
-    self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
-
-    self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+    //self.interestsData = [postMan Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    
+    self.interestsTableView.backgroundView = backgroundLbl;
+    [postMan GetAsync:@"utility/get?jsonParams=%@" :paramsDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.interestsData = dataArray;
+         [self.interestsTableView reloadData];
+         self.interestsTableView.backgroundView = nil;
+         self.searchResult = [NSMutableArray arrayWithCapacity:[self.interestsData count]];
+     }];
 }
 
 /*- (void)refresh:(UIRefreshControl *)refreshControl
@@ -102,6 +115,7 @@ NSMutableArray *userSelectedItemsArray;
                                 [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
     
     NSArray *userInterestsData = [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData];
+
     
     if(userInterestsData != nil && userInterestsData.count > 0)
     {

@@ -80,31 +80,39 @@ NSInteger selectedCellIndex;
 - (void)loadEvents
 {
     Postman *postman = [Postman alloc];
+    UILabel *backgroundLbl = [[UILabel alloc] init];
+    backgroundLbl.text = @"Loading...";
+    backgroundLbl.textAlignment = NSTextAlignmentCenter;
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-
+    NSDictionary *userDataDictionary;
     if (_isMyEvent)
     {
-        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+        userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
                                         @"true", @"IsAttending",
                                         nil];
-        self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
     }
     else
     {
-        NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+        userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                             [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                             [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
                                             @"false", @"IsAttending",
                                             nil];
         
-        self.eventsArray = [postman Get:@"events/getbyradius?paramsJson=%@" :userDataDictionary];
 
     }
     
-    [self.eventsCollectionView reloadData];
+    self.eventsCollectionView.backgroundView = backgroundLbl;
+    [postman GetAsync:@"events/getbyradius?paramsJson=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.eventsArray = dataArray;
+         [self.eventsCollectionView reloadData];
+         self.eventsCollectionView.backgroundView = nil;
+     }];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

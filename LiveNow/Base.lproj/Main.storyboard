@@ -1105,6 +1105,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="searchDisplayController" destination="Q45-7N-5eN" id="bnQ-Lj-HVj"/>
+                        <outlet property="usersTableView" destination="s37-U3-Zpn" id="rln-6P-EqX"/>
                         <segue destination="MMI-yS-r67" kind="push" identifier="userListToMap" id="smy-lv-rvC"/>
                     </connections>
                 </tableViewController>
@@ -1919,13 +1920,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pdK-Z6-3XM"/>
-        <segue reference="sQm-xv-8oR"/>
-        <segue reference="HDh-NI-nOR"/>
-        <segue reference="OCl-Un-Pl0"/>
-        <segue reference="0TZ-wD-kUB"/>
-        <segue reference="8OK-M8-tPy"/>
         <segue reference="j80-dk-2le"/>
         <segue reference="zhF-AW-XRQ"/>
+        <segue reference="smy-lv-rvC"/>
+        <segue reference="pdK-Z6-3XM"/>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="OCl-Un-Pl0"/>
+        <segue reference="HDh-NI-nOR"/>
+        <segue reference="0TZ-wD-kUB"/>
     </inferredMetricsTieBreakers>
 </document>

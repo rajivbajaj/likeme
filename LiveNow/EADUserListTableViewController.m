@@ -57,15 +57,25 @@
 {
     Postman* postMan = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
+    UILabel *backgroundLbl = [[UILabel alloc] init];
+    backgroundLbl.text = @"Loading...";
+    backgroundLbl.textAlignment = NSTextAlignmentCenter;
 
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                 [NSString stringWithFormat:@"%i", userInfo.interestedRadius], @"RadiusDistance",
                                 nil];
-    self.userListData = [postMan Get:@"users/getbyradius?jsonParams=%@" :paramsData];
+    //self.userListData = [postMan Get:@"users/getbyradius?jsonParams=%@" :paramsData];
     
-    self.searchResult = [NSMutableArray arrayWithCapacity:[self.userListData count]];
-    
+    self.usersTableView.backgroundView = backgroundLbl;
+    [postMan GetAsync:@"users/getbyradius?jsonParams=%@" :paramsData
+           completion:^(NSArray *dataArray)
+     {
+         self.userListData = dataArray;
+         [self.usersTableView reloadData];
+         self.usersTableView.backgroundView = nil;
+         self.searchResult = [NSMutableArray arrayWithCapacity:[self.userListData count]];
+     }];
 
 }
 

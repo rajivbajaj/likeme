@@ -13,4 +13,5 @@
 @property (strong, nonatomic) NSArray *userListData;
 @property (nonatomic, strong) NSMutableArray *searchResult;
 @property NSMutableArray *selectedRows;
+@property (strong, nonatomic) IBOutlet UITableView *usersTableView;
 @end
