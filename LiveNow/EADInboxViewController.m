@@ -18,18 +18,12 @@
 @implementation EADInboxViewController
 
 
-@synthesize inboxTablView;
-
--(void)setDictData:(NSArray *)dataArray
-{
-    _dataArray = dataArray;
-    [self.inboxTablView reloadData];
-}
+//@synthesize inboxTablView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    inboxTablView.delegate = self;
-    inboxTablView.dataSource = self;
+    //inboxTablView.delegate = self;
+    //inboxTablView.dataSource = self;
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -39,19 +33,19 @@
     return self;
 }
 
-- (IBAction)actionsSelectorTriggered:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:nil];
-    
-    [actionSheet addButtonWithTitle:@"Compose"];
-    [actionSheet addButtonWithTitle:@"Add Pic"];
-    [actionSheet addButtonWithTitle:@"Cancel"];
-    actionSheet.cancelButtonIndex = 2;
-    [actionSheet showFromBarButtonItem:sender animated:YES];
-}
+//- (IBAction)actionsSelectorTriggered:(id)sender {
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+//                                                             delegate:self
+//                                                    cancelButtonTitle:nil
+//                                               destructiveButtonTitle:nil
+//                                                    otherButtonTitles:nil];
+//    
+//    [actionSheet addButtonWithTitle:@"Compose"];
+//    [actionSheet addButtonWithTitle:@"Add Pic"];
+//    [actionSheet addButtonWithTitle:@"Cancel"];
+//    actionSheet.cancelButtonIndex = 2;
+//    [actionSheet showFromBarButtonItem:sender animated:YES];
+//}
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -72,6 +66,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
      [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
@@ -81,6 +76,9 @@
     [self.inboxTablView addSubview:refreshControl];
     self.refreshControl = refreshControl;
     [self loadInbox];
+    
+    self.inboxTablView.dataSource = self;
+    self.inboxTablView.delegate = self;
 
     
 }
@@ -88,14 +86,11 @@
 {
     [self loadInbox]; //call method
     [refreshControl endRefreshing];
-    
 }
-
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self loadInbox];
+    //[self loadInbox];
     //[self.inboxTablView reloadData];
 }
 
@@ -107,6 +102,8 @@
 
 - (void)loadInbox
 {
+
+    
     Postman *postman = [Postman alloc];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
@@ -115,7 +112,20 @@
                                         nil];
     
     self.dataArray = [postman Get:@"messages/get?jsonParams=%@" :userDataDictionary];
+    [self.inboxTablView reloadData];
     
+    
+//    UILabel *backgroundLbl = [[UILabel alloc] init];
+//    backgroundLbl.text = @"Loading...";
+//    backgroundLbl.textAlignment = NSTextAlignmentCenter;
+//    self.inboxTablView.backgroundView = backgroundLbl;
+//    [postman GetAsync:@"messages/get?jsonParams=%@" :userDataDictionary
+//           completion:^(NSArray *dataArray)
+//     {
+//         self.dataArray = dataArray;
+//         [self.inboxTablView reloadData];
+//         self.inboxTablView.backgroundView = nil;
+//     }];
     
 }
 
@@ -126,7 +136,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return [self.dataArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -150,16 +160,14 @@
         }
     
         
-        if( [indexPath row] % 2){
+        if( [indexPath row] % 2)
+        {
             cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
-            
         }
         else
         {
             cell.backgroundColor = [UIColor whiteColor];
-            
         }
-
     }
     return cell;
 }

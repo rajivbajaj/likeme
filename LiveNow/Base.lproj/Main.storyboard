@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -324,7 +324,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1860"/>
         </scene>
-        <!--Report Abuse View Controller - Title-->
+        <!--Title-->
         <scene sceneID="Cm8-zn-18X">
             <objects>
                 <tableViewController id="h4P-Nt-FJ3" customClass="EADReportAbuseViewController" sceneMemberID="viewController">
@@ -412,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="1453" y="2508"/>
         </scene>
-        <!--Group Details View Controller - Create Group-->
+        <!--Create Group-->
         <scene sceneID="2Mc-tq-kO1">
             <objects>
                 <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
@@ -858,7 +858,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="oeB-wE-aUz">
             <objects>
                 <tableViewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="Odl-cT-7gB" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -1134,7 +1134,7 @@
             </objects>
             <point key="canvasLocation" x="1872" y="358"/>
         </scene>
-        <!--Location Search View Controller - Pick Location-->
+        <!--Pick Location-->
         <scene sceneID="jh7-8P-8Et">
             <objects>
                 <viewController storyboardIdentifier="LocationSelection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbj-lP-5Rx" customClass="EADLocationSearchViewController" sceneMemberID="viewController">
@@ -1393,7 +1393,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox View Controller - Inbox-->
+        <!--Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -1431,6 +1431,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="d7c-d5-z5c" id="m7K-VF-19f"/>
+                                    <outlet property="delegate" destination="d7c-d5-z5c" id="n53-Oc-Rqy"/>
+                                </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lXn-tL-eLf">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -1460,7 +1464,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker View Controller - Image Picker-->
+        <!--Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -1488,7 +1492,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events View Controller - Events-->
+        <!--Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
@@ -1616,7 +1620,7 @@
             </objects>
             <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
-        <!--Events Create View Controller - Create Event-->
+        <!--Create Event-->
         <scene sceneID="aug-Rb-WMD">
             <objects>
                 <tableViewController id="fzM-RJ-wU7" customClass="EADEventsCreateViewController" sceneMemberID="viewController">
@@ -1931,15 +1935,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gYv-VN-P5c"/>
+        <segue reference="UBI-vc-6By"/>
         <segue reference="OCl-Un-Pl0"/>
         <segue reference="sQm-xv-8oR"/>
         <segue reference="TAK-hv-Tob"/>
         <segue reference="j80-dk-2le"/>
         <segue reference="gW6-6f-l1o"/>
         <segue reference="zhF-AW-XRQ"/>
-        <segue reference="lJr-Xy-1ke"/>
         <segue reference="smy-lv-rvC"/>
         <segue reference="HDh-NI-nOR"/>
+        <segue reference="UrU-MG-Yth"/>
     </inferredMetricsTieBreakers>
 </document>

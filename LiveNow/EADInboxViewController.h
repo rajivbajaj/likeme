@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface EADInboxViewController : UITableViewController<UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface EADInboxViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *inboxTablView;
 @property BOOL newMedia;

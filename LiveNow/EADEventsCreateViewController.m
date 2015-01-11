@@ -122,6 +122,7 @@ NSString* endDateString;
                                         [postMan GetValueOrEmpty:endDateString], @"EndTime",
                                         [postMan GetValueOrEmpty:_eventTypeText.text], @"EventType",
                                         [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
+                                        [postMan GetValueOrEmpty:_restrictionsText.text], @"EventRestrictions",
                                         latitudeString, @"Latitude",
                                         longitudeString, @"Longitude",
                                         [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
@@ -363,10 +364,9 @@ NSString* endDateString;
            // self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
             self.eventNameText.text = [currentObject valueForKey:@"EventName"];
             self.descriptionText.text=[currentObject valueForKey:@"EventDescription"];
-            self.locationText.text =[currentObject valueForKey:@"EventCity"];
-             self.restrictionsText.text =[currentObject valueForKey:@"location"];
-             self.startDateText.text =[currentObject valueForKey:@"StartTime"];
-             self.endDateText.text =[currentObject valueForKey:@"EndTime"];
+            self.locationName = [currentObject valueForKey:@"EventCity"];
+            self.locationText.text = [currentObject valueForKey:@"EventCity"];
+             self.restrictionsText.text =[currentObject valueForKey:@"EventRestrictions"];
              self.eventTypeText.text =[currentObject valueForKey:@"EventType"];
             
             if ([[currentObject valueForKey:@"EventStatus"]  isEqual: @"Active"])
@@ -377,6 +377,12 @@ NSString* endDateString;
             {
                  [self.eventStatus setOn:false];
             }
+            
+            NSString *startDateString = [currentObject valueForKey:@"StartTime"];
+            NSString *endDateString = [currentObject valueForKey:@"EndTime"];
+            self.startDateText.text = [startDateString stringByReplacingOccurrencesOfString:@"T" withString:@""];
+            self.endDateText.text =[endDateString stringByReplacingOccurrencesOfString:@"T" withString:@""];
+            
            // NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
             //NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
            // self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];

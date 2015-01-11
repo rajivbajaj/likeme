@@ -38,7 +38,7 @@ bool isAttendingThisEvent = false;
     [self loadEvent];
     self.NoOfCommentsLabel.userInteractionEnabled = NO;
     self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
-    self.leaveEventButton.hidden = true;
+    //self.leaveEventButton.hidden = true;
 }
 - (void)loadEvent
 {
@@ -93,23 +93,13 @@ bool isAttendingThisEvent = false;
             NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
             self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
-            if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])
-            {
-                [self.editButton setHidden:false];
-            }
-            else
-            {
-                [self.editButton setHidden:true];
-
-            }
-            
             
             if([[currentObject valueForKey:@"MyAttendanceStatus"] isEqualToString:@"Yes"])
             {
                 self.NoOfCommentsLabel.userInteractionEnabled = YES;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = YES;
-                self.leaveEventButton.hidden = false;
-                self.joinEventButton.hidden = true;
+                [self.leaveEventButton setHidden:NO];
+                [self.joinEventButton setHidden:YES];
                 isAttendingThisEvent = true;
                 
                 if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
@@ -125,10 +115,23 @@ bool isAttendingThisEvent = false;
             {
                 self.NoOfCommentsLabel.userInteractionEnabled = NO;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
-                self.leaveEventButton.hidden = true;
-                self.joinEventButton.hidden = false;
+                [self.leaveEventButton setHidden:YES];
+                [self.joinEventButton setHidden:NO];
                 isAttendingThisEvent = false;
                 [self.reportAbuseButton setHidden:NO];
+            }
+            
+            if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])
+            {
+                [self.editButton setHidden:false];
+                //FOr owner hide the leave and join buttons as well
+                [self.leaveEventButton setHidden:YES];
+                [self.joinEventButton setHidden:YES];
+            }
+            else
+            {
+                [self.editButton setHidden:true];
+                
             }
             
            
