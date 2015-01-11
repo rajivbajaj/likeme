@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>App Icon Design v4</string>
-				<string>App Icon Design v3</string>
+				<string>App Icon Design v5</string>
+				<string>App Icon Design v5</string>
 			</array>
 		</dict>
 	</dict>
@@ -60,6 +60,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -172,7 +172,7 @@ NSInteger selectedCellIndex;
         }
         else
         {
-            [myCell.eventImage setImage:[UIImage imageNamed:@"EventsDefaultImage.png"]];
+            [myCell.eventImage setImage:[UIImage imageNamed:@"LNDefaultImage.png"]];
         }
 
     }

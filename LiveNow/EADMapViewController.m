@@ -56,13 +56,13 @@
     bottomRightCoord.latitude = 90;
     bottomRightCoord.longitude = -180;
     
-    for(MKPointAnnotation *_annotationId in _mapView.annotations)
+    for(MKPointAnnotation *_annotationIdl in _mapView.annotations)
     {
-        topLeftCoord.longitude = fmin(topLeftCoord.longitude, _annotationId.coordinate.longitude);
-        topLeftCoord.latitude = fmax(topLeftCoord.latitude, _annotationId.coordinate.latitude);
+        topLeftCoord.longitude = fmin(topLeftCoord.longitude, _annotationIdl.coordinate.longitude);
+        topLeftCoord.latitude = fmax(topLeftCoord.latitude, _annotationIdl.coordinate.latitude);
         
-        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, _annotationId.coordinate.longitude);
-        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, _annotationId.coordinate.latitude);
+        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, _annotationIdl.coordinate.longitude);
+        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, _annotationIdl.coordinate.latitude);
     }
     
     MKCoordinateRegion region;
@@ -308,8 +308,9 @@
     }
     [_mapView addAnnotations:marketLocations];
     
-    [self zoomToAnnotations];
+   // [self zoomToAnnotations];
     //[_mapView showAnnotations:marketLocations animated:YES];
+    [_mapView showAnnotations:marketLocations animated:YES];
 }
 -(void)drawUsers
 {

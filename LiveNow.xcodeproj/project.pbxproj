@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B101E261A62FDC0005773F3 /* LNDefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B101E251A62FDC0005773F3 /* LNDefaultImage.png */; };
 		0B31D6AA1A506A7400276A0C /* img_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A01A506A7400276A0C /* img_logout.png */; };
 		0B31D6AB1A506A7400276A0C /* img_group.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A11A506A7400276A0C /* img_group.png */; };
 		0B31D6AC1A506A7400276A0C /* img_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A21A506A7400276A0C /* img_events.png */; };
@@ -178,6 +179,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B101E251A62FDC0005773F3 /* LNDefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LNDefaultImage.png; sourceTree = "<group>"; };
 		0B31D6A01A506A7400276A0C /* img_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_logout.png; sourceTree = "<group>"; };
 		0B31D6A11A506A7400276A0C /* img_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_group.png; sourceTree = "<group>"; };
 		0B31D6A21A506A7400276A0C /* img_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_events.png; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 		0B89FFB319BE52E90077E029 /* LiveNow */ = {
 			isa = PBXGroup;
 			children = (
+				0B101E251A62FDC0005773F3 /* LNDefaultImage.png */,
 				0B31D6D41A58935200276A0C /* GroupsDefaultImage.png */,
 				0B31D6D51A58935200276A0C /* EventsDefaultImage.png */,
 				0B31D6D21A588C2000276A0C /* Report Abuse v2.png */,
@@ -992,6 +995,7 @@
 				144CE64319E5716C00C6EC03 /* bubble_min_tailless@2x.png in Resources */,
 				0B89FFB819BE52E90077E029 /* InfoPlist.strings in Resources */,
 				0B31D6AF1A506A7400276A0C /* img_searchpeople.png in Resources */,
+				0B101E261A62FDC0005773F3 /* LNDefaultImage.png in Resources */,
 				144CE64019E5716C00C6EC03 /* bubble_min.png in Resources */,
 				0B31D6C91A506C5400276A0C /* img_searchinputbox.png in Resources */,
 				144CE64D19E5716C00C6EC03 /* message_sent.aiff in Resources */,
@@ -1279,27 +1283,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/rajivbajaj/Documents/FacebookSDK,
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
-				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		0B89FFDE19BE52EA0077E029 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1310,7 +1293,28 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
+				PROVISIONING_PROFILE = "bb17a3c0-0db6-4518-a201-3c033c7713a2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0B89FFDE19BE52EA0077E029 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rajivbajaj/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
+				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb17a3c0-0db6-4518-a201-3c033c7713a2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

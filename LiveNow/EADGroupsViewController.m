@@ -107,7 +107,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     [self.searchResult removeAllObjects];
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"GroupName == %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"GroupName contains[c] %@", searchText];
     
     
     self.searchResult = [NSMutableArray arrayWithArray: [self.dataArray filteredArrayUsingPredicate:resultPredicate]];
