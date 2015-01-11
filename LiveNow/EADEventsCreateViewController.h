@@ -27,5 +27,7 @@
 @property BOOL launchCamera;
 @property (weak, nonatomic) IBOutlet UISwitch *eventStatus;
 @property (weak, nonatomic) IBOutlet UILabel *eventStatusText;
+@property (strong, nonatomic)  NSString *eventId;
+@property (nonatomic, strong) NSArray *eventArray;
 
 @end

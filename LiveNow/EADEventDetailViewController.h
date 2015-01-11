@@ -21,4 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *leaveEventButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportAbuseButton;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UIButton *joinEventButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
+
 @end

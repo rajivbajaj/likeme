@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -299,7 +299,14 @@
                             <outlet property="delegate" destination="sxB-Mh-Z61" id="MR3-gj-nWL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="L6S-LF-41o"/>
+                    <navigationItem key="navigationItem" id="L6S-LF-41o">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="KZ2-uz-L57">
+                            <color key="tintColor" red="0.18431372939999999" green="0.26274511220000002" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <segue destination="qUa-6l-J0w" kind="push" identifier="editGroup" id="gYv-VN-P5c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="groupDescriptionLabel" destination="Usm-tG-FoL" id="vcJ-Ro-phi"/>
                         <outlet property="groupImageView" destination="qdF-Bi-y74" id="R5b-nk-bU3"/>
@@ -317,7 +324,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1860"/>
         </scene>
-        <!--Title-->
+        <!--Report Abuse View Controller - Title-->
         <scene sceneID="Cm8-zn-18X">
             <objects>
                 <tableViewController id="h4P-Nt-FJ3" customClass="EADReportAbuseViewController" sceneMemberID="viewController">
@@ -405,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="1453" y="2508"/>
         </scene>
-        <!--Create Group-->
+        <!--Group Details View Controller - Create Group-->
         <scene sceneID="2Mc-tq-kO1">
             <objects>
                 <tableViewController id="qUa-6l-J0w" customClass="EADGroupDetailsViewController" sceneMemberID="viewController">
@@ -713,14 +720,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BId-e8-Ykb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BId-e8-Ykb">
                                         <rect key="frame" x="259" y="0.0" width="39" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Close" image="Close.png">
+                                        <color key="backgroundColor" red="0.61176472902297974" green="0.078431375324726105" blue="0.14901961386203766" alpha="1" colorSpace="deviceRGB"/>
+                                        <state key="normal" title="EDIT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="ClosePopUp:" destination="fXq-rB-dvi" eventType="touchDown" id="Tsr-a3-l1O"/>
+                                            <segue destination="fzM-RJ-wU7" kind="push" identifier="eventEdit" id="gW6-6f-l1o"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TOp-vK-JtW">
@@ -788,6 +797,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.70588237050000002" green="0.76862752440000004" blue="0.80000007149999997" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GRE-A8-k5w">
+                                <rect key="frame" x="14" y="462" width="298" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Join" image="btn_join.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinEventTouched:" destination="fXq-rB-dvi" eventType="touchDown" id="SDK-jS-J8W"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bnk-xq-VoT">
                                 <rect key="frame" x="14" y="462" width="298" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -798,16 +817,6 @@
                                     <action selector="leaveEventTouched:" destination="fXq-rB-dvi" eventType="touchDown" id="myk-34-Rnr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GRE-A8-k5w">
-                                <rect key="frame" x="16" y="462" width="289" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join" image="btn_join.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinEventTouched:" destination="fXq-rB-dvi" eventType="touchDown" id="SDK-jS-J8W"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.70588237050000002" green="0.76862752440000004" blue="0.80000007149999997" alpha="1" colorSpace="deviceRGB"/>
@@ -816,10 +825,12 @@
                     <connections>
                         <outlet property="NoOfCommentsLabel" destination="vsL-7f-iC5" id="mv3-4G-VAX"/>
                         <outlet property="NoOfPeopleJoinedLabel" destination="ggD-Me-hES" id="4PC-7Q-hRe"/>
+                        <outlet property="editButton" destination="BId-e8-Ykb" id="UAC-IR-jN9"/>
                         <outlet property="eventCreaterLabel" destination="IKA-n1-zD9" id="1HK-vZ-2eo"/>
                         <outlet property="eventDescriptionLabel" destination="4pV-Dg-tfI" id="geZ-6T-bo3"/>
                         <outlet property="eventImageView" destination="mpi-c8-kXG" id="sDt-AP-Utk"/>
                         <outlet property="eventNameLabel" destination="TOp-vK-JtW" id="hNz-nl-Fpd"/>
+                        <outlet property="joinEventButton" destination="GRE-A8-k5w" id="9kP-fQ-rHE"/>
                         <outlet property="leaveEventButton" destination="Bnk-xq-VoT" id="Wwv-Ef-Fah"/>
                         <outlet property="reportAbuseButton" destination="Ucw-bm-ehW" id="Gw0-GT-aCI"/>
                         <outlet property="userProfileImageView" destination="iCh-9K-m9j" id="K6Z-rL-NCO"/>
@@ -847,7 +858,7 @@
             </objects>
             <point key="canvasLocation" x="415" y="-1051"/>
         </scene>
-        <!--Profile-->
+        <!--Profile View Controller - Profile-->
         <scene sceneID="oeB-wE-aUz">
             <objects>
                 <tableViewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="Odl-cT-7gB" customClass="EADProfileViewController" sceneMemberID="viewController">
@@ -1066,7 +1077,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" showsBookmarkButton="YES" id="pBN-Ef-KCh">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.18431372939999999" green="0.26274511220000002" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                             <color key="barTintColor" red="0.18431372939999999" green="0.26274511220000002" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
@@ -1077,7 +1088,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userData" id="D8P-a5-Hu7">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8P-a5-Hu7" id="OTN-4b-nLI">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -1099,13 +1110,14 @@
                             <outlet property="delegate" destination="oGN-A2-31E" id="Sxe-bC-OB6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="a2S-cZ-Yrb"/>
+                    <navigationItem key="navigationItem" id="a2S-cZ-Yrb">
+                        <barButtonItem key="rightBarButtonItem" image="LocationPin.png" style="plain" id="xHy-ff-x4a"/>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="gKS-5D-pSR">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
                         <outlet property="searchDisplayController" destination="Q45-7N-5eN" id="bnQ-Lj-HVj"/>
-                        <outlet property="usersTableView" destination="s37-U3-Zpn" id="rln-6P-EqX"/>
                         <segue destination="MMI-yS-r67" kind="push" identifier="userListToMap" id="smy-lv-rvC"/>
                     </connections>
                 </tableViewController>
@@ -1122,7 +1134,7 @@
             </objects>
             <point key="canvasLocation" x="1872" y="358"/>
         </scene>
-        <!--Pick Location-->
+        <!--Location Search View Controller - Pick Location-->
         <scene sceneID="jh7-8P-8Et">
             <objects>
                 <viewController storyboardIdentifier="LocationSelection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mbj-lP-5Rx" customClass="EADLocationSearchViewController" sceneMemberID="viewController">
@@ -1266,14 +1278,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Interest:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8qf-zV-xzU">
-                                <rect key="frame" x="20" y="214" width="69" height="31"/>
+                                <rect key="frame" x="20" y="214" width="69" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.58039218189999997" green="0.68627452850000004" blue="0.72941178080000002" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exR-hk-uQF">
-                                <rect key="frame" x="88" y="214" width="217" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exR-hk-uQF">
+                                <rect key="frame" x="88" y="214" width="217" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.58039218189999997" green="0.68627452850000004" blue="0.72941178080000002" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1381,7 +1393,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-1041"/>
         </scene>
-        <!--Inbox-->
+        <!--Inbox View Controller - Inbox-->
         <scene sceneID="WNw-3U-OaC">
             <objects>
                 <viewController storyboardIdentifier="Inbox_old" title="Inbox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7c-d5-z5c" customClass="EADInboxViewController" sceneMemberID="viewController">
@@ -1448,7 +1460,7 @@
             </objects>
             <point key="canvasLocation" x="1327" y="-1062"/>
         </scene>
-        <!--Image Picker-->
+        <!--Image Picker View Controller - Image Picker-->
         <scene sceneID="dMe-jR-ndM">
             <objects>
                 <viewController storyboardIdentifier="ImagePicker" title="Image Picker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6f-xA-AFD" customClass="EADImagePickerViewController" sceneMemberID="viewController">
@@ -1476,7 +1488,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="-1044"/>
         </scene>
-        <!--Events-->
+        <!--Events View Controller - Events-->
         <scene sceneID="ZaB-vE-Lwd">
             <objects>
                 <viewController storyboardIdentifier="Events" title="Events" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOz-R3-8bN" customClass="EADEventsViewController" sceneMemberID="viewController">
@@ -1604,7 +1616,7 @@
             </objects>
             <point key="canvasLocation" x="1317" y="-343"/>
         </scene>
-        <!--Create Event-->
+        <!--Events Create View Controller - Create Event-->
         <scene sceneID="aug-Rb-WMD">
             <objects>
                 <tableViewController id="fzM-RJ-wU7" customClass="EADEventsCreateViewController" sceneMemberID="viewController">
@@ -1901,7 +1913,6 @@
     </scenes>
     <resources>
         <image name="App Icon Design v5.png" width="215" height="224"/>
-        <image name="Close.png" width="117" height="117"/>
         <image name="LocationPin.png" width="24" height="24"/>
         <image name="Logo Design 2.png" width="864" height="720"/>
         <image name="Report Abuse v2.png" width="79" height="123"/>
@@ -1920,13 +1931,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="j80-dk-2le"/>
-        <segue reference="zhF-AW-XRQ"/>
-        <segue reference="smy-lv-rvC"/>
-        <segue reference="pdK-Z6-3XM"/>
-        <segue reference="sQm-xv-8oR"/>
+        <segue reference="gYv-VN-P5c"/>
         <segue reference="OCl-Un-Pl0"/>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="TAK-hv-Tob"/>
+        <segue reference="j80-dk-2le"/>
+        <segue reference="gW6-6f-l1o"/>
+        <segue reference="zhF-AW-XRQ"/>
+        <segue reference="lJr-Xy-1ke"/>
+        <segue reference="smy-lv-rvC"/>
         <segue reference="HDh-NI-nOR"/>
-        <segue reference="0TZ-wD-kUB"/>
     </inferredMetricsTieBreakers>
 </document>

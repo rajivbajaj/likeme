@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupStatusLabel;
 @property NSArray *pickerData;
 @property BOOL launchCamera;
+@property (strong, nonatomic)  NSString *groupId;
+@property (nonatomic, strong) NSArray *groupDetailsArray;
 @end

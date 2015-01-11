@@ -266,11 +266,16 @@ UILabel *backgroundLbl;
         if(wasSelectedByUser == true)
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+            if ( cell.accessoryType == UITableViewCellAccessoryCheckmark)
+            {
+                cell.backgroundColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
+                
+            }
         }
         else
         {
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor =[UIColor whiteColor];
         }
     }
     
@@ -294,7 +299,7 @@ UILabel *backgroundLbl;
         currentIdx = indexPath;
     }
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:currentIdx];
     if(cell.accessoryType == UITableViewCellAccessoryNone)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;

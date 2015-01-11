@@ -33,6 +33,7 @@
                                 
                                                   cancelButtonTitle:@"Cancel"
                                                  otherButtonTitles:@"OK", nil];
+        
         [alertView show];
        
         
@@ -83,7 +84,7 @@
    
 }
 - (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex{
+willDismissWithButtonIndex:(NSInteger)buttonIndex{
     if (buttonIndex == alertView.cancelButtonIndex)
     {
         _logout = false;
@@ -254,8 +255,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
                                                      [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",
                                                      [postMan GetValueOrEmpty:userInfo.profileImageURL], @"FBProfileURL",
-                                                     [postMan GetValueOrEmpty:userInfo.Latitude], @"Latitude",
-                                                     [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
+                                                     //[postMan GetValueOrEmpty:userInfo.Latitude], @"Latitude",
+                                                    // [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
                                                      nil];
 
                  //[postMan UserUpdate:userDataDictionary];

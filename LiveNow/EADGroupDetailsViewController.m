@@ -21,6 +21,7 @@
 @synthesize groupDescription;
 @synthesize restrictionsText;
 @synthesize groupStatusLabel;
+//@synthesize groupId;
 
 - (void)viewDidLoad
 {
@@ -32,6 +33,10 @@
                                       nil];
     
     self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    if (_groupId != nil)
+    {
+        [self loadGroupDetails];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,14 +106,22 @@
                                          [foramtter stringFromDate:[NSDate date]], @"GroupCreatedDate",
                                          [postMan GetValueOrEmpty:restrictionsText.text], @"Restriction",
                                          [postMan GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
+                                         _groupId, @"GroupId",
                                          nil];
     
     [postMan PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
    
-    
+    if (_groupId == nil)
+    {
     EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+        groupViewController.isNewGroupAdded = true;
+    }
+    else
+    {
+        EADGroupsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-3];
+        groupViewController.isNewGroupAdded = true;
+    }
     
-    groupViewController.isNewGroupAdded = true;
     
     [self.navigationController popViewControllerAnimated:YES];
     }
@@ -160,6 +173,50 @@
 - (IBAction)allOtherEditingBegin:(id)sender
 {
     [self.restrictionsPicker setHidden:true];
+}
+-(void)loadGroupDetails
+{
+    Postman *postman = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:_groupId], @"GroupId",
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        nil];
+    
+    self.groupDetailsArray = [postman Get:@"groups/getbygroupid?jsonParams=%@" :userDataDictionary];
+    
+    if(self.groupDetailsArray != nil && self.groupDetailsArray.count > 0)
+    {
+        NSDictionary *currentObject = [self.groupDetailsArray objectAtIndex:0];
+        
+        if(currentObject != nil)
+        {
+            self.groupName.text = [currentObject valueForKey:@"GroupName"];
+            self.groupDescription.text = [currentObject valueForKey:@"GroupDescription"];
+            self.restrictionsText.text = [currentObject valueForKey:@"Restriction"];
+
+            
+            NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.imageView.image = image;
+                }
+            }
+            
+        }
+    }
 }
 
 #pragma mark - Navigation

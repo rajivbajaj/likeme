@@ -45,6 +45,10 @@ NSString* endDateString;
                                       nil];
     
     self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    if (_eventId != nil)
+    {
+        [self loadEvent];
+    }
 //    UIImage *btnImage = _imageView.image;
 //    [_cameraButton setImage:btnImage forState:UIControlStateNormal];
 }
@@ -79,6 +83,24 @@ NSString* endDateString;
         
         
     }
+    else if ([[self.locationText text] isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"please fill the event location"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else if ([[self.startDateText text] isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"please fill the event start date"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
     else
     {
 
@@ -102,15 +124,26 @@ NSString* endDateString;
                                         [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
                                         latitudeString, @"Latitude",
                                         longitudeString, @"Longitude",
+                                        [postMan GetValueOrEmpty:_eventStatusText.text], @"EventStatus",
+                                         _eventId, @"EventId",
                                         nil];
     
     
     //[postMan Post:@"events/post?value=%@" :eventDataDictionary];
     [postMan PostWithFileData:@"events/post" :eventDataDictionary :imageData];
-    
-    EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
-    
-    eventViewController.isNewEventAdded = true;
+        if (_eventId == nil) {
+            EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+            
+            eventViewController.isNewEventAdded = true;
+        }
+        else
+        {
+            EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-3];
+            
+            eventViewController.isNewEventAdded = true;
+        }
+        
+
     
     [self.navigationController popViewControllerAnimated:YES];
     }
@@ -280,6 +313,79 @@ NSString* endDateString;
     else if(self.eventStatus.isOn == false)
     {
         self.eventStatusText.text = @"Inactive";
+    }
+}
+- (void)loadEvent
+{
+    Postman *postman = [Postman alloc];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [postman GetValueOrEmpty:_eventId], @"EventId",
+                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
+                                        nil];
+    
+    self.eventArray = [postman Get:@"events/getbyeventid?id=%@" :userDataDictionary];
+    
+    if (self.eventArray != nil && self.eventArray.count >0)
+    {
+        
+        NSDictionary *currentObject = [self.eventArray objectAtIndex:0];
+        
+        if(currentObject != nil)
+        {
+//            NSURL *profileimageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+//            NSData *profileimageData = [NSData dataWithContentsOfURL:profileimageURL];
+//            UIImage *profileimage = [UIImage imageWithData:profileimageData];
+//            if(profileimage != nil)
+//            {
+//                self.imageView.image = profileimage;
+//            }
+            NSString *imageStringData = [currentObject valueForKey:@"EventPic"];
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                if(imageData != nil)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.imageView.image = image;
+                }
+            }
+            
+           // self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
+            self.eventNameText.text = [currentObject valueForKey:@"EventName"];
+            self.descriptionText.text=[currentObject valueForKey:@"EventDescription"];
+            self.locationText.text =[currentObject valueForKey:@"EventCity"];
+             self.restrictionsText.text =[currentObject valueForKey:@"location"];
+             self.startDateText.text =[currentObject valueForKey:@"StartTime"];
+             self.endDateText.text =[currentObject valueForKey:@"EndTime"];
+             self.eventTypeText.text =[currentObject valueForKey:@"EventType"];
+            
+            if ([[currentObject valueForKey:@"EventStatus"]  isEqual: @"Active"])
+            {
+                [self.eventStatus setOn:true];
+            }
+            else
+            {
+                 [self.eventStatus setOn:false];
+            }
+           // NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
+            //NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
+           // self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
+            //self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
+            
+            
+            
+        }
+        
     }
 }
 

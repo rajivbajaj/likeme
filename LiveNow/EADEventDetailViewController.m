@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
 #import "EADReportAbuseViewController.h"
+#import "EADEventsCreateViewController.h"
 
 @interface EADEventDetailViewController ()
 
@@ -92,13 +93,23 @@ bool isAttendingThisEvent = false;
             NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
             self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
+            if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])
+            {
+                [self.editButton setHidden:false];
+            }
+            else
+            {
+                [self.editButton setHidden:true];
+
+            }
+            
             
             if([[currentObject valueForKey:@"MyAttendanceStatus"] isEqualToString:@"Yes"])
             {
                 self.NoOfCommentsLabel.userInteractionEnabled = YES;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = YES;
                 self.leaveEventButton.hidden = false;
-                
+                self.joinEventButton.hidden = true;
                 isAttendingThisEvent = true;
                 
                 if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
@@ -115,6 +126,7 @@ bool isAttendingThisEvent = false;
                 self.NoOfCommentsLabel.userInteractionEnabled = NO;
                 self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
                 self.leaveEventButton.hidden = true;
+                self.joinEventButton.hidden = false;
                 isAttendingThisEvent = false;
                 [self.reportAbuseButton setHidden:NO];
             }
@@ -128,6 +140,7 @@ bool isAttendingThisEvent = false;
 {
     [self joinOrLeaveEvent:@"No"];
     [self loadEvent];
+
 }
 
 - (IBAction)joinEventTouched:(id)sender
@@ -189,6 +202,16 @@ bool isAttendingThisEvent = false;
              reportAbuseViewController.entityId = self.eventId;
              reportAbuseViewController.entityType = @"event";
              reportAbuseViewController.entityName = self.eventNameLabel.text;
+         }
+     }
+     else if([segue.identifier isEqualToString:@"eventEdit"])
+     {
+         EADEventsCreateViewController *eventCreateViewController = segue.destinationViewController;
+         
+         if(eventCreateViewController != nil)
+         {
+             eventCreateViewController.eventId = self.eventId;
+             
          }
      }
  }

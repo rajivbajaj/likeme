@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
 #import "EADReportAbuseViewController.h"
+#import "EADGroupDetailsViewController.h"
 
 @interface EADGroupReadOnlyViewController ()
 
@@ -80,6 +81,8 @@
                 [self.messagesSegueButton setEnabled:YES];
                 [self.usersSegueButton setEnabled:YES];
                 [self.reportAbuseButton setHidden:YES];
+                //[self]
+                //[self.navigationItem.rightBarButtonItem setEnabled:false];
 
             }
             else if([[currentObject valueForKey:@"IsMember"] isEqualToString:@"Yes"])
@@ -96,6 +99,7 @@
                 {
                     [self.reportAbuseButton setHidden:NO];
                 }
+                self.navigationItem.rightBarButtonItem = nil;
             }
             else
             {
@@ -104,6 +108,7 @@
                 [self.messagesSegueButton setEnabled:NO];
                 [self.usersSegueButton setEnabled:NO];
                 [self.reportAbuseButton setHidden:YES];
+                self.navigationItem.rightBarButtonItem = nil;
             }
         }
     }
@@ -200,6 +205,12 @@
             reportAbuseViewController.entityType = @"group";
             reportAbuseViewController.entityName = self.groupNameLabel.text;
         }
+    }
+    else if([segue.identifier isEqualToString:@"editGroup"])
+    {
+        EADGroupDetailsViewController *groupDetailsViewController = segue.destinationViewController;
+        groupDetailsViewController.groupId = self.groupId;
+    
     }
 }
 

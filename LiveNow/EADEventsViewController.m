@@ -111,6 +111,7 @@ NSInteger selectedCellIndex;
      {
          self.self.eventsArray = dataArray;
          [self.eventsCollectionView reloadData];
+         backgroundLbl.text = @"";
          self.eventsCollectionView.backgroundView = nil;
      }];
 }
