@@ -123,10 +123,7 @@
 //           completion:^(NSArray *dataArray)
 //     {
 //         self.dataArray = dataArray;
-//         [self.inboxTablView reloadData];
-//         self.inboxTablView.backgroundView = nil;
 //     }];
-    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

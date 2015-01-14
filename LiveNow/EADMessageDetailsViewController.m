@@ -306,10 +306,10 @@
     
     [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
     
-    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:[userInfo userId]
-                                                     senderDisplayName:[userInfo firstName]
-                                                                  date:[NSDate date]
-                                                                  text:text];
+//    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:[userInfo userId]
+//                                                     senderDisplayName:[userInfo firstName]
+//                                                                  date:[NSDate date]
+//                                                                  text:text];
     
     //[self.demoData.messages addObject:message];
     [self reloadMessageThread];
@@ -444,14 +444,14 @@
      *
      *  Show a timestamp for every 3rd message
      */
-    if (indexPath.item % 3 == 0) {
+    //if (indexPath.item % 3 == 0) {
         JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
-    }
-    else
-    {
+    //}
+    //else
+    //{
         return nil;
-    }
+    //}
     
 //    return nil;
 }
@@ -553,11 +553,11 @@
      *
      *  Show a timestamp for every 3rd message
      */
-    if (indexPath.item % 3 == 0) {
+    //if (indexPath.item % 3 == 0) {
         return kJSQMessagesCollectionViewCellLabelHeightDefault;
-    }
+    //}
     
-    return 0.0f;
+    //return 0.0f;
 }
 
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
@@ -566,20 +566,20 @@
     /**
      *  iOS7-style sender name labels
      */
-    JSQMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.item];
-    if ([[currentMessage senderId] isEqualToString:self.currentUserId])
-    {
-        return 0.0f;
-    }
-    
-    if (indexPath.item - 1 > 0)
-    {
-        JSQMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
-        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]])
-        {
-            return 0.0f;
-        }
-    }
+//    JSQMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.item];
+//    if ([[currentMessage senderId] isEqualToString:self.currentUserId])
+//    {
+//        return 0.0f;
+//    }
+//    
+//    if (indexPath.item - 1 > 0)
+//    {
+//        JSQMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
+//        if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]])
+//        {
+//            return 0.0f;
+//        }
+//    }
     
     return kJSQMessagesCollectionViewCellLabelHeightDefault;
 }

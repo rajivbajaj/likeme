@@ -1457,7 +1457,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oYp-RF-SQi"/>
                     <connections>
-                        <outlet property="inboxTablView" destination="0Yp-je-fZ3" id="pko-hP-55Q"/>
+                        <outlet property="inboxTablView" destination="0Yp-je-fZ3" id="5tP-g5-pWy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QED-yX-q9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
