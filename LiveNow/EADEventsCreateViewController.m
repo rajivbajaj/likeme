@@ -378,10 +378,8 @@ NSString* endDateString;
                  [self.eventStatus setOn:false];
             }
             
-            NSString *startDateString = [currentObject valueForKey:@"StartTime"];
-            NSString *endDateString = [currentObject valueForKey:@"EndTime"];
-            self.startDateText.text = [startDateString stringByReplacingOccurrencesOfString:@"T" withString:@""];
-            self.endDateText.text =[endDateString stringByReplacingOccurrencesOfString:@"T" withString:@""];
+            self.startDateText.text = [currentObject valueForKey:@"StartTime"];
+            self.endDateText.text = [currentObject valueForKey:@"EndTime"];
             
            // NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
             //NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
