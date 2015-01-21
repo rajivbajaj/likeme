@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B101E261A62FDC0005773F3 /* LNDefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B101E251A62FDC0005773F3 /* LNDefaultImage.png */; };
+		0B101E2A1A6848EC005773F3 /* 58 x 58 pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B101E271A6848EC005773F3 /* 58 x 58 pixels.png */; };
+		0B101E2B1A6848EC005773F3 /* 80 x 80 pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B101E281A6848EC005773F3 /* 80 x 80 pixels.png */; };
+		0B101E2C1A6848EC005773F3 /* 120 x 120 pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B101E291A6848EC005773F3 /* 120 x 120 pixels.png */; };
+		0B101E2F1A6DB5AD005773F3 /* EADImageViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B101E2E1A6DB5AD005773F3 /* EADImageViewerController.m */; };
 		0B31D6AA1A506A7400276A0C /* img_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A01A506A7400276A0C /* img_logout.png */; };
 		0B31D6AB1A506A7400276A0C /* img_group.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A11A506A7400276A0C /* img_group.png */; };
 		0B31D6AC1A506A7400276A0C /* img_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B31D6A21A506A7400276A0C /* img_events.png */; };
@@ -180,6 +184,11 @@
 
 /* Begin PBXFileReference section */
 		0B101E251A62FDC0005773F3 /* LNDefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LNDefaultImage.png; sourceTree = "<group>"; };
+		0B101E271A6848EC005773F3 /* 58 x 58 pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "58 x 58 pixels.png"; sourceTree = "<group>"; };
+		0B101E281A6848EC005773F3 /* 80 x 80 pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "80 x 80 pixels.png"; sourceTree = "<group>"; };
+		0B101E291A6848EC005773F3 /* 120 x 120 pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120 x 120 pixels.png"; sourceTree = "<group>"; };
+		0B101E2D1A6DB5AD005773F3 /* EADImageViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADImageViewerController.h; sourceTree = "<group>"; };
+		0B101E2E1A6DB5AD005773F3 /* EADImageViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADImageViewerController.m; sourceTree = "<group>"; };
 		0B31D6A01A506A7400276A0C /* img_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_logout.png; sourceTree = "<group>"; };
 		0B31D6A11A506A7400276A0C /* img_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_group.png; sourceTree = "<group>"; };
 		0B31D6A21A506A7400276A0C /* img_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_events.png; sourceTree = "<group>"; };
@@ -484,6 +493,9 @@
 		0B89FFB319BE52E90077E029 /* LiveNow */ = {
 			isa = PBXGroup;
 			children = (
+				0B101E271A6848EC005773F3 /* 58 x 58 pixels.png */,
+				0B101E281A6848EC005773F3 /* 80 x 80 pixels.png */,
+				0B101E291A6848EC005773F3 /* 120 x 120 pixels.png */,
 				0B101E251A62FDC0005773F3 /* LNDefaultImage.png */,
 				0B31D6D41A58935200276A0C /* GroupsDefaultImage.png */,
 				0B31D6D51A58935200276A0C /* EventsDefaultImage.png */,
@@ -604,6 +616,8 @@
 				146DD2DB1A32421700EBAB9D /* EADGroupReadOnlyViewController.m */,
 				14B17A081A3CD75C00E46FC4 /* EADReportAbuseViewController.h */,
 				14B17A091A3CD75C00E46FC4 /* EADReportAbuseViewController.m */,
+				0B101E2D1A6DB5AD005773F3 /* EADImageViewerController.h */,
+				0B101E2E1A6DB5AD005773F3 /* EADImageViewerController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -984,6 +998,7 @@
 				144CE64819E5716C00C6EC03 /* clip@3x.png in Resources */,
 				0B7C9BE119C2844100BD6772 /* Logo Design 2.png in Resources */,
 				0B31D6B11A506A7400276A0C /* img_mainmenu_profilepic.png in Resources */,
+				0B101E2A1A6848EC005773F3 /* 58 x 58 pixels.png in Resources */,
 				0BD6A8841A08654400AC370C /* Join.png in Resources */,
 				0B7C9BDF19C27EE800BD6772 /* Logo Design 2.psd in Resources */,
 				144CE64B19E5716C00C6EC03 /* typing@3x.png in Resources */,
@@ -997,6 +1012,7 @@
 				0B31D6AF1A506A7400276A0C /* img_searchpeople.png in Resources */,
 				0B101E261A62FDC0005773F3 /* LNDefaultImage.png in Resources */,
 				144CE64019E5716C00C6EC03 /* bubble_min.png in Resources */,
+				0B101E2B1A6848EC005773F3 /* 80 x 80 pixels.png in Resources */,
 				0B31D6C91A506C5400276A0C /* img_searchinputbox.png in Resources */,
 				144CE64D19E5716C00C6EC03 /* message_sent.aiff in Resources */,
 				0B34794F19CF93C700A9B3F1 /* App Icon Design v4.png in Resources */,
@@ -1034,6 +1050,7 @@
 				143585C819CA422C007F03DF /* iconSlide.png in Resources */,
 				143585CA19CA422C007F03DF /* iconSlideBlack.png in Resources */,
 				146A4DFA19D4044300C0182B /* search.png in Resources */,
+				0B101E2C1A6848EC005773F3 /* 120 x 120 pixels.png in Resources */,
 				144CE64519E5716C00C6EC03 /* bubble_tailless@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1118,6 +1135,7 @@
 				0B89FFC419BE52E90077E029 /* EADViewController.m in Sources */,
 				144CE64F19E5716C00C6EC03 /* NSString+JSQMessages.m in Sources */,
 				0BD6A87519EC875600AC370C /* EADEventsCreateViewController.m in Sources */,
+				0B101E2F1A6DB5AD005773F3 /* EADImageViewerController.m in Sources */,
 				144CE66819E5716C00C6EC03 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				144CE65719E5716C00C6EC03 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				144CE65E19E5716C00C6EC03 /* JSQMediaMessage.m in Sources */,
@@ -1281,9 +1299,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1293,7 +1310,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb17a3c0-0db6-4518-a201-3c033c7713a2";
+				PROVISIONING_PROFILE = "7a1355b5-817a-46ed-95aa-2c46ee88e9ff";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1302,9 +1319,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1314,7 +1330,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb17a3c0-0db6-4518-a201-3c033c7713a2";
+				PROVISIONING_PROFILE = "7a1355b5-817a-46ed-95aa-2c46ee88e9ff";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

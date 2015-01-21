@@ -35,6 +35,7 @@
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     self.refreshControl = refreshControl;
+    
     [self loadUsers];
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
@@ -67,13 +68,13 @@
                                 nil];
     //self.userListData = [postMan Get:@"users/getbyradius?jsonParams=%@" :paramsData];
     
-    self.usersTableView.backgroundView = backgroundLbl;
+    self.tableView.backgroundView = backgroundLbl;
     [postMan GetAsync:@"users/getbyradius?jsonParams=%@" :paramsData
            completion:^(NSArray *dataArray)
      {
          self.userListData = dataArray;
-         [self.usersTableView reloadData];
-         self.usersTableView.backgroundView = nil;
+         [self.tableView reloadData];
+         self.tableView.backgroundView = nil;
          self.searchResult = [NSMutableArray arrayWithCapacity:[self.userListData count]];
      }];
 

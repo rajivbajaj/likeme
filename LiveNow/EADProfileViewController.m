@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADLocationSearchViewController.h"
 #import "HumanInterfaceUtility.h"
+#import "EADImageViewerController.h"
 
 @interface EADProfileViewController ()
 
@@ -28,9 +29,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    location.delegate = self;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
     self.navigationController.navigationBar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"C0CFD6"];
     //self.toolbar.barTintColor = [HumanInterfaceUtility colorWithHexString:@"3E5561"];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+    [imageTap setNumberOfTapsRequired:1];
+    
+    [profilePicImageView addGestureRecognizer:imageTap];
 
     Postman* postman = [Postman alloc];
     
@@ -83,7 +89,12 @@
     userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
     [self.genderPickerView setHidden:true];
 }
-
+-(void)handleImageTap:(id)sender {
+    // push you view here
+    //code for full screen image
+    //[profilePicImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    [self performSegueWithIdentifier:@"profileToImageViewer" sender:sender];
+}
 -(void)viewDidAppear:(BOOL)animated
 {
     if(self.locationName != nil && ![self.locationName isEqualToString:@""])
@@ -183,6 +194,17 @@
     self.milesLabel.text = [interestedMiles stringByAppendingString:@" miles"];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+     BOOL editable;
+    if (textField == location) {
+        editable = NO;
+    }
+    else
+    {
+        editable = YES;
+    }
+    return editable;
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -194,6 +216,21 @@
         
         locationSearchController.initiatingController = @"profile";
     }
+    else if([segue.identifier isEqualToString:@"profileToLocation"])
+             {
+                 EADLocationSearchViewController *locationSearchController = [segue destinationViewController];
+                 
+                 locationSearchController.initiatingController = @"profile";
+             }
+    else if([segue.identifier isEqualToString:@"profileToImageViewer"])
+    {
+        EADImageViewerController *imageViewerController = [segue destinationViewController];
+        
+        imageViewerController.imageData = profilePicImageView.image;
+    }
+    
+    
+    
 }
 
 

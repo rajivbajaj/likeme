@@ -12,24 +12,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [FBProfilePictureView class];
+    [FBLoginView class];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     [self CurrentLocationIdentifier];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
-    if(userInfo.userLocation == nil && ![userInfo.userLocation isEqualToString:@""])
-    {
-
-    double delayInSeconds = 0.0; // number of seconds to wait
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    // Override point for customization after application launch.
-    [FBLoginView class];
-    });
-    }
-    else
-    {
-        [FBLoginView class];
-
-    }
+   // UserInfo *userInfo = [UserInfo sharedUserInfo];
+//    if(userInfo.userLocation == nil && ![userInfo.userLocation isEqualToString:@""])
+//    {
+//
+//    double delayInSeconds = 0.0; // number of seconds to wait
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//    // Override point for customization after application launch.
+//    
+//    });
+//    }
+//    else
+//    {
+//        [FBLoginView class];
+//
+//    }
     NSSetUncaughtExceptionHandler(&customExceptionHandler);
     return YES;
 }

@@ -167,12 +167,14 @@ NSInteger selectedCellIndex;
             {
                 UIImage *image = [UIImage imageWithData:imageData];
                 myCell.eventImage.image = image;
+                myCell.eventImage.contentMode = UIViewContentModeScaleAspectFit;
             }
            
         }
         else
         {
             [myCell.eventImage setImage:[UIImage imageNamed:@"LNDefaultImage.png"]];
+            myCell.eventImage.contentMode = UIViewContentModeScaleAspectFit;
         }
 
     }
@@ -181,6 +183,7 @@ NSInteger selectedCellIndex;
     UIImage *image = [UIImage imageWithData:imageData];
     cellText=[currentItem valueForKey:@"EventName"];
     myCell.imageView.image = image;
+    myCell.imageView.contentMode =UIViewContentModeScaleAspectFit;
     myCell.eventName.text=cellText;
     myCell.labelView.text=[currentItem valueForKey:@"EventDescription"];
     myCell.eventCreatedBy.text=[currentItem valueForKey:@"UserName"];

@@ -212,6 +212,7 @@
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
                     self.imageView.image = image;
+                    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
                 }
             }
             

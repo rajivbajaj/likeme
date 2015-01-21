@@ -70,6 +70,7 @@
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
                     self.groupImageView .image = image;
+                    self.groupImageView.contentMode = UIViewContentModeScaleAspectFit;
                 }
             }
             

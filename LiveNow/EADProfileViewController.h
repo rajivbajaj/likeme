@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EADProfileViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EADProfileViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *statusText;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UITextField *location;

@@ -83,6 +83,7 @@
             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
             UIImage *image = [UIImage imageWithData:imageData];
                 self.userProfileImage.image=image;
+            self.userProfileImage.contentMode = UIViewContentModeScaleAspectFit;
             
             if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
             {

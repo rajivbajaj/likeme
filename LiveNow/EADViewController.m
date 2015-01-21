@@ -19,29 +19,29 @@
 
 @implementation EADViewController
 
-//UIAlertView *logoutConfirmAlertView;
-UIAlertController *alert;
+UIAlertView *logoutConfirmAlertView;
+ //UIAlertController *alert;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _viewloaded = true;
     
-//    if (_logout)
- //   {
+    if (_logout)
+  {
         
-//         logoutConfirmAlertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
-//                                                           message:@"Are you sure to logout?"
-//                                                          delegate:self
-//                                                  cancelButtonTitle:@"Cancel"
-//                                                 otherButtonTitles:@"OK", nil];
-//        
+         logoutConfirmAlertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                           message:@"Are you sure to logout?"
+                                                          delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:@"OK", nil];
+      
         //[alertView show];
        
         
-   // }
-    //else
-    //{
+    }
+    else
+    {
         //[self CurrentLocationIdentifier];
         FBLoginView *loginView = [[FBLoginView alloc] init];
         loginView.delegate = self;
@@ -52,7 +52,7 @@ UIAlertController *alert;
         //[self.view addSubview:loginView];
         // Do any additional setup after loading the view, typically from a nib.
         loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    //}
+    }
     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
 }
 - (void) viewDidAppear:(BOOL)animated
@@ -243,10 +243,10 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
     groupController.isMyGroup = true;
     [self.slideoutController addViewControllerToLastSection:groupController tagged:9 withTitle:@"My Groups" andIcon:@"MyGroups.png"];
     
-//    EADViewController *loginController;
-//    loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-//    loginController.logout = true;
-//    [self.slideoutController addViewControllerToLastSection:loginController tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
+    EADViewController *loginController;
+    loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
+    loginController.logout = true;
+    [self.slideoutController addViewControllerToLastSection:loginController tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
     
 //    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
 //                                                        message:@"Are you sure to logout?"
@@ -254,14 +254,14 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
 //                                              cancelButtonTitle:@"Cancel"
 //                                              otherButtonTitles:@"OK", nil];
 //
-    __weak typeof(self) weakSelf = self;
-    [self intantiateLogoutAlertView];
+   // __weak typeof(self) weakSelf = self;
+    //[self intantiateLogoutAlertView];
     
-    [self.slideoutController addActionToLastSection:^{
-        [weakSelf presentViewController:alert animated:YES completion:nil];
-        //[alert presentationController];
-    } tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
-    
+//    [self.slideoutController addActionToLastSection:^{
+//        [weakSelf presentViewController:alert animated:YES completion:nil];
+//        //[alert presentationController];
+//    } tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
+//    
 
     
     EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -286,6 +286,19 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                  userInfo.userId = user.objectID;
                  userInfo.email = [user objectForKey:@"email"];
                  userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
+                   self.profilePicture.profileID = user.objectID;
+                
+                 NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
+                 NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                 UIImage *image = [UIImage imageWithData:imageData];
+                 
+                 UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
+                 [image drawInRect:CGRectMake(0,0,36,36)];
+                 UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+                 UIGraphicsEndImageContext();
+                _profilePicImageView.image = im2;
+                 _profilePicImageView.contentMode = UIViewContentModeTop;
+                 
                  //userInfo.userLocation=self.userLocation;
                  // update user information
                  Postman *postMan = [Postman alloc];
@@ -300,10 +313,12 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
 
                  //[postMan UserUpdate:userDataDictionary];
                  [postMan Post:@"users/post?value=%@" :userDataDictionary];
-                 
+               
                  [self navigateToMainPage];
              }
+            
          }];
+        
     }
 }
 
@@ -373,33 +388,34 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
 }
 
 
--(void)intantiateLogoutAlertView
-{
-    alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Info"
-                                  message:@"You are using UIAlertController"
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             
-                         }];
-    UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Cancel"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                                 
-                             }];
-    
-    [alert addAction:ok];
-    [alert addAction:cancel];
-    
-    //[self presentViewController:alert animated:YES completion:nil];
-}
+//-(void)intantiateLogoutAlertView
+//{
+//   
+//    alert=   [UIAlertController
+//                                  alertControllerWithTitle:@"Info"
+//                                  message:@"You are using UIAlertController"
+//                                  preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction* ok = [UIAlertAction
+//                         actionWithTitle:@"OK"
+//                         style:UIAlertActionStyleDefault
+//                         handler:^(UIAlertAction * action)
+//                         {
+//                             [alert dismissViewControllerAnimated:YES completion:nil];
+//                             
+//                         }];
+//    UIAlertAction* cancel = [UIAlertAction
+//                             actionWithTitle:@"Cancel"
+//                             style:UIAlertActionStyleDefault
+//                             handler:^(UIAlertAction * action)
+//                             {
+//                                 [alert dismissViewControllerAnimated:YES completion:nil];
+//                                 
+//                             }];
+//    
+//    [alert addAction:ok];
+//    [alert addAction:cancel];
+//    
+//    //[self presentViewController:alert animated:YES completion:nil];
+//}
 @end
