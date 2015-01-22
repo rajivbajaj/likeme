@@ -327,8 +327,16 @@ NSString* endDateString;
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.eventArray = [postman Get:@"events/getbyeventid?id=%@" :userDataDictionary];
-    
+    [postman GetAsync:@"events/getbyeventid?id=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.eventArray = dataArray;
+         [self populateEventData];
+     }];
+}
+
+-(void)populateEventData
+{
     if (self.eventArray != nil && self.eventArray.count >0)
     {
         
@@ -336,13 +344,13 @@ NSString* endDateString;
         
         if(currentObject != nil)
         {
-//            NSURL *profileimageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
-//            NSData *profileimageData = [NSData dataWithContentsOfURL:profileimageURL];
-//            UIImage *profileimage = [UIImage imageWithData:profileimageData];
-//            if(profileimage != nil)
-//            {
-//                self.imageView.image = profileimage;
-//            }
+            //            NSURL *profileimageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURL"]];
+            //            NSData *profileimageData = [NSData dataWithContentsOfURL:profileimageURL];
+            //            UIImage *profileimage = [UIImage imageWithData:profileimageData];
+            //            if(profileimage != nil)
+            //            {
+            //                self.imageView.image = profileimage;
+            //            }
             NSString *imageStringData = [currentObject valueForKey:@"EventPic"];
             
             if(imageStringData != nil && ![imageStringData isEqualToString:@""])
@@ -361,13 +369,13 @@ NSString* endDateString;
                 }
             }
             
-           // self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
+            // self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
             self.eventNameText.text = [currentObject valueForKey:@"EventName"];
             self.descriptionText.text=[currentObject valueForKey:@"EventDescription"];
             self.locationName = [currentObject valueForKey:@"EventCity"];
             self.locationText.text = [currentObject valueForKey:@"EventCity"];
-             self.restrictionsText.text =[currentObject valueForKey:@"EventRestrictions"];
-             self.eventTypeText.text =[currentObject valueForKey:@"EventType"];
+            self.restrictionsText.text =[currentObject valueForKey:@"EventRestrictions"];
+            self.eventTypeText.text =[currentObject valueForKey:@"EventType"];
             
             if ([[currentObject valueForKey:@"EventStatus"]  isEqual: @"Active"])
             {
@@ -375,21 +383,18 @@ NSString* endDateString;
             }
             else
             {
-                 [self.eventStatus setOn:false];
+                [self.eventStatus setOn:false];
             }
             
             self.startDateText.text = [currentObject valueForKey:@"StartTime"];
             self.endDateText.text = [currentObject valueForKey:@"EndTime"];
             
-           // NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
+            // NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
             //NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
-           // self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
+            // self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             //self.NoOfPeopleJoinedLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfAttendants];
             
-            
-            
         }
-        
     }
 }
 

@@ -184,8 +184,16 @@
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.groupDetailsArray = [postman Get:@"groups/getbygroupid?jsonParams=%@" :userDataDictionary];
-    
+    [postman GetAsync:@"groups/getbygroupid?jsonParams=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.groupDetailsArray = dataArray;
+         [self populateGroupData];
+     }];
+}
+
+-(void)populateGroupData
+{
     if(self.groupDetailsArray != nil && self.groupDetailsArray.count > 0)
     {
         NSDictionary *currentObject = [self.groupDetailsArray objectAtIndex:0];
@@ -195,7 +203,7 @@
             self.groupName.text = [currentObject valueForKey:@"GroupName"];
             self.groupDescription.text = [currentObject valueForKey:@"GroupDescription"];
             self.restrictionsText.text = [currentObject valueForKey:@"Restriction"];
-
+            
             
             NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
             
