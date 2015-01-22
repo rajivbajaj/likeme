@@ -185,4 +185,26 @@
         NSLog(@"Error: %@", error);
     }];
 }
+
+-(void)PostAync :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, @"value", nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager POST:completeServiceUrl parameters:updatedParamsData
+          success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
+}
+
 @end

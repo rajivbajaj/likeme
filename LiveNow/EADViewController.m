@@ -300,20 +300,19 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                  _profilePicImageView.contentMode = UIViewContentModeTop;
                  
                  //userInfo.userLocation=self.userLocation;
-                 // update user information
+                
                  Postman *postMan = [Postman alloc];
+                 UserInfo *userInfo = [UserInfo sharedUserInfo];
                  NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                                      [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
                                                      [postMan GetValueOrEmpty:userInfo.lastName], @"LastName",
                                                      [postMan GetValueOrEmpty:userInfo.profileImageURL], @"FBProfileURL",
                                                      //[postMan GetValueOrEmpty:userInfo.Latitude], @"Latitude",
-                                                    // [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
+                                                     // [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
                                                      nil];
-
-                 //[postMan UserUpdate:userDataDictionary];
-                 [postMan Post:@"users/post?value=%@" :userDataDictionary];
-               
+                 
+                 [postMan PostAync:@"users/post?value=%@" :userDataDictionary];
                  [self navigateToMainPage];
              }
             
