@@ -69,8 +69,17 @@ bool isEventImage =false;
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.eventArray = [postman Get:@"events/getbyeventid?id=%@" :userDataDictionary];
+    [postman GetAsync:@"events/getbyeventid?id=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.eventArray = dataArray;
+         [self populateEventData];
+     }];
     
+}
+
+-(void)populateEventData
+{
     if (self.eventArray != nil && self.eventArray.count >0)
     {
         
@@ -111,7 +120,7 @@ bool isEventImage =false;
             self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
             self.eventNameLabel.text = [currentObject valueForKey:@"EventName"];
             self.eventDescriptionLabel.text=[currentObject valueForKey:@"EventDescription"];
-
+            
             NSInteger numberOfMsgs = [[currentObject objectForKey:@"NumberOfMessages"] integerValue];
             NSInteger numberOfAttendants = [[currentObject objectForKey:@"NumberOfAttendants"] integerValue];
             self.NoOfCommentsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
@@ -157,11 +166,12 @@ bool isEventImage =false;
                 
             }
             
-           
+            
         }
         
     }
 }
+
 - (IBAction)leaveEventTouched:(id)sender
 {
     [self joinOrLeaveEvent:@"No"];

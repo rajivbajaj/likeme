@@ -313,7 +313,7 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                                                     // [postMan GetValueOrEmpty:userInfo.Longitude], @"Longitude",
                                                      nil];
 
-                 //[postMan UserUpdate:userDataDictionary];
+                
                 // [postMan Post:@"users/post?value=%@" :userDataDictionary];
                
                  [self navigateToMainPage];

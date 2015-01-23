@@ -90,6 +90,9 @@
     userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
     [self.genderPickerView setHidden:true];
 }
+
+
+
 -(void)handleImageTap:(id)sender {
     // push you view here
     //code for full screen image

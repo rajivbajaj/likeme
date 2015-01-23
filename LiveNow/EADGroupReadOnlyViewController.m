@@ -46,8 +46,16 @@
                                         [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                         nil];
     
-    self.groupDetailsArray = [postman Get:@"groups/getbygroupid?jsonParams=%@" :userDataDictionary];
-    
+    [postman GetAsync:@"groups/getbygroupid?jsonParams=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.groupDetailsArray = dataArray;
+         [self populateGroupData];
+     }];
+}
+
+-(void) populateGroupData
+{
     if(self.groupDetailsArray != nil && self.groupDetailsArray.count > 0)
     {
         NSDictionary *currentObject = [self.groupDetailsArray objectAtIndex:0];
@@ -61,7 +69,7 @@
             NSInteger numberOfMembers = [[currentObject objectForKey:@"GroupMembersCount"] integerValue];
             self.groupMessagesCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.groupMemberCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMembers];
-
+            
             NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
             
             if(imageStringData != nil && ![imageStringData isEqualToString:@""])
@@ -72,7 +80,7 @@
                 {
                     imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
                 }
-
+                
                 if(imageData != nil)
                 {
                     UIImage *image = [UIImage imageWithData:imageData];
@@ -96,7 +104,7 @@
                 [self.reportAbuseButton setHidden:YES];
                 //[self]
                 //[self.navigationItem.rightBarButtonItem setEnabled:false];
-
+                
             }
             else if([[currentObject valueForKey:@"IsMember"] isEqualToString:@"Yes"])
             {

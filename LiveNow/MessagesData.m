@@ -151,7 +151,7 @@
             
             NSDictionary *currentItem = [dataArray objectAtIndex:i];
             
-          JSQTextMessage *msg =  [[JSQTextMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
+            JSQTextMessage *msg =  [[JSQTextMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
                                    senderDisplayName:[currentItem valueForKey:@"FirstName"]
                                                 date:[NSDate distantPast]
                                                 text:[currentItem valueForKey:@"Message"]];
