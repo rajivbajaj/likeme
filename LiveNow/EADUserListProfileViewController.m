@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADMessageDetailsViewController.h"
 #import "EADReportAbuseViewController.h"
+#import "EADImageViewerController.h"
 
 @interface EADUserListProfileViewController ()
 
@@ -41,9 +42,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadUserProfile];
-}
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+    [imageTap setNumberOfTapsRequired:1];
+    
+    [userProfileImage addGestureRecognizer:imageTap];
 
+    [self loadUserProfile];
+    
+
+}
+-(void)handleImageTap:(id)sender {
+    // push you view here
+    //code for full screen image
+    //[profilePicImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    [self performSegueWithIdentifier:@"UserProfileToImageViewer" sender:sender];
+}
 -(void) loadUserProfile
 {
     Postman* postman = [Postman alloc];
@@ -137,6 +150,12 @@
             reportAbuseViewController.entityType = @"user";
             reportAbuseViewController.entityName = self.userDisplayValue.text;
         }
+    }
+    else if([segue.identifier isEqualToString:@"UserProfileToImageViewer"])
+    {
+        EADImageViewerController *imageViewerController = [segue destinationViewController];
+        
+        imageViewerController.imageData = userProfileImage.image;
     }
 
 }

@@ -1299,8 +1299,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1310,7 +1310,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a1355b5-817a-46ed-95aa-2c46ee88e9ff";
+				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1319,8 +1319,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1330,7 +1330,7 @@
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a1355b5-817a-46ed-95aa-2c46ee88e9ff";
+				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

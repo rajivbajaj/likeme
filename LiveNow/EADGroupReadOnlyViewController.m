@@ -12,6 +12,7 @@
 #import "EADMessageDetailsViewController.h"
 #import "EADReportAbuseViewController.h"
 #import "EADGroupDetailsViewController.h"
+#import "EADImageViewerController.h"
 
 @interface EADGroupReadOnlyViewController ()
 
@@ -21,9 +22,15 @@
 @synthesize groupId;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+    [imageTap setNumberOfTapsRequired:1];
+    [_groupImageView addGestureRecognizer:imageTap];
     [self loadGroupDetails];
+    
 }
-
+-(void)handleImageTap:(id)sender {
+       [self performSegueWithIdentifier:@"groupToImageViewer" sender:sender];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -73,7 +80,12 @@
                     self.groupImageView.contentMode = UIViewContentModeScaleAspectFit;
                 }
             }
-            
+            else
+            {
+                [self.groupImageView setImage:[UIImage imageNamed:@"GroupsDefaultImage.png"]];
+                self.groupImageView.contentMode = UIViewContentModeScaleAspectFit;
+            }
+
             // If user is owner of the group don't show the join or leave buttons
             if([[currentObject valueForKey:@"IsOwner"] isEqualToString:@"Yes"])
             {
@@ -213,6 +225,13 @@
         groupDetailsViewController.groupId = self.groupId;
     
     }
+    else if([segue.identifier isEqualToString:@"groupToImageViewer"])
+    {
+        EADImageViewerController *imageViewerController = [segue destinationViewController];
+        
+        imageViewerController.imageData = _groupImageView.image;
+    }
+
 }
 
 

@@ -36,7 +36,7 @@ UIAlertView *logoutConfirmAlertView;
                                                   cancelButtonTitle:@"Cancel"
                                                  otherButtonTitles:@"OK", nil];
       
-        //[alertView show];
+        [logoutConfirmAlertView show];
        
         
     }
@@ -59,14 +59,14 @@ UIAlertView *logoutConfirmAlertView;
 {
     if (_logout && _viewloaded == false)
     {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
-//                                                            message:@"Are you sure to logout?"
-//                                                           delegate:self
-//                                  
-//                                                  cancelButtonTitle:@"Cancel"
-//                                                  otherButtonTitles:@"OK", nil];
-//        [alertView show];
-//        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                            message:@"Are you sure to logout?"
+                                                           delegate:self
+                                  
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+        
         
     }
     else
@@ -98,7 +98,7 @@ UIAlertView *logoutConfirmAlertView;
     {
         
         [FBSession.activeSession closeAndClearTokenInformation];
-        _logout = false;
+        _logout = true;
     }
 
 }
@@ -271,9 +271,11 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    
+    if (_logout == false)
+    {
+
     if (FBSession.activeSession.isOpen) {
-        
+      
       
         
         [[FBRequest requestForMe] startWithCompletionHandler:
@@ -312,13 +314,19 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                                                      nil];
 
                  //[postMan UserUpdate:userDataDictionary];
-                 [postMan Post:@"users/post?value=%@" :userDataDictionary];
+                // [postMan Post:@"users/post?value=%@" :userDataDictionary];
                
                  [self navigateToMainPage];
              }
             
          }];
         
+    }
+    }
+    else
+    {
+//        EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appDelegate.window setRootViewController:self];
     }
 }
 

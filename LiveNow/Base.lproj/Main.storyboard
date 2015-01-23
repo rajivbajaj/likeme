@@ -148,7 +148,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qdF-Bi-y74">
+                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GroupsDefaultImage.png" id="qdF-Bi-y74">
                                                     <rect key="frame" x="12" y="3" width="133" height="134"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -324,6 +324,7 @@
                         <outlet property="messagesSegueButton" destination="OcQ-Sz-Mjl" id="HTd-cb-1pw"/>
                         <outlet property="reportAbuseButton" destination="Er2-wZ-KrE" id="eJN-25-nYy"/>
                         <outlet property="usersSegueButton" destination="Ier-S8-rX8" id="ddM-ii-4cW"/>
+                        <segue destination="JIB-PH-M8z" kind="push" identifier="groupToImageViewer" id="D6H-cp-HUJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eea-EG-JNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -426,7 +427,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3M5-4k-J4o">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3M5-4k-J4o">
                                 <rect key="frame" x="0.0" y="69" width="320" height="395"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -687,7 +688,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" mapType="standard" showsUserLocation="YES" id="HO9-d7-ofH">
+                            <mapView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" mapType="standard" id="HO9-d7-ofH">
                                 <rect key="frame" x="-20" y="48" width="340" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </mapView>
@@ -728,7 +729,7 @@
                                 <rect key="frame" x="11" y="20" width="298" height="443"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iCh-9K-m9j">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iCh-9K-m9j">
                                         <rect key="frame" x="13" y="0.0" width="79" height="85"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -807,7 +808,7 @@
                                             <segue destination="h4P-Nt-FJ3" kind="push" identifier="reportAbuseSegue" id="zNI-fD-lE8"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mpi-c8-kXG">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mpi-c8-kXG">
                                         <rect key="frame" x="13" y="174" width="265" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -864,6 +865,7 @@
                         <outlet property="leaveEventButton" destination="Bnk-xq-VoT" id="Wwv-Ef-Fah"/>
                         <outlet property="reportAbuseButton" destination="Ucw-bm-ehW" id="Gw0-GT-aCI"/>
                         <outlet property="userProfileImageView" destination="iCh-9K-m9j" id="K6Z-rL-NCO"/>
+                        <segue destination="JIB-PH-M8z" kind="push" identifier="eventToImageViewer" id="ikH-oI-riz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNc-Zn-xSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1215,7 +1217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6e0-RV-gCp">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6e0-RV-gCp">
                                 <rect key="frame" x="6" y="20" width="152" height="111"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -1367,6 +1369,7 @@
                         <outlet property="userNoOfGroupsMember" destination="zcX-Eo-QrW" id="Bhb-ix-nbA"/>
                         <outlet property="userProfileImage" destination="6e0-RV-gCp" id="H44-gX-TYa"/>
                         <outlet property="userStatus" destination="6bb-fD-E5I" id="0V0-JA-Y8b"/>
+                        <segue destination="JIB-PH-M8z" kind="push" identifier="UserProfileToImageViewer" id="CGa-TY-gh8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZA-aP-zWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1575,7 +1578,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventImage" id="l6j-nt-zw8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eventImage" image="LNDefaultImage.png" id="l6j-nt-zw8">
                                                     <rect key="frame" x="5" y="49" width="141" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1951,8 +1954,10 @@
     </scenes>
     <resources>
         <image name="App Icon Design v5.png" width="215" height="224"/>
+        <image name="GroupsDefaultImage.png" width="65" height="50"/>
+        <image name="LNDefaultImage.png" width="759" height="594"/>
         <image name="LocationPin.png" width="24" height="24"/>
-        <image name="Logo Design 2.png" width="864" height="720"/>
+        <image name="Logo Design 2.png" width="360" height="504"/>
         <image name="Report Abuse v2.png" width="79" height="123"/>
         <image name="btn_join.png" width="291" height="40"/>
         <image name="btn_leave.png" width="291" height="40"/>
@@ -1969,15 +1974,16 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="smy-lv-rvC"/>
+        <segue reference="slm-aI-TrD"/>
+        <segue reference="tmE-nI-V2m"/>
         <segue reference="pdK-Z6-3XM"/>
         <segue reference="gYv-VN-P5c"/>
-        <segue reference="tmE-nI-V2m"/>
-        <segue reference="slm-aI-TrD"/>
+        <segue reference="D6H-cp-HUJ"/>
         <segue reference="kJo-m6-U5Y"/>
-        <segue reference="sQm-xv-8oR"/>
-        <segue reference="6Th-4Y-G1r"/>
-        <segue reference="j80-dk-2le"/>
+        <segue reference="8OK-M8-tPy"/>
+        <segue reference="s2S-s4-CzB"/>
+        <segue reference="GBq-uG-Q6z"/>
         <segue reference="gW6-6f-l1o"/>
+        <segue reference="6Th-4Y-G1r"/>
     </inferredMetricsTieBreakers>
 </document>

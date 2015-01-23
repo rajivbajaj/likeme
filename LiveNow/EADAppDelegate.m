@@ -107,11 +107,13 @@ void customExceptionHandler(NSException *exception)
 {
     //---- For getting current gps location
     locationManager = [CLLocationManager new];
+    [locationManager requestWhenInUseAuthorization];
     if([CLLocationManager locationServicesEnabled] == YES){
     locationManager.delegate = self;
     locationManager.distanceFilter = 100;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+        
     
     }
     //------

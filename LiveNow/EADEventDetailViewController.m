@@ -12,7 +12,7 @@
 #import "EADMessageDetailsViewController.h"
 #import "EADReportAbuseViewController.h"
 #import "EADEventsCreateViewController.h"
-
+#import "EADImageViewerController.h"
 @interface EADEventDetailViewController ()
 
 @end
@@ -21,7 +21,7 @@
 @synthesize eventId;
 
 bool isAttendingThisEvent = false;
-
+bool isEventImage =false;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,9 +36,27 @@ bool isAttendingThisEvent = false;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadEvent];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+    [imageTap setNumberOfTapsRequired:1];
+    [_userProfileImageView addGestureRecognizer:imageTap];
+    
+    UITapGestureRecognizer *eventImageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleEventImageTap:)];
+    [eventImageTap setNumberOfTapsRequired:1];
+    [_eventImageView addGestureRecognizer:eventImageTap];
+    
     self.NoOfCommentsLabel.userInteractionEnabled = NO;
     self.NoOfPeopleJoinedLabel.userInteractionEnabled = NO;
     //self.leaveEventButton.hidden = true;
+}
+-(void)handleImageTap:(id)sender {
+    isEventImage = false;
+    //[profilePicImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    [self performSegueWithIdentifier:@"eventToImageViewer" sender:sender];
+}
+-(void)handleEventImageTap:(id)sender {
+    isEventImage = true;
+    //[profilePicImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    [self performSegueWithIdentifier:@"eventToImageViewer" sender:sender];
 }
 - (void)loadEvent
 {
@@ -83,6 +101,11 @@ bool isAttendingThisEvent = false;
                     UIImage *image = [UIImage imageWithData:imageData];
                     self.eventImageView.image = image;
                 }
+            }
+            else
+            {
+                [self.eventImageView setImage:[UIImage imageNamed:@"LNDefaultImage.png"]];
+                self.eventImageView.contentMode = UIViewContentModeScaleAspectFit;
             }
             
             self.eventCreaterLabel.text=[currentObject valueForKey:@"UserName"];
@@ -217,6 +240,20 @@ bool isAttendingThisEvent = false;
              
          }
      }
+     else if([segue.identifier isEqualToString:@"eventToImageViewer"])
+     {
+         EADImageViewerController *imageViewerController = [segue destinationViewController];
+         if (isEventImage)
+         {
+         imageViewerController.imageData = _eventImageView.image;
+         }
+         else
+         {
+             imageViewerController.imageData = _userProfileImageView.image;
+
+         }
+     }
+
  }
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender

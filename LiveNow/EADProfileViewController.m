@@ -55,7 +55,8 @@
     displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
     genderText.text = [userDataDictionary valueForKey:@"Gender"];
     [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
-    
+    userInfo.Latitude =[userDataDictionary valueForKey:@"Latitude"];
+    userInfo.Longitude= [userDataDictionary valueForKey:@"Longitude"];
     
     if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
     {

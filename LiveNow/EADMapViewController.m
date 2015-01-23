@@ -246,7 +246,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _mapView.showsUserLocation = YES;
+   // _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
     [_mapView removeAnnotations:[_mapView annotations]];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
@@ -260,6 +260,7 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(ctrpoint, 20000, 20000);
 
     [_mapView setRegion:region animated:YES];
+    
     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     [self.searchDisplayController.searchBar setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"3E5561"]];
     if (_loadEvents)
@@ -279,10 +280,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    _mapView.centerCoordinate = userLocation.location.coordinate;
-}
+//-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+//{
+//   
+//    _mapView.centerCoordinate = userLocation.location.coordinate;
+//}
 
 -(void)drawEvents
 {
