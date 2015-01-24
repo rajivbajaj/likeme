@@ -156,34 +156,66 @@
 
 - (IBAction)joinGroupTouched:(id)sender
 {
-    Postman *postman = [Postman alloc];
-    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//    Postman *postman = [Postman alloc];
+//    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//    
+//    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        [postman GetValueOrEmpty:groupId], @"GroupId",
+//                                        [postman GetValueOrEmpty:userInfo.userId], @"UserAuthToken",
+//                                        @"A", @"GroupUserStatus",
+//                                        nil];
+//    
+//    self.groupDetailsArray = [postman Get:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary];
+//    [self loadGroupDetails];
     
-    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postman GetValueOrEmpty:groupId], @"GroupId",
-                                        [postman GetValueOrEmpty:userInfo.userId], @"UserAuthToken",
-                                        @"A", @"GroupUserStatus",
-                                        nil];
-    
-    self.groupDetailsArray = [postman Get:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary];
-    [self loadGroupDetails];
+      [self joinOrLeaveGroup:@"A"];
 }
 
 - (IBAction)leaveGroupTouched:(id)sender
 {
+//    Postman *postman = [Postman alloc];
+//    UserInfo *userInfo = [UserInfo sharedUserInfo];
+//
+//    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        [postman GetValueOrEmpty:groupId], @"GroupId",
+//                                        [postman GetValueOrEmpty:userInfo.userId], @"UserAuthToken",
+//                                        @"I", @"GroupUserStatus",
+//                                        nil];
+//    
+//    self.groupDetailsArray = [postman Get:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary];
+//    [self loadGroupDetails];
+    [self joinOrLeaveGroup:@"I"];
+}
+
+
+-(void)joinOrLeaveGroup :(NSString*)status
+{
+    
     Postman *postman = [Postman alloc];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-
+    
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postman GetValueOrEmpty:groupId], @"GroupId",
                                         [postman GetValueOrEmpty:userInfo.userId], @"UserAuthToken",
-                                        @"I", @"GroupUserStatus",
+                                        status, @"GroupUserStatus",
                                         nil];
     
-    self.groupDetailsArray = [postman Get:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary];
-    [self loadGroupDetails];
+//    self.groupDetailsArray = [postman Get:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary];
+//    [self loadGroupDetails];
+    
+    [postman GetAsync:@"groups/joinorleavegroup?jsonParams=%@" :userDataDictionary
+           completion:^(NSArray *dataArray)
+     {
+         self.self.groupDetailsArray = dataArray;
+         [self loadGroupDetails];
+     }];
+    
+//    [postman PostAync:@"events/joinorleave?jsonParams=%@" :userDataDictionary :@"jsonParams" completion:^(NSArray *dataArray)
+//     {
+//         [self loadEvent];
+//     }];
+    
 }
-
 
 #pragma mark - Navigation
 

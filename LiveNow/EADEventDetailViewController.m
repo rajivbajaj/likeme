@@ -196,7 +196,13 @@ bool isEventImage =false;
                                         attendanceStatus, @"AttendanceStatus",
                                         nil];
     
-    [postman Post:@"events/joinorleave?jsonParams=%@" :userDataDictionary];
+    [postman PostAync:@"events/joinorleave?jsonParams=%@" :userDataDictionary :@"jsonParams" completion:^(NSArray *dataArray)
+     {
+         [self loadEvent];
+     }];
+//    EADEventsViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+//    
+//    eventViewController.isNewEventAdded = true;
 }
 
 - (IBAction)ClosePopUp:(UIButton *)sender {
