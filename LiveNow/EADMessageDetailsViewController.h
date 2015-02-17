@@ -45,5 +45,6 @@
 @property (strong, nonatomic) NSString *currentUserId;
 @property BOOL launchCamera;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property UIImage *imageMessage;
 
 @end

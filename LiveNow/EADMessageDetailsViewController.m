@@ -294,6 +294,8 @@
     }
     
     Postman* postMan = [Postman alloc];
+    
+    
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:recipientId], @"RecipientId",
                                         [postMan GetValueOrEmpty:recipientType], @"RecipientType",
@@ -304,7 +306,16 @@
                                         nil];
 
     
-    [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
+    if(self.imageMessage != nil)
+    {
+        NSData *imageData = UIImageJPEGRepresentation(self.imageMessage, 0.7);
+        [postMan PostWithFileData:@"messages/post" :messageDataDisctionary :imageData];
+    }
+    else
+    {
+        [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
+    }
+    
     
 //    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:[userInfo userId]
 //                                                     senderDisplayName:[userInfo firstName]

@@ -11,6 +11,7 @@
 #import "EADEventsCreateViewController.h"
 #import "MessagesData.h"
 #import "HumanInterfaceUtility.h"
+#import "EADMessageDetailsViewController.h"
 @interface EADImagePickerViewController ()
 
 @end
@@ -95,10 +96,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     else
     {
-        MessagesData *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+        EADMessageDetailsViewController *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
         
-        msgViewController.imageView.image = image;
-        [msgViewController addPhotoMediaMessage];
+        msgViewController.imageMessage = image;
+        //[msgViewController addPhotoMediaMessage];
     }
         [self.navigationController popViewControllerAnimated:YES];
     }

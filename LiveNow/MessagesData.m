@@ -150,11 +150,44 @@
         {
             
             NSDictionary *currentItem = [dataArray objectAtIndex:i];
+            JSQMessage *msg = nil;
             
-            JSQTextMessage *msg =  [[JSQTextMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
+            // GEt the datetime
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"yyyy-MM-dd HH:mm:ss a"];
+            NSDate *messageDate = [df dateFromString: [currentItem valueForKey:@"MessageRecieved"]];
+            
+            // Check if its a image type of message
+            NSString *imageStringData = [currentItem valueForKey:@"Attachment"];
+            
+            if(imageStringData != nil && ![imageStringData isEqualToString:@""])
+            {
+                NSData *imageData;
+                
+                if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
+                {
+                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                }
+                
+                JSQPhotoMediaItem *photoItem = nil;
+                if(imageData != nil)
+                {
+                    photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
+                }
+                
+                msg = [[JSQMediaMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
+                                               senderDisplayName:[currentItem valueForKey:@"FirstName"]
+                                               date:messageDate
+                                               media:photoItem];
+            }
+            else
+            {
+            
+                msg =  [[JSQTextMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
                                    senderDisplayName:[currentItem valueForKey:@"FirstName"]
-                                                date:[NSDate distantPast]
+                                                date:messageDate
                                                 text:[currentItem valueForKey:@"Message"]];
+            }
             
 
             if(![messageIds isEqualToString:@""])
