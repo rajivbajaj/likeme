@@ -314,7 +314,12 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                                                      nil];
 
                 
-                // [postMan Post:@"users/post?value=%@" :userDataDictionary];
+                 //[postMan PostAync:@"users/post?value=%@" :userDataDictionary];
+                 
+                 [postMan PostAync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(NSArray *dataArray)
+                  {
+                      //[self loadEvent];
+                  }];
                
                  [self navigateToMainPage];
              }
