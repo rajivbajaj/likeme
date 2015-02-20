@@ -157,6 +157,12 @@
             [df setDateFormat:@"yyyy-MM-dd HH:mm:ss a"];
             NSDate *messageDate = [df dateFromString: [currentItem valueForKey:@"MessageRecieved"]];
             
+            // If messagedate is null then then just assign it a current date.
+            if(messageDate == nil)
+            {
+                messageDate = [NSDate date];
+            }
+            
             // Check if its a image type of message
             NSString *imageStringData = [currentItem valueForKey:@"Attachment"];
             
