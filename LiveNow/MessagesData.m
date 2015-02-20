@@ -180,6 +180,10 @@
                 {
                     photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
                 }
+                else
+                {
+                    photoItem = [[JSQPhotoMediaItem alloc] init];
+                }
                 
                 msg = [[JSQMediaMessage alloc] initWithSenderId:[currentItem valueForKey:@"SenderId"]
                                                senderDisplayName:[currentItem valueForKey:@"FirstName"]
