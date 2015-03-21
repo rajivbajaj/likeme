@@ -104,6 +104,12 @@
 {
     [super viewDidAppear:animated];
     
+    if(self.imageMessage != nil)
+    {
+        [self sendMediaMessage];
+        self.imageMessage = nil;
+    }
+    
     /**
      *  Enable/disable springy bubbles, default is NO.
      *  You must set this from `viewDidAppear:`
@@ -305,15 +311,21 @@
                                         [postMan GetValueOrEmpty:text], @"Message",
                                         nil];
 
+    //TODO: Get rid of this testing code
+    //UIImage *imageTEST = [UIImage imageNamed:@"Attendees"];
+    //self.imageMessage = imageTEST;
     
     if(self.imageMessage != nil)
     {
         NSData *imageData = UIImageJPEGRepresentation(self.imageMessage, 0.7);
-        [postMan PostWithFileData:@"messages/post" :messageDataDisctionary :imageData];
+//        [postMan PostWithFileData:@"messages/post" :messageDataDisctionary :imageData];
+        [postMan PostFile:@"messages/post" :messageDataDisctionary :imageData];
     }
     else
     {
         [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
+        //NSData *imageData = UIImageJPEGRepresentation(self.imageMessage, 0.7);
+        //[postMan PostWithFileData:@"messages/post?value=%@" :messageDataDisctionary :nil];
     }
     
     
@@ -321,6 +333,82 @@
 //                                                     senderDisplayName:[userInfo firstName]
 //                                                                  date:[NSDate date]
 //                                                                  text:text];
+    
+    //[self.demoData.messages addObject:message];
+    [self reloadMessageThread];
+    [self finishSendingMessage];
+}
+
+-(void)sendMediaMessage
+{
+    /**
+     *  Sending a message. Your implementation of this method should do *at least* the following:
+     *
+     *  1. Play sound (optional)
+     *  2. Add new id<JSQMessageData> object to your data source
+     *  3. Call `finishSendingMessage`
+     */
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    NSString *recipientId = nil;
+    NSString *recipientAuthToken = nil;
+    NSString *recipientType = nil;
+    
+    if([self.messangerType isEqualToString:@"Event"])
+    {
+        recipientId = [self eventId];
+        recipientType = @"Event";
+        recipientAuthToken = @"";
+    }
+    else if([self.messangerType isEqualToString:@"User"])
+    {
+        recipientAuthToken = [self authorId];
+        recipientType = @"User";
+        recipientId = @"";
+    }
+    else if([self.messangerType isEqualToString:@"Group"])
+    {
+        recipientId = [self groupId];
+        recipientType = @"Group";
+        recipientAuthToken = @"";
+    }
+    
+    Postman* postMan = [Postman alloc];
+    
+    
+    NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [postMan GetValueOrEmpty:recipientId], @"RecipientId",
+                                            [postMan GetValueOrEmpty:recipientType], @"RecipientType",
+                                            [postMan GetValueOrEmpty:recipientAuthToken], @"AuthenticationToken",
+                                            [postMan GetValueOrEmpty:userInfo.userId], @"AutherAuthToken",
+                                            @"", @"Subject",
+                                            [postMan GetValueOrEmpty:@""], @"Message",
+                                            nil];
+    
+    //TODO: Get rid of this testing code
+    //UIImage *imageTEST = [UIImage imageNamed:@"Attendees"];
+    //self.imageMessage = imageTEST;
+    
+    if(self.imageMessage != nil)
+    {
+        NSData *imageData = UIImageJPEGRepresentation(self.imageMessage, 0.7);
+        //        [postMan PostWithFileData:@"messages/post" :messageDataDisctionary :imageData];
+        [postMan PostFile:@"messages/post" :messageDataDisctionary :imageData];
+    }
+    else
+    {
+        [postMan Post:@"messages/post?value=%@" :messageDataDisctionary];
+        //NSData *imageData = UIImageJPEGRepresentation(self.imageMessage, 0.7);
+        //[postMan PostWithFileData:@"messages/post?value=%@" :messageDataDisctionary :nil];
+    }
+    
+    
+    //    JSQTextMessage *message = [[JSQTextMessage alloc] initWithSenderId:[userInfo userId]
+    //                                                     senderDisplayName:[userInfo firstName]
+    //                                                                  date:[NSDate date]
+    //                                                                  text:text];
     
     //[self.demoData.messages addObject:message];
     [self reloadMessageThread];

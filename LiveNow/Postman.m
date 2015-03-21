@@ -128,15 +128,22 @@
     NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
     
+    //completeServiceUrl = [BaseServiceURL stringByAppendingFormat:actionUrlWithPlaceHolder, updateJsonData];
+    
     NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, @"value", nil];
+    
+    //completeServiceUrl =  [completeServiceUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
+   // manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     if(fileData != nil)
     {
         [manager POST:completeServiceUrl parameters:updatedParamsData constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
         {
-            [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"imageName" mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"attendees.png"  mimeType:@"image/png"];
         }
         success:^(AFHTTPRequestOperation *operation, id responseObject)
         {
@@ -149,7 +156,7 @@
     }
     else
     {
-         [manager POST:completeServiceUrl parameters:updatedParamsData
+         [manager POST:completeServiceUrl parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
              NSLog(@"Success: %@", responseObject);
@@ -205,6 +212,62 @@
      {
          NSLog(@"Error: %@", error);
      }];
+}
+
+-(void)PostFile :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSData*)imageData
+{
+    NSString* boundary = @"test";
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    
+    // create request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:30];
+    [request setHTTPMethod:@"POST"];
+
+    
+    // set Content-Type in HTTP header
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"value"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@\r\n", updateJsonData] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    
+    // add image data
+    //NSData *imageData = UIImageJPEGRepresentation(imageToPost, 1.0);
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"image.png"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"Content-Type: image/png\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    NSURL* url = [NSURL URLWithString:completeServiceUrl];
+    // set URL
+    [request setURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:nil completionHandler:nil];
+
 }
 
 @end

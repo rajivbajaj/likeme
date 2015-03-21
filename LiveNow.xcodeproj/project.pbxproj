@@ -83,6 +83,7 @@
 		1412AAAE19CADF6B008052B5 /* Postman.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAAD19CADF6B008052B5 /* Postman.m */; };
 		1412AAB119CADFA1008052B5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB019CADFA1008052B5 /* Constants.m */; };
 		1412AAB419CAE13F008052B5 /* URLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1412AAB319CAE13F008052B5 /* URLRequest.m */; };
+		141E69041AB7685300E3DD14 /* libPods-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 141E69031AB7685300E3DD14 /* libPods-AFNetworking.a */; };
 		1433722619EFCF7C009DD572 /* EADGroupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */; };
 		143585C819CA422C007F03DF /* iconSlide.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BA19CA422C007F03DF /* iconSlide.png */; };
 		143585C919CA422C007F03DF /* iconSlide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143585BB19CA422C007F03DF /* iconSlide@2x.png */; };
@@ -276,6 +277,7 @@
 		1412AAB019CADFA1008052B5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		1412AAB219CAE13F008052B5 /* URLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequest.h; sourceTree = "<group>"; };
 		1412AAB319CAE13F008052B5 /* URLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRequest.m; sourceTree = "<group>"; };
+		141E69031AB7685300E3DD14 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		1433722419EFCF7C009DD572 /* EADGroupDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADGroupDetailsViewController.h; sourceTree = "<group>"; };
 		1433722519EFCF7C009DD572 /* EADGroupDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADGroupDetailsViewController.m; sourceTree = "<group>"; };
 		143585BA19CA422C007F03DF /* iconSlide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSlide.png; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141E69041AB7685300E3DD14 /* libPods-AFNetworking.a in Frameworks */,
 				0B89FFCD19BE52E90077E029 /* XCTest.framework in Frameworks */,
 				0B89FFCF19BE52E90077E029 /* UIKit.framework in Frameworks */,
 				0B89FFCE19BE52E90077E029 /* Foundation.framework in Frameworks */,
@@ -478,6 +481,7 @@
 		0B89FFAC19BE52E90077E029 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				141E69031AB7685300E3DD14 /* libPods-AFNetworking.a */,
 				144CE67A19E5739800C6EC03 /* AudioToolbox.framework */,
 				146A4DEE19D1827700C0182B /* FacebookSDK.framework */,
 				0B89FFE519BE547D0077E029 /* MapKit.framework */,
@@ -1254,7 +1258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
 				SDKROOT = iphoneos;
@@ -1288,7 +1292,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE = "b3b78b3f-1249-4cd5-96b0-19418e897de8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1309,8 +1313,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
+				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1329,8 +1345,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e4a44b-0d4e-4315-91c3-6c0445fdfae2";
+				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1351,6 +1379,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "LiveNowTests/LiveNowTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1369,6 +1401,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNowTests/LiveNowTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

@@ -98,7 +98,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     {
         EADMessageDetailsViewController *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
         
+        //UIImage *imageTEST = [UIImage imageWithContentsOfFile:@"Attendees.png"];
+        //msgViewController.imageMessage = imageTEST;
         msgViewController.imageMessage = image;
+        //msgViewController.
         //[msgViewController addPhotoMediaMessage];
     }
         [self.navigationController popViewControllerAnimated:YES];

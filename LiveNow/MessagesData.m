@@ -62,32 +62,35 @@
         
         NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        UIImage *image = [UIImage imageWithData:imageData];
+        
+        if(imageData != nil)
+        {
+            //UIImage *image = [UIImage imageWithData:imageData];
 
+//            
+//            JSQMessagesAvatarImage *jsqImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:image
+//                                                                                                 diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+        }
+//        JSQMessagesAvatarImage *cookImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_cook"]
+//                                                                                       diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
         
-        JSQMessagesAvatarImage *jsqImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:image
-                                                                                             diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+//        JSQMessagesAvatarImage *jobsImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_jobs"]
+//                                                                                       diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
         
-        JSQMessagesAvatarImage *cookImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_cook"]
-                                                                                       diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+//        JSQMessagesAvatarImage *wozImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_woz"]
+//                                                                                      diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
         
-        JSQMessagesAvatarImage *jobsImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_jobs"]
-                                                                                       diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
-        
-        JSQMessagesAvatarImage *wozImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_woz"]
-                                                                                      diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
-        
-        self.avatars = @{ kJSQDemoAvatarIdSquires : jsqImage,
-                          kJSQDemoAvatarIdCook : cookImage,
-                          kJSQDemoAvatarIdJobs : jobsImage, 
-                          kJSQDemoAvatarIdWoz : wozImage };
-        
-        
-        self.users = @{ kJSQDemoAvatarIdJobs : kJSQDemoAvatarDisplayNameJobs,
-                        kJSQDemoAvatarIdCook : kJSQDemoAvatarDisplayNameCook,
-                        kJSQDemoAvatarIdWoz : kJSQDemoAvatarDisplayNameWoz,
-                        kJSQDemoAvatarIdSquires : kJSQDemoAvatarDisplayNameSquires };
-        
+//        self.avatars = @{ kJSQDemoAvatarIdSquires : jsqImage,
+//                          kJSQDemoAvatarIdCook : cookImage,
+//                          kJSQDemoAvatarIdJobs : jobsImage, 
+//                          kJSQDemoAvatarIdWoz : wozImage };
+//        
+//        
+//        self.users = @{ kJSQDemoAvatarIdJobs : kJSQDemoAvatarDisplayNameJobs,
+//                        kJSQDemoAvatarIdCook : kJSQDemoAvatarDisplayNameCook,
+//                        kJSQDemoAvatarIdWoz : kJSQDemoAvatarDisplayNameWoz,
+//                        kJSQDemoAvatarIdSquires : kJSQDemoAvatarDisplayNameSquires };
+//        
         
         /**
          *  Create message bubble images objects.
@@ -153,14 +156,17 @@
             JSQMessage *msg = nil;
             
             // GEt the datetime
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"yyyy-MM-dd HH:mm:ss a"];
-            NSDate *messageDate = [df dateFromString: [currentItem valueForKey:@"MessageRecieved"]];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateStyle:NSDateFormatterShortStyle];
+            [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+            NSDate *messageDate = [dateFormat dateFromString: [currentItem valueForKey:@"MessageRecieved"]];
             
-            // If messagedate is null then then just assign it a current date.
+
+            
+            // If messagedate is null then then just go back one month because this is probabaly.
             if(messageDate == nil)
             {
-                messageDate = [NSDate date];
+                messageDate = [dateFormat dateFromString: @"01/11/15 06:01 PM"];
             }
             
             // Check if its a image type of message
@@ -168,17 +174,17 @@
             
             if(imageStringData != nil && ![imageStringData isEqualToString:@""])
             {
-                NSData *imageData;
+                NSData *messageImageData;
                 
                 if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)])
                 {
-                    imageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
+                    messageImageData = [[NSData alloc] initWithBase64EncodedString:imageStringData options:kNilOptions];  // iOS 7+
                 }
                 
                 JSQPhotoMediaItem *photoItem = nil;
-                if(imageData != nil)
+                if(messageImageData != nil)
                 {
-                    photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:imageData]];
+                    photoItem = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:messageImageData]];
                 }
                 else
                 {
