@@ -70,6 +70,7 @@
 		0B89FFE619BE547D0077E029 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B89FFE519BE547D0077E029 /* MapKit.framework */; };
 		0BBDFE371A2FF5E30030F974 /* EADLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDFE331A2FF5E30030F974 /* EADLocationSearchViewController.m */; };
 		0BBDFE381A2FF5E30030F974 /* EADMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDFE361A2FF5E30030F974 /* EADMKPointAnnotation.m */; };
+		0BC2987C1AC5BF3B00F5DC8A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BC2987B1AC5BF3B00F5DC8A /* Default-568h@2x.png */; };
 		0BD6A87519EC875600AC370C /* EADEventsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */; };
 		0BD6A87619EC875600AC370C /* EADCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */; };
 		0BD6A8791A0573F800AC370C /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6A8771A0573F800AC370C /* Map.png */; };
@@ -257,6 +258,7 @@
 		0BBDFE341A2FF5E30030F974 /* EADLocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADLocationSearchViewController.h; sourceTree = "<group>"; };
 		0BBDFE351A2FF5E30030F974 /* EADMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADMKPointAnnotation.h; sourceTree = "<group>"; };
 		0BBDFE361A2FF5E30030F974 /* EADMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADMKPointAnnotation.m; sourceTree = "<group>"; };
+		0BC2987B1AC5BF3B00F5DC8A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0BD6A87119EC875600AC370C /* EADEventsCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADEventsCreateViewController.m; sourceTree = "<group>"; };
 		0BD6A87219EC875600AC370C /* EADCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EADCollectionViewCell.h; sourceTree = "<group>"; };
 		0BD6A87319EC875600AC370C /* EADCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EADCollectionViewCell.m; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		0B89FFA119BE52E90077E029 = {
 			isa = PBXGroup;
 			children = (
+				0BC2987B1AC5BF3B00F5DC8A /* Default-568h@2x.png */,
 				0B89FFB319BE52E90077E029 /* LiveNow */,
 				0B89FFD219BE52E90077E029 /* LiveNowTests */,
 				0B89FFAC19BE52E90077E029 /* Frameworks */,
@@ -986,6 +989,7 @@
 				143585CB19CA422C007F03DF /* iconSlideBlack@2x.png in Resources */,
 				144CE63F19E5716C00C6EC03 /* bubble@2x.png in Resources */,
 				0B31D6C51A506C5400276A0C /* img_attendeesicon.png in Resources */,
+				0BC2987C1AC5BF3B00F5DC8A /* Default-568h@2x.png in Resources */,
 				0BD6A87A1A0573F800AC370C /* Logout.png in Resources */,
 				0B7C9BE819C5128500BD6772 /* App Icon Design v2.jpg in Resources */,
 				1473D6CB1A2F28C3009E633A /* LocationPin.png in Resources */,
@@ -1303,8 +1307,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				CURRENT_PROJECT_VERSION = 1.0;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1313,6 +1318,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -1326,7 +1332,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
+				PROVISIONING_PROFILE = "6aa7b65a-d58e-495c-8e9f-f19a8a2c9ffe";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1335,8 +1341,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71A37F40930C4A9A8C3E9E21 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bright (83MX7V2G2W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bright (83MX7V2G2W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: elite app designers, llc (Z3K7VHNBGJ)";
+				CURRENT_PROJECT_VERSION = 1.0;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/rajivbajaj/Documents/FacebookSDK,
@@ -1345,6 +1352,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveNow/LiveNow-Prefix.pch";
 				INFOPLIST_FILE = "LiveNow/LiveNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -1358,7 +1366,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da4e628c-8c07-4815-a2ed-808caab277b0";
+				PROVISIONING_PROFILE = "6aa7b65a-d58e-495c-8e9f-f19a8a2c9ffe";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

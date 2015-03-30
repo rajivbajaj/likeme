@@ -83,7 +83,7 @@
     if(radiusString != nil)
     {
         [self.radiusSlider setValue:[radiusString floatValue] animated:YES];
-        self.milesLabel.text = [[NSString stringWithFormat:@"%i", [radiusString integerValue]] stringByAppendingString:@" miles"];
+        self.milesLabel.text = [[NSString stringWithFormat:@"%li", (long)[radiusString integerValue]] stringByAppendingString:@" miles"];
         
     }
     

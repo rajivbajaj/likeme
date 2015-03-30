@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -1145,9 +1145,7 @@
                             <outlet property="delegate" destination="oGN-A2-31E" id="Sxe-bC-OB6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="a2S-cZ-Yrb">
-                        <barButtonItem key="rightBarButtonItem" image="LocationPin.png" style="plain" id="xHy-ff-x4a"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="a2S-cZ-Yrb"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="gKS-5D-pSR">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
@@ -1974,15 +1972,15 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="6Th-4Y-G1r"/>
-        <segue reference="slm-aI-TrD"/>
-        <segue reference="gYv-VN-P5c"/>
+        <segue reference="UrU-MG-Yth"/>
         <segue reference="pdK-Z6-3XM"/>
-        <segue reference="D6H-cp-HUJ"/>
-        <segue reference="tmE-nI-V2m"/>
-        <segue reference="s2S-s4-CzB"/>
-        <segue reference="8OK-M8-tPy"/>
+        <segue reference="gYv-VN-P5c"/>
+        <segue reference="sQm-xv-8oR"/>
+        <segue reference="smy-lv-rvC"/>
+        <segue reference="CGa-TY-gh8"/>
+        <segue reference="OCl-Un-Pl0"/>
+        <segue reference="HDh-NI-nOR"/>
         <segue reference="GBq-uG-Q6z"/>
         <segue reference="gW6-6f-l1o"/>
-        <segue reference="UrU-MG-Yth"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -238,6 +238,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     if (self.snapshotView) {
         [self.snapshotView removeFromSuperview];
     }
+    [self.collectionView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

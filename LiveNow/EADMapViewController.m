@@ -271,6 +271,10 @@
     {
         [self drawUsers];
     }
+    else
+    {
+        [self searchAll];
+    }
     // Do any additional setup after loading the view.
 }
 

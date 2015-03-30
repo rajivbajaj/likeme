@@ -77,39 +77,39 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
-    if ([self.launchedFrom isEqualToString:@"Groups"])
-    {
-        EADGroupDetailsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
-        
-        groupViewController.imageView.image = image;
-        
-        
-    }
-    else if ([self.launchedFrom isEqualToString:@"Event"])
-    {
+        if ([self.launchedFrom isEqualToString:@"Groups"])
+        {
+            EADGroupDetailsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+            
+            groupViewController.imageView.image = image;
+            
+            
+        }
+        else if ([self.launchedFrom isEqualToString:@"Event"])
+        {
             EADEventsCreateViewController *eventViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
             
             eventViewController.imageView.image = image;
-        
-//            [eventViewController.cameraButton setImage:image forState:UIControlStateNormal];
-//        [eventViewController.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
-    }
-    else
-    {
-        EADMessageDetailsViewController *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
-        
-        //UIImage *imageTEST = [UIImage imageWithContentsOfFile:@"Attendees.png"];
-        //msgViewController.imageMessage = imageTEST;
-        msgViewController.imageMessage = image;
-        //msgViewController.
-        //[msgViewController addPhotoMediaMessage];
-    }
+            
+            //            [eventViewController.cameraButton setImage:image forState:UIControlStateNormal];
+            //        [eventViewController.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
+        }
+        else
+        {
+            EADMessageDetailsViewController *msgViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+            
+            //UIImage *imageTEST = [UIImage imageWithContentsOfFile:@"Attendees.png"];
+            //msgViewController.imageMessage = imageTEST;
+            msgViewController.imageMessage = image;
+            //msgViewController.
+            //[msgViewController addPhotoMediaMessage];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
-//    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-//    {
-//        // Code here to support video if enabled
-//    }
+    //    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+    //    {
+    //        // Code here to support video if enabled
+    //    }
 }
 - (IBAction)actionInitiatorTouched:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -157,18 +157,18 @@ finishedSavingWithError:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
-
+    
     
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
-     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
+    // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
+    [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
     if (_shouldLaunchCamera)
     {
-    [self launchCamera];
+        [self launchCamera];
     }
     else
     {

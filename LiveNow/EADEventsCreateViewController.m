@@ -21,6 +21,7 @@
 NSString* datePickerContextText;
 NSString* startDateString;
 NSString* endDateString;
+@synthesize locationText;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -116,7 +117,7 @@ NSString* endDateString;
     NSDictionary *eventDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"EventCreatedBy",
                                         [postMan GetValueOrEmpty:_eventNameText.text], @"EventName",
-                                        [postMan GetValueOrEmpty:_locationText.text], @"EventCity",
+                                        [postMan GetValueOrEmpty:locationText.text], @"EventCity",
                                         [postMan GetValueOrEmpty:_descriptionText.text], @"EventDescription",
                                         [postMan GetValueOrEmpty:startDateString], @"StartTime",
                                         [postMan GetValueOrEmpty:endDateString], @"EndTime",
@@ -396,7 +397,20 @@ NSString* endDateString;
             
         }
     }
+   
 }
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    BOOL editable;
+    if (textField == locationText) {
+        editable = NO;
+    }
+    else
+    {
+        editable = YES;
+    }
+    return editable;
+}
+
 
 
 @end
