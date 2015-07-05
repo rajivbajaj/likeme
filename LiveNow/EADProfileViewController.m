@@ -105,6 +105,11 @@
     {
         self.location.text = self.locationName;
     }
+     Postman* postman = [Postman alloc];
+    UserInfo *userInfo = [UserInfo sharedUserInfo];
+    NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
+    
+       [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +136,18 @@
 
     NSString *latitudeString = [[NSNumber numberWithDouble:_latitude] stringValue];
     NSString *longitudeString = [[NSNumber numberWithDouble:_longitude] stringValue];
-    
+    NSString *alertMessage, *alertTitle;
+    alertTitle = @"Location error";
+    alertMessage = @"Select location using map icon";
+    if ([latitudeString  isEqualToString:@"0"]) {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:alertMessage
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+        return;
+    }
+
     // update user information
     NSDictionary *userDataDictionaryUpdate = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",

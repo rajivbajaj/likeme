@@ -1954,7 +1954,7 @@
         <image name="GroupsDefaultImage.png" width="65" height="50"/>
         <image name="LNDefaultImage.png" width="759" height="594"/>
         <image name="LocationPin.png" width="24" height="24"/>
-        <image name="Logo Design 2.png" width="360" height="504"/>
+        <image name="Logo Design 2.png" width="320" height="568"/>
         <image name="Report Abuse v2.png" width="79" height="123"/>
         <image name="btn_join.png" width="291" height="40"/>
         <image name="btn_leave.png" width="291" height="40"/>
@@ -1971,16 +1971,16 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6Th-4Y-G1r"/>
-        <segue reference="UrU-MG-Yth"/>
-        <segue reference="pdK-Z6-3XM"/>
         <segue reference="gYv-VN-P5c"/>
+        <segue reference="pdK-Z6-3XM"/>
         <segue reference="sQm-xv-8oR"/>
         <segue reference="smy-lv-rvC"/>
-        <segue reference="CGa-TY-gh8"/>
         <segue reference="OCl-Un-Pl0"/>
         <segue reference="HDh-NI-nOR"/>
         <segue reference="GBq-uG-Q6z"/>
         <segue reference="gW6-6f-l1o"/>
+        <segue reference="6Th-4Y-G1r"/>
+        <segue reference="FzJ-be-qDu"/>
+        <segue reference="UrU-MG-Yth"/>
     </inferredMetricsTieBreakers>
 </document>

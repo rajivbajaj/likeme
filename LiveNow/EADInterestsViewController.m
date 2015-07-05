@@ -77,7 +77,11 @@ UILabel *backgroundLbl;
     
 }*/
 
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self loadUserInterests]; //call method
+    [self.interestsTableView reloadData];
+}
 - (void)updateIntrests
 {
     NSString *userInterestsString = nil;
@@ -158,7 +162,20 @@ UILabel *backgroundLbl;
     
     if(isAlreadyAdded == false)
     {
-        [userSelectedItemsArray addObject:selectedInterestString];
+        if(userSelectedItemsArray != nil )
+        {
+            [userSelectedItemsArray addObject:selectedInterestString];
+        }
+        else
+        {
+            NSArray *localArray = [selectedInterestString componentsSeparatedByString:@";"];
+            
+            if(localArray != nil)
+            {
+                userSelectedItemsArray = [NSMutableArray arrayWithArray:localArray];
+            }
+        }
+        
     }
 }
 

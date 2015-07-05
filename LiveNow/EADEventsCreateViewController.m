@@ -81,7 +81,7 @@ NSString* endDateString;
                                               otherButtonTitles:nil];
         [alert show];
         //[alert release];
-        
+        return;
         
     }
     else if ([[self.locationText text] isEqualToString:@""])
@@ -92,6 +92,7 @@ NSString* endDateString;
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        return;
     }
     else if ([[self.startDateText text] isEqualToString:@""])
     {
@@ -101,6 +102,7 @@ NSString* endDateString;
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        return;
     }
     else
     {
@@ -111,7 +113,15 @@ NSString* endDateString;
     
     NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
     NSString *longitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
-    
+        if ([latitudeString  isEqualToString:@"0"]) {
+            [[[UIAlertView alloc] initWithTitle:@"Location Error"
+                                        message:@"Select location using map icon"
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+            return;
+        }
+
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
     // update event
     NSDictionary *eventDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

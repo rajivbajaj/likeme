@@ -156,7 +156,7 @@
     }
     else
     {
-         [manager POST:completeServiceUrl parameters:nil
+         [manager POST:completeServiceUrl parameters:updatedParamsData
          success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
              NSLog(@"Success: %@", responseObject);
