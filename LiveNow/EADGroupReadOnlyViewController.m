@@ -38,7 +38,7 @@
 
 -(void)loadGroupDetails
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -156,7 +156,7 @@
 
 - (IBAction)joinGroupTouched:(id)sender
 {
-//    Postman *postman = [Postman alloc];
+//    Postman *postman = [Postman sharedManager];
 //    UserInfo *userInfo = [UserInfo sharedUserInfo];
 //    
 //    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -173,7 +173,7 @@
 
 - (IBAction)leaveGroupTouched:(id)sender
 {
-//    Postman *postman = [Postman alloc];
+//    Postman *postman = [Postman sharedManager];
 //    UserInfo *userInfo = [UserInfo sharedUserInfo];
 //
 //    NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -191,7 +191,7 @@
 -(void)joinOrLeaveGroup :(NSString*)status
 {
     
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

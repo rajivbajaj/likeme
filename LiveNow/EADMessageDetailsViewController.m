@@ -300,7 +300,7 @@
         recipientAuthToken = @"";
     }
     
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -376,7 +376,7 @@
         recipientAuthToken = @"";
     }
     
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:

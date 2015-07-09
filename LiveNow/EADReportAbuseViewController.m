@@ -47,7 +47,7 @@
     }
     else
     {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     

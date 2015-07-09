@@ -56,7 +56,7 @@
 }
 - (void) loadUsers
 {
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     UILabel *backgroundLbl = [[UILabel alloc] init];
     backgroundLbl.text = @"Loading...";

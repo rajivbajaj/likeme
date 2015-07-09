@@ -20,119 +20,69 @@
 @implementation EADViewController
 
 UIAlertView *logoutConfirmAlertView;
- //UIAlertController *alert;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _viewloaded = true;
     
-    if (_logout)
-  {
-        
-         logoutConfirmAlertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                           message:@"Are you sure to logout?"
-                                                          delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                 otherButtonTitles:@"OK", nil];
-      
-        [logoutConfirmAlertView show];
-       
-        
-    }
-    else
-    {
+//    if (_logout)
+//    {
+//        
+//         logoutConfirmAlertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+//                                                           message:@"Are you sure to logout?"
+//                                                          delegate:self
+//                                                  cancelButtonTitle:@"Cancel"
+//                                                 otherButtonTitles:@"OK", nil];
+//      
+//        [logoutConfirmAlertView show];
+//       
+//        
+//    }
+//    else
+//    {
         //[self CurrentLocationIdentifier];
-        FBLoginView *loginView = [[FBLoginView alloc] init];
-        loginView.delegate = self;
-        [self.view addSubview:loginView];
-        // Align the button in the center horizontally
-        loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
-        
-        //[self.view addSubview:loginView];
-        // Do any additional setup after loading the view, typically from a nib.
-        loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    }
+//        FBLoginView *loginView = [[FBLoginView alloc] init];
+//        loginView.delegate = self;
+//        [self.view addSubview:loginView];
+//        // Align the button in the center horizontally
+//        loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
+//        // Do any additional setup after loading the view, typically from a nib.
+//        loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+//        
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [btn setFrame:CGRectMake(100.f, 400.f, 120.f, 30.F)];
+//        [btn setTitle:@"FB Login" forState:UIControlStateNormal];
+//        [btn addTarget:self action:@selector(fblogin:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:btn];
+//    }
+
     [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
 }
-- (void) viewDidAppear:(BOOL)animated
+
+- (void)viewDidAppear:(BOOL)animated {
+
+//    [self CurrentLocationIdentifier];
+    
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.delegate = self;
+    // Align the button in the center horizontally
+    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
+    // Do any additional setup after loading the view, typically from a nib.
+    loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    [self.view addSubview:loginView];
+}
+
+-(void)CurrentLocationIdentifier
 {
-    if (_logout && _viewloaded == false)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
-                                                            message:@"Are you sure to logout?"
-                                                           delegate:self
-                                  
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-        [alertView show];
-        
-        
-    }
-    else
-    {
-        //[self CurrentLocationIdentifier];
-        FBLoginView *loginView = [[FBLoginView alloc] init];
-        loginView.delegate = self;
-        [self.view addSubview:loginView];
-        // Align the button in the center horizontally
-        loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 450);
-        
-        //[self.view addSubview:loginView];
-        // Do any additional setup after loading the view, typically from a nib.
-        loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    }
-
-   
+    //---- For getting current gps location
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = 100;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    //------
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == alertView.cancelButtonIndex)
-    {
-        _logout = false;
-        [self navigateToMainPage];
-        
-    }
-    else
-    {
-        
-        [FBSession.activeSession closeAndClearTokenInformation];
-        _logout = true;
-    }
-
-}
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == alertView.cancelButtonIndex)
-    {
-        _logout = false;
-        [self navigateToMainPage];
-        
-    }
-    else
-    {
-        
-        [FBSession.activeSession closeAndClearTokenInformation];
-        _logout = false;
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView
-willDismissWithButtonIndex:(NSInteger)buttonIndex{
- 
-}
-//-(void)CurrentLocationIdentifier
-//{
-//    //---- For getting current gps location
-//    locationManager = [CLLocationManager new];
-//    locationManager.delegate = self;
-//    locationManager.distanceFilter = 100;
-//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    [locationManager startUpdatingLocation];
-//    //------
-//}
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations objectAtIndex:0];
@@ -154,8 +104,8 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
 //    {
     [locationManager stopUpdatingLocation];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
-     {
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+
          if (!(error))
          {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
@@ -194,8 +144,8 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
     [self navigateToMainPage];
 }
 
-- (void)navigateToMainPage
-{
+- (void)prepareControllers {
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UIViewController* controller;
@@ -203,9 +153,9 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
     self.slideoutController = [AMSlideOutNavigationController slideOutNavigation];
     [self.slideoutController setSlideoutOptions:[AMSlideOutGlobals defaultFlatOptions]];
     [self.slideoutController addSectionWithTitle:@""];
-
+    
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-
+    
     NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
@@ -230,7 +180,6 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
     eventController.isMyEvent = false;
     [self.slideoutController addViewControllerToLastSection:eventController tagged:6 withTitle:@"Events" andIcon:@"img_events.png"];
     
-
     eventController = [storyboard instantiateViewControllerWithIdentifier:@"Events"];
     eventController.isMyEvent = true;
     [self.slideoutController addViewControllerToLastSection:eventController tagged:7 withTitle:@"My Events" andIcon:@"MyEvents.png"];
@@ -245,50 +194,36 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
     
     EADViewController *loginController;
     loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-    loginController.logout = true;
     [self.slideoutController addViewControllerToLastSection:loginController tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
-    
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
-//                                                        message:@"Are you sure to logout?"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"Cancel"
-//                                              otherButtonTitles:@"OK", nil];
-//
-   // __weak typeof(self) weakSelf = self;
-    //[self intantiateLogoutAlertView];
-    
-//    [self.slideoutController addActionToLastSection:^{
-//        [weakSelf presentViewController:alert animated:YES completion:nil];
-//        //[alert presentationController];
-//    } tagged:10 withTitle:@"Logout" andIcon:@"img_logout.png"];
-//    
+}
 
+- (void)navigateToMainPage
+{
+    [self prepareControllers];
     
     EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.window setRootViewController:self.slideoutController];
+    
+    [_activityView stopAnimating];
 }
 
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    if (_logout == false)
-    {
 
     if (FBSession.activeSession.isOpen) {
-      
-      
+
+        [_activityView startAnimating];
         
-        [[FBRequest requestForMe] startWithCompletionHandler:
-         ^(FBRequestConnection *connection,
-           NSDictionary<FBGraphUser> *user,
-           NSError *error) {
+        [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
+            
              if (!error) {
                  userInfo.firstName = user.first_name;
                  userInfo.lastName = user.last_name;
                  userInfo.userId = user.objectID;
                  userInfo.email = [user objectForKey:@"email"];
-                 userInfo.profileImageURL = [[NSString alloc] initWithFormat: FacebookProfilePicURL, userInfo.userId];
-                   self.profilePicture.profileID = user.objectID;
+                 userInfo.profileImageURL = [[NSString alloc] initWithFormat:FacebookProfilePicURL, userInfo.userId];
+                 self.profilePicture.profileID = user.objectID;
                 
                  NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
                  NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
@@ -303,7 +238,7 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                  
                  //userInfo.userLocation=self.userLocation;
                  // update user information
-                 Postman *postMan = [Postman alloc];
+                 Postman *postMan = [Postman sharedManager];
                  NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                                      [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
                                                      [postMan GetValueOrEmpty:userInfo.firstName], @"FirstName",
@@ -314,25 +249,20 @@ willDismissWithButtonIndex:(NSInteger)buttonIndex{
                                                      nil];
 
                 
-                 //[postMan PostAync:@"users/post?value=%@" :userDataDictionary];
-                 
-                 [postMan PostAync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(NSArray *dataArray)
+                 [postMan PostAsync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(NSArray *dataArray)
                   {
                       //[self loadEvent];
                   }];
                
                  [self navigateToMainPage];
              }
-            
          }];
-        
+
+    } else {
+
     }
-    }
-    else
-    {
-//        EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
-//        [appDelegate.window setRootViewController:self];
-    }
+
+
 }
 
 // Implement the loginViewShowingLoggedOutUser: delegate method to modify your app's UI for a logged-out user experience

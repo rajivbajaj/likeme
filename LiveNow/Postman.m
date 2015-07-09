@@ -12,29 +12,70 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
 
-@implementation Postman
--(NSDictionary*) UserGet :(NSString*)userId
-{
-    NSString *urlParams = [NSString stringWithFormat:@"users/get/%@", userId];
-    NSData *data = [self ServiceCall:urlParams];
-    NSMutableDictionary *userDataDictionary = nil;
+@interface Postman () {
     
-    if(data != nil)
+    NSOperationQueue *main_queue;
+}
+
+@end
+
+@implementation Postman
+
+static Postman *instance = nil;
+
++ (id)sharedManager
+{
+    @synchronized(self)
     {
-        NSDictionary *userDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
-        if(userDictionary != nil && userDictionary.count > 0)
+        if (instance == nil)
         {
-            NSArray *userArrayData = (NSArray *)userDictionary;
-            
-            if(userArrayData != nil && [userArrayData isKindOfClass:[NSArray class]] && userArrayData.count > 0)
-            {
-                userDataDictionary = [userArrayData objectAtIndex:0];
-            }
+            instance = [[self alloc] init];
         }
     }
     
-    return userDataDictionary;
+    return instance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        main_queue = [[NSOperationQueue alloc] init];
+        [main_queue setMaxConcurrentOperationCount:10.f];
+    }
+    return self;
+}
+
+- (void)GetUser:(NSString*)userId callback:(dictionary_block_t)callback
+{
+    NSString *urlParams = [NSString stringWithFormat:@"%@users/get/%@", BaseServiceURL, userId];
+
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlParams]];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+
+        NSMutableDictionary *userDataDictionary = nil;
+        
+        if (data != nil)
+        {
+            NSDictionary *userDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            if(userDictionary != nil && userDictionary.count > 0)
+            {
+                NSArray *userArrayData = (NSArray *)userDictionary;
+                
+                if(userArrayData != nil && [userArrayData isKindOfClass:[NSArray class]] && userArrayData.count > 0)
+                {
+                    userDataDictionary = [userArrayData objectAtIndex:0];
+                }
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback(userDataDictionary);
+        });
+    }];
 }
 
 -(void) UserUpdate :(NSDictionary*)userData
@@ -64,29 +105,36 @@
     [self ServiceCall:urlParams];
 }
 
--(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData
+- (void)Get :(NSString*)urlWithParams :(NSDictionary*)paramData :(array_block_t)callback
 {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
-    NSData *data = [self ServiceCall:completeUrlWIthParams];
-    NSArray *dataArray;
+
+    NSString *urlParams = [[NSString stringWithFormat:@"%@%@", BaseServiceURL, completeUrlWIthParams] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlParams]];
     
-    if(data != nil)
-    {
-        NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-        if(masterDictionary != nil && masterDictionary.count > 0)
+        NSArray *dataArray = nil;
+        
+        if (data != nil)
         {
-             dataArray = (NSArray *)masterDictionary;
+            NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            if(masterDictionary != nil && masterDictionary.count > 0)
+            {
+                dataArray = (NSArray *)masterDictionary;
+            }
         }
-    }
-    
-    return dataArray;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback(dataArray);
+        });
+    }];
 }
 
--(NSDictionary*) Get :(NSString*)urlWithParams 
+- (NSDictionary*) Get :(NSString*)urlWithParams
 {
     NSData *data = [self ServiceCall:urlWithParams];
     NSDictionary *dataDictionary = nil;
@@ -165,7 +213,6 @@
          {
              NSLog(@"Error: %@", error);
          }];
-        
     }
 }
 
@@ -193,7 +240,7 @@
     }];
 }
 
--(void)PostAync :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack
+-(void)PostAsync:(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack
 {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

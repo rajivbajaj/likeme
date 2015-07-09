@@ -26,13 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    Postman* postman = [Postman alloc];
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                       @"EventRestrictions", @"LKGroupName",
                                       nil];
-    
-    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+
+    [[Postman sharedManager] Get:@"utility/get?jsonParams=%@" :paramsDictionary :^(NSArray *result) {
+        self.pickerData =result;
+    }];
+
     if (_groupId != nil)
     {
         [self loadGroupDetails];
@@ -98,18 +100,18 @@
     NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
     [foramtter setDateFormat:@"mm/dd/yyyy"];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    Postman *postMan = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     NSDictionary *groupDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         [postMan GetValueOrEmpty:groupName.text], @"GroupName",
-                                         [postMan GetValueOrEmpty:groupDescription.text], @"GroupDescription",
-                                         [postMan GetValueOrEmpty:userInfo.userId], @"GroupCreatedBy",
+                                         [postman GetValueOrEmpty:groupName.text], @"GroupName",
+                                         [postman GetValueOrEmpty:groupDescription.text], @"GroupDescription",
+                                         [postman GetValueOrEmpty:userInfo.userId], @"GroupCreatedBy",
                                          [foramtter stringFromDate:[NSDate date]], @"GroupCreatedDate",
-                                         [postMan GetValueOrEmpty:restrictionsText.text], @"Restriction",
-                                         [postMan GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
+                                         [postman GetValueOrEmpty:restrictionsText.text], @"Restriction",
+                                         [postman GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
                                          _groupId, @"GroupId",
                                          nil];
     
-    [postMan PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
+    [postman PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
    
     if (_groupId == nil)
     {
@@ -176,7 +178,7 @@
 }
 -(void)loadGroupDetails
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:

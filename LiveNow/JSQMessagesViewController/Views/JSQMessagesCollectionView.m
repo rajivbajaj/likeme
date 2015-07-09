@@ -37,6 +37,10 @@
 
 @implementation JSQMessagesCollectionView
 
+@synthesize delegate;
+@synthesize dataSource;
+@synthesize collectionViewLayout;
+
 #pragma mark - Initialization
 
 - (void)jsq_configureCollectionView

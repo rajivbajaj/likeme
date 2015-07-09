@@ -67,7 +67,7 @@
 
 - (void)loadUserGroups
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     UILabel *backgroundLbl = [[UILabel alloc] init];
     backgroundLbl.text = @"Loading...";
     backgroundLbl.textAlignment = NSTextAlignmentCenter;

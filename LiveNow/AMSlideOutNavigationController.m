@@ -12,8 +12,12 @@
 #import "HumanInterfaceUtility.h"
 #define SCREEN_WIDTH ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_HEIGHT ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
+#import "EADViewController.h"
 
-@interface AMSlideOutNavigationController ()
+@interface AMSlideOutNavigationController () {
+    
+    UIViewController *_currentController;
+}
 
 @property (strong, nonatomic)	NSMutableDictionary     *options;
 @property (strong, nonatomic)	AMTableView             *tableView;
@@ -29,7 +33,6 @@
 @end
 
 @implementation AMSlideOutNavigationController
-
 
 - (void)setSlideoutOptions:(NSDictionary *)options
 {
@@ -851,10 +854,10 @@
 	return [self.options[AMOptionsTableCellHeight] floatValue];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 	NSString* cellID = self.options[AMOptionsTableCellClass];
-	
 	
 	UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:cellID];
 	if (cell == nil) {
@@ -885,21 +888,45 @@
         }
     }
     
-	[self setContentViewController:newController];
     _currentTag = [dict[kSOViewTag] integerValue];
-    
-	if ([self.options[AMOptionsUseDefaultTitles] boolValue]) {
-		[newController setTitle:dict[kSOViewTitle]];
-	}
-    [self hideSideMenu];
-	AMSlideOutCompletionHandler after = dict[kSOAfterBlock];
-	if (after) {
-		after();
-	}
+
+    if (_currentTag == 10) {
+        
+        _currentController = newController;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirm"
+                                                            message:@"Are you sure to logout?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+        
+    } else {
+
+        [self setContentViewController:newController];
+        
+        if ([self.options[AMOptionsUseDefaultTitles] boolValue]) {
+            [newController setTitle:dict[kSOViewTitle]];
+        }
+        [self hideSideMenu];
+        AMSlideOutCompletionHandler after = dict[kSOAfterBlock];
+        if (after) {
+            after();
+        }
+    }
 }
 
-- (void)reloadTableView
-{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+        EADAppDelegate *appDelegate = (EADAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.window setRootViewController:_currentController];
+        [self hideSideMenu];
+    }
+}
+
+- (void)reloadTableView {
+    
     [self.tableView reloadData];
 }
 

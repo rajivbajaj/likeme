@@ -60,7 +60,7 @@ bool isEventImage =false;
 }
 - (void)loadEvent
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
 
@@ -187,7 +187,7 @@ bool isEventImage =false;
 
 -(void)joinOrLeaveEvent:(NSString*)attendanceStatus
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -196,7 +196,7 @@ bool isEventImage =false;
                                         attendanceStatus, @"AttendanceStatus",
                                         nil];
     
-    [postman PostAync:@"events/joinorleave?jsonParams=%@" :userDataDictionary :@"jsonParams" completion:^(NSArray *dataArray)
+    [postman PostAsync:@"events/joinorleave?jsonParams=%@" :userDataDictionary :@"jsonParams" completion:^(NSArray *dataArray)
      {
          [self loadEvent];
      }];

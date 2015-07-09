@@ -12,7 +12,7 @@
 #import <MapKit/MapKit.h>
 
 @interface EADAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>{
-    CLLocationManager *locationManager;
+
     CLLocation *currentLocation;
 }
 
@@ -21,4 +21,6 @@
 //- (void)userLoggedIn;
 //- (void)userLoggedOut;
 @property (nonatomic, retain) NSString* userLocation;
+@property (nonatomic , strong) CLLocationManager *locationManager;
+
 @end

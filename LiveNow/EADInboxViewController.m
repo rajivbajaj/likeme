@@ -102,18 +102,14 @@
 
 - (void)loadInbox
 {
-
-    
-    Postman *postman = [Postman alloc];
-    
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [postman GetValueOrEmpty:userInfo.userId], @"AuthenticationToken",
-                                        nil];
+                                        [[Postman sharedManager] GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
     
-    self.dataArray = [postman Get:@"messages/get?jsonParams=%@" :userDataDictionary];
-    [self.inboxTablView reloadData];
-    
+    [[Postman sharedManager] Get:@"messages/get?jsonParams=%@" :userDataDictionary :^(NSArray *result) {
+        self.dataArray = result;
+        [self.inboxTablView reloadData];
+    }];
     
 //    UILabel *backgroundLbl = [[UILabel alloc] init];
 //    backgroundLbl.text = @"Loading...";

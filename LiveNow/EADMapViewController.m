@@ -76,37 +76,44 @@
 }
 -(void)searchAll
 {
-    Postman* postMan = [Postman alloc];
+    Postman* postman = [Postman sharedManager];;
     //UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [postMan GetValueOrEmpty:_searchText.text], @"searchstring", nil];
-    self.matchingItems = [[postMan Get:@"utility/search?jsonParams=%@" :paramsData] mutableCopy];
-    
-   NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
-    
-    for (NSDictionary *currentObject in self.matchingItems)
-    {
-        
-        CLLocationCoordinate2D  ctrpoint;
-        ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
-        ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
-       // EADMKPointAnnotation *annotation =
-       // [[EADMKPointAnnotation alloc]init];
-    EADMKPointAnnotation *annotation = [[EADMKPointAnnotation alloc] initWithName:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]] entityType:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]] coordinate:ctrpoint] ;
-        //annotation.coordinate=ctrpoint;
-        annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityName"]];
-        
-        annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
-        //annotation. =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
-        //annotation.entityType =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
-        //annotation.entityId = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
+                                [postman GetValueOrEmpty:_searchText.text], @"searchstring", nil];
 
-        [marketLocations addObject:annotation];
-        //[_mapView addAnnotation:annotation];
-    }
-    [_mapView addAnnotations:marketLocations];
-    [_mapView showAnnotations:marketLocations animated:YES];
+    [postman Get:@"utility/search?jsonParams=%@" :paramsData :^(NSArray *result) {
+        
+        if (result) {
+            self.matchingItems = [result mutableCopy];
+        }
+        
+        NSMutableArray *marketLocations = [[NSMutableArray alloc]init];
+        
+        for (NSDictionary *currentObject in self.matchingItems)
+        {
+            CLLocationCoordinate2D  ctrpoint;
+            ctrpoint.latitude = [[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Latitude"]] doubleValue ];
+            ctrpoint.longitude =[[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"Longitude"]] doubleValue ];
+            // EADMKPointAnnotation *annotation =
+            // [[EADMKPointAnnotation alloc]init];
+            EADMKPointAnnotation *annotation = [[EADMKPointAnnotation alloc] initWithName:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]] entityType:[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]] coordinate:ctrpoint] ;
+            //annotation.coordinate=ctrpoint;
+            annotation.title = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityName"]];
+            
+            annotation.subtitle=[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+            //annotation. =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
+            //annotation.entityType =[NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityType"]];
+            //annotation.entityId = [NSString stringWithFormat:@"%@",[currentObject valueForKey:@"EntityId"]];
+            
+            [marketLocations addObject:annotation];
+            //[_mapView addAnnotation:annotation];
+        }
+        [_mapView addAnnotations:marketLocations];
+        [_mapView showAnnotations:marketLocations animated:YES];
+
+    }];
+    
     //[self zoomToAnnotations];
     //[self zoomToFitMapAnnotations:_mapView];
     //AddressAnnotation *addAnnotation = [[AddressAnnotation alloc] initWithCoordinate:ctrpoint];

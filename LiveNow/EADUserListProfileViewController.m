@@ -59,7 +59,7 @@
 }
 -(void) loadUserProfile
 {
-    Postman* postman = [Postman alloc];
+    Postman* postman = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *userDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -67,48 +67,48 @@
                                         userInfo.userId, @"AuthenticationToken",
                                         nil];
 
-    
- _userDetailArray= [postman Get:@"users/getbyid?jsonParams=%@" :userDataDictionary];
-
-    if (_userDetailArray != nil)
-    {
-    NSDictionary *currentObject = [self.userDetailArray objectAtIndex:0];
-    
-        if(currentObject != nil)
+    [postman Get:@"users/getbyid?jsonParams=%@" :userDataDictionary :^(NSArray *result) {
+        _userDetailArray = result;
+        
+        if (_userDetailArray != nil)
         {
-            self.userDisplayValue.text = [currentObject valueForKey:@"DisplayName"];
-            self.userStatus.text = [currentObject valueForKey:@"ProfileStatus"];
-            self.userLocation.text = [currentObject valueForKey:@"City"];
-            self.userInterestsLabel.text = [currentObject valueForKey:@"UserInterests"];
-                
-            NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
-            NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
-            NSInteger numberOfUserGroupCount = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
-            NSInteger numberOfGroupAdmin = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
-                
-            self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsAttending];
-                self.userNoOfEventsCreated.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsCreated];
-
-                self.userNoOfGroupsMember.text =[NSString stringWithFormat:@"%ld",(long)numberOfUserGroupCount];
-            self.userNoOfGroupsAdmin.text =[NSString stringWithFormat:@"%ld",(long)numberOfGroupAdmin];
-                
-            NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURLBig"]];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-            UIImage *image = [UIImage imageWithData:imageData];
-                self.userProfileImage.image=image;
-            self.userProfileImage.contentMode = UIViewContentModeScaleAspectFit;
+            NSDictionary *currentObject = [self.userDetailArray objectAtIndex:0];
             
-            if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
+            if(currentObject != nil)
             {
-                [self.reportAbuseButton setHidden:YES];
-            }
-            else
-            {
-                [self.reportAbuseButton setHidden:NO];
+                self.userDisplayValue.text = [currentObject valueForKey:@"DisplayName"];
+                self.userStatus.text = [currentObject valueForKey:@"ProfileStatus"];
+                self.userLocation.text = [currentObject valueForKey:@"City"];
+                self.userInterestsLabel.text = [currentObject valueForKey:@"UserInterests"];
+                
+                NSInteger numberOfEventsCreated = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+                NSInteger numberOfEventsAttending = [[currentObject objectForKey:@"UserEventAttendanceCount"] integerValue];
+                NSInteger numberOfUserGroupCount = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+                NSInteger numberOfGroupAdmin = [[currentObject objectForKey:@"UserGroupsCount"] integerValue];
+                
+                self.userNoOfEventsAttended.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsAttending];
+                self.userNoOfEventsCreated.text=[NSString stringWithFormat:@"%ld",(long)numberOfEventsCreated];
+                
+                self.userNoOfGroupsMember.text =[NSString stringWithFormat:@"%ld",(long)numberOfUserGroupCount];
+                self.userNoOfGroupsAdmin.text =[NSString stringWithFormat:@"%ld",(long)numberOfGroupAdmin];
+                
+                NSURL *imageURL = [NSURL URLWithString:[currentObject valueForKey:@"FBProfileURLBig"]];
+                NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                UIImage *image = [UIImage imageWithData:imageData];
+                self.userProfileImage.image=image;
+                self.userProfileImage.contentMode = UIViewContentModeScaleAspectFit;
+                
+                if([[currentObject valueForKey:@"ReportedAbuse"] isEqualToString:@"Yes"])
+                {
+                    [self.reportAbuseButton setHidden:YES];
+                }
+                else
+                {
+                    [self.reportAbuseButton setHidden:NO];
+                }
             }
         }
-    }
-    
+    }];
 
 }
 

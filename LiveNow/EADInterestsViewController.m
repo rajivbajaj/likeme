@@ -50,7 +50,7 @@ UILabel *backgroundLbl;
        // Do any additional setup after loading the view.
     [self loadUserInterests];
     
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         @"Interests", @"LKGroupName",
@@ -98,7 +98,7 @@ UILabel *backgroundLbl;
         }
     }
     
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     // update user information
@@ -112,30 +112,32 @@ UILabel *backgroundLbl;
 
 -(void)loadUserInterests
 {
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     NSDictionary *paramsData = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [postMan GetValueOrEmpty:userInfo.userId], @"AuthenticationToken", nil];
     
-    NSArray *userInterestsData = [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData];
+    [postMan Get:@"users/getuserinterests?jsonParams=%@" :paramsData :^(NSArray *result) {
 
-    
-    if(userInterestsData != nil && userInterestsData.count > 0)
-    {
-        NSDictionary *selectedValDictionary = userInterestsData[0];
-        NSString *selectedItemsString = [selectedValDictionary objectForKey:@"UserInterests"];
+        NSArray *userInterestsData = result;
         
-        if(selectedItemsString != nil && ![selectedItemsString isEqualToString:@""])
+        if(userInterestsData != nil && userInterestsData.count > 0)
         {
-           NSArray *localArray = [selectedItemsString componentsSeparatedByString:@";"];
+            NSDictionary *selectedValDictionary = userInterestsData[0];
+            NSString *selectedItemsString = [selectedValDictionary objectForKey:@"UserInterests"];
             
-           if(localArray != nil)
-           {
-               userSelectedItemsArray  = [NSMutableArray arrayWithArray:localArray];
-           }
+            if(selectedItemsString != nil && ![selectedItemsString isEqualToString:@""])
+            {
+                NSArray *localArray = [selectedItemsString componentsSeparatedByString:@";"];
+                
+                if(localArray != nil)
+                {
+                    userSelectedItemsArray  = [NSMutableArray arrayWithArray:localArray];
+                }
+            }
         }
-    }
+    }];
 }
 
 - (BOOL)isSelectedByUser:(NSString*)currentInterestString

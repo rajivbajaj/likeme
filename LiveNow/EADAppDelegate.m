@@ -12,9 +12,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [FBProfilePictureView class];
-    [FBLoginView class];
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+//    [FBProfilePictureView class];
+//    [FBLoginView class];
+
+    if ([[FBSession.activeSession permissions] count] && !FBSession.activeSession.isOpen) {
+        [FBSession openActiveSessionWithAllowLoginUI:YES];
+    }
+    
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+                                                                                         |UIUserNotificationTypeSound
+                                                                                         |UIUserNotificationTypeAlert) categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
     [self CurrentLocationIdentifier];
    // UserInfo *userInfo = [UserInfo sharedUserInfo];
 //    if(userInfo.userLocation == nil && ![userInfo.userLocation isEqualToString:@""])
@@ -63,12 +72,13 @@ void customExceptionHandler(NSException *exception)
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     // Call the 'activateApp' method to log an app event for use in analytics and advertising reporting.
     
-    [FBAppEvents activateApp];
-    
+//    [FBAppEvents activateApp];
     
     // We need to properly handle activation of the application with regards to SSO
     //  (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
-    [FBAppCall handleDidBecomeActive];
+//    [FBAppCall handleDidBecomeActive];
+    
+    [[FBSession activeSession] handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -82,12 +92,13 @@ void customExceptionHandler(NSException *exception)
          annotation:(id)annotation {
     
     // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    
+//    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    BOOL wasHandled = [FBSession.activeSession handleOpenURL:url];
     // You can add your app-specific url handling code here if needed
     
     return wasHandled;
 }
+
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"My token is: %@", deviceToken);
@@ -103,30 +114,42 @@ void customExceptionHandler(NSException *exception)
     NSLog(@"Failed to get token, error: %@", error);
 }
 
--(void)CurrentLocationIdentifier
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
-    //---- For getting current gps location
-    locationManager = [CLLocationManager new];
-    [locationManager requestWhenInUseAuthorization];
-    if([CLLocationManager locationServicesEnabled] == YES){
-    locationManager.delegate = self;
-    locationManager.distanceFilter = 100;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-        
-    
-    }
-    //------
+    //register to receive notifications
+    [application registerForRemoteNotifications];
 }
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
+    //handle the actions
+    if ([identifier isEqualToString:@"declineAction"]){
+        
+    } else if ([identifier isEqualToString:@"answerAction"]){
+        
+    }
+}
+#endif
+
+- (void)CurrentLocationIdentifier {
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
+    self.locationManager.distanceFilter = 100;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+
     currentLocation = [locations objectAtIndex:0];
-        [locationManager stopUpdatingLocation];
+    [_locationManager stopUpdatingLocation];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
      {
-         
-         
          if (!(error))
          {
              UserInfo *userInfo = [UserInfo sharedUserInfo];

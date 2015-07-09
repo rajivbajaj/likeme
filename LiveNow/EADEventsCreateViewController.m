@@ -39,13 +39,14 @@ NSString* endDateString;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     self.locationText.text=userInfo.userLocation;
     
-    Postman* postman = [Postman alloc];
-    
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                       @"EventRestrictions", @"LKGroupName",
                                       nil];
     
-    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    [[Postman sharedManager] Get:@"utility/get?jsonParams=%@" :paramsDictionary: ^(NSArray *result) {
+        self.pickerData = result;
+    }];
+    
     if (_eventId != nil)
     {
         [self loadEvent];
@@ -107,7 +108,7 @@ NSString* endDateString;
     else
     {
 
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     
     
@@ -329,7 +330,7 @@ NSString* endDateString;
 }
 - (void)loadEvent
 {
-    Postman *postman = [Postman alloc];
+    Postman *postman = [Postman sharedManager];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     

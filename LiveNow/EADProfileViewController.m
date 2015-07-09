@@ -38,60 +38,62 @@
     
     [profilePicImageView addGestureRecognizer:imageTap];
 
-    Postman* postman = [Postman alloc];
+    Postman* postman = [Postman sharedManager];
     
     NSDictionary *paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                       @"GenderList", @"LKGroupName",
                                       nil];
     
-    self.pickerData = [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary];
+    [postman Get:@"utility/get?jsonParams=%@" :paramsDictionary :^(NSArray *result) {
+        self.pickerData = result;
+        [self.genderPickerView setHidden:YES];
+    }];
     
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
-    
-    NSInteger age = [[userDataDictionary objectForKey:@"Age"] integerValue];
-    ageText.text = [NSString stringWithFormat:@"%ld", (long)age];
-    statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
-    displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
-    genderText.text = [userDataDictionary valueForKey:@"Gender"];
-    [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
-    userInfo.Latitude =[userDataDictionary valueForKey:@"Latitude"];
-    userInfo.Longitude= [userDataDictionary valueForKey:@"Longitude"];
-    
-    if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
-    {
-        location.text = userInfo.userLocation;
-    }
-    else
-    {
-        location.text = [userDataDictionary valueForKey:@"City"];
-    }
+    [postman GetUser:userInfo.userId callback:^(NSDictionary *result) {
 
-    
-    NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-    UIImage *image = [UIImage imageWithData:imageData];
-    
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
-    [image drawInRect:CGRectMake(0,0,36,36)];
-    UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    profilePicImageView.image = im2;
-    profilePicImageView.contentMode = UIViewContentModeTop;
-    
-    NSString *radiusString = [userDataDictionary valueForKey:@"Radius"];
-    if(radiusString != nil)
-    {
-        [self.radiusSlider setValue:[radiusString floatValue] animated:YES];
-        self.milesLabel.text = [[NSString stringWithFormat:@"%li", (long)[radiusString integerValue]] stringByAppendingString:@" miles"];
+        NSDictionary *userDataDictionary = result;
+        NSInteger age = [[userDataDictionary objectForKey:@"Age"] integerValue];
+        ageText.text = [NSString stringWithFormat:@"%ld", (long)age];
+        statusText.text = [userDataDictionary valueForKey:@"ProfileStatus"];
+        displayNameText.text = [userDataDictionary valueForKey:@"UserName"];
+        genderText.text = [userDataDictionary valueForKey:@"Gender"];
+        [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
+        userInfo.Latitude =[userDataDictionary valueForKey:@"Latitude"];
+        userInfo.Longitude= [userDataDictionary valueForKey:@"Longitude"];
         
-    }
+        if(userInfo.userLocation != nil && ![userInfo.userLocation isEqualToString:@""])
+        {
+            location.text = userInfo.userLocation;
+        }
+        else
+        {
+            location.text = [userDataDictionary valueForKey:@"City"];
+        }
+        
+        NSString *radiusString = [userDataDictionary valueForKey:@"Radius"];
+        if(radiusString != nil)
+        {
+            [self.radiusSlider setValue:[radiusString floatValue] animated:YES];
+            self.milesLabel.text = [[NSString stringWithFormat:@"%li", (long)[radiusString integerValue]] stringByAppendingString:@" miles"];
+        }
+
+        NSURL *imageURL = [NSURL URLWithString:[userInfo profileImageURL]];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0);
+        [image drawInRect:CGRectMake(0,0,36,36)];
+        UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        profilePicImageView.image = im2;
+        profilePicImageView.contentMode = UIViewContentModeTop;
+        
+        userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] intValue];
+    }];
     
-    userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
-    [self.genderPickerView setHidden:true];
+
 }
-
-
 
 -(void)handleImageTap:(id)sender {
     // push you view here
@@ -99,17 +101,20 @@
     //[profilePicImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     [self performSegueWithIdentifier:@"profileToImageViewer" sender:sender];
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     if(self.locationName != nil && ![self.locationName isEqualToString:@""])
     {
         self.location.text = self.locationName;
     }
-     Postman* postman = [Postman alloc];
+
+    Postman* postman = [Postman sharedManager];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    NSDictionary* userDataDictionary = [postman UserGet:userInfo.userId];
+    [postman GetUser:userInfo.userId callback:^(NSDictionary *result) {
+        [self.interestsButton setTitle:[result valueForKey:@"UserInterests"] forState:UIControlStateNormal];
+    }];
     
-       [self.interestsButton setTitle:[userDataDictionary valueForKey:@"UserInterests"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,8 +136,11 @@
 
 - (IBAction)updateProfileTouch:(id)sender
 {
-    Postman* postMan = [Postman alloc];
+    Postman* postMan = [Postman sharedManager];;
     UserInfo *userInfo = [UserInfo sharedUserInfo];
+    
+    _latitude = [userInfo.Latitude doubleValue];
+    _longitude = [userInfo.Longitude doubleValue];
 
     NSString *latitudeString = [[NSNumber numberWithDouble:_latitude] stringValue];
     NSString *longitudeString = [[NSNumber numberWithDouble:_longitude] stringValue];
@@ -208,7 +216,7 @@
 - (IBAction)radiusSliderValueChanged:(id)sender
 {
     UserInfo *userInfo = [UserInfo sharedUserInfo];
-    userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] integerValue];
+    userInfo.interestedRadius = [[NSNumber numberWithFloat:self.radiusSlider.value] intValue];
     userInfo.isRadiusChanged = true;
     NSString *interestedMiles = [NSString stringWithFormat:@"%i", userInfo.interestedRadius];
     self.milesLabel.text = [interestedMiles stringByAppendingString:@" miles"];

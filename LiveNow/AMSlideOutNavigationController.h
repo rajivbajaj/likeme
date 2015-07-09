@@ -32,7 +32,7 @@
 typedef void (^AMSlideOutBeforeHandler)(void);
 typedef void (^AMSlideOutCompletionHandler)(void);
 
-@interface AMSlideOutNavigationController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface AMSlideOutNavigationController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic)		UIViewController*		currentViewController;
 @property (readonly, nonatomic) NSInteger               currentTag;

@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
 @property (strong, nonatomic) AMSlideOutNavigationController*  slideoutController;
 @property (nonatomic, retain) NSString* userLocation;
-@property  BOOL logout;
-@property bool viewloaded;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
 @end

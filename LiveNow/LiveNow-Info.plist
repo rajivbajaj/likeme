@@ -53,8 +53,6 @@
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchImages</key>
@@ -124,5 +122,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string></string>
 </dict>
 </plist>
