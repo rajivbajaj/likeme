@@ -112,7 +112,9 @@ static Postman *instance = nil;
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
 
     NSString *urlParams = [[NSString stringWithFormat:@"%@%@", BaseServiceURL, completeUrlWIthParams] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlParams]];
+    NSURL *url = [NSURL URLWithString:urlParams];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    DLog(@"get url - %@", [url absoluteString]);
     
     [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
@@ -122,7 +124,7 @@ static Postman *instance = nil;
         {
             NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            if(masterDictionary != nil && masterDictionary.count > 0)
+            if (masterDictionary != nil && masterDictionary.count > 0)
             {
                 dataArray = (NSArray *)masterDictionary;
             }
@@ -240,17 +242,25 @@ static Postman *instance = nil;
     }];
 }
 
--(void)PostAsync:(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack
-{
+-(void)PostAsync:(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack {
+
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+//    completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, postParamName, nil];
+
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    
+    NSString *completeServiceUrl = [NSString stringWithFormat:actionUrlWithPlaceHolder, updateJsonData];
     completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, postParamName, nil];
+    
+    DLog(@"post url - %@", completeServiceUrl);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [manager POST:completeServiceUrl parameters:updatedParamsData
+    [manager POST:completeServiceUrl parameters:nil
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          callBack(responseObject);

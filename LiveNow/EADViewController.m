@@ -249,10 +249,13 @@ UIAlertView *logoutConfirmAlertView;
                                                      nil];
 
                 
-                 [postMan PostAsync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(NSArray *dataArray)
-                  {
-                      //[self loadEvent];
-                  }];
+                 [postMan PostAsync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(id response) {
+                     
+                 }];
+//                 [postMan PostAsync:@"users/post?value=%@" :userDataDictionary :@"value" completion:^(NSArray *dataArray)
+//                  {
+//                      //[self loadEvent];
+//                  }];
                
                  [self navigateToMainPage];
              }

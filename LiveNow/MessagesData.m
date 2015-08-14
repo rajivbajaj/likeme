@@ -42,11 +42,12 @@
     self = [super init];
     if (self) {
 
+        self.messages = [NSMutableArray new];
         if ([NSUserDefaults emptyMessagesSetting]) {
-            self.messages = [NSMutableArray new];
+
         }
         else {
-            [self loadMessages];
+ 
         }
         
         
@@ -107,8 +108,7 @@
     return self;
 }
 
-- (void)loadMessages
-{
+- (void)loadMessages:(dispatch_block_t)callback {
     
     Postman *postman = [Postman sharedManager];
     
@@ -205,6 +205,7 @@
             }
             
             self.messages = jsqMessagesArray;
+            callback();
         }
     };
     

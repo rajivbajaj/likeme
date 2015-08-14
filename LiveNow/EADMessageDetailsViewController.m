@@ -76,17 +76,21 @@
     //                                                                              style:UIBarButtonItemStyleBordered
     //                                                                             target:self
     //                                                                             action:@selector(receiveMessagePressed:)];
+
 }
 
 -(void)reloadMessageThread
 {
-    MessagesData *messagesData = [MessagesData alloc];
+    MessagesData *messagesData = [[MessagesData alloc] init];
     messagesData.messangerType = [self messangerType];
     messagesData.authorId = [self authorId];
     messagesData.eventId = [self eventId];
     messagesData.groupId = [self groupId];
-    
-    self.demoData = [messagesData init];
+
+    [messagesData loadMessages:^{
+        self.demoData = messagesData;
+        [self.collectionView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -591,6 +595,11 @@
 }
 
 #pragma mark - UICollectionView DataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
