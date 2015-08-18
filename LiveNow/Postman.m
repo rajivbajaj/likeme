@@ -116,13 +116,17 @@ static Postman *instance = nil;
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     DLog(@"get url - %@", [url absoluteString]);
     
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:request
-                                          returningResponse:&response
-                                                      error:&error];
-    if (error == nil)
-    {
+//    NSURLResponse * response = nil;
+//    NSError * error = nil;
+//    NSData * data = [NSURLConnection sendSynchronousRequest:request
+//                                          returningResponse:&response
+//                                                      error:&error];
+//    if (error == nil)
+//    {
+//    }
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
         NSArray *dataArray = nil;
         
         if (data != nil)
@@ -135,16 +139,10 @@ static Postman *instance = nil;
             }
         }
         
-        //        dispatch_async(dispatch_get_main_queue(), ^{
-        callback(dataArray);
-        //        });
-    }
-    
-    
-    //    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-    //
-    //
-    //    }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback(dataArray);
+        });
+    }];
 }
 
 -(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData

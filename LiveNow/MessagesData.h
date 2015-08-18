@@ -58,8 +58,7 @@ static NSString * const kJSQDemoAvatarIdWoz = @"309-41802-93823";
 @property (strong, nonatomic) NSString *groupId;
 @property (strong, nonatomic) NSString *messangerType;
 
-//- (void)loadMessages:(dispatch_block_t)callback;
-- (void)loadMessages;
+- (void)loadMessages:(dispatch_block_t)callback;
 
 - (void)addPhotoMediaMessage;
 

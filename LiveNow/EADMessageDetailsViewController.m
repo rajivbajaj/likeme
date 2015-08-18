@@ -80,13 +80,16 @@
 
 -(void)reloadMessageThread
 {
-    MessagesData *messagesData = [MessagesData alloc];
+    MessagesData *messagesData = [[MessagesData alloc] init];
     messagesData.messangerType = [self messangerType];
     messagesData.authorId = [self authorId];
     messagesData.eventId = [self eventId];
     messagesData.groupId = [self groupId];
     
-    self.demoData = [messagesData init];
+    [messagesData loadMessages:^{
+        self.demoData = messagesData;
+        [self.collectionView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
