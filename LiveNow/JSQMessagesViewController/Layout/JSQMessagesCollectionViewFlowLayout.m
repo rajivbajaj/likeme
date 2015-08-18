@@ -37,11 +37,6 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 @interface JSQMessagesCollectionViewFlowLayout ()
 
-/**
- *  The collection view object currently using this layout object.
- */
-@property (nonatomic, readonly) JSQMessagesCollectionView *collectionView;
-
 @property (strong, nonatomic) NSMutableDictionary *messageBubbleSizes;
 
 @property (strong, nonatomic) UIDynamicAnimator *dynamicAnimator;
@@ -70,8 +65,6 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 
 @implementation JSQMessagesCollectionViewFlowLayout
-
-@synthesize collectionView;
 
 #pragma mark - Initialization
 
@@ -258,15 +251,13 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 #pragma mark - Collection view flow layout
 
-- (void)invalidateLayoutWithContext:(JSQMessagesCollectionViewFlowLayoutInvalidationContext *)context
-{
+- (void)invalidateLayoutWithContext:(JSQMessagesCollectionViewFlowLayoutInvalidationContext *)context {
     if (context.invalidateDataSourceCounts) {
         context.invalidateFlowLayoutAttributes = YES;
         context.invalidateFlowLayoutDelegateMetrics = YES;
     }
     
-    if (context.invalidateFlowLayoutAttributes
-        || context.invalidateFlowLayoutDelegateMetrics) {
+    if (context.invalidateFlowLayoutAttributes || context.invalidateFlowLayoutDelegateMetrics) {
         [self.messageBubbleSizes removeAllObjects];
         [self.dynamicAnimator removeAllBehaviors];
         [self.visibleIndexPaths removeAllObjects];
@@ -275,8 +266,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     [super invalidateLayoutWithContext:context];
 }
 
-- (void)prepareLayout
-{
+- (void)prepareLayout {
     [super prepareLayout];
     
     if (self.springinessEnabled) {
@@ -288,7 +278,6 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
         NSSet *visibleItemsIndexPaths = [NSSet setWithArray:[visibleItems valueForKey:NSStringFromSelector(@selector(indexPath))]];
         
         [self jsq_removeNoLongerVisibleBehaviorsFromVisibleItemsIndexPaths:visibleItemsIndexPaths];
-        
         [self jsq_addNewlyVisibleBehaviorsFromVisibleItems:visibleItems];
     }
 }
@@ -549,7 +538,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
     //  if touch is not (0,0) -- adjust item center "in flight"
     if (!CGPointEqualToPoint(CGPointZero, touchLocation)) {
-        float distanceFromTouch = fabs((float)touchLocation.y - springBehavior.anchorPoint.y);
+        CGFloat distanceFromTouch = fabsf(touchLocation.y - springBehavior.anchorPoint.y);
         CGFloat scrollResistance = distanceFromTouch / self.springResistanceFactor;
         
         if (self.latestDelta < 0.0f) {

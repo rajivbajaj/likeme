@@ -24,7 +24,7 @@
 #import "JSQMessages.h"
 
 /**
- *  This is for demo/testing purposes only. 
+ *  This is for demo/testing purposes only.
  *  This object sets up some fake model data.
  *  Do not actually do anything like this.
  */
@@ -58,7 +58,8 @@ static NSString * const kJSQDemoAvatarIdWoz = @"309-41802-93823";
 @property (strong, nonatomic) NSString *groupId;
 @property (strong, nonatomic) NSString *messangerType;
 
-- (void)loadMessages:(dispatch_block_t)callback;
+//- (void)loadMessages:(dispatch_block_t)callback;
+- (void)loadMessages;
 
 - (void)addPhotoMediaMessage;
 

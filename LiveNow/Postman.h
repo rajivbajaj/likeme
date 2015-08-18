@@ -27,6 +27,8 @@ typedef void (^array_block_t)(NSArray *result);
 -(void)PostAsync:(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack;
 -(void)PostFile :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSData*)imageData;
 
+-(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData;
+-(void)PostAync :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack;
 
 
 @end

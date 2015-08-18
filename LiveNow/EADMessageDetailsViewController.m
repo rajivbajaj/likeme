@@ -76,21 +76,17 @@
     //                                                                              style:UIBarButtonItemStyleBordered
     //                                                                             target:self
     //                                                                             action:@selector(receiveMessagePressed:)];
-
 }
 
 -(void)reloadMessageThread
 {
-    MessagesData *messagesData = [[MessagesData alloc] init];
+    MessagesData *messagesData = [MessagesData alloc];
     messagesData.messangerType = [self messangerType];
     messagesData.authorId = [self authorId];
     messagesData.eventId = [self eventId];
     messagesData.groupId = [self groupId];
-
-    [messagesData loadMessages:^{
-        self.demoData = messagesData;
-        [self.collectionView reloadData];
-    }];
+    
+    self.demoData = [messagesData init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -304,7 +300,7 @@
         recipientAuthToken = @"";
     }
     
-    Postman* postMan = [Postman sharedManager];;
+    Postman* postMan = [Postman alloc];
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -380,7 +376,7 @@
         recipientAuthToken = @"";
     }
     
-    Postman* postMan = [Postman sharedManager];;
+    Postman* postMan = [Postman alloc];
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -440,7 +436,7 @@
     
     switch (buttonIndex) {
         case 0:
-                       break;
+            break;
         case 1:
         {
             _launchCamera = true;
@@ -595,11 +591,6 @@
 }
 
 #pragma mark - UICollectionView DataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
-    return 1;
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

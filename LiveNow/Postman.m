@@ -50,11 +50,11 @@ static Postman *instance = nil;
 - (void)GetUser:(NSString*)userId callback:(dictionary_block_t)callback
 {
     NSString *urlParams = [NSString stringWithFormat:@"%@users/get/%@", BaseServiceURL, userId];
-
+    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlParams]];
     
     [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-
+        
         NSMutableDictionary *userDataDictionary = nil;
         
         if (data != nil)
@@ -110,14 +110,19 @@ static Postman *instance = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
-
+    
     NSString *urlParams = [[NSString stringWithFormat:@"%@%@", BaseServiceURL, completeUrlWIthParams] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlParams];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     DLog(@"get url - %@", [url absoluteString]);
     
-    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request
+                                          returningResponse:&response
+                                                      error:&error];
+    if (error == nil)
+    {
         NSArray *dataArray = nil;
         
         if (data != nil)
@@ -130,10 +135,59 @@ static Postman *instance = nil;
             }
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            callback(dataArray);
-        });
-    }];
+        //        dispatch_async(dispatch_get_main_queue(), ^{
+        callback(dataArray);
+        //        });
+    }
+    
+    
+    //    [NSURLConnection sendAsynchronousRequest:request queue:main_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    //
+    //
+    //    }];
+}
+
+-(NSArray*) Get :(NSString*)urlWithParams :(NSDictionary*)paramData
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSString *completeUrlWIthParams = [NSString stringWithFormat:urlWithParams, jsonParams];
+    NSData *data = [self ServiceCall:completeUrlWIthParams];
+    NSArray *dataArray;
+    
+    if(data != nil)
+    {
+        NSDictionary *masterDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if(masterDictionary != nil && masterDictionary.count > 0)
+        {
+            dataArray = (NSArray *)masterDictionary;
+        }
+    }
+    
+    return dataArray;
+}
+
+-(void)PostAync :(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, postParamName, nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager POST:completeServiceUrl parameters:updatedParamsData
+          success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         callBack(responseObject);
+     }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
 }
 
 - (NSDictionary*) Get :(NSString*)urlWithParams
@@ -185,29 +239,29 @@ static Postman *instance = nil;
     //completeServiceUrl =  [completeServiceUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-
-   // manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    // manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     if(fileData != nil)
     {
         [manager POST:completeServiceUrl parameters:updatedParamsData constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
-        {
-            [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"attendees.png"  mimeType:@"image/png"];
-        }
-        success:^(AFHTTPRequestOperation *operation, id responseObject)
-        {
-            NSLog(@"Success: %@", responseObject);
-        }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error)
-        {
-            NSLog(@"Error: %@", error);
-        }];
+         {
+             [formData appendPartWithFileData:fileData name:@"entityImage" fileName:@"attendees.png"  mimeType:@"image/png"];
+         }
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSLog(@"Success: %@", responseObject);
+         }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             NSLog(@"Error: %@", error);
+         }];
     }
     else
     {
-         [manager POST:completeServiceUrl parameters:updatedParamsData
-         success:^(AFHTTPRequestOperation *operation, id responseObject)
+        [manager POST:completeServiceUrl parameters:updatedParamsData
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
              NSLog(@"Success: %@", responseObject);
          }
@@ -224,32 +278,32 @@ static Postman *instance = nil;
     NSString *jsonParams = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSString *completeUrlWIthParams = [NSString stringWithFormat:urlParams, jsonParams];
     completeUrlWIthParams = [BaseServiceURL stringByAppendingString:completeUrlWIthParams];
-
+    
     completeUrlWIthParams = [completeUrlWIthParams stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:completeUrlWIthParams parameters:nil
-    success:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        NSArray *dataArray = responseObject;
-        callBack(dataArray);
-    }
-    failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"Error: %@", error);
-    }];
+         success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSArray *dataArray = responseObject;
+         callBack(dataArray);
+     }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
 }
 
 -(void)PostAsync:(NSString*)actionUrlWithPlaceHolder :(NSDictionary*)paramData :(NSString*)postParamName completion:(void (^)(id response))callBack {
-
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
-//    completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, postParamName, nil];
-
+    
+    //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
+    //    NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //    NSString *completeServiceUrl = [BaseServiceURL stringByAppendingString:actionUrlWithPlaceHolder];
+    //    completeServiceUrl = [completeServiceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    NSDictionary *updatedParamsData = [NSDictionary dictionaryWithObjectsAndKeys:updateJsonData, postParamName, nil];
+    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramData options:NSJSONWritingPrettyPrinted error:nil];
     NSString *updateJsonData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
@@ -285,7 +339,7 @@ static Postman *instance = nil;
     [request setHTTPShouldHandleCookies:NO];
     [request setTimeoutInterval:30];
     [request setHTTPMethod:@"POST"];
-
+    
     
     // set Content-Type in HTTP header
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
@@ -294,11 +348,11 @@ static Postman *instance = nil;
     // post body
     NSMutableData *body = [NSMutableData data];
     
-
-        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"value"] dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[[NSString stringWithFormat:@"%@\r\n", updateJsonData] dataUsingEncoding:NSUTF8StringEncoding]];
-
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"value"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", updateJsonData] dataUsingEncoding:NSUTF8StringEncoding]];
+    
     
     // add image data
     //NSData *imageData = UIImageJPEGRepresentation(imageToPost, 1.0);
@@ -324,7 +378,7 @@ static Postman *instance = nil;
     [request setURL:url];
     
     [NSURLConnection sendAsynchronousRequest:request queue:nil completionHandler:nil];
-
+    
 }
 
 @end
