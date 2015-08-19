@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
-            landmarkName = "-guestLoginTouch:"
+            landmarkName = "-prepareControllers"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-datePickerValueChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-startDateStartEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -223,7 +223,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "-Get:"
+            landmarkName = "-UserInterestsUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -271,7 +271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "-Get::"
+            landmarkName = "-GetUser:callback:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -511,7 +511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "-navigateToMainPage"
+            landmarkName = "-loginViewShowingLoggedInUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -591,7 +591,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "-Get::"
+            landmarkName = "-GetUser:callback:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -655,7 +655,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "-navigateToMainPage"
+            landmarkName = "-loginViewShowingLoggedInUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -847,7 +847,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
             endingLineNumber = "218"
-            landmarkName = "-navigateToMainPage"
+            landmarkName = "-loginViewShowingLoggedInUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -938,12 +938,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-application:handleActionWithIdentifier:forRemoteNotification:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,12 +970,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-CurrentLocationIdentifier"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-applicationDidBecomeActive:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,13 +1002,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-CurrentLocationIdentifier"
-            landmarkType = "5">
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "@implementation EADAppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1018,12 +1018,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-CurrentLocationIdentifier"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-application:didRegisterUserNotificationSettings:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1050,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1082,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1098,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-performSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -1274,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439273138.60114"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1290,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439273138.60114"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-performSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -1306,11 +1306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439273138.60114"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-performSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -1322,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439273138.60114"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-performSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -1338,7 +1338,119 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-performSearch"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-numberOfSectionsInTableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-performSearch"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADLocationSearchViewController.m"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -1354,123 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-numberOfSectionsInTableView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439273097.80429"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-performSearch"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-performSearch"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "439781892.924823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-performSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -1530,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-newGroupSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1562,12 +1562,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1695,7 +1695,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "-pickerView:numberOfRowsInComponent:"
+            landmarkName = "-numberOfComponentsInPickerView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1711,8 +1711,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
-            landmarkType = "5">
+            landmarkName = "@implementation EADProfileViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1727,7 +1727,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "-genderEditingBegin:"
+            landmarkName = "-allOtherEditingBegin:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1738,11 +1738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADLocationSearchViewController.m"
-            timestampString = "440477135.207609"
+            timestampString = "460228846.96194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1759,7 +1759,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "-allOtherEditingBegin:"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1930,11 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1946,12 +1946,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-CurrentLocationIdentifier"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1962,12 +1962,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-CurrentLocationIdentifier"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2010,11 +2010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442945177.342969"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-populateGroupData"
             landmarkType = "5">
          </BreakpointContent>
@@ -2042,11 +2042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442550069.505107"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2058,11 +2058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442550069.505107"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2074,12 +2074,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADAppDelegate.m"
-            timestampString = "443761693.351749"
+            timestampString = "460826376.61846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2090,11 +2090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2260,7 +2260,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
@@ -2301,7 +2301,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "-navigateToMainPage"
+            landmarkName = "-loginViewShowingLoggedInUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2317,7 +2317,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
             endingLineNumber = "134"
-            landmarkName = "-updateProfileTouch:"
+            landmarkName = "-genderEditingBegin:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2333,7 +2333,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "-navigateToMainPage"
+            landmarkName = "-loginViewShowingLoggedInUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2429,14 +2429,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "-Post::"
+            landmarkName = "-GetUser:callback:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/Postman.m"
@@ -2445,7 +2445,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "-UserUpdate:"
+            landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2461,7 +2461,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "-ServiceCall:"
+            landmarkName = "-Get:::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2477,7 +2477,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
-            landmarkName = "-ServiceCall:"
+            landmarkName = "-Get:::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2653,7 +2653,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2669,7 +2669,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2680,11 +2680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442549995.558858"
+            timestampString = "460229921.421655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2696,11 +2696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-populateGroupData"
             landmarkType = "5">
          </BreakpointContent>
@@ -2708,15 +2708,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442620714.767777"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-newGroupSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2728,11 +2728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-newGroupSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2740,7 +2740,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/Postman.m"
@@ -2749,7 +2749,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
             endingLineNumber = "127"
-            landmarkName = "-PostWithFileData:::"
+            landmarkName = "-Get:::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2760,11 +2760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-newGroupSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2772,15 +2772,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-restrictionsEditingBegin:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2792,11 +2792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADGroupDetailsViewController.m"
-            timestampString = "442691378.292548"
+            timestampString = "460232119.710848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2948,15 +2948,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-populateEventData"
             landmarkType = "5">
          </BreakpointContent>
@@ -2968,11 +2968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-createEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2989,7 +2989,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
             endingLineNumber = "143"
-            landmarkName = "-PostWithFileData:::"
+            landmarkName = "-Get:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3005,7 +3005,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "-PostWithFileData:::"
+            landmarkName = "-Get:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3032,11 +3032,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3048,11 +3048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3076,7 +3076,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADProfileViewController.m"
@@ -3085,7 +3085,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
             endingLineNumber = "219"
-            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkName = "-radiusSliderValueChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3101,7 +3101,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "-handleImageTap:"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3261,7 +3261,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"
             endingLineNumber = "316"
-            landmarkName = "-loginViewShowingLoggedInUser:"
+            landmarkName = "-loginView:handleError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3277,7 +3277,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "-loginViewShowingLoggedInUser:"
+            landmarkName = "-loginView:handleError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3293,7 +3293,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "317"
             endingLineNumber = "317"
-            landmarkName = "-loginViewShowingLoggedInUser:"
+            landmarkName = "-loginView:handleError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3368,23 +3368,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
-            timestampString = "449168198.761308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiveNow/EADInboxViewController.m"
-            timestampString = "449168199.972526"
+            timestampString = "460829729.407594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -3396,15 +3380,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
-            timestampString = "449168202.830433"
+            timestampString = "460829729.407594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -3412,7 +3396,23 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460829729.407594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
@@ -3423,12 +3423,44 @@
             endingLineNumber = "107"
             landmarkName = "-loadInbox"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EADInboxViewController loadInbox]"
+                  moduleName = "LiveNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajivbajaj/Documents/LiveNow/likeme/LiveNow/EADInboxViewController.m"
+                  timestampString = "461106575.872066"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "286">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EADInboxViewController loadInbox]_block_invoke"
+                  moduleName = "LiveNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajivbajaj/Documents/LiveNow/likeme/LiveNow/EADInboxViewController.m"
+                  timestampString = "461106575.872227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "51">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
@@ -3444,7 +3476,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADInboxViewController.m"
@@ -3476,15 +3508,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-textFieldShouldBeginEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3496,11 +3528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233711.006526"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-createEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3640,11 +3672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457233871.515598"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-createEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3656,11 +3688,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/EADEventsCreateViewController.m"
-            timestampString = "457234315.435099"
+            timestampString = "460774872.625086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-createEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3668,7 +3700,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveNow/Postman.m"
@@ -3677,7 +3709,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "-PostWithFileData:::"
+            landmarkName = "-Get:::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3693,7 +3725,359 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159"
-            landmarkName = "-PostWithFileData:::"
+            landmarkName = "-ServiceCall:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "-populateGroupData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-newGroupSave:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-populateGroupData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-newGroupSave:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupsViewController.m"
+            timestampString = "460231037.758494"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupsViewController.m"
+            timestampString = "460231118.274709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADGroupDetailsViewController.m"
+            timestampString = "460232119.710848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460827982.82858"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-loadInbox"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460828206.491417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-loadInbox"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460828252.567857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460828257.397962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460828514.389545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-refresh:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "460828515.999427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "461105341.575328"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-loadInbox"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EADInboxViewController loadInbox]"
+                  moduleName = "LiveNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajivbajaj/Documents/LiveNow/likeme/LiveNow/EADInboxViewController.m"
+                  timestampString = "461106576.65833"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "286">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EADInboxViewController loadInbox]_block_invoke"
+                  moduleName = "LiveNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rajivbajaj/Documents/LiveNow/likeme/LiveNow/EADInboxViewController.m"
+                  timestampString = "461106576.658512"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADMessageDetailsViewController.m"
+            timestampString = "461106571.378481"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADMessageDetailsViewController.m"
+            timestampString = "461116560.874888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-reloadMessageThread"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADInboxViewController.m"
+            timestampString = "461116598.457375"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-loadInbox"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADMessageDetailsViewController.m"
+            timestampString = "461116638.910506"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-reloadMessageThread"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveNow/EADMessageDetailsViewController.m"
+            timestampString = "461116703.396988"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

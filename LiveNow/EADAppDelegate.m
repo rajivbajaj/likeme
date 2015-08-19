@@ -18,11 +18,24 @@
     if ([[FBSession.activeSession permissions] count] && !FBSession.activeSession.isOpen) {
         [FBSession openActiveSessionWithAllowLoginUI:YES];
     }
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
+                                                                                             |UIRemoteNotificationTypeSound
+                                                                                             |UIRemoteNotificationTypeAlert) categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|
+                                                                               UIRemoteNotificationTypeSound|
+                                                                               UIRemoteNotificationTypeAlert)];
+    }
+
     
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
-                                                                                         |UIUserNotificationTypeSound
-                                                                                         |UIUserNotificationTypeAlert) categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+//                                                                                         |UIUserNotificationTypeSound
+//                                                                                         |UIUserNotificationTypeAlert) categories:nil];
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     
     [self CurrentLocationIdentifier];
    // UserInfo *userInfo = [UserInfo sharedUserInfo];

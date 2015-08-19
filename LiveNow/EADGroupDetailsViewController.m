@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADImagePickerViewController.h"
 #import "EADGroupsViewController.h"
+#import "EADLocationSearchViewController.h"
 
 @interface EADGroupDetailsViewController ()
 
@@ -22,6 +23,7 @@
 @synthesize restrictionsText;
 @synthesize groupStatusLabel;
 //@synthesize groupId;
+@synthesize groupLocationName;
 
 - (void)viewDidLoad
 {
@@ -38,6 +40,15 @@
     if (_groupId != nil)
     {
         [self loadGroupDetails];
+    }
+    self.groupLocationName.enabled = NO;
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(![self.locationName isEqualToString:@""])
+    {
+        self.groupLocationName.text = self.locationName;
+        self.groupLocationName.enabled =NO;
     }
 }
 
@@ -101,6 +112,9 @@
     [foramtter setDateFormat:@"mm/dd/yyyy"];
     UserInfo *userInfo = [UserInfo sharedUserInfo];
     Postman *postman = [Postman sharedManager];
+        NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
+        NSString *longitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
+
     NSDictionary *groupDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                          [postman GetValueOrEmpty:groupName.text], @"GroupName",
                                          [postman GetValueOrEmpty:groupDescription.text], @"GroupDescription",
@@ -109,6 +123,9 @@
                                          [postman GetValueOrEmpty:restrictionsText.text], @"Restriction",
                                          [postman GetValueOrEmpty:groupStatusLabel.text], @"GroupStatus",
                                          _groupId, @"GroupId",
+                                         latitudeString, @"Latitude",
+                                         longitudeString, @"Longitude",
+                                         [postman GetValueOrEmpty:groupLocationName.text], @"GroupAddress",
                                          nil];
     
     [postman PostWithFileData:@"groups/post" :groupDataDictionary :imageData];
@@ -205,7 +222,12 @@
             self.groupName.text = [currentObject valueForKey:@"GroupName"];
             self.groupDescription.text = [currentObject valueForKey:@"GroupDescription"];
             self.restrictionsText.text = [currentObject valueForKey:@"Restriction"];
-            
+            self.groupLocationName.text =[currentObject valueForKey:@"GroupAddress"];
+            self.locationName =[currentObject valueForKey:@"GroupAddress"];
+            // NSString *latitudeString = [[NSNumber numberWithDouble:self.latitude] stringValue];
+            //NSString *longitudeString = [[NSNumber numberWithDouble:self.longitude] stringValue];
+            self.longitude =[[currentObject valueForKey:@"Longitude" ] doubleValue];
+            self.latitude =[[currentObject valueForKey:@"Latitude"] doubleValue];
             
             NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
             
@@ -229,6 +251,17 @@
         }
     }
 }
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    BOOL editable;
+    if (textField == groupLocationName) {
+        editable = NO;
+    }
+    else
+    {
+        editable = YES;
+    }
+    return editable;
+}
 
 #pragma mark - Navigation
 
@@ -243,6 +276,13 @@
         destinationVC.launchedFrom =@"Groups";
         
     }
+    else if([segue.identifier isEqualToString:@"GroupToPickLocation"])
+    {
+        EADLocationSearchViewController *locationSearchController = segue.destinationViewController;
+        
+        locationSearchController.initiatingController = @"group";
+    }
+
 }
 
 - (IBAction)groupStatusChanged:(id)sender

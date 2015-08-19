@@ -69,7 +69,8 @@
             NSInteger numberOfMembers = [[currentObject objectForKey:@"GroupMembersCount"] integerValue];
             self.groupMessagesCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMsgs];
             self.groupMemberCountLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfMembers];
-            
+            self.groupLocationName.text =[currentObject valueForKey:@"GroupAddress"];
+
             NSString *imageStringData = [currentObject valueForKey:@"GroupPic"];
             
             if(imageStringData != nil && ![imageStringData isEqualToString:@""])

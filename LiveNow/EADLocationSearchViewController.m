@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "EADEventsCreateViewController.h"
 #import "EADProfileViewController.h"
+#import "EADGroupDetailsViewController.h"
 
 @interface EADLocationSearchViewController ()
 
@@ -142,6 +143,15 @@
                     eventViewController.latitude = selectedItem.placemark.coordinate.latitude;
                     eventViewController.longitude = selectedItem.placemark.coordinate.longitude;
                 }
+                else if([self.initiatingController isEqualToString:@"group"])
+                {
+                    EADGroupDetailsViewController *groupViewController =  [self.navigationController.viewControllers objectAtIndex: self.navigationController.viewControllers.count-2];
+                    
+                    groupViewController.locationName = selectedItem.name;
+                    groupViewController.latitude = selectedItem.placemark.coordinate.latitude;
+                    groupViewController.longitude = selectedItem.placemark.coordinate.longitude;
+                }
+
         }
         
         [self.navigationController popViewControllerAnimated:YES];

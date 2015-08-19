@@ -213,6 +213,7 @@
 
         cell.textLabel.text = [currentObject valueForKey:@"GroupName"];
         cell.detailTextLabel.text = [currentObject valueForKey:@"GroupDescription"];
+        
     }
     
     return cell;

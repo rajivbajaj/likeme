@@ -51,6 +51,7 @@ NSString* endDateString;
     {
         [self loadEvent];
     }
+    self.locationText.enabled =NO;
 //    UIImage *btnImage = _imageView.image;
 //    [_cameraButton setImage:btnImage forState:UIControlStateNormal];
 }
@@ -60,6 +61,7 @@ NSString* endDateString;
     if(![self.locationName isEqualToString:@""])
     {
         self.locationText.text = self.locationName;
+        self.locationText.enabled =NO;
     }
 }
 
@@ -388,6 +390,8 @@ NSString* endDateString;
             self.locationText.text = [currentObject valueForKey:@"EventCity"];
             self.restrictionsText.text =[currentObject valueForKey:@"EventRestrictions"];
             self.eventTypeText.text =[currentObject valueForKey:@"EventType"];
+            self.longitude =[[currentObject valueForKey:@"Longitude" ] doubleValue];
+            self.latitude =[[currentObject valueForKey:@"Latitude"] doubleValue];
             
             if ([[currentObject valueForKey:@"EventStatus"]  isEqual: @"Active"])
             {

@@ -22,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *messagesSegueButton;
 @property (weak, nonatomic) IBOutlet UIButton *usersSegueButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportAbuseButton;
+@property (weak, nonatomic) IBOutlet UILabel *groupLocationName;
 @end

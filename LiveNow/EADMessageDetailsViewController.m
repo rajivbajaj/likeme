@@ -303,7 +303,11 @@
         recipientAuthToken = @"";
     }
     
+<<<<<<< Updated upstream
     Postman* postMan = [Postman alloc];
+=======
+    Postman* postMan = [Postman alloc];;
+>>>>>>> Stashed changes
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -379,7 +383,11 @@
         recipientAuthToken = @"";
     }
     
+<<<<<<< Updated upstream
     Postman* postMan = [Postman alloc];
+=======
+    Postman* postMan = [Postman alloc];;
+>>>>>>> Stashed changes
     
     
     NSDictionary *messageDataDisctionary = [NSDictionary dictionaryWithObjectsAndKeys:

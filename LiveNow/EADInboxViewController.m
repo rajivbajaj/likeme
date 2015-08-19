@@ -66,7 +66,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.inboxTablView.dataSource = self;
+    self.inboxTablView.delegate = self;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.jpg"]]];
      [self.view setBackgroundColor:[HumanInterfaceUtility colorWithHexString:@"C0CFD6"]];
     // Do any additional setup after loading the view.
@@ -77,8 +78,7 @@
     self.refreshControl = refreshControl;
     [self loadInbox];
     
-    self.inboxTablView.dataSource = self;
-    self.inboxTablView.delegate = self;
+   
 
     
 }
@@ -90,7 +90,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    //[self loadInbox];
+    [self loadInbox];
     //[self.inboxTablView reloadData];
 }
 
